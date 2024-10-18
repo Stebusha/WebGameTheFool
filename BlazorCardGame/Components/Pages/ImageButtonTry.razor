@@ -1,0 +1,89 @@
+@page "/image-button-try"
+@rendermode InteractiveServer
+
+@code{
+
+    private string ImageURl1 = "Images/card-back-1.jpg";
+    private string ImageURl2 = "Images/card-back-2.jpg";
+    private string ImageURl3 = "Images/card-back-3.png";
+    private void OnImageButtonClick1(){
+        Random random = new Random();
+        int number = random.Next(0,31);
+        number = number%3;
+        switch(number){
+            case 0:
+                ImageURl1 = "Images/card-back-2.jpg";
+                break;
+            case 1:
+                ImageURl1 = "Images/card-back-3.png";
+                break;
+            case 2:
+                ImageURl1 = "Images/card-back-1.jpg";
+                break;
+        }
+    }
+    private void OnImageButtonClick2(){
+        Random random = new Random();
+        int number = random.Next(0,31);
+        number = number%3;
+        switch(number){
+            case 0:
+                ImageURl2 = "Images/card-back-2.jpg";
+                break;
+            case 1:
+                ImageURl2 = "Images/card-back-3.png";
+                break;
+            case 2:
+                ImageURl2 = "Images/card-back-1.jpg";
+                break;
+        }
+    }
+    private void OnImageButtonClick3(){
+        Random random = new Random();
+        int number = random.Next(0,31);
+        number = number%3;
+        switch(number){
+            case 0:
+                ImageURl3 = "Images/card-back-2.jpg";
+                break;
+            case 1:
+                ImageURl3 = "Images/card-back-3.png";
+                break;
+            case 2:
+                ImageURl3 = "Images/card-back-1.jpg";
+                break;
+        }
+    }
+}
+
+<div class="image-button-container">
+    <button class="image-button" @onclick="OnImageButtonClick1">
+        <img src="@ImageURl1" alt="Рубашка" class="button-image" />
+    </button>
+    <button class="image-button" @onclick="OnImageButtonClick2">
+        <img src="@ImageURl2" alt="Рубашка" class="button-image" />
+    </button>
+    <button class="image-button" @onclick="OnImageButtonClick3">
+        <img src="@ImageURl3" alt="Рубашка" class="button-image" />
+    </button>
+</div>
+
+<style>
+    .image-button-container{
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .image-button{
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .button-image{
+        width: 200px;
+        height: auto;
+        display: block;
+    }
+</style>

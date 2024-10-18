@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BlazorCardGame.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BlazorCardGame.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorCardGame.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorCardGame.props",
+      "PackagePath": "build\\BlazorCardGame.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorCardGame.props",
+      "PackagePath": "buildMultiTargeting\\BlazorCardGame.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorCardGame.props",
+      "PackagePath": "buildTransitive\\BlazorCardGame.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
