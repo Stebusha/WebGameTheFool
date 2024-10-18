@@ -1,4 +1,4 @@
-namespace BlazorWebApp.Models
+namespace BlazorCardGame.Models
 {
     public enum AINames{
         Василий = 0,

@@ -1,4 +1,4 @@
-namespace BlazorWebApp.Models
+namespace BlazorCardGame.Models
 {
     public class ScoreTable{
         private Dictionary<string,int> scores = new Dictionary<string, int>();

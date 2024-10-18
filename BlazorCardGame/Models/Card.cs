@@ -1,4 +1,4 @@
-namespace BlazorWebApp.Models
+namespace BlazorCardGame.Models
 {
     public class Card{
         public SuitType Suit{get; set;} 

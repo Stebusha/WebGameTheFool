@@ -1,6 +1,6 @@
-using BlazorWebApp.Models;
+using BlazorCardGame.Models;
 
-namespace BlazorWebApp.Services
+namespace BlazorCardGame.Services
 {
     public interface IPlayerControl{
         public void RefillHand(Deck deck);

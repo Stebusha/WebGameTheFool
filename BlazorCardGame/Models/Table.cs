@@ -1,4 +1,5 @@
-namespace BlazorWebApp.Models{
+namespace BlazorCardGame.Models
+{
     public class Table{
         private List<Card> onTable = new List<Card>();
        
