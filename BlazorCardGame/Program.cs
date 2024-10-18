@@ -1,10 +1,14 @@
 using BlazorCardGame.Components;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddBlazoredLocalStorage();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+
 
 var app = builder.Build();
 
