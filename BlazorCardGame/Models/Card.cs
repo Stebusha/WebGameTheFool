@@ -3,8 +3,6 @@ namespace BlazorCardGame.Models
     public class Card{
         public SuitType Suit{get; set;} 
         public RankType Rank{get;set;}
-
-        //public Guid Id{get; private set;}
         public string ImageUrl{get; set;}
         public bool IsPlayable{get; set;}
         public Card(){}
@@ -63,8 +61,6 @@ namespace BlazorCardGame.Models
             }
             return name+".png";
         }
-        //card output
-        //public override string ToString() => $"{Rank} of {Suit}";
     
         //ovveride operators
         public static bool operator ==(Card card1, Card card2) => card1.Suit==card2.Suit &&card1.Rank==card2.Rank;

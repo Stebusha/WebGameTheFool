@@ -1,0 +1,13 @@
+@using BlazorCardGame.Models
+
+@code
+{
+    [Parameter]
+    public List<Card> Cards { get; set;}
+}
+
+<div>
+    @foreach(var card in Cards){
+        <GameCard Card="card"/>
+    }
+</div>
