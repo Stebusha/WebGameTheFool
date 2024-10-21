@@ -3,6 +3,8 @@ using BlazorCardGame.Models;
 namespace BlazorCardGame.Services
 {
     public class PlayerControlService:IPlayerControl{
+
+        List<Player>? players;
         public void RefillHand(Deck deck){
 
         }

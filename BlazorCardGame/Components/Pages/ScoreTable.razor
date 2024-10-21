@@ -40,15 +40,12 @@ else{
     private List<LeaderInfo> leaders = new List<LeaderInfo>();
     private string newPlayerName = string.Empty;
     private int newPlayerScore = 0;
-    protected override async Task OnInitializedAsync(){
-        
-    }
     protected override async Task OnAfterRenderAsync(bool firstRender){
         if(firstRender){
             try{
                 if(localStorage.ContainKeyAsync("leaders").Result){
                     leaders= await localStorage.GetItemAsync<List<LeaderInfo>>("leaders");
-                        StateHasChanged();
+                    StateHasChanged();
                 } 
             }
             catch (Exception ex){
