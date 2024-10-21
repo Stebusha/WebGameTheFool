@@ -7,6 +7,6 @@ namespace BlazorCardGame.Models
         public List<Player> players = new List<Player>();
         public Table gameTable = new Table();
         public Deck deck = new Deck();
-        public bool IsEnded {get; set;} = false;
+        public GameState gameState{get;set;}       
     }
 }
