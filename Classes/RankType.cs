@@ -1,10 +1,10 @@
 namespace TheFool;
-
-public enum RankType {
+public enum RankType
+{
     Six = 0,
     Seven,
     Eight,
-    Nine, 
+    Nine,
     Ten,
     Jack,
     Queen,

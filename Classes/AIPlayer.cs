@@ -1,182 +1,201 @@
-using System;
-using System.Collections.Generic;
-
 namespace TheFool;
-public class AIPlayer:IPlayer{
-    PlayerHand playerHand = new PlayerHand();
-    // private float handValue = -1f;
-    public string Name{get; set;}
-    public int TurnNumber{get;set;}
-    public bool Taken{get;set;}
-    public bool IsFool {get;set;}
-    public AIPlayer(){}
-    public AIPlayer(string _name, bool _fool){
+public class AIPlayer : IPlayer
+{
+    private const int REQUIRED_CARDS_COUNT = 6;
+    PlayerHand _playerHand = new PlayerHand();
+    public string Name { get; set; } = "Бот";
+    public int TurnNumber { get; set; }
+    public bool Taken { get; set; }
+    public bool IsFool { get; set; }
+
+    public AIPlayer() { }
+    public AIPlayer(string _name, bool _fool)
+    {
         Name = _name;
         IsFool = _fool;
     }
-    
+
     //return cards in hand
-    public List<Card> GetCards()=>playerHand.cards;
+    public List<Card> GetCards() => _playerHand.cards;
 
     //draw cards from deck
-    public void RefillHand(Deck deck){
-        if(playerHand.cards.Count==0/*&&deck.CardsAmount>=6*/){
-            playerHand.cards = deck.DrawCards(6);
-            playerHand.Sort();
+    public void RefillHand(Deck deck)
+    {
+        if (_playerHand.cards.Count == 0)
+        {
+            _playerHand.cards = deck.DrawCards(REQUIRED_CARDS_COUNT);
+            _playerHand.Sort();
         }
-        else if(playerHand.cards.Count<6/*&&deck.CardsAmount>=5*/){
-            playerHand.cards.AddRange(deck.DrawCards(6-playerHand.cards.Count));
-            playerHand.Sort();
+        else if (_playerHand.cards.Count < REQUIRED_CARDS_COUNT)
+        {
+            _playerHand.cards.AddRange(deck.DrawCards(REQUIRED_CARDS_COUNT - _playerHand.cards.Count));
+            _playerHand.Sort();
         }
     }
-    
+
     //check exist cards for attack
-    private bool CanBeAttacking(List<Card> cards, Table gameTable){
-        if (gameTable.Length() == 0){
+    private bool CanBeAttacking(List<Card> cards, Table gameTable)
+    {
+        if (gameTable.Length() == 0)
+        {
             return true;
         }
-        else{
-            foreach(var card in cards){
-                for(int i=0;i<gameTable.Length();i++){
-                    if(card.Rank==gameTable.GetCard(i).Rank){
-                        return true;
-                    }
+
+        foreach (var card in cards)
+        {
+            for (int i = 0; i < gameTable.Length(); i++)
+            {
+                if (card.Rank == gameTable.GetCard(i).Rank)
+                {
+                    return true;
                 }
             }
-            return false;
         }
+
+        return false;
+
     }
-    
+
     //return cards for attack
-    public List<Card> GetCardsForAttack(Table gameTable){
-        List <Card> cardsForAttack = new List<Card>();
-        if(CanBeAttacking(playerHand.cards,gameTable)){
-            if(gameTable.Length()==0){
-                return playerHand.cards;
+    public List<Card> GetCardsForAttack(Table gameTable)
+    {
+        List<Card> cardsForAttack = new List<Card>();
+
+        if (CanBeAttacking(_playerHand.cards, gameTable))
+        {
+            if (gameTable.Length() == 0)
+            {
+                return _playerHand.cards;
             }
-            else{
-                foreach(var card in playerHand.cards){
-                    for(int i=0;i<gameTable.Length();i++){
-                        if(card.Rank==gameTable.GetCard(i).Rank){
-                            cardsForAttack.Add(card);
-                        }
+
+            foreach (var card in _playerHand.cards)
+            {
+                for (int i = 0; i < gameTable.Length(); i++)
+                {
+                    if (card.Rank == gameTable.GetCard(i).Rank)
+                    {
+                        cardsForAttack.Add(card);
                     }
                 }
             }
-                        
         }
+
         cardsForAttack = cardsForAttack.Distinct().ToList();
+
         return cardsForAttack;
     }
-    
+
     //attack card based on decision
-    public Card Attack(Table gameTable){
-        bool Attacking = CanBeAttacking(playerHand.cards,gameTable);
+    public Card Attack(Table gameTable)
+    {
+        bool Attacking = CanBeAttacking(_playerHand.cards, gameTable);
         Card attackingCard = new Card();
-        if(Attacking){
+
+        if (Attacking)
+        {
             List<Card> attackingCards = GetCardsForAttack(gameTable);
-            if(attackingCards.Count!=0){
+
+            if (attackingCards.Count != 0)
+            {
                 int index = MakeDecision();
                 attackingCard = attackingCards[index];
-                Console.WriteLine($"\n{Name} походил картой: "+ attackingCard.ToString());
+                Console.WriteLine($"\n{Name} походил картой: {attackingCard}");
                 gameTable.AddCardToTable(attackingCard);
                 //fixed
                 //first card delete before defend, comparison with next card -> bug defend 
-                playerHand.RemoveCardFromHand(attackingCard);
-                return attackingCard;
+                _playerHand.RemoveCardFromHand(attackingCard);
             }
-            else{
-                return attackingCard;
-            }    
         }
-        else{
-            return attackingCard;
-        }
-    } 
-     //check attacking card can be beaten
-    private bool CanBeBeaten(Card attackingCard,Table gameTable){
-        if(gameTable.Length()==0){
+
+        return attackingCard;
+    }
+
+    //check attacking card can be beaten
+    private bool CanBeBeaten(Card attackingCard, Table gameTable)
+    {
+        if (gameTable.Length() == 0)
+        {
             return false;
         }
-        else{
-            foreach(var card in playerHand.cards){
-                if(card>attackingCard){
-                    return true;  
-                }
+
+        foreach (var card in _playerHand.cards)
+        {
+            if (card > attackingCard)
+            {
+                return true;
             }
-            return false;
-        }  
-    }   
+        }
+
+        return false;
+    }
+
     //return  card to defend based on decision
-    private Card GetCardToDefend(Card attackingCard){
+    private Card GetCardToDefend(Card attackingCard)
+    {
         Card cardToDefend = new Card();
-        foreach(var card in playerHand.cards){
-            if(card>attackingCard){
+
+        foreach (var card in _playerHand.cards)
+        {
+            if (card > attackingCard)
+            {
                 cardToDefend = card;
                 break;
             }
         }
+
         return cardToDefend;
     }
+
     //defend
-    public void Defend(Card attackingCard, Table gameTable){
-        bool beaten = CanBeBeaten(attackingCard,gameTable);
+    public void Defend(Card attackingCard, Table gameTable)
+    {
+        bool beaten = CanBeBeaten(attackingCard, gameTable);
         Card defendingCard = GetCardToDefend(attackingCard);
-        if(beaten){
-            Console.WriteLine($"{Name} отбился картой: "+defendingCard);
+
+        if (beaten)
+        {
+            Console.WriteLine($"{Name} отбился картой: {defendingCard}");
             gameTable.AddCardToTable(defendingCard);
-            playerHand.RemoveCardFromHand(defendingCard);
+            _playerHand.RemoveCardFromHand(defendingCard);
         }
-        else{
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\nНечем отбиться");
+            Console.ResetColor();
             TakeAllCards(gameTable);
         }
     }
-    
+
     //taken all cards from the game table, set property Taken
-    public void TakeAllCards(Table gameTable){
-        Taken =true;
+    public void TakeAllCards(Table gameTable)
+    {
+        Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
-        playerHand.cards.AddRange(onTableCards);
-        playerHand.Sort();
-        if(playerHand.cards.Count!=0){
+        _playerHand.cards.AddRange(onTableCards);
+        _playerHand.Sort();
+
+        if (_playerHand.cards.Count != 0)
+        {
             Console.WriteLine($"\n{Name} взял карты");
-        } 
+        }
     }
+
     //output cards for console
     public string ToString(List<Card> cards)
     {
-        string cardDrawnString = "";
-        cardDrawnString = "\nКарты игрока "+ Name+"\n";
-        for(int i = 0;i<cards.Count;i++){
+        string cardDrawnString = string.Empty;
+        cardDrawnString = $"\nКарты игрока {Name}\n";
+
+        for (int i = 0; i < cards.Count; i++)
+        {
             Card tempCard = cards[i];
-            cardDrawnString+=tempCard.ToString()+"\t";
-        } 
+            cardDrawnString += $"{tempCard}\t";
+        }
+
         return cardDrawnString;
     }
-    // private List<int> CardValue(List<Card> inHand, string trumpSuit){
-    //     List<int> valueCost = new List<int>();
-    //     for(int i=-400;i<=400;i++){
-    //     valueCost.Add(i);
-    //     i+=100;
-    //     }
-    //     string[] ranks = {"6","7", "8", "9", "10", "J","Q", "K", "A"};
-    //     foreach(var rank in ranks){
-    //         foreach (var card in inHand){
-                
-    //         }
-    //     }
-      
-    //     return valueCost;
-    // }
-    // private float HandValue(List<Card> inHand, string trumpSuit, List<int> values){
-        
-    //     return handValue;
-    // }
-    
 
-    //made decision based on handvalue
     //return min card
     protected virtual int MakeDecision() => 0;
-
 }

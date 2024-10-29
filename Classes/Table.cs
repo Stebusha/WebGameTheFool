@@ -1,38 +1,38 @@
-using System;
-using System.Collections.Generic;
-
-namespace TheFool
+namespace TheFool;
+public class Table
 {
-    public class Table{
-        private List<Card> onTable = new List<Card>();
-       
-        //return card on table by index
-        public Card GetCard(int index) => onTable[index];   
-        
-        //return length of card in game
-        public int Length() => onTable.Count;
-        
-        //return cards from table
-        public List<Card> TakeCardsFromTable() => onTable;
-       
-        //add card on table
-        public void AddCardToTable(Card card) => onTable.Add(card);
+    private List<Card> _onTable = new List<Card>();
 
-        //remove card from table
-        public void RemoveCardFromTable(Card card) => onTable.Remove(card);
-        
-        //clear table
-        public void ClearTable() => onTable.Clear();
+    //return card on table by index
+    public Card GetCard(int index) => _onTable[index];
 
-        //output for console
-        public string ToString(List<Card> onTable){
-            string onTableString = "";
-            onTableString = "\n\n Карты в игре: \t";
-            for(int i=0;i<onTable.Count;i++){
-                Card tempCard = onTable[i];
-                onTableString+=tempCard.ToString();
-            }
-            return onTableString;
+    //return length of card in game
+    public int Length() => _onTable.Count;
+
+    //return cards from table
+    public List<Card> TakeCardsFromTable() => _onTable;
+
+    //add card on table
+    public void AddCardToTable(Card card) => _onTable.Add(card);
+
+    //remove card from table
+    public void RemoveCardFromTable(Card card) => _onTable.Remove(card);
+
+    //clear table
+    public void ClearTable() => _onTable.Clear();
+
+    //output for console
+    public override string ToString()
+    {
+        string onTableString = string.Empty;
+        onTableString = "\nКарты в игре: \t";
+
+        for (int i = 0; i < _onTable.Count; i++)
+        {
+            Card tempCard = _onTable[i];
+            onTableString += tempCard.ToString() + "\t";
         }
+
+        return onTableString;
     }
 }
