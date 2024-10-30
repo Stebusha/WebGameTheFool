@@ -1,0 +1,54 @@
+@page "/register"
+
+@inject UserManager<ApplicationUser> UserManager
+@inject NavigationManager NavigationManager
+
+<h3>Регистрация</h3>
+
+<EditForm Model="registerModel" OnInvalidSubmit="HandleRegistration">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Логин: </label>
+        <InputText @bind-Value="registerModel.Login" />
+    </div>
+
+    <div>
+        <label>Пароль: </label>
+        <InputText @bind-Value="registerModel.Password" type="password" />
+    </div>
+
+    <div>
+        <label>Подтвердите пароль: </label>
+        <InputText @bind-Value="registerModel.ConfirmPassword" type="password" />
+    </div>
+
+    <button type="submit">Зарегистрироваться</button>
+</EditForm>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+
+    private async Task HandleRegistration()
+    {
+        var user = new ApplicationUser
+            {
+                UserName = registerModel.Login
+            };
+        var result = await UserManager.CreateAsync(user, registerModel.Password ?? "admin");
+
+        if (result.Succeeded)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            foreach (var error in result.Errors)
+            {
+                Console.WriteLine(error.Description);
+            }
+        }
+    }
+
+}

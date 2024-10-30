@@ -1,7 +1,10 @@
 @page "/scores"
+
 @attribute [StreamRendering]
+
 @using Blazored.LocalStorage
 @using BlazorCardGame.Models
+
 @inject ILocalStorageService localStorage
 
 <PageTitle>Таблица рекордов игры "Дурак"</PageTitle>
@@ -44,7 +47,7 @@ else{
         if(firstRender){
             try{
                 if(localStorage.ContainKeyAsync("leaders").Result){
-                    leaders= await localStorage.GetItemAsync<List<LeaderInfo>>("leaders");
+                    leaders= await localStorage.GetItemAsync<List<LeaderInfo>>("leaders")?? throw new ArgumentNullException(nameof(leaders));
                     StateHasChanged();
                 } 
             }

@@ -1,0 +1,46 @@
+@page "/login"
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject NavigationManager NavigationManager
+
+<h3>Войти</h3>
+
+<EditForm Model="loginModel" OnInvalidSubmit="HandleLogin">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div>
+        <label>Логин</label>
+        <InputText @bind-Value="loginModel.Login"/>
+    </div>
+
+    <div>
+        <label>Пароль</label>
+        <InputText @bind-Value="loginModel.Password"/>
+    </div>
+
+    <button type="submit">Войти</button>
+</EditForm>
+
+<p>
+    Нет аккаунта?
+    <NavLink href="/register">Зарегистрироваться</NavLink>
+</p>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+
+    private async Task HandleLogin()
+    {
+        var result = await
+        SignInManager.PasswordSignInAsync(loginModel.Login, loginModel.Password, isPersistent: true, lockoutOnFailure: false);
+
+        if (result.Succeeded)
+        {
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+        }
+    }
+}
