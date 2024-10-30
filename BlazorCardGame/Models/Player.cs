@@ -1,11 +1,10 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public class Player
 {
-    public class Player{
-        public List<Card>? inHand{get;set;}
-        public PlayerType playerType{get;set;}
-        public string Name{get; set;} = string.Empty;
-        public int TurnNumber{get;set;}
-        public bool Taken{get;set;}
-        public bool IsFool {get;set;}
-    }
+    public List<Card> inHand { get; set; } = new List<Card>();
+    public PlayerType playerType { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public int TurnNumber { get; set; }
+    public bool Taken { get; set; }
+    public bool IsFool { get; set; }
 }

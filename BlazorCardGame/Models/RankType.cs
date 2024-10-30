@@ -1,14 +1,13 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public enum RankType
 {
-    public enum RankType{
-        Six = 0,
-        Seven,
-        Eight,
-        Nine, 
-        Ten,
-        Jack,
-        Queen,
-        King,
-        Ace
-    }
+    Six = 0,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King,
+    Ace
 }

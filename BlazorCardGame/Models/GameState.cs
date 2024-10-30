@@ -1,8 +1,7 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public enum GameState
 {
-    public enum GameState{
-        JustStarted = 0, 
-        InProgress,
-        Finished
-    }
+    JustStarted = 0,
+    InProgress,
+    Finished
 }

@@ -1,21 +1,20 @@
 @using BlazorCardGame.Models
 
-@code{
+@code {
     [Parameter]
-    public Card Card{get;set;}
+    public Card Card { get; set; } = new Card();
 }
 
-@if(Card!=null)
+
+@if (!Card.IsPlayable)
 {
-    @if(!Card.IsPlayable)
-    {
-        <button class="game-card-button" enable ="return false">
-            <img class="card" src="@Card.ImageUrl"/>     
-        </button>
-    }
-    else{
-        <button class="game-card-button" enable ="return true">
-            <img class="card" src="@Card.ImageUrl"/>     
-        </button>
-    }
+    <button class="game-card-button" enable="return false">
+        <img class="card" src="@Card.ImageUrl" />
+    </button>
+}
+else
+{
+    <button class="game-card-button" enable="return true">
+        <img class="card" src="@Card.ImageUrl" />
+    </button>
 }

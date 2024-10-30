@@ -1,7 +1,6 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public class LeaderInfo
 {
-    public class LeaderInfo{
-        public string Name { get; set; }
-        public int Score { get; set; }
-    }
+    public string? Name { get; set; }
+    public int Score { get; set; }
 }

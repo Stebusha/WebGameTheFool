@@ -1,11 +1,10 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public enum AINames
 {
-    public enum AINames{
-        Василий = 0,
-        Неумеха,
-        Борзый,
-        Курочкин,
-        Анонимус,
-        Сова
-    }
+    Василий = 0,
+    Неумеха,
+    Борзый,
+    Курочкин,
+    Анонимус,
+    Сова
 }

@@ -1,150 +1,178 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public class Card
 {
-    public class Card{
-        public SuitType Suit{get; set;} 
-        public RankType Rank{get;set;}
-        public string ImageUrl{get; set;}
-        public bool IsPlayable{get; set;}
-        public Card(){}
-        public Card (SuitType _suit, RankType _rank){
-            Suit = _suit;
-            Rank = _rank;
-            ImageUrl=$"Images/Cards/{CreateCardName(_suit,_rank)}";
-            IsPlayable = false;
-        }
-
-        //created name for card image url
-        private string CreateCardName(SuitType suit,RankType rank){
-            string name = string.Empty;
-            switch (rank){
-                case RankType.Six:
-                    name+="6";
-                    break;
-                case RankType.Seven:
-                    name+="7";
-                    break;
-                case RankType.Eight:
-                    name+="8";
-                    break;
-                case RankType.Nine:
-                    name+="9";
-                    break;
-                case RankType.Ten:
-                    name+="10";
-                    break;
-                case RankType.Jack:
-                    name+="J";
-                    break;
-                case RankType.Queen:
-                    name+="Q";
-                    break;
-                case RankType.King:
-                    name+="K";
-                    break;
-                case RankType.Ace:
-                    name+="A";
-                    break;
-            }
-            switch (suit){
-                case SuitType.Clubs: 
-                    name+="C";
-                    break;
-                case SuitType.Hearts: 
-                    name+="H";
-                    break;
-                case SuitType.Diams: 
-                    name+="D";
-                    break;
-                case SuitType.Spades: 
-                    name+="S";
-                    break;
-            }
-            return name+".png";
-        }
-    
-        //ovveride operators
-        public static bool operator ==(Card card1, Card card2) => card1.Suit==card2.Suit &&card1.Rank==card2.Rank;
-
-        public static bool operator !=(Card card1, Card card2) => !(card1==card2);
-
-        public static bool operator>(Card card1, Card card2){
-            if(card1.Suit==card2.Suit){
-                return card1.Rank>card2.Rank;
-            }
-            else if(card1.Suit==Deck.trumpSuit&&card2.Suit!=Deck.trumpSuit){
-                return true;
-            }
-            else if(card1.Suit!=Deck.trumpSuit&&card2.Suit==Deck.trumpSuit){
-                return false;
-            }
-            else{
-                return false;
-            }
-        
-        }
-
-        public static bool operator <(Card card1, Card card2){
-            if(card1.Suit==card2.Suit){
-                return card1.Rank<card2.Rank;
-            }
-            else if(card1.Suit==Deck.trumpSuit&&card2.Suit!=Deck.trumpSuit){
-                return false;
-            }
-            else if(card1.Suit!=Deck.trumpSuit&&card2.Suit==Deck.trumpSuit){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        public static bool operator>=(Card card1, Card card2){
-            if(card1.Suit==card2.Suit&&card1.Rank==card2.Rank){
-                return true;
-            }
-            else if(card1.Suit==Deck.trumpSuit&&card2.Suit!=Deck.trumpSuit){
-                return true;
-            }
-            else if(card2.Suit==Deck.trumpSuit&&card1.Suit!=Deck.trumpSuit){
-                return false;
-            }
-            else if(card1.Suit!=card2.Suit){
-                return false;
-            }
-            else if (card1.Suit==card2.Suit&&card1.Suit==Deck.trumpSuit){
-                return card1.Rank>card2.Rank;
-            }
-            else{
-                return card1.Rank>card2.Rank;
-            }
-        }
-
-        public static bool operator <=(Card card1,Card card2){
-            if(card1.Suit==card2.Suit&&card1.Rank==card2.Rank){
-                return true;
-            }
-        
-            else if(card1.Suit==Deck.trumpSuit&&card2.Suit!=Deck.trumpSuit){
-                return false;
-            }
-            else if(card2.Suit==Deck.trumpSuit&&card1.Suit!=Deck.trumpSuit){
-                return true;
-            }
-            else if(card1.Suit!=card2.Suit){
-                return false;
-            }
-            else if (card1.Suit==card2.Suit&&card1.Suit==Deck.trumpSuit){
-                return card1.Rank<card2.Rank;
-            }
-            else{
-                return card1.Rank<card2.Rank;
-            }
-        }
-
-        // override object.Equals
-        public override bool Equals(object card) => this == (Card)card;
-        // override object.GetHashCode
-        public override int GetHashCode() => 9 *(int)Suit+(int)Rank;
-
+    public SuitType Suit { get; set; }
+    public RankType Rank { get; set; }
+    public string ImageUrl { get; set; } = string.Empty;
+    public bool IsPlayable { get; set; } = false;
+    public Card() { }
+    public Card(SuitType _suit, RankType _rank)
+    {
+        Suit = _suit;
+        Rank = _rank;
+        ImageUrl = $"Images/Cards/{GetRankName(_rank)}{GetSuitName(_suit)}.png";
+        IsPlayable = false;
     }
+
+    //return rank string for card output based on RankType
+    private string GetRankName(RankType rank) => rank switch
+    {
+        RankType.Six   => "6",
+        RankType.Seven => "7",
+        RankType.Eight => "8",
+        RankType.Nine  => "9",
+        RankType.Ten   => "10",
+        RankType.Jack  => "J",
+        RankType.Queen => "Q",
+        RankType.King  => "K",
+        RankType.Ace   => "A",
+        _ => "Rank Not Found"
+    };
+
+    //return suit unicode char string for card output based on SuitType 
+    private string GetSuitName(SuitType suit) => suit switch
+    {
+        SuitType.Clubs  => "C",
+        SuitType.Hearts => "H",
+        SuitType.Spades => "S",
+        SuitType.Diams  => "D",
+        _ => "Suit Not Found"
+    };
+
+    //card output
+    public override string ToString() => $"{GetRankName(Rank)}{GetSuitName(Suit)}";
+
+    //ovveride operators
+    public static bool operator ==(Card card1, Card card2)
+    {
+        return card1.Suit == card2.Suit && card1.Rank == card2.Rank;
+    }
+
+    public static bool operator !=(Card card1, Card card2) => !(card1 == card2);
+
+    public static bool operator >(Card card1, Card card2)
+    {
+        //same suit
+        if (card1.Suit == card2.Suit)
+        {
+            return card1.Rank > card2.Rank;
+        }
+        //first trump
+        else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
+        {
+            return true;
+        }
+        //second trump
+        else if (card1.Suit != Deck.s_trumpSuit && card2.Suit == Deck.s_trumpSuit)
+        {
+            return false;
+        }
+        //all another cases
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool operator <(Card card1, Card card2)
+    {
+        //same suit
+        if (card1.Suit == card2.Suit)
+        {
+            return card1.Rank < card2.Rank;
+        }
+        //first trump
+        else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
+        {
+            return false;
+        }
+        //second trump
+        else if (card1.Suit != Deck.s_trumpSuit && card2.Suit == Deck.s_trumpSuit)
+        {
+            return true;
+        }
+        //all another cases
+        else
+        {
+            return false;
+        }
+    }
+
+    public static bool operator >=(Card card1, Card card2)
+    {
+        //same rank, suit
+        if (card1.Suit == card2.Suit && card1.Rank == card2.Rank)
+        {
+            return true;
+        }
+        //first trump
+        else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
+        {
+            return true;
+        }
+        //second trump
+        else if (card2.Suit == Deck.s_trumpSuit && card1.Suit != Deck.s_trumpSuit)
+        {
+            return false;
+        }
+        //not the same suit, not trump
+        else if (card1.Suit != card2.Suit)
+        {
+            return false;
+        }
+        //same suit for trumps
+        else if (card1.Suit == card2.Suit && card1.Suit == Deck.s_trumpSuit)
+        {
+            return card1.Rank > card2.Rank;
+        }
+        //all another cases
+        else
+        {
+            return card1.Rank > card2.Rank;
+        }
+    }
+
+    public static bool operator <=(Card card1, Card card2)
+    {
+        //same rank, suit
+        if (card1.Suit == card2.Suit && card1.Rank == card2.Rank)
+        {
+            return true;
+        }
+        //first trump
+        else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
+        {
+            return false;
+        }
+        //second trump
+        else if (card2.Suit == Deck.s_trumpSuit && card1.Suit != Deck.s_trumpSuit)
+        {
+            return true;
+        }
+        //not the same suit
+        else if (card1.Suit != card2.Suit)
+        {
+            return false;
+        }
+        //same suit for trumps
+        else if (card1.Suit == card2.Suit && card1.Suit == Deck.s_trumpSuit)
+        {
+            return card1.Rank < card2.Rank;
+        }
+        //all another cases
+        else
+        {
+            return card1.Rank < card2.Rank;
+        }
+    }
+
+    // override object.Equals
+    public override bool Equals(object? card)
+    {
+        var c = card ?? throw new ArgumentNullException(nameof(card));
+        return this == (Card)card;
+    }
+    // override object.GetHashCode
+
+    public override int GetHashCode() => 9 * (int)Suit + (int)Rank;
 }

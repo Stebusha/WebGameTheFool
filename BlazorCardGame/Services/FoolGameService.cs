@@ -1,8 +1,8 @@
 using BlazorCardGame.Models;
 
-namespace BlazorCardGame.Services
-{
-    public class FoolGameService{
+namespace BlazorCardGame.Services;
 
-    }
+public class FoolGameService
+{
+
 }

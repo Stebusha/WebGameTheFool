@@ -1,7 +1,6 @@
-namespace BlazorCardGame.Models
+namespace BlazorCardGame.Models;
+public enum PlayerType
 {
-    public enum PlayerType{
-        AI = 0,
-        Human
-    }
+    AI = 0,
+    Human
 }

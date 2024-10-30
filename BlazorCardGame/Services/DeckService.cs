@@ -1,8 +1,8 @@
 using BlazorCardGame.Models;
 
-namespace BlazorCardGame.Services
+namespace BlazorCardGame.Services;
+
+public class DeckService
 {
-    public class DeckService{
-        
-    }
+
 }
