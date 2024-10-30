@@ -15,7 +15,7 @@
 <input @bind="newPlayerScore" type="number" placeholder="Очки" />
 <button @onclick="AddPlayer">Добавить</button>
 
-@if(leaders!=null&&leaders.Count>0)
+@if (leaders != null && leaders.Count > 0)
 {
     <table>
         <thead>
@@ -25,7 +25,8 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var leader in leaders){
+            @foreach (var leader in leaders)
+            {
                 <tr>
                     <td>@leader.Name</td>
                     <td>@leader.Score</td>
@@ -34,32 +35,40 @@
         </tbody>
     </table>
 }
-else{
+else
+{
     <p> Нет игороков в таблице рекордов.</p>
 }
 
 
-@code{
+@code {
     private List<LeaderInfo> leaders = new List<LeaderInfo>();
     private string newPlayerName = string.Empty;
     private int newPlayerScore = 0;
-    protected override async Task OnAfterRenderAsync(bool firstRender){
-        if(firstRender){
-            try{
-                if(localStorage.ContainKeyAsync("leaders").Result){
-                    leaders= await localStorage.GetItemAsync<List<LeaderInfo>>("leaders")?? throw new ArgumentNullException(nameof(leaders));
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                if (localStorage.ContainKeyAsync("leaders").Result)
+                {
+                    leaders = await localStorage.GetItemAsync<List<LeaderInfo>>("leaders") ?? throw new
+                    ArgumentNullException(nameof(leaders));
                     StateHasChanged();
-                } 
+                }
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 Console.WriteLine($"Ошибка при загрузке игроков {ex.Message}");
             }
         }
     }
-    private async Task AddPlayer(){
-        var newLeader = new LeaderInfo{Name = newPlayerName,Score = newPlayerScore};
+    private async Task AddPlayer()
+    {
+        var newLeader = new LeaderInfo { Name = newPlayerName, Score = newPlayerScore };
         leaders.Add(newLeader);
-        await localStorage.SetItemAsync("leaders",leaders);
+        await localStorage.SetItemAsync("leaders", leaders);
         Console.WriteLine($"Добавлен игрок:{newLeader.Name}, {newLeader.Score}");
         newPlayerName = string.Empty;
         newPlayerScore = 0;

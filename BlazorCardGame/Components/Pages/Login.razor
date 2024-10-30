@@ -6,17 +6,17 @@
 <h3>Войти</h3>
 
 <EditForm Model="loginModel" OnInvalidSubmit="HandleLogin">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
     <div>
         <label>Логин</label>
-        <InputText @bind-Value="loginModel.Login"/>
+        <InputText @bind-Value="loginModel.Login" />
     </div>
 
     <div>
         <label>Пароль</label>
-        <InputText @bind-Value="loginModel.Password"/>
+        <InputText @bind-Value="loginModel.Password" />
     </div>
 
     <button type="submit">Войти</button>

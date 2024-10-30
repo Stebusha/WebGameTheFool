@@ -3,7 +3,6 @@ using BlazorCardGame.Data;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,15 +10,15 @@ builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    new MySqlServerVersion(new Version(8,0,21))));
+    new MySqlServerVersion(new Version(8, 0, 21))));
 
-builder.Services.AddIdentity<ApplicationUser,IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath="/Login";
+    options.LoginPath = "/Login";
     options.LogoutPath = "/Logout";
 });
 // Add services to the container.

@@ -3,11 +3,12 @@
 @code
 {
     [Parameter]
-    public List<Card> Cards { get; set;} = new List<Card>();
+    public List<Card> Cards { get; set; } = new List<Card>();
 }
 
 <div>
-    @foreach(var card in Cards){
-        <GameCard Card="card"/>
+    @foreach (var card in Cards)
+    {
+        <GameCard Card="card" />
     }
 </div>
