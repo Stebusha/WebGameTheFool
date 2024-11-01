@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fBQ0Ks+SviU=",
+  "dgSpecHash": "XBmKmFxdrRw=",
   "success": true,
-  "projectFilePath": "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
+  "projectFilePath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\МиненковаНА\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\МиненковаНА\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.0\\microsoft.aspnetcore.authorization.8.0.0.nupkg.sha512",
