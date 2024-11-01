@@ -47,3 +47,5 @@ c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\MySqlConnector.dll
 c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

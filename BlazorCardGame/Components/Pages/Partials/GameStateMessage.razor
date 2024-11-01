@@ -1,14 +1,3 @@
-@using BlazorCardGame.Models
-
-@code
-{
-   [Parameter]
-   public GameState State { get; set; }
-   [Parameter]
-   public Dictionary<string, int> Scores { get; set; } = new Dictionary<string, int>();
-   [Parameter]
-   public Player Winner { get; set; } = new Player();
-}
 @if (State == GameState.JustStarted)
 {
    <span class="display-3 text-info">Начало партии</span>
@@ -22,4 +11,14 @@
    <span class="display-3 text-danger">Игра закончена. Победил игрок $@Winner.Name</span>
    <br />
    <span class="display-3 text-primary">$@Scores</span>
+}
+
+@code
+{
+   [Parameter]
+   public GameState State { get; set; }
+   [Parameter]
+   public Dictionary<string, int> Scores { get; set; } = new Dictionary<string, int>();
+   [Parameter]
+   public Player Winner { get; set; } = new Player();
 }

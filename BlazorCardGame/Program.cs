@@ -1,22 +1,17 @@
 using BlazorCardGame.Components;
-
+using BlazorCardGame.Hubs;
 using Blazored.LocalStorage;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSignalR();
+
 builder.Services.AddBlazoredLocalStorage();
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Login";
-    options.LogoutPath = "/Logout";
-});
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
-
 
 var app = builder.Build();
 
@@ -35,5 +30,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+app.MapHub<GameHub>("/gamehub");
 
 app.Run();

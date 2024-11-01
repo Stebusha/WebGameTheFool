@@ -1,14 +1,12 @@
-@using BlazorCardGame.Models
-
-@code
-{
-    [Parameter]
-    public List<Card> Cards { get; set; } = new List<Card>();
-}
-
 <div>
     @foreach (var card in Cards)
     {
-        <GameCard Card="card" />
+        <GameCard Card="@card" OnCardSelected="HandleCardSelected" />
     }
 </div>
+
+@code
+{
+    private List<Card> Cards { get; set; } = new List<Card>();
+    private void HandleCardSelected(string cardName) { }
+}

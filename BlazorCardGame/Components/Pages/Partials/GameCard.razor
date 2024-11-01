@@ -1,20 +1,26 @@
-@using BlazorCardGame.Models
+<div class="card" @onclick="OnCardClick">
+    <img src="@card.ImageUrl" alt="@card.ToString()" />
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+</style>
 
 @code {
     [Parameter]
-    public Card Card { get; set; } = new Card();
-}
+    public Card card { get; set; } = new Card();
 
+    [Parameter]
+    public EventCallback<string> OnCardSelected { get; set; }
 
-@if (!Card.IsPlayable)
-{
-    <button class="game-card-button" enable="return false">
-        <img class="card" src="@Card.ImageUrl" />
-    </button>
-}
-else
-{
-    <button class="game-card-button" enable="return true">
-        <img class="card" src="@Card.ImageUrl" />
-    </button>
+    private async Task OnCardClick()
+    {
+        await OnCardSelected.InvokeAsync(card.ToString());
+    }
 }
