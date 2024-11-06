@@ -1,9 +1,89 @@
 @page "/thefool"
 
 <PageTitle>Дурак</PageTitle>
+<header>
+    <h1>Карточная игра "Дурак"</h1>
+    <h2>Партия № @countOfGames</h2>
+</header>
+
+
+<div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
+    <div class="opponent-cards">
+        @foreach (var card in OpponentCards)
+        {
+            <img src="/Images/card-back-2.jpg" class="card-back" />
+        }
+    </div>
+
+    <div class="player-cards">
+        @foreach (var card in PlayerCards)
+        {
+            <img src="@card.ImageUrl" class="player-card @(card.IsSelected ? "selected" : "" )"
+                @onclick="() => SelectPlayerCard(card)" />
+        }
+    </div>
+
+    <div class="center-table">
+        @if (SelectedCards.Count > 0)
+        {
+            <div class="selected-cards">
+                @foreach (var card in SelectedCards)
+                {
+                    <img src="@card.ImageUrl" class="selected-card" />
+                }
+            </div>
+        }
+    </div>
+
+    <div class="deck">
+        <img src="@DeckTopCard.ImageUrl" class="trump-card" />
+        <img src="/Images/card-back-2.jpg" class="deck-back">
+
+    </div>
+
+    <div class="controls">
+        <button @onclick="EndTurn">Завершить ход</button>
+        <button @onclick="DrawCards">Взять карты</button>
+        <button @onclick="Play">Походить</button>
+    </div>
+
+
+</div>
 
 @code {
+    private int countOfGames = 0;
+    private List<Card> PlayerCards { get; set; } = new List<Card>();
+    private List<Card> OpponentCards { get; set; } = new List<Card>();
+    private List<Card> SelectedCards { get; set; } = new List<Card>();
+    private Card DeckTopCard { get; set; } = new Card();
 
+    protected override void OnInitialized()
+    {
+
+    }
+    private void SelectPlayerCard(Card card)
+    {
+        card.IsSelected = !card.IsSelected;
+        if (card.IsSelected)
+        {
+            SelectedCards.Add(card);
+        }
+        else
+        {
+            SelectedCards.Remove(card);
+        }
+    }
+
+    private void DrawCards() { }
+    private void EndTurn()
+    {
+        SelectedCards.Clear();
+        foreach (var card in PlayerCards)
+        {
+            card.IsSelected = false;
+        }
+    }
+    private void Play() { }
 }
 
 <TheFoolRules />

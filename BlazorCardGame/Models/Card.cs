@@ -4,7 +4,8 @@ public class Card
     public SuitType Suit { get; set; }
     public RankType Rank { get; set; }
     public string ImageUrl { get; set; } = string.Empty;
-    public bool IsPlayable { get; set; } = false;
+    public bool IsPlayable { get; set; } = true;
+    public bool IsSelected { get; set; } = false;
     public Card() { }
     public Card(SuitType _suit, RankType _rank)
     {
