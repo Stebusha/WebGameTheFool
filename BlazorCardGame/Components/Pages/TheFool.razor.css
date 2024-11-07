@@ -1,67 +1,79 @@
-.game-table{
+h1,
+h2 {
+    text-align: center;
+    color: rgb(26, 9, 87);
+}
+
+.game-table {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 700px;
     background-size: cover;
 }
 
-.opponent-cards, .player-cards{
+.opponent-cards,
+.player-cards {
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.opponent-cards{
+.opponent-cards {
     top: 20px;
 }
 
-.player-cards{
+.player-cards {
     bottom: 20px;
 }
 
-.card-back,.player-card{
-    width:100px;
-    height:auto;
+.card-back,
+.player-card {
+    width: 100px;
+    height: auto;
     margin: 0 5px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;   
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card-back:hover, .player-card.selected{
+.card-back:hover,
+.player-card.selected {
     transform: translateY(-10px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.center-table{
+.center-table {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-.selected-cards{
+.selected-cards {
     display: flex;
 }
 
-.deck{
+.deck {
     position: absolute;
-    right:20px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.trump-card{
-    width: 60px;
+.trump-card {
+    /* right: 20px; */
+    transform: rotate(90deg);
+    width: 125px;
     height: auto;
 }
 
-.deck-back{
-    width: 60px;
+.deck-back {
+    transform: translateX(-50%);
+    width: 125px;
     height: auto;
 }
 
-.controls{
+.controls {
     position: absolute;
     bottom: 20px;
     left: 50%;

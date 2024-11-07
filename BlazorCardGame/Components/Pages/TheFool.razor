@@ -1,11 +1,11 @@
 @page "/thefool"
 
-<PageTitle>Дурак</PageTitle>
-<header>
-    <h1>Карточная игра "Дурак"</h1>
-    <h2>Партия № @countOfGames</h2>
-</header>
+@inject PlayerControlService playerControl
 
+<PageTitle>Дурак</PageTitle>
+
+<h1>Карточная игра "Дурак"</h1>
+<h2>Партия № @countOfGames</h2>
 
 <div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
     <div class="opponent-cards">
@@ -18,7 +18,7 @@
     <div class="player-cards">
         @foreach (var card in PlayerCards)
         {
-            <img src="@card.ImageUrl" class="player-card @(card.IsSelected ? "selected" : "" )"
+            <img src="@card.ImageUrl" class="player-card @(card.IsSelected ? ".selected" : "" )"
                 @onclick="() => SelectPlayerCard(card)" />
         }
     </div>
@@ -36,21 +36,24 @@
     </div>
 
     <div class="deck">
-        <img src="@DeckTopCard.ImageUrl" class="trump-card" />
+        <img src="/Images/Cards/6S.png" class="trump-card" />
+        @* <img src="@DeckTopCard.ImageUrl" class="trump-card" /> *@
         <img src="/Images/card-back-2.jpg" class="deck-back">
 
     </div>
 
     <div class="controls">
-        <button @onclick="EndTurn">Завершить ход</button>
-        <button @onclick="DrawCards">Взять карты</button>
         <button @onclick="Play">Походить</button>
+        <button @onclick="DrawCards">Взять карты</button>
+        <button @onclick="EndTurn">Завершить ход</button>
     </div>
 
 
 </div>
 
 @code {
+    private Player player = new Player();
+    private Table table = new Table();
     private int countOfGames = 0;
     private List<Card> PlayerCards { get; set; } = new List<Card>();
     private List<Card> OpponentCards { get; set; } = new List<Card>();
@@ -74,7 +77,10 @@
         }
     }
 
-    private void DrawCards() { }
+    private void DrawCards()
+    {
+        playerControl.TakeCards(table, ref player);
+    }
     private void EndTurn()
     {
         SelectedCards.Clear();
