@@ -52,7 +52,7 @@
 </div>
 
 @code {
-    private Player player = new Player();
+    private List<Player>? players;
     private Table table = new Table();
     private int countOfGames = 0;
     private List<Card> PlayerCards { get; set; } = new List<Card>();
@@ -62,7 +62,7 @@
 
     protected override void OnInitialized()
     {
-
+        players = new List<Player>();
     }
     private void SelectPlayerCard(Card card)
     {
@@ -79,7 +79,7 @@
 
     private void DrawCards()
     {
-        playerControl.TakeCards(table, ref player);
+        
     }
     private void EndTurn()
     {

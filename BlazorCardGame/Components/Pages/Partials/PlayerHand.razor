@@ -1,12 +1,19 @@
-<div>
-    @foreach (var card in Cards)
+<div class="player-hand">
+    @foreach (var card in player.inHand)
     {
-        <GameCard Card="@card" OnCardSelected="HandleCardSelected" />
+        <GameCard Card="card" OnCardSelected="HandleCardSelected" />
     }
 </div>
 
+<style>
+    .player-hand {
+        margin-bottom: 50px;
+    }
+</style>
+
 @code
 {
-    private List<Card> Cards { get; set; } = new List<Card>();
+    [Parameter]
+    public Player player { get; set; } = new Player();
     private void HandleCardSelected(string cardName) { }
 }

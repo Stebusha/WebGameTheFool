@@ -1,5 +1,5 @@
 <div class="card" @onclick="OnCardClick">
-    <img src="@card.ImageUrl" alt="@card.ToString()" />
+    <img src="@Card.ImageUrl" alt="@Card.ToString()" />
 </div>
 
 <style>
@@ -14,13 +14,13 @@
 
 @code {
     [Parameter]
-    public Card card { get; set; } = new Card();
+    public Card Card { get; set; } = new Card();
 
     [Parameter]
     public EventCallback<string> OnCardSelected { get; set; }
 
     private async Task OnCardClick()
     {
-        await OnCardSelected.InvokeAsync(card.ToString());
+        await OnCardSelected.InvokeAsync(Card.ToString());
     }
 }
