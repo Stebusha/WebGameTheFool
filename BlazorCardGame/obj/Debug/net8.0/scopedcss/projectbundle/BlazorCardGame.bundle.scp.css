@@ -205,7 +205,6 @@ main[b-uxxx47e69p] {
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0] {
     text-align: center;
-    color: rgb(26, 9, 87);
 }
 
 .game-table[b-0o9jxtxef0] {
@@ -224,11 +223,11 @@ h2[b-0o9jxtxef0] {
 }
 
 .opponent-cards[b-0o9jxtxef0] {
-    top: 20px;
+    top: 70px;
 }
 
 .player-cards[b-0o9jxtxef0] {
-    bottom: 20px;
+    bottom: 70px;
 }
 
 .card-back[b-0o9jxtxef0],
@@ -240,7 +239,7 @@ h2[b-0o9jxtxef0] {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card-back:hover[b-0o9jxtxef0],
+.player-card:hover[b-0o9jxtxef0],
 .player-card.selected[b-0o9jxtxef0] {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -1,7 +1,6 @@
 h1,
 h2 {
     text-align: center;
-    color: rgb(26, 9, 87);
 }
 
 .game-table {
@@ -20,11 +19,11 @@ h2 {
 }
 
 .opponent-cards {
-    top: 20px;
+    top: 70px;
 }
 
 .player-cards {
-    bottom: 20px;
+    bottom: 70px;
 }
 
 .card-back,
@@ -36,7 +35,7 @@ h2 {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card-back:hover,
+.player-card:hover,
 .player-card.selected {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

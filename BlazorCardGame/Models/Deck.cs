@@ -6,6 +6,8 @@ public class Deck
     public static SuitType s_trumpSuit = SuitType.Clubs;
     public int CardsAmount { get; private set; }
 
+    public static Card s_trumpCard = new Card(SuitType.Clubs, RankType.Six);
+
     public Deck()
     {
         CardsAmount = MAX_CARD_AMOUNT;
@@ -73,6 +75,7 @@ public class Deck
     {
         Card trumpCard;
         trumpCard = _cards.First();
+        s_trumpCard = trumpCard;
         _cards.RemoveAt(0);
         _cards.Add(trumpCard);
         s_trumpSuit = trumpCard.Suit;

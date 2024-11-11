@@ -1,6 +1,7 @@
 namespace TheFool;
 public class Player : IPlayer
 {
+    private const int REQUIRED_CARDS_COUNT = 6;
     PlayerHand playerHand = new PlayerHand();
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
@@ -34,12 +35,12 @@ public class Player : IPlayer
     {
         if (playerHand.cards.Count == 0)
         {
-            playerHand.cards = deck.DrawCards(6);
+            playerHand.cards = deck.DrawCards(REQUIRED_CARDS_COUNT);
             playerHand.Sort();
         }
-        else if (playerHand.cards.Count < 6)
+        else if (playerHand.cards.Count < REQUIRED_CARDS_COUNT)
         {
-            playerHand.cards.AddRange(deck.DrawCards(6 - playerHand.cards.Count));
+            playerHand.cards.AddRange(deck.DrawCards(REQUIRED_CARDS_COUNT - playerHand.cards.Count));
             playerHand.Sort();
         }
     }

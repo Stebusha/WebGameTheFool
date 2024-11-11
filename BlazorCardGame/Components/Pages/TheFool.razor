@@ -9,14 +9,14 @@
 
 <div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
     <div class="opponent-cards">
-        @foreach (var card in OpponentCards)
+        @foreach (var card in opponent.inHand)
         {
             <img src="/Images/card-back-2.jpg" class="card-back" />
         }
     </div>
 
     <div class="player-cards">
-        @foreach (var card in PlayerCards)
+        @foreach (var card in player.inHand)
         {
             <img src="@card.ImageUrl" class="player-card @(card.IsSelected ? ".selected" : "" )"
                 @onclick="() => SelectPlayerCard(card)" />
@@ -36,8 +36,7 @@
     </div>
 
     <div class="deck">
-        <img src="/Images/Cards/6S.png" class="trump-card" />
-        @* <img src="@DeckTopCard.ImageUrl" class="trump-card" /> *@
+        <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
         <img src="/Images/card-back-2.jpg" class="deck-back">
 
     </div>
@@ -52,17 +51,26 @@
 </div>
 
 @code {
-    private List<Player>? players;
+    Player? player;
+    Player? opponent;
+    Deck? deck;
     private Table table = new Table();
     private int countOfGames = 0;
-    private List<Card> PlayerCards { get; set; } = new List<Card>();
-    private List<Card> OpponentCards { get; set; } = new List<Card>();
     private List<Card> SelectedCards { get; set; } = new List<Card>();
-    private Card DeckTopCard { get; set; } = new Card();
-
     protected override void OnInitialized()
     {
-        players = new List<Player>();
+        countOfGames++;
+        deck = new Deck();
+        deck.Shuffle();
+        deck.Trump();
+        player = new Player();
+        opponent = new Player();
+        player.RefillHand(deck);
+        opponent.RefillHand(deck);
+        foreach (var card in opponent.inHand)
+        {
+            card.IsPlayable = false;
+        }
     }
     private void SelectPlayerCard(Card card)
     {
@@ -79,12 +87,12 @@
 
     private void DrawCards()
     {
-        
+
     }
     private void EndTurn()
     {
         SelectedCards.Clear();
-        foreach (var card in PlayerCards)
+        foreach (var card in player.inHand)
         {
             card.IsSelected = false;
         }
