@@ -1,5 +1,8 @@
 function cardSelected() {
-    const card = document.getElementsByClassName('player-card');
-    card.style.transition = "none";
-    card.style.transform = "translateY(-10px)";
+    const card = document.getElementsById('card');
+    console.log("try select card");
+
+    card.style.transform = 'translateY(-10px)';
+    card.style.position = 'fixed';
+
 }

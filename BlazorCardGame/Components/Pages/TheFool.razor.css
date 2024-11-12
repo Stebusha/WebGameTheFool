@@ -43,6 +43,7 @@ h2 {
 
 .selected{
     transform: translateY(-10px);
+    position: fixed;
 }
 
 .center-table {

@@ -1,14 +1,12 @@
 @page "/thefool"
 
 @inject PlayerControlService playerControl
-@inject IJSRuntime JSRuntime
+@inject IJSRuntime JS
 
 <PageTitle>Дурак</PageTitle>
 
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @countOfGames</h2>
-
-<script src="/js/CardSelect.js"></script>
 
 <div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
     <div class="opponent-cards">
@@ -90,8 +88,6 @@
     private void SelectCard()
     {
         IsSelected = !IsSelected;
-        //await JSRuntime.InvokeVoidAsync("cardSelected");
-
     }
     private void SelectPlayerCard(Card card)
     {

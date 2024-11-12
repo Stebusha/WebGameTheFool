@@ -247,6 +247,7 @@ h2[b-0o9jxtxef0] {
 
 .selected[b-0o9jxtxef0]{
     transform: translateY(-10px);
+    position: fixed;
 }
 
 .center-table[b-0o9jxtxef0] {
