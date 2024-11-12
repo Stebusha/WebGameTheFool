@@ -1,6 +1,7 @@
 h1,
 h2 {
     text-align: center;
+    color: black;
 }
 
 .game-table {
@@ -24,6 +25,7 @@ h2 {
 
 .player-cards {
     bottom: 70px;
+    cursor: pointer;
 }
 
 .card-back,
@@ -31,14 +33,16 @@ h2 {
     width: 100px;
     height: auto;
     margin: 0 5px;
-    cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.player-card:hover,
-.player-card.selected {
+.player-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selected{
+    transform: translateY(-10px);
 }
 
 .center-table {
@@ -66,6 +70,14 @@ h2 {
     height: auto;
 }
 
+.trump-suit{
+    position: absolute;
+    right: 25px;
+    width: 75px;
+    height: auto;
+    top: 50%;
+}
+
 .deck-back {
     transform: translateX(-50%);
     width: 125px;
@@ -77,4 +89,8 @@ h2 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.in-table{
+    transform: translate(-50%-50%);
 }

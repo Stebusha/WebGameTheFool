@@ -5,6 +5,10 @@ public class Deck
     private List<Card> _cards;
     public static SuitType s_trumpSuit = SuitType.Clubs;
     public int CardsAmount { get; private set; }
+    public static string TrumpSuitImageURL
+    {
+        get => GetTrumpSuitURL();
+    }
 
     public static Card s_trumpCard = new Card(SuitType.Clubs, RankType.Six);
 
@@ -33,6 +37,15 @@ public class Deck
         SuitType.Hearts => "♥",
         SuitType.Spades => "♠",
         SuitType.Diams => "♦",
+        _ => "Suit Not Found"
+    };
+
+    private static string GetTrumpSuitURL() => s_trumpSuit switch
+    {
+        SuitType.Clubs => "club.png",
+        SuitType.Hearts => "heart.png",
+        SuitType.Spades => "spade.png",
+        SuitType.Diams => "diam.png",
         _ => "Suit Not Found"
     };
 

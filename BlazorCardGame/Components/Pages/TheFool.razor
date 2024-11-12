@@ -1,25 +1,33 @@
 @page "/thefool"
 
 @inject PlayerControlService playerControl
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Дурак</PageTitle>
 
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @countOfGames</h2>
 
+<script src="/js/CardSelect.js"></script>
+
 <div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
     <div class="opponent-cards">
-        @foreach (var card in opponent.inHand)
+        @if (opponent != null)
         {
-            <img src="/Images/card-back-2.jpg" class="card-back" />
+            @foreach (var card in opponent.inHand)
+            {
+                <img src="/Images/card-back-2.jpg" class="card-back" />
+            }
         }
     </div>
 
     <div class="player-cards">
-        @foreach (var card in player.inHand)
+        @if (player != null)
         {
-            <img src="@card.ImageUrl" class="player-card @(card.IsSelected ? ".selected" : "" )"
-                @onclick="() => SelectPlayerCard(card)" />
+            @foreach (var card in player.inHand)
+            {
+                <img src="@card.ImageUrl" class="@(IsSelected ? "selected":"player-card")" id="card" @onclick="SelectCard" />
+            }
         }
     </div>
 
@@ -36,8 +44,16 @@
     </div>
 
     <div class="deck">
-        <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
-        <img src="/Images/card-back-2.jpg" class="deck-back">
+        @if (deck != null && deck.CardsAmount > 0)
+        {
+            <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
+            <img src="/Images/card-back-2.jpg" class="deck-back">
+        }
+        else if (deck != null)
+        {
+            <img src="/Images/@Deck.TrumpSuitImageURL" class="trump-suit" />
+        }
+
 
     </div>
 
@@ -46,11 +62,10 @@
         <button @onclick="DrawCards">Взять карты</button>
         <button @onclick="EndTurn">Завершить ход</button>
     </div>
-
-
 </div>
 
 @code {
+    private bool IsSelected = false;
     Player? player;
     Player? opponent;
     Deck? deck;
@@ -72,9 +87,16 @@
             card.IsPlayable = false;
         }
     }
+    private void SelectCard()
+    {
+        IsSelected = !IsSelected;
+        //await JSRuntime.InvokeVoidAsync("cardSelected");
+
+    }
     private void SelectPlayerCard(Card card)
     {
-        card.IsSelected = !card.IsSelected;
+        IsSelected = !IsSelected;
+        card.IsSelected = IsSelected;
         if (card.IsSelected)
         {
             SelectedCards.Add(card);
@@ -92,10 +114,14 @@
     private void EndTurn()
     {
         SelectedCards.Clear();
-        foreach (var card in player.inHand)
+        if (player != null)
         {
-            card.IsSelected = false;
+            foreach (var card in player.inHand)
+            {
+                card.IsSelected = false;
+            }
         }
+
     }
     private void Play() { }
 }

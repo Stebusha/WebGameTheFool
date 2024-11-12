@@ -2,16 +2,6 @@
     <img src="@Card.ImageUrl" alt="@Card.ToString()" />
 </div>
 
-<style>
-    .card {
-        transition: transform 0.2s;
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-    }
-</style>
-
 @code {
     [Parameter]
     public Card Card { get; set; } = new Card();

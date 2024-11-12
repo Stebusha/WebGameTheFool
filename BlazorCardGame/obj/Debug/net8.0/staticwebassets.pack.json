@@ -285,6 +285,14 @@
       "PackagePath": "staticwebassets\\favicon_standart.png"
     },
     {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\CardSelect.js",
+      "PackagePath": "staticwebassets\\js\\CardSelect.js"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\MoveCardToCenter.js",
+      "PackagePath": "staticwebassets\\js\\MoveCardToCenter.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorCardGame.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

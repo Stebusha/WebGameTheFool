@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gcbajjurMi503XTj9jrEVGg/WY1U+k+r82BwKyjYX8k=",
+  "Hash": "sStlZmL2ygqHdflmyAp+dAbLdMwd/Bbmt5ka43po2us=",
   "Source": "BlazorCardGame",
   "BasePath": "_content/BlazorCardGame",
   "Mode": "Default",
@@ -1383,6 +1383,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\spade.png"
+    },
+    {
+      "Identity": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\CardSelect.js",
+      "SourceId": "BlazorCardGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\",
+      "BasePath": "_content/BlazorCardGame",
+      "RelativePath": "js/CardSelect.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\CardSelect.js"
+    },
+    {
+      "Identity": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\MoveCardToCenter.js",
+      "SourceId": "BlazorCardGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\",
+      "BasePath": "_content/BlazorCardGame",
+      "RelativePath": "js/MoveCardToCenter.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\MoveCardToCenter.js"
     }
   ]
 }

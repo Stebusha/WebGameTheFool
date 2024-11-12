@@ -1,6 +1,7 @@
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0] {
     text-align: center;
+    color: black;
 }
 
 .game-table[b-0o9jxtxef0] {
@@ -24,6 +25,7 @@ h2[b-0o9jxtxef0] {
 
 .player-cards[b-0o9jxtxef0] {
     bottom: 70px;
+    cursor: pointer;
 }
 
 .card-back[b-0o9jxtxef0],
@@ -31,14 +33,16 @@ h2[b-0o9jxtxef0] {
     width: 100px;
     height: auto;
     margin: 0 5px;
-    cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.player-card:hover[b-0o9jxtxef0],
-.player-card.selected[b-0o9jxtxef0] {
+.player-card:hover[b-0o9jxtxef0] {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selected[b-0o9jxtxef0]{
+    transform: translateY(-10px);
 }
 
 .center-table[b-0o9jxtxef0] {
@@ -66,6 +70,14 @@ h2[b-0o9jxtxef0] {
     height: auto;
 }
 
+.trump-suit[b-0o9jxtxef0]{
+    position: absolute;
+    right: 25px;
+    width: 75px;
+    height: auto;
+    top: 50%;
+}
+
 .deck-back[b-0o9jxtxef0] {
     transform: translateX(-50%);
     width: 125px;
@@ -77,4 +89,8 @@ h2[b-0o9jxtxef0] {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.in-table[b-0o9jxtxef0]{
+    transform: translate(-50%-50%);
 }
