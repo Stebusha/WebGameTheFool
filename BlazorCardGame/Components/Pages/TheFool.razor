@@ -14,7 +14,7 @@
         {
             @foreach (var card in opponent.inHand)
             {
-                <img src="/Images/card-back-2.jpg" class="card-back" />
+                <img src="/Images/back_cyan.png" class="card-back" />
             }
         }
     </div>
@@ -45,7 +45,7 @@
         @if (deck != null && deck.CardsAmount > 0)
         {
             <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
-            <img src="/Images/card-back-2.jpg" class="deck-back">
+            <img src="/Images/back_cyan.png" class="deck-back">
         }
         else if (deck != null)
         {
