@@ -54,13 +54,14 @@ h2 {
     top: 27%;
     left: 27%;
     height: 200px;
-    width:100%;
+    width: 100%;
 }
 
 .selected-cards {
-    display: flex; 
+    display: flex;
 }
-.selected-card{
+
+.selected-card {
     width: 100px;
     height: auto;
     margin: 0 15px;
@@ -68,16 +69,16 @@ h2 {
 
 .deck {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 25%;
     transform: translateY(-50%);
 }
 
 .trump-card {
-    /* right: 20px; */
     transform: rotate(270deg);
-    width: 125px;
+    width: 100px;
     height: auto;
+
 }
 
 .trump-suit {
@@ -89,9 +90,10 @@ h2 {
 }
 
 .deck-back {
-    transform: translateX(-50%);
+    position: relative;
     width: 125px;
     height: auto;
+    transform: translateX(-50%);
 }
 
 .controls {
@@ -99,4 +101,18 @@ h2 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.deck-stack {
+    position: relative;
+    width: 200px;
+    height: auto;
+}
+
+.stacked-back {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    right: 0;
+    top: 0;
 }
