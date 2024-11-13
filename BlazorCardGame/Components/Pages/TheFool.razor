@@ -1,4 +1,5 @@
 @page "/thefool"
+@rendermode InteractiveServer
 
 @inject PlayerControlService playerControl
 @inject IJSRuntime JS
@@ -7,8 +8,9 @@
 
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @countOfGames</h2>
+<h3>Выбрана карта @IsSelected</h3>
 
-<div class="game-table" style="background-image: url('/Images/bg-extra.jpg');">
+<div class="game-table"> 
     <div class="opponent-cards">
         @if (opponent != null)
         {
@@ -24,7 +26,12 @@
         {
             @foreach (var card in player.inHand)
             {
-                <img src="@card.ImageUrl" class="@(IsSelected ? "selected":"player-card")" id="card" @onclick="SelectCard" />
+                <img src="@card.ImageUrl" alt="Card Image" 
+                    class="player-card"  
+                    @onclick="SelectCard"  
+                    style="cursor: @(card.IsPlayable ? "pointer" : "not-allowed");
+                    @(card.IsSelected ? "transform : translateY(-10px); position:fixed;"  : "")"
+                    />
             }
         }
     </div>

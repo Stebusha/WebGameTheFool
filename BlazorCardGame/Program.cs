@@ -1,14 +1,11 @@
 using BlazorCardGame.Components;
 using BlazorCardGame.Hubs;
 using BlazorCardGame.Services;
-using Blazored.LocalStorage;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<PlayerControlService>();
 
 // Add services to the container.

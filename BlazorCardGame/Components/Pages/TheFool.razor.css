@@ -8,7 +8,7 @@ h2 {
     position: relative;
     width: 100%;
     height: 700px;
-    background-size: cover;
+    background-color: thistle;
 }
 
 .opponent-cards,
@@ -20,7 +20,7 @@ h2 {
 }
 
 .opponent-cards {
-    top: 70px;
+    top: 30px;
 }
 
 .player-cards {
@@ -39,11 +39,13 @@ h2 {
 .player-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: slateblue;
+    border-radius: 5%;
+    border: 2px solid slateblue;
 }
 
-.selected{
+.player-card-selected {
     transform: translateY(-10px);
-    position: fixed;
 }
 
 .center-table {
@@ -60,18 +62,18 @@ h2 {
 .deck {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 25%;
     transform: translateY(-50%);
 }
 
 .trump-card {
     /* right: 20px; */
-    transform: rotate(90deg);
+    transform: rotate(270deg);
     width: 125px;
     height: auto;
 }
 
-.trump-suit{
+.trump-suit {
     position: absolute;
     right: 25px;
     width: 75px;
@@ -90,8 +92,4 @@ h2 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.in-table{
-    transform: translate(-50%-50%);
 }
