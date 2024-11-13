@@ -8,9 +8,9 @@
 
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @countOfGames</h2>
-<h3>Выбрана карта @IsSelected</h3>
+<h3>Выбрана карта @selectedCard</h3>
 
-<div class="game-table"> 
+<div class="game-table">
     <div class="opponent-cards">
         @if (opponent != null)
         {
@@ -26,51 +26,51 @@
         {
             @foreach (var card in player.inHand)
             {
-                <img src="@card.ImageUrl" alt="Card Image" 
-                    class="player-card"  
-                    @onclick="SelectCard"  
+                <img src="@card.ImageUrl" alt="Card Image" class="player-card" @onclick="() => SelectPlayerCard(card)"
                     style="cursor: @(card.IsPlayable ? "pointer" : "not-allowed");
-                    @(card.IsSelected ? "transform : translateY(-10px); position:fixed;"  : "")"
-                    />
+                    @(card.IsSelected ? "transform : translateY(-10px); background-color: slateblue; border-radius: 5%; border: 5px solid slateblue;"  : "")" />
             }
         }
     </div>
+    @if (isAttack)
+    {
+        <div class="center-table">
+            @if (SelectedCards.Count > 0)
+            {
+                <div class="selected-cards">
+                    @foreach (var card in SelectedCards)
+                    {
+                        <img src="@card.ImageUrl" class="selected-card" />
+                    }
+                </div>
+            }
+        </div>
+    }
 
-    <div class="center-table">
-        @if (SelectedCards.Count > 0)
-        {
-            <div class="selected-cards">
-                @foreach (var card in SelectedCards)
-                {
-                    <img src="@card.ImageUrl" class="selected-card" />
-                }
-            </div>
-        }
-    </div>
 
     <div class="deck">
         @if (deck != null && deck.CardsAmount > 0)
         {
             <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
+            
             <img src="/Images/back_cyan.png" class="deck-back">
         }
         else if (deck != null)
         {
             <img src="/Images/@Deck.TrumpSuitImageURL" class="trump-suit" />
         }
-
-
     </div>
 
     <div class="controls">
-        <button @onclick="Play">Походить</button>
+        <button @onclick="Play" disabled ="@isAttack">Походить</button>
         <button @onclick="DrawCards">Взять карты</button>
         <button @onclick="EndTurn">Завершить ход</button>
     </div>
 </div>
 
 @code {
-    private bool IsSelected = false;
+    private bool isAttack = false;
+    string selectedCard = string.Empty;
     Player? player;
     Player? opponent;
     Deck? deck;
@@ -80,26 +80,27 @@
     protected override void OnInitialized()
     {
         countOfGames++;
+
         deck = new Deck();
         deck.Shuffle();
         deck.Trump();
+
         player = new Player();
         opponent = new Player();
+
         player.RefillHand(deck);
         opponent.RefillHand(deck);
+
         foreach (var card in opponent.inHand)
         {
             card.IsPlayable = false;
         }
     }
-    private void SelectCard()
-    {
-        IsSelected = !IsSelected;
-    }
     private void SelectPlayerCard(Card card)
     {
-        IsSelected = !IsSelected;
-        card.IsSelected = IsSelected;
+        card.IsSelected = !card.IsSelected;
+        selectedCard = card.ToString();
+
         if (card.IsSelected)
         {
             SelectedCards.Add(card);
@@ -117,6 +118,7 @@
     private void EndTurn()
     {
         SelectedCards.Clear();
+
         if (player != null)
         {
             foreach (var card in player.inHand)
@@ -125,8 +127,14 @@
             }
         }
 
+        selectedCard = string.Empty;
+        isAttack = false;
     }
-    private void Play() { }
+    private void Play()
+    {
+        isAttack = !isAttack;
+
+    }
 }
 
 <TheFoolRules />
