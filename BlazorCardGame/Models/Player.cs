@@ -34,16 +34,29 @@ public class Player
             card.IsPlayable = false;
         }
 
-        foreach (var card in inHand)
+        if (ranks != null)
         {
-            foreach (var rank in ranks)
+            foreach (var card in inHand)
             {
-                if (card.Rank == rank)
+                foreach (var rank in ranks)
                 {
-                    card.IsPlayable = true;
+                    if (card.Rank == rank)
+                    {
+                        card.IsPlayable = true;
+                    }
                 }
             }
         }
+
+        else
+        {
+
+            foreach (var card in inHand)
+            {
+                card.IsPlayable = true;
+            }
+        }
+
 
     }
     public bool CanBeSelected(Card selectingCard, Table gameTable)
