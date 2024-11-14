@@ -83,17 +83,10 @@ h2 {
 
 .trump-suit {
     position: absolute;
-    right: 25px;
+    right: 20px;
     width: 75px;
     height: auto;
     top: 50%;
-}
-
-.deck-back {
-    position: relative;
-    width: 125px;
-    height: auto;
-    transform: translateX(-50%);
 }
 
 .controls {
