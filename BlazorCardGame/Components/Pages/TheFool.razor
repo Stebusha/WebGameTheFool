@@ -31,6 +31,7 @@
             }
         }
     </div>
+
     @if (isAttack)
     {
         <div class="center-table">
@@ -39,7 +40,8 @@
                 <div class="selected-cards">
                     @foreach (var card in SelectedCards)
                     {
-                        <img src="@card.ImageUrl" class="selected-card" />
+                        <img src="@card.ImageUrl" class="selected-card" @onclick="() => SelectCardToBeat(card)"
+                            style="cursor:pointer; @(!card.IsCanToBeat ? "background-color:teal; border-radius: 5%; border: 5px solid teal;"  : "")" />
                     }
                 </div>
             }
@@ -74,7 +76,7 @@
 
 @code {
     private bool isAttack = true;
-
+    private bool isSelectedToBeat = false;
     Player? player;
     Player? opponent;
     Deck? deck;
@@ -94,23 +96,26 @@
 
         player.RefillHand(deck);
         opponent.RefillHand(deck);
-
-        foreach (var card in opponent.inHand)
-        {
-            card.IsPlayable = false;
-        }
     }
     private void SelectPlayerCard(Card card)
     {
         if (card.IsPlayable && player != null)
         {
-            if (player.CanBeSelected(card, table))
+            if (player.CanBeSelected(table))
             {
                 card.IsSelected = !card.IsSelected;
                 player.RefreshPlayable();
             }
-
         }
+    }
+
+    private void SelectCardToBeat(Card card)
+    {
+        card.IsCanToBeat = !card.IsCanToBeat;
+
+        if (player != null)
+            player.RefreshPlayableForBeat(card);
+
     }
 
     private void DrawCards()
@@ -119,6 +124,8 @@
         {
             player.TakeAllCards(table);
         }
+
+        EndTurn();
 
     }
     private void EndTurn()
@@ -130,6 +137,7 @@
             foreach (var card in player.inHand)
             {
                 card.IsSelected = false;
+                card.IsCanToBeat = true;
             }
         }
 
@@ -140,6 +148,7 @@
         if (player != null && deck != null)
         {
             player.RefillHand(deck);
+            player.IsAttack = !player.IsAttack;
         }
 
     }
@@ -161,6 +170,7 @@
             }
 
             SelectedCards.AddRange(player.Attack(table));
+            player.IsAttack = false;
         }
     }
 }

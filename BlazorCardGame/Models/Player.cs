@@ -10,6 +10,7 @@ public class Player
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
+    public bool IsAttack { get; set; } = true;
 
     public void RefreshPlayable()
     {
@@ -61,27 +62,57 @@ public class Player
             }
         }
     }
-    public bool CanBeSelected(Card selectingCard, Table gameTable)
-    {
-        if (CanBeAttacking(inHand, gameTable))
-        {
-            List<Card> attackingCards = GetCardsForAttack(gameTable);
 
-            foreach (var card in inHand)
+    public void RefreshPlayableForBeat(Card cardToBeat)
+    {
+        foreach (var card in inHand)
+        {
+            if (card > cardToBeat)
             {
-                foreach (var attackingCard in attackingCards)
+                card.IsPlayable = true;
+            }
+            else
+            {
+                card.IsPlayable = false;
+            }
+        }
+    }
+    public bool CanBeSelected(Table gameTable)
+    {
+        if (IsAttack)
+        {
+            if (CanBeAttacking(inHand, gameTable))
+            {
+                List<Card> attackingCards = GetCardsForAttack(gameTable);
+
+                foreach (var card in inHand)
                 {
-                    if (card == attackingCard)
+                    foreach (var attackingCard in attackingCards)
                     {
-                        return true;
+                        if (card == attackingCard)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
+
+            return false;
+        }
+        else
+        {
+            for (int i = 0; i < gameTable.Length(); i++)
+            {
+                if (CanBeDefend(gameTable.GetCard(i)).Item1)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        return false;
     }
-
     public void Sort()
     {
         //sort all cards in hand
@@ -169,6 +200,8 @@ public class Player
 
         if (CanBeAttacking(inHand, gameTable))
         {
+            IsAttack = true;
+
             if (gameTable.Length() == 0)
             {
                 return inHand;
@@ -235,8 +268,28 @@ public class Player
     }
 
     //check attacking card can be beaten
-    private bool CanBeBeaten(Card attackingCard, Table gameTable)
+    private (bool, List<Card>) CanBeDefend(Card cardToDefend)
     {
+        List<Card> cardsToBeat = new List<Card>();
+
+        foreach (var card in inHand)
+        {
+            if (card > cardToDefend)
+            {
+                cardsToBeat.Add(card);
+            }
+        }
+
+        if (cardsToBeat.Count != 0)
+        {
+            return (true, cardsToBeat);
+        }
+
+        return (false, cardsToBeat);
+    }
+    private bool CanBeBeaten(List<Card> attackingCards, Table gameTable)
+    {
+
         if (gameTable.Length() == 0)
         {
             return false;
@@ -244,10 +297,14 @@ public class Player
 
         foreach (var card in inHand)
         {
-            if (card > attackingCard)
+            foreach (var attackingCard in attackingCards)
             {
-                return true;
+                if (card > attackingCard)
+                {
+                    return true;
+                }
             }
+
         }
 
         return false;
@@ -255,18 +312,30 @@ public class Player
     }
 
     //return cards for defense from attacking card
-    private List<Card> GetCardsforDefense(Card attackingCard, Table gameTable)
+    private List<Card> GetCardsforDefense(List<Card> attackingCards, Table gameTable)
     {
+
         List<Card> defenseCards = new List<Card>();
 
         if (gameTable.Length() != 0)
         {
+
             foreach (var card in inHand)
             {
-                if (card > attackingCard)
+                foreach (var attackingCard in attackingCards)
                 {
-                    defenseCards.Add(card);
+                    if (card > attackingCard)
+                    {
+                        defenseCards.Add(card);
+                        card.IsPlayable = true;
+                        break;
+                    }
+                    else
+                    {
+                        card.IsPlayable = false;
+                    }
                 }
+
             }
         }
 
@@ -274,62 +343,31 @@ public class Player
     }
 
     //return chosen card to defend
-    private Card GetCardToDefend(Card attackingCard, Table gameTable)
+    private List<Card> GetCardToDefend(List<Card> attackingCards, Table gameTable)
     {
-        Card cardToDefend = new Card();
-        List<Card> defendingCards = GetCardsforDefense(attackingCard, gameTable);
+        List<Card> defendingCards = GetCardsforDefense(attackingCards, gameTable);
 
-        if (defendingCards.Count != 0)
-        {
-            ToStringFor(inHand, defendingCards);
-            Console.WriteLine("\nВыберите порядковый номер карты, которой хотите отбиться: ");
-
-            bool settingNumber = false;
-
-            while (!settingNumber)
-            {
-                string? number = Console.ReadLine();
-
-                if (int.TryParse(number, out var index))
-                {
-                    if ((index - 1) >= 0 && (index - 1) < defendingCards.Count)
-                    {
-                        settingNumber = true;
-                        cardToDefend = defendingCards[index - 1];
-                    }
-                    else
-                    {
-                        Console.WriteLine("Нет такого номера. Введите порядковый номер повторно: ");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Некорректный ввод .Введите порядковый номер повторно: ");
-                }
-            }
-        }
-
-        return cardToDefend;
+        return defendingCards;
     }
 
     //defend
-    public void Defend(Card attackingCard, Table gameTable)
+    public void Defend(List<Card> attackingCards, Table gameTable)
     {
-        bool beaten = CanBeBeaten(attackingCard, gameTable);
-        Card defendingCard = GetCardToDefend(attackingCard, gameTable);
+        bool beaten = CanBeBeaten(attackingCards, gameTable);
+        List<Card> defendingCards = GetCardToDefend(attackingCards, gameTable);
 
         if (beaten)
         {
-            Console.WriteLine($"\nВы отбились картой: {defendingCard}");
-            gameTable.AddCardToTable(defendingCard);
-            inHand.Remove(defendingCard);
+            foreach (var defendingCard in defendingCards)
+            {
+                gameTable.AddCardToTable(defendingCard);
+                inHand.Remove(defendingCard);
+            }
+
             Sort();
         }
         else
         {
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("\nНечем отбиться");
-            Console.ResetColor();
             TakeAllCards(gameTable);
         }
     }
@@ -338,11 +376,11 @@ public class Player
     public void TakeAllCards(Table gameTable)
     {
         Taken = true;
+
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
+
         inHand.AddRange(onTableCards);
         Sort();
-
-        Console.WriteLine($"\nВы взяли карты :\n {ToString(inHand)}");
     }
 
     //output cards for console
@@ -377,78 +415,5 @@ public class Player
         }
 
         return cardDrawnString;
-    }
-
-    //output cards to console for defend or attack
-    public void ToStringFor(List<Card> cards, List<Card> forSomethingCards)
-    {
-        Console.WriteLine($"\nКарты игрока {Name}: \n");
-
-        if (cards.Count > 6)
-        {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                if (cards.Count % 6 > 0)
-                {
-                    if (i != 0 && i % 6 == 0)
-                    {
-                        Console.Write("\n\n");
-                    }
-                }
-
-                Card tempCard = cards[i];
-
-                int counter = 0;
-                bool InConsole = false;
-
-                foreach (var card in forSomethingCards)
-                {
-                    counter++;
-
-                    if (card == tempCard)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"[{counter}] - {tempCard}\t");
-                        Console.ResetColor();
-                        InConsole = true;
-                    }
-                }
-
-                if (!InConsole)
-                {
-                    Console.Write($"{tempCard}\t");
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < cards.Count; i++)
-            {
-                Card tempCard = cards[i];
-
-                int counter = 0;
-                bool InConsole = false;
-
-                foreach (var card in forSomethingCards)
-                {
-                    counter++;
-
-                    if (card == tempCard)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"[{counter}] - {tempCard}\t");
-                        InConsole = true;
-                        Console.ResetColor();
-                    }
-                }
-
-                if (!InConsole)
-                {
-                    Console.Write($"{tempCard}\t");
-                }
-            }
-        }
-
-        Console.WriteLine();
     }
 }

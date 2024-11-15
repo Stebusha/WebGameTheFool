@@ -6,6 +6,7 @@ public class Card
     public string ImageUrl { get; set; } = string.Empty;
     public bool IsPlayable { get; set; } = false;
     public bool IsSelected { get; set; } = false;
+    public bool IsCanToBeat { get; set; } = true;
     public Card() { }
     public Card(SuitType _suit, RankType _rank)
     {
@@ -18,25 +19,25 @@ public class Card
     //return rank string for card output based on RankType
     private string GetRankName(RankType rank) => rank switch
     {
-        RankType.Six   => "6",
+        RankType.Six => "6",
         RankType.Seven => "7",
         RankType.Eight => "8",
-        RankType.Nine  => "9",
-        RankType.Ten   => "10",
-        RankType.Jack  => "J",
+        RankType.Nine => "9",
+        RankType.Ten => "10",
+        RankType.Jack => "J",
         RankType.Queen => "Q",
-        RankType.King  => "K",
-        RankType.Ace   => "A",
+        RankType.King => "K",
+        RankType.Ace => "A",
         _ => "Rank Not Found"
     };
 
     //return suit unicode char string for card output based on SuitType 
     private string GetSuitName(SuitType suit) => suit switch
     {
-        SuitType.Clubs  => "C",
+        SuitType.Clubs => "C",
         SuitType.Hearts => "H",
         SuitType.Spades => "S",
-        SuitType.Diams  => "D",
+        SuitType.Diams => "D",
         _ => "Suit Not Found"
     };
 
