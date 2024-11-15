@@ -11,7 +11,7 @@ public class Player
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
 
-    public void RefreshPlayable(Table table)
+    public void RefreshPlayable()
     {
         List<Card> selectedCard = new List<Card>();
 
@@ -60,10 +60,6 @@ public class Player
                 }
             }
         }
-
-
-
-
     }
     public bool CanBeSelected(Card selectingCard, Table gameTable)
     {
