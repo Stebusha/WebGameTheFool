@@ -68,7 +68,7 @@
     </div>
 
     <div class="controls">
-        <button @onclick="Play" disabled="@(!isAttack)">Походить</button>
+        <button @onclick="Play" disabled="@(!isAttack)">@PlayButton</button>
         <button @onclick="DrawCards">Взять карты</button>
         <button @onclick="EndTurn">Завершить ход</button>
     </div>
@@ -82,6 +82,7 @@
     Deck? deck;
     private Table table = new Table();
     private int countOfGames = 0;
+    private string PlayButton = "Походить";
     private List<Card> SelectedCards { get; set; } = new List<Card>();
     protected override void OnInitialized()
     {
@@ -105,8 +106,11 @@
             {
                 card.IsSelected = !card.IsSelected;
                 player.RefreshPlayable();
+
             }
         }
+
+
     }
 
     private void SelectCardToBeat(Card card)
@@ -142,6 +146,7 @@
         }
 
         isAttack = true;
+        PlayButton = "Походить";
 
         table.ClearTable();
 
@@ -158,6 +163,7 @@
         {
             if (!isAttack)
             {
+
                 foreach (var card in player.inHand)
                 {
                     if (card.IsPlayable)
@@ -170,6 +176,16 @@
             }
 
             SelectedCards.AddRange(player.Attack(table));
+
+            if (SelectedCards.Count == 0)
+            {
+                PlayButton = "Походить";
+            }
+            else
+            {
+                PlayButton = "Подкинуть";
+            }
+
             player.IsAttack = false;
         }
     }
