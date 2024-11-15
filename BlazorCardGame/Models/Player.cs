@@ -13,49 +13,55 @@ public class Player
 
     public void RefreshPlayable(Table table)
     {
-        if (table.Length() == 0)
-        {
-            foreach (var card in inHand)
-            {
-                card.IsPlayable = true;
-            }
-        }
-
-        List<RankType> ranks = new List<RankType>();
+        List<Card> selectedCard = new List<Card>();
 
         foreach (var card in inHand)
         {
             if (card.IsSelected)
             {
-                ranks.Add(card.Rank);
-                continue;
-            }
-
-            card.IsPlayable = false;
-        }
-
-        if (ranks != null)
-        {
-            foreach (var card in inHand)
-            {
-                foreach (var rank in ranks)
-                {
-                    if (card.Rank == rank)
-                    {
-                        card.IsPlayable = true;
-                    }
-                }
+                selectedCard.Add(card);
+                break;
             }
         }
 
-        else
+        if (selectedCard.Count == 0)
         {
-
             foreach (var card in inHand)
             {
                 card.IsPlayable = true;
             }
         }
+        else
+        {
+            List<RankType> ranks = new List<RankType>();
+
+            foreach (var card in inHand)
+            {
+                if (card.IsSelected)
+                {
+                    ranks.Add(card.Rank);
+                    continue;
+                }
+
+                card.IsPlayable = false;
+            }
+
+            if (ranks != null)
+            {
+                foreach (var card in inHand)
+                {
+                    foreach (var rank in ranks)
+                    {
+                        if (card.Rank == rank)
+                        {
+                            card.IsPlayable = true;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
 
     }
