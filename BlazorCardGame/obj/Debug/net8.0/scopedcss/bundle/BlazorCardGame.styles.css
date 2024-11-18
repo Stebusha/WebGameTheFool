@@ -201,9 +201,35 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
+/* _content/BlazorCardGame/Components/Pages/Partials/TheFoolRules.razor.rz.scp.css */
+h2[b-eh1szv1vjs], h4[b-eh1szv1vjs]{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+p[b-eh1szv1vjs]{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+details > summary[b-eh1szv1vjs] {
+    padding: 5px;
+    background-color: rgb(182, 154, 240);
+    color: rgb(51, 2, 87);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    border: 1px rgb(182, 154, 240) solid;
+    cursor: pointer;
+    list-style: none;
+}
+
+details > div[b-eh1szv1vjs] {
+    border: 1px rgb(182, 154, 240) solid;
+    padding: 10px;
+}
 /* _content/BlazorCardGame/Components/Pages/TheFool.razor.rz.scp.css */
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0] {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
 }
@@ -294,10 +320,28 @@ h2[b-0o9jxtxef0] {
 }
 
 .controls[b-0o9jxtxef0] {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+button[b-0o9jxtxef0]{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 7.5px;
+    border: rgb(92, 180, 252) solid;
+    background-color: #ade6fd;
+    text-transform: uppercase;
+    letter-spacing: .10rem;
+    transition: all .3s;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+}
+
+button:hover[b-0o9jxtxef0]{
+    background-color:rgb(92, 180, 252);
 }
 
 .deck-stack[b-0o9jxtxef0] {

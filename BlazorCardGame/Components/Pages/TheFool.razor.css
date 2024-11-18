@@ -1,5 +1,6 @@
 h1,
 h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
 }
@@ -90,10 +91,28 @@ h2 {
 }
 
 .controls {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 7.5px;
+    border: rgb(92, 180, 252) solid;
+    background-color: #ade6fd;
+    text-transform: uppercase;
+    letter-spacing: .10rem;
+    transition: all .3s;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color:rgb(92, 180, 252);
 }
 
 .deck-stack {

@@ -1,0 +1,24 @@
+h2, h4{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+p{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+details > summary {
+    padding: 5px;
+    background-color: rgb(182, 154, 240);
+    color: rgb(51, 2, 87);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 24px;
+    border: 1px rgb(182, 154, 240) solid;
+    cursor: pointer;
+    list-style: none;
+}
+
+details > div {
+    border: 1px rgb(182, 154, 240) solid;
+    padding: 10px;
+}

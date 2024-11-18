@@ -39,3 +39,4 @@ c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\TheFool.razor.rz.scp.css
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\TheFoolRules.razor.rz.scp.css
