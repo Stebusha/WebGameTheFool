@@ -1,5 +1,7 @@
 <div class="card" @onclick="OnCardClick">
-    <img src="@Card.ImageUrl" alt="@Card.ToString()" />
+    <img src="@Card.ImageUrl" alt="@Card.ToString()"
+        style="cursor: @(Card.IsPlayable ? "pointer" : "not-allowed");
+        @(Card.IsSelected ? "transform : translateY(-10px); background-color: slateblue; border-radius: 5%; border: 5px solid slateblue; "  : "")" />
 </div>
 
 @code {

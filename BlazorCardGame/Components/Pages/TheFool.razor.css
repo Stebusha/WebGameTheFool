@@ -30,24 +30,12 @@ h2 {
     cursor: pointer;
 }
 
-.card-back,
-.player-card {
+.card-back
+{
     width: 100px;
     height: auto;
     margin: 0 5px;
     transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.player-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: slateblue;
-    border-radius: 5%;
-    border: 2px solid slateblue;
-}
-
-.player-card-selected {
-    transform: translateY(-10px);
 }
 
 .center-table {

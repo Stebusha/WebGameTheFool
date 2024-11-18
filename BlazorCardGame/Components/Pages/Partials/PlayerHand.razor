@@ -5,15 +5,30 @@
     }
 </div>
 
-<style>
-    .player-hand {
-        margin-bottom: 50px;
-    }
-</style>
-
 @code
 {
     [Parameter]
     public Player player { get; set; } = new Player();
-    private void HandleCardSelected(string cardName) { }
+
+    [Parameter]
+    public Table table { get; set; } = new Table();
+    private void HandleCardSelected(string cardName)
+    {
+        Console.WriteLine(cardName);
+        foreach (var card in player.inHand)
+        {
+            if (card.ToString() == cardName)
+            {
+                if (card.IsPlayable && player != null)
+                {
+                    if (player.CanBeSelected(table))
+                    {
+                        card.IsSelected = !card.IsSelected;
+                        player.RefreshPlayable();
+
+                    }
+                }
+            }
+        }
+    }
 }

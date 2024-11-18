@@ -30,14 +30,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameCard.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xHYW1lQ2FyZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xQbGF5ZXJIYW5kLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +45,14 @@ build_metadata.AdditionalFiles.CssScope = b-uxxx47e69p
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-jo7cnduvuo
+
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xHYW1lQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-0s7ewnrvps
+
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xQbGF5ZXJIYW5kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-g4mslbypke
 
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/TheFoolRules.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xUaGVGb29sUnVsZXMucmF6b3I=

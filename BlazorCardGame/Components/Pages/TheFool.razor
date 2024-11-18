@@ -21,15 +21,7 @@
     </div>
 
     <div class="player-cards">
-        @if (player != null)
-        {
-            @foreach (var card in player.inHand)
-            {
-                <img src="@card.ImageUrl" alt="Card Image" class="player-card" @onclick="() => SelectPlayerCard(card)"
-                    style="cursor: @(card.IsPlayable ? "pointer" : "not-allowed");
-                    @(card.IsSelected ? "transform : translateY(-10px); background-color: slateblue; border-radius: 5%; border: 5px solid slateblue;"  : "")" />
-            }
-        }
+        <PlayerHand player="player" table="table"/>
     </div>
 
     @if (isAttack)
@@ -76,7 +68,6 @@
 
 @code {
     private bool isAttack = true;
-    private bool isSelectedToBeat = false;
     Player? player;
     Player? opponent;
     Deck? deck;
@@ -109,8 +100,6 @@
 
             }
         }
-
-
     }
 
     private void SelectCardToBeat(Card card)

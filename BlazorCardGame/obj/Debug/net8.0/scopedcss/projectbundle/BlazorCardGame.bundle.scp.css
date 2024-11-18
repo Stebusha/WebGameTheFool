@@ -201,6 +201,31 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
+/* _content/BlazorCardGame/Components/Pages/Partials/GameCard.razor.rz.scp.css */
+.card[b-0s7ewnrvps] {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: thistle;
+    border: none;
+}
+
+.card:hover[b-0s7ewnrvps] {
+    transform: translateY(-10px);
+    background-color: thistle;
+    border-radius: 5%;
+    border: none;
+}
+/* _content/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor.rz.scp.css */
+.player-hand[b-g4mslbypke]{
+    justify-content:center;
+    display: flex;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: none;
+}
 /* _content/BlazorCardGame/Components/Pages/Partials/TheFoolRules.razor.rz.scp.css */
 h2[b-eh1szv1vjs], h4[b-eh1szv1vjs]{
     color:black;
@@ -259,24 +284,12 @@ h2[b-0o9jxtxef0] {
     cursor: pointer;
 }
 
-.card-back[b-0o9jxtxef0],
-.player-card[b-0o9jxtxef0] {
+.card-back[b-0o9jxtxef0]
+{
     width: 100px;
     height: auto;
     margin: 0 5px;
     transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.player-card:hover[b-0o9jxtxef0] {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: slateblue;
-    border-radius: 5%;
-    border: 2px solid slateblue;
-}
-
-.player-card-selected[b-0o9jxtxef0] {
-    transform: translateY(-10px);
 }
 
 .center-table[b-0o9jxtxef0] {
