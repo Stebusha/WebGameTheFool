@@ -201,6 +201,18 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
+/* _content/BlazorCardGame/Components/Pages/LeaderBoard.razor.rz.scp.css */
+h3[b-1mgci28981] {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+select[b-1mgci28981] {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+/* _content/BlazorCardGame/Components/Pages/Login.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Partials/GameCard.razor.rz.scp.css */
 .card[b-0s7ewnrvps] {
     width: 100px;
