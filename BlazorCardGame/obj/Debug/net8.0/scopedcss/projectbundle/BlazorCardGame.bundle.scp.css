@@ -213,6 +213,20 @@ select[b-1mgci28981] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
 }
+
+th[b-1mgci28981],
+td[b-1mgci28981] {
+    border-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+th[b-1mgci28981] {
+    font-size: 20px;
+}
+
+td[b-1mgci28981] {
+    font-size: 18px;
+}
 /* _content/BlazorCardGame/Components/Pages/Login.razor.rz.scp.css */
 h3[b-d6mti0tx0m],input[b-d6mti0tx0m],text[b-d6mti0tx0m],label[b-d6mti0tx0m],button[b-d6mti0tx0m]{
     color: black;
@@ -350,6 +364,8 @@ h2[b-0o9jxtxef0] {
     height: 700px;
     background-color: thistle;
     display: flex;
+    border: 10px slateblue solid;
+    border-radius: 15px;
 }
 
 .opponent-cards[b-0o9jxtxef0],
@@ -377,11 +393,17 @@ h2[b-0o9jxtxef0] {
     width: 100%;
 }
 
-.selected-cards[b-0o9jxtxef0] {
+.attacking-cards[b-0o9jxtxef0] {
     display: flex;
 }
 
-.selected-card[b-0o9jxtxef0] {
+.defending-cards[b-0o9jxtxef0]{
+    display: flex;
+    position: absolute;
+    top: 30px;
+}
+
+.attacking-card[b-0o9jxtxef0], .defending-card[b-0o9jxtxef0] {
     width: 100px;
     height: auto;
     margin: 0 15px;
@@ -402,7 +424,7 @@ h2[b-0o9jxtxef0] {
     transform: translateX(-50%);
 }
 
-button[b-0o9jxtxef0]{
+button[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 7.5px;
     border: rgb(92, 180, 252) solid;

@@ -11,7 +11,7 @@
 
 <div class="game-table">
     <div class="opponent-cards">
-        <Opponent opponent="opponent"/>
+        <Opponent opponent="opponent" />
     </div>
 
     <div class="player-cards">
@@ -21,13 +21,24 @@
     @if (isAttack)
     {
         <div class="center-table">
-            @if (SelectedCards.Count > 0)
+            @if (AttackingCards.Count > 0)
             {
-                <div class="selected-cards">
-                    @foreach (var card in SelectedCards)
+                <div class="attacking-cards">
+                    @foreach (var card in AttackingCards)
                     {
-                        <img src="@card.ImageUrl" class="selected-card" @onclick="() => SelectCardToBeat(card)"
-                            style="cursor:pointer; @(!card.IsCanToBeat ? "background-color:teal; border-radius: 5%; border: 5px solid teal;"  : "")" />
+                        <img src="@card.ImageUrl" class="attacking-card" @onclick="() => SelectCardToBeat(card)"
+                            style="cursor:pointer; 
+                            @(!card.IsCanToBeat ? "background-color:teal; border-radius: 5%; border: 5px solid teal;"  : "")" />
+                    }
+                </div>
+            }
+
+            @if (DefendingCards.Count > 0)
+            {
+                <div class="defending-cards">
+                    @foreach (var card in DefendingCards)
+                    {
+                        <img src="@card.ImageUrl" class="defending-card" />
                     }
                 </div>
             }
@@ -48,12 +59,13 @@
 @code {
     private bool isAttack = true;
     Player? player;
-    Player? opponent;
+    AIPlayer? opponent;
     Deck? deck;
     private Table table = new Table();
     private int countOfGames = 0;
     private string PlayButton = "Походить";
-    private List<Card> SelectedCards { get; set; } = new List<Card>();
+    private List<Card> AttackingCards { get; set; } = new List<Card>();
+    private List<Card> DefendingCards { get; set; } = new List<Card>();
     protected override void OnInitialized()
     {
         countOfGames++;
@@ -63,20 +75,19 @@
         deck.Trump();
 
         player = new Player();
-        opponent = new Player();
+        opponent = new AIPlayer();
 
         player.RefillHand(deck);
         opponent.RefillHand(deck);
     }
     private void SelectPlayerCard(Card card)
     {
-        if (card.IsPlayable && player != null)
+        if (card.IsPlayable && player != null && player.IsAttack)
         {
             if (player.CanBeSelected(table))
             {
                 card.IsSelected = !card.IsSelected;
                 player.RefreshPlayable();
-
             }
         }
     }
@@ -85,7 +96,7 @@
     {
         card.IsCanToBeat = !card.IsCanToBeat;
 
-        if (player != null)
+        if (player != null && !player.IsAttack)
             player.RefreshPlayableForBeat(card);
 
     }
@@ -102,7 +113,8 @@
     }
     private void EndTurn()
     {
-        SelectedCards.Clear();
+        AttackingCards.Clear();
+        DefendingCards.Clear();
 
         if (player != null)
         {
@@ -118,20 +130,22 @@
 
         table.ClearTable();
 
-        if (player != null && deck != null)
+        if (player != null && deck != null && opponent != null)
         {
             player.RefillHand(deck);
             player.IsAttack = !player.IsAttack;
+
+            opponent.RefillHand(deck);
+            opponent.IsAttack = !opponent.IsAttack;
         }
 
     }
     private void Play()
     {
-        if (player != null)
+        if (player != null && opponent != null)
         {
             if (!isAttack)
             {
-
                 foreach (var card in player.inHand)
                 {
                     if (card.IsPlayable)
@@ -143,9 +157,10 @@
 
             }
 
-            SelectedCards.AddRange(player.Attack(table));
+            DefendingCards.AddRange(player.Attack(table));
+            AttackingCards.Add(opponent.Attack(table));
 
-            if (SelectedCards.Count == 0)
+            if (AttackingCards.Count == 0)
             {
                 PlayButton = "Походить";
             }

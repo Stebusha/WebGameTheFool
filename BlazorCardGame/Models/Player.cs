@@ -5,13 +5,12 @@ public class Player
 {
     private const int REQUIRED_CARDS_COUNT = 6;
     public List<Card> inHand { get; set; } = new List<Card>();
-    public PlayerType playerType { get; set; }
+    public PlayerType playerType { get; set; } = PlayerType.Human;
     public string Name { get; set; } = string.Empty;
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
     public bool IsAttack { get; set; } = true;
-
     public void RefreshPlayable()
     {
         List<Card> selectedCard = new List<Card>();

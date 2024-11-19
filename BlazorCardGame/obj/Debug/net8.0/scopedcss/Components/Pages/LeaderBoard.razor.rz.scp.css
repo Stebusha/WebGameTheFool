@@ -9,3 +9,17 @@ select[b-1mgci28981] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
 }
+
+th[b-1mgci28981],
+td[b-1mgci28981] {
+    border-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+th[b-1mgci28981] {
+    font-size: 20px;
+}
+
+td[b-1mgci28981] {
+    font-size: 18px;
+}

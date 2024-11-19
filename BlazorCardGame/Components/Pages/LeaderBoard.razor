@@ -15,23 +15,23 @@
     }
 </select>
 
-@* @if (selectedGameRecords != null)
+<br />
+
+@if (scoreTable != null)
 {
     <table class="score-table">
         <thead>
             <tr>
                 <th>Игрок</th>
                 <th>Результат</th>
-                <th>Дата</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var record in selectedGameRecords)
+            @foreach (var pair in scoreTable.scores)
             {
                 <tr>
-                    <td>@record.PlayerName</td>
-                    <td>@record.Score</td>
-                    <td>@record.Date.ToShortDateString()</td>
+                    <td>@pair.Key</td>
+                    <td>@pair.Value</td>
                 </tr>
             }
         </tbody>
@@ -40,13 +40,13 @@
 else
 {
     <p>Выберите игру, чтобы увидеть рекорды.</p>
-} *@
+}
 
 @code {
 
-    private List<GameRecord> selectedGameRecords = new List<GameRecord>();
+    private ScoreTable? scoreTable;
     private string selectedBoard = "Выберите игру из списка";
-    private List<String> gameRecord = new List<String>() { "Дурак", "Blackjack", "Покер" };
+    private List<String> gameRecord = new List<String>() { "Дурак"};
     private void OnGameSelected(ChangeEventArgs e)
     {
         selectedBoard = "Таблица рекордов игры " + e.Value?.ToString() ?? "Выберите игру из списка";
@@ -55,12 +55,14 @@ else
         {
             selectedBoard = "Выберите игру из списка";
         }
-    }
 
-    public class GameRecord
-    {
-        public string? PlayerName { get; set; }
-        public int Score { get; set; }
-        public DateTime Date { get; set; }
+        if (e.Value?.ToString() == "Дурак")
+        {
+            scoreTable = new ScoreTable();
+        }
+        else
+        {
+            scoreTable = null;
+        }
     }
 }
