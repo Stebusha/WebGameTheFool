@@ -1,0 +1,33 @@
+@page "/login"
+
+@inject NavigationManager NavigationManager
+
+<h3>Вход</h3>
+
+<EditForm Model="@loginModel" @OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="login">Логин</label>
+        <InputText id="login" @bind-Value="loginModel.Login" />
+        <ValidationMessage For="@(() => loginModel.Login)" />
+    </div>
+    <br />
+    <div>
+        <label for="password">Пароль</label>
+        <InputText id="password" @bind-Value="loginModel.Password" />
+        <ValidationMessage For="@(() => loginModel.Password)" />
+    </div>
+    <br />
+    <button type="submit">Войти</button>
+</EditForm>
+
+@code {
+    private LoginModel loginModel = new LoginModel("admin", "admin");
+    private void HandleLogin()
+    {
+        Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");
+        NavigationManager.NavigateTo("/thefool");
+    }
+}

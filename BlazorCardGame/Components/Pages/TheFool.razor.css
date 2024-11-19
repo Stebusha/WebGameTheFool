@@ -30,14 +30,6 @@ h2 {
     cursor: pointer;
 }
 
-.card-back
-{
-    width: 100px;
-    height: auto;
-    margin: 0 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
 .center-table {
     position: relative;
     top: 27%;
@@ -63,21 +55,6 @@ h2 {
     transform: translateY(-50%);
 }
 
-.trump-card {
-    transform: rotate(270deg);
-    width: 100px;
-    height: auto;
-
-}
-
-.trump-suit {
-    position: absolute;
-    right: 20px;
-    width: 75px;
-    height: auto;
-    top: 50%;
-}
-
 .controls {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
@@ -101,18 +78,4 @@ button{
 
 button:hover{
     background-color:rgb(92, 180, 252);
-}
-
-.deck-stack {
-    position: relative;
-    width: 200px;
-    height: auto;
-}
-
-.stacked-back {
-    position: absolute;
-    width: 100px;
-    height: auto;
-    right: 0;
-    top: 0;
 }

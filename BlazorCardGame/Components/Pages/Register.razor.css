@@ -1,15 +1,15 @@
-h3[b-d6mti0tx0m],input[b-d6mti0tx0m],text[b-d6mti0tx0m],label[b-d6mti0tx0m],button[b-d6mti0tx0m]{
+h3, label, input, text, button{
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-button[b-d6mti0tx0m]{
+button{
     background-color: rgb(187, 250, 229);
     border-radius: 10px;
     border: rgb(149, 252, 218) solid;
 }
 
-button:hover[b-d6mti0tx0m]{
+button:hover{
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
 }

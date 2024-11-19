@@ -1,0 +1,27 @@
+.trump-card {
+    transform: rotate(270deg);
+    width: 100px;
+    height: auto;
+}
+
+.trump-suit {
+    position: absolute;
+    right: 20px;
+    width: 75px;
+    height: auto;
+    top: 50%;
+}
+
+.deck-stack {
+    position: relative;
+    width: 200px;
+    height: auto;
+}
+
+.stacked-back {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    right: 0;
+    top: 0;
+}

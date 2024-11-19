@@ -24,6 +24,6 @@ public class PlayerControlService : IPlayerControl
         player.Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
         player.inHand.AddRange(onTableCards);
-        player.inHand.Sort();
+        player.Sort();
     }
 }

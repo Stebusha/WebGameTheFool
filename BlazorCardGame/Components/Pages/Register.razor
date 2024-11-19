@@ -1,0 +1,40 @@
+@page "/register"
+
+@inject NavigationManager NavigationManager
+
+<h3>Регистрация</h3>
+
+<EditForm Model="@registerModel" @OnValidSubmit="HandleRegister">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="login">Логин</label>
+        <InputText id="login" @bind-Value="registerModel.Login" />
+        <ValidationMessage For="@(() => registerModel.Login)" />
+    </div>
+    <br />
+    <div>
+        <label for="password">Пароль</label>
+        <InputText id="password" @bind-Value="registerModel.Password" />
+        <ValidationMessage For="@(() => registerModel.Password)" />
+    </div>
+    <br />
+    <div>
+        <label for="confirm-password">Подтвердите Пароль</label>
+        <InputText id="confirm-password" @bind-Value="registerModel.ConfirmPassword" />
+        <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
+    </div>
+    <br />
+    <button type="submit">Зарегистрироваться</button>
+
+
+</EditForm>
+
+@code {
+    private RegisterModel registerModel = new RegisterModel();
+    private void HandleRegister()
+    {
+        NavigationManager.NavigateTo("/thefool");
+    }
+}

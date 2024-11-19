@@ -1,0 +1,7 @@
+.card-back[b-0nrmjuysbw]
+{
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}

@@ -1,0 +1,29 @@
+<div class="modal" @onclick="CloseModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <h2>Настройка партии игры "Дурак"</h2>
+            <form>
+                <label>Внешний вид игровой колоды: </label>
+                <select @onchange="OnDeckStyleChanged">
+                    <option value="">Выберите стиль колоды</option>
+                    <option value="Standard">Стандартный</option>
+                    <option value="Fantasy">Фэнтези</option>
+                    <option value="Gold">Золотой</option>
+                </select>
+                <button type="button" @onclick="StartGame">Начать игру</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string deckStyle = string.Empty;
+    private void OnDeckStyleChanged(ChangeEventArgs e)
+    {
+        deckStyle = e.Value?.ToString() ?? "Фэнтези";
+    }
+    private void StartGame(){
+
+    }
+    private void CloseModal(){}
+}

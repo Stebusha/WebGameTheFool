@@ -1,0 +1,15 @@
+h3,input,text,label,button{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button{
+    background-color: rgb(187, 250, 229);
+    border-radius: 10px;
+    border: rgb(149, 252, 218) solid;
+}
+
+button:hover{
+    background-color: rgb(107, 223, 252);
+    border: rgb(107, 223, 252) solid;
+}

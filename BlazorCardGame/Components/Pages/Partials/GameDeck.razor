@@ -1,0 +1,21 @@
+@if (deck != null && deck.CardsAmount > 0)
+{
+    <div class="deck-stack">
+        <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
+        @for (int i = 0; i < deck.CardsAmount - 1; i++)
+        {
+            <img src="/Images/back_cyan.png" alt="back @i" class="stacked-back"
+                style="@($"transform: translate({-((i+1)*1)}px, 0px);")">
+        }
+    </div>
+}
+else if (deck != null)
+{
+    <img src="/Images/@Deck.TrumpSuitImageURL" class="trump-suit" />
+}
+
+
+@code {
+    [Parameter]
+    public Deck deck { get; set; } = new Deck();
+}

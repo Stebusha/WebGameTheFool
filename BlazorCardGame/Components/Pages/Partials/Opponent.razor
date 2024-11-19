@@ -1,0 +1,12 @@
+@if (opponent != null)
+{
+    @foreach (var card in opponent.inHand)
+    {
+        <img src="/Images/back_cyan.png" class="card-back" />
+    }
+}
+
+@code {
+    [Parameter]
+    public Player opponent { get; set; } = new Player();
+}

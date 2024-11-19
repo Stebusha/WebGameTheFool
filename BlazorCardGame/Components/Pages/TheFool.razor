@@ -2,26 +2,20 @@
 @rendermode InteractiveServer
 
 @inject PlayerControlService playerControl
-@inject IJSRuntime JS
 
 <PageTitle>Дурак</PageTitle>
+
 
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @countOfGames</h2>
 
 <div class="game-table">
     <div class="opponent-cards">
-        @if (opponent != null)
-        {
-            @foreach (var card in opponent.inHand)
-            {
-                <img src="/Images/back_cyan.png" class="card-back" />
-            }
-        }
+        <Opponent opponent="opponent"/>
     </div>
 
     <div class="player-cards">
-        <PlayerHand player="player" table="table"/>
+        <PlayerHand player="player" table="table" />
     </div>
 
     @if (isAttack)
@@ -40,23 +34,8 @@
         </div>
     }
 
-
     <div class="deck">
-        @if (deck != null && deck.CardsAmount > 0)
-        {
-            <div class="deck-stack">
-                <img src="@Deck.s_trumpCard.ImageUrl" class="trump-card" />
-                @for (int i = 0; i < deck.CardsAmount - 1; i++)
-                {
-                    <img src="/Images/back_cyan.png" alt="back @i" class="stacked-back"
-                        style="@($"transform: translate({-((i+1)*1)}px, 0px);")">
-                }
-            </div>
-        }
-        else if (deck != null)
-        {
-            <img src="/Images/@Deck.TrumpSuitImageURL" class="trump-suit" />
-        }
+        <GameDeck deck="deck" />
     </div>
 
     <div class="controls">
@@ -113,9 +92,9 @@
 
     private void DrawCards()
     {
-        if (player != null)
+        if (player != null && table != null)
         {
-            player.TakeAllCards(table);
+            playerControl.TakeCards(table, ref player);
         }
 
         EndTurn();

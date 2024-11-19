@@ -1,4 +1,5 @@
 @page "/scores"
+
 @rendermode InteractiveServer
 
 <PageTitle> Таблицы рекордов</PageTitle>
@@ -6,7 +7,8 @@
 <h3>@selectedBoard</h3>
 
 <select @onchange="OnGameSelected">
-    <option value="">Выберите игру из списка</option>
+    <option value="">Список игр</option>
+
     @foreach (var game in gameRecord)
     {
         <option value="@game">@game</option>
@@ -14,27 +16,27 @@
 </select>
 
 @* @if (selectedGameRecords != null)
-{ *@
-<table class="score-table">
-    <thead>
-        <tr>
-            <th>Игрок</th>
-            <th>Результат</th>
-            <th>Дата</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var record in selectedGameRecords)
-        {
+{
+    <table class="score-table">
+        <thead>
             <tr>
-                <td>@record.PlayerName</td>
-                <td>@record.Score</td>
-                <td>@record.Date.ToShortDateString()</td>
+                <th>Игрок</th>
+                <th>Результат</th>
+                <th>Дата</th>
             </tr>
-        }
-    </tbody>
-</table>
-@* }
+        </thead>
+        <tbody>
+            @foreach (var record in selectedGameRecords)
+            {
+                <tr>
+                    <td>@record.PlayerName</td>
+                    <td>@record.Score</td>
+                    <td>@record.Date.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 else
 {
     <p>Выберите игру, чтобы увидеть рекорды.</p>
@@ -44,10 +46,15 @@ else
 
     private List<GameRecord> selectedGameRecords = new List<GameRecord>();
     private string selectedBoard = "Выберите игру из списка";
-    private List<String> gameRecord = new List<String>() { "Дурак", "Козел", "Покер" };
+    private List<String> gameRecord = new List<String>() { "Дурак", "Blackjack", "Покер" };
     private void OnGameSelected(ChangeEventArgs e)
     {
         selectedBoard = "Таблица рекордов игры " + e.Value?.ToString() ?? "Выберите игру из списка";
+
+        if (e.Value?.ToString() == "")
+        {
+            selectedBoard = "Выберите игру из списка";
+        }
     }
 
     public class GameRecord

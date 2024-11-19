@@ -49,6 +49,6 @@ public class AIPlayerControlService : IPlayerControl
         AIplayer.Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
         AIplayer.inHand.AddRange(onTableCards);
-        AIplayer.inHand.Sort();
+        AIplayer.Sort();
     }
 }
