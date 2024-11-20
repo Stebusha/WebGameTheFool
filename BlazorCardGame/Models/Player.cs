@@ -10,7 +10,7 @@ public class Player
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
-    public bool IsAttack { get; set; } = false;
+    public bool IsAttack { get; set; }
 
     public Player() { }
     public Player(string _name, bool _fool)
@@ -354,33 +354,52 @@ public class Player
     }
 
     //return chosen card to defend
-    private List<Card> GetCardToDefend(Card attackingCards, Table gameTable)
+    private Card GetCardToDefend(Card attackingCards, Table gameTable)
     {
+        Card defendingCard = new Card();
         List<Card> defendingCards = GetCardsforDefense(attackingCards, gameTable);
 
-        return defendingCards;
+        foreach (var card in defendingCards)
+        {
+            if (card.IsSelected)
+            {
+                defendingCard = card;
+                break;
+            }
+        }
+
+        foreach (var card in defendingCards)
+        {
+            if (card != defendingCard)
+            {
+                card.IsSelected = false;
+            }
+        }
+
+        return defendingCard;
     }
 
     //defend
-    public void Defend(Card attackingCard, Table gameTable)
+    public Card Defend(Card attackingCard, Table gameTable)
     {
         bool beaten = CanBeBeaten(attackingCard, gameTable);
-        List<Card> defendingCards = GetCardToDefend(attackingCard, gameTable);
+        Card defendingCard = GetCardToDefend(attackingCard, gameTable);
 
         if (beaten)
         {
-            foreach (var defendingCard in defendingCards)
-            {
-                gameTable.AddCardToTable(defendingCard);
-                inHand.Remove(defendingCard);
-            }
+
+            gameTable.AddCardToTable(defendingCard);
+            inHand.Remove(defendingCard);
 
             Sort();
+
         }
         else
         {
-            TakeAllCards(gameTable);
+            Taken = true;
         }
+        
+        return defendingCard;
     }
 
     //taken all cards from the game table, set property Taken

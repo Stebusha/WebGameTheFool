@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSignalR();
 
 builder.Services.AddScoped<PlayerControlService>();
+builder.Services.AddScoped<FoolGameService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

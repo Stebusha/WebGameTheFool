@@ -2,29 +2,30 @@
 @rendermode InteractiveServer
 
 @inject PlayerControlService playerControl
+@inject FoolGameService FoolGameService
 
 <PageTitle>Дурак</PageTitle>
 
 
 <h1>Карточная игра "Дурак"</h1>
-<h2>Партия № @countOfGames</h2>
+<h2>Партия № @FoolGameService.CountOfGames</h2>
 
 <div class="game-table">
     <div class="opponent-cards">
-        <Opponent opponent="opponent" />
+        <Opponent opponent="FoolGameService.Opponent" />
     </div>
 
     <div class="player-cards">
-        <PlayerHand player="player" table="table" />
+        <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
     </div>
 
     @if (isAttack)
     {
         <div class="center-table">
-            @if (AttackingCards.Count > 0)
+            @if (FoolGameService.AttackingCards.Count > 0)
             {
                 <div class="attacking-cards">
-                    @foreach (var card in AttackingCards)
+                    @foreach (var card in FoolGameService.AttackingCards)
                     {
                         <img src="@card.ImageUrl" class="attacking-card" @onclick="() => SelectCardToBeat(card)"
                             style="cursor:pointer; 
@@ -33,10 +34,10 @@
                 </div>
             }
 
-            @if (DefendingCards.Count > 0)
+            @if (FoolGameService.DefendingCards.Count > 0)
             {
                 <div class="defending-cards">
-                    @foreach (var card in DefendingCards)
+                    @foreach (var card in FoolGameService.DefendingCards)
                     {
                         <img src="@card.ImageUrl" class="defending-card" />
                     }
@@ -46,10 +47,11 @@
     }
 
     <div class="deck">
-        <GameDeck deck="deck" />
+        <GameDeck deck="FoolGameService.Deck" />
     </div>
 
     <div class="controls">
+        <button @onclick="StartTurn">Начать ход</button>
         <button @onclick="Play" disabled="@(!isAttack)">@PlayButton</button>
         <button @onclick="DrawCards">Взять карты</button>
         <button @onclick="EndTurn">Завершить ход</button>
@@ -58,119 +60,142 @@
 
 @code {
     private bool isAttack = true;
-    Player? player;
-    AIPlayer? opponent;
-    Deck? deck;
-    private Table table = new Table();
-    private int countOfGames = 0;
-    private string PlayButton = "Походить";
-    private List<Card> AttackingCards { get; set; } = new List<Card>();
-    private List<Card> DefendingCards { get; set; } = new List<Card>();
+    private string PlayButton = string.Empty;
     protected override void OnInitialized()
     {
-        countOfGames++;
+        FoolGameService.LoadGame();
 
-        deck = new Deck();
-        deck.Shuffle();
-        deck.Trump();
-
-        player = new Player();
-        opponent = new AIPlayer();
-
-        player.RefillHand(deck);
-        opponent.RefillHand(deck);
+        PlayButton = RefreshPlayButtonName();
     }
+
     private void SelectPlayerCard(Card card)
     {
-        if (card.IsPlayable && player != null && player.IsAttack)
+        if (card.IsPlayable && FoolGameService.Player.IsAttack)
         {
-            if (player.CanBeSelected(table))
+            if (FoolGameService.Player.CanBeSelected(FoolGameService.Table))
             {
                 card.IsSelected = !card.IsSelected;
-                player.RefreshPlayable();
+                FoolGameService.Player.RefreshPlayable();
             }
         }
+
     }
 
     private void SelectCardToBeat(Card card)
     {
         card.IsCanToBeat = !card.IsCanToBeat;
 
-        if (player != null && !player.IsAttack)
-            player.RefreshPlayableForBeat(card);
+        FoolGameService.Player.RefreshPlayableForBeat(card);
+
+        foreach (var cardToBeat in FoolGameService.DefendingCards)
+        {
+            if (cardToBeat == card)
+            {
+                continue;
+            }
+
+            cardToBeat.IsCanToBeat = true;
+        }
+
 
     }
 
     private void DrawCards()
     {
-        if (player != null && table != null)
-        {
-            playerControl.TakeCards(table, ref player);
-        }
 
+        playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
         EndTurn();
-
     }
     private void EndTurn()
     {
-        AttackingCards.Clear();
-        DefendingCards.Clear();
+        FoolGameService.AttackingCards.Clear();
+        FoolGameService.DefendingCards.Clear();
 
-        if (player != null)
+        FoolGameService.Player.Taken = false;
+        FoolGameService.Opponent.Taken = false;
+
+        foreach (var card in FoolGameService.Player.inHand)
         {
-            foreach (var card in player.inHand)
-            {
-                card.IsSelected = false;
-                card.IsCanToBeat = true;
-            }
+            card.IsSelected = false;
+            card.IsCanToBeat = true;
         }
 
+
         isAttack = true;
-        PlayButton = "Походить";
 
-        table.ClearTable();
 
-        if (player != null && deck != null && opponent != null)
+        FoolGameService.Table.ClearTable();
+
+
+        FoolGameService.Player.RefillHand(FoolGameService.Deck);
+        FoolGameService.Player.IsAttack = !FoolGameService.Player.IsAttack;
+
+        FoolGameService.Opponent.RefillHand(FoolGameService.Deck);
+        FoolGameService.Opponent.IsAttack = !FoolGameService.Opponent.IsAttack;
+
+        PlayButton = RefreshPlayButtonName();
+
+    }
+
+    private string RefreshPlayButtonName()
+    {
+        if (FoolGameService.Player.IsAttack)
         {
-            player.RefillHand(deck);
-            player.IsAttack = !player.IsAttack;
-
-            opponent.RefillHand(deck);
-            opponent.IsAttack = !opponent.IsAttack;
+            if (FoolGameService.AttackingCards.Count == 0)
+                return "Походить";
+            else
+                return "Подкинуть";
+        }
+        else
+        {
+            return "Отбиться";
         }
 
     }
+
+    private void StartTurn()
+    {
+        PlayButton = RefreshPlayButtonName();
+
+        if (!FoolGameService.Player.IsAttack)
+        {
+            Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
+
+            FoolGameService.AttackingCards.Add(attackingCard);
+            FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
+        }
+    }
     private void Play()
     {
-        if (player != null && opponent != null)
+        if (FoolGameService.Player.IsAttack)
         {
-            if (!isAttack)
-            {
-                foreach (var card in player.inHand)
-                {
-                    if (card.IsPlayable)
-                    {
-                        isAttack = true;
-                        break;
-                    }
-                }
+            
+            Card attackingCard = FoolGameService.Player.Attack(FoolGameService.Table);
+            FoolGameService.AttackingCards.Add(attackingCard);
+            FoolGameService.Player.RefreshPlayable();
+            Card defendingCard = FoolGameService.Opponent.Defend(attackingCard, FoolGameService.Table);
+            FoolGameService.DefendingCards.Add(defendingCard);
 
+            if(FoolGameService.Opponent.Taken){
+                EndTurn();
+                FoolGameService.Opponent.IsAttack = false;
+                FoolGameService.Player.IsAttack = true;
             }
-
-            DefendingCards.AddRange(player.Attack(table));
-            AttackingCards.Add(opponent.Attack(table));
-
-            if (AttackingCards.Count == 0)
-            {
-                PlayButton = "Походить";
-            }
-            else
-            {
-                PlayButton = "Подкинуть";
-            }
-
-            player.IsAttack = false;
         }
+        else
+        {
+
+            Card attackingCard = FoolGameService.AttackingCards.ElementAt(FoolGameService.AttackingCards.Count - 1);
+
+            Card defendingCard = FoolGameService.Player.Defend(attackingCard, FoolGameService.Table);
+            FoolGameService.DefendingCards.Add(defendingCard);
+
+            if(FoolGameService.Player.Taken){
+                FoolGameService.Opponent.IsAttack = true;
+                FoolGameService.Player.IsAttack = false;
+            }
+        }
+
     }
 }
 

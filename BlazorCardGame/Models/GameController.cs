@@ -17,7 +17,7 @@ public class GameController
     public int PlayerCount { get; set; } = 1;
     public int BotPlayerCount { get; set; } = 1;
 
-    private void Turn(int turn)
+    private void Turn()
     {
         _TurnFinished = false;
         Card attackingCard = new Card();
@@ -37,13 +37,6 @@ public class GameController
                 {
                     if (player.IsAttack)
                     {
-                        //output cards on table
-                        if (_gameTable.Length() != 0 && !opponent.Taken)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine(_gameTable.ToString());
-                            Console.ResetColor();
-                        }
                         //Taken or no cards for attack
                         if (opponent.Taken || player.GetCardsForAttack(_gameTable).Count == 0)
                         {
@@ -57,13 +50,6 @@ public class GameController
                     }
                     else
                     {
-                        //output cards on table
-                        if (_gameTable.Length() != 0 && !player.Taken)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine(_gameTable.ToString());
-                            Console.ResetColor();
-                        }
                         //Taken or no cards for attack
                         if (player.Taken || opponent.GetCardsForAttack(_gameTable).Count == 0)
                         {
@@ -93,14 +79,6 @@ public class GameController
                 {
                     if (player.IsAttack)
                     {
-                        //output cards on table
-                        if (_gameTable.Length() != 0 && !opponent.Taken)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine(_gameTable.ToString());
-                            Console.ResetColor();
-                        }
-
                         //Taken, no cards to Defend, max card on table, no cards for attack
                         if (opponent.Taken
                                 || opponent.inHand.Count == 0
@@ -116,14 +94,6 @@ public class GameController
                     }
                     else
                     {
-                        //output cards on table
-                        if (_gameTable.Length() != 0 && !player.Taken)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine(_gameTable.ToString());
-                            Console.ResetColor();
-                        }
-
                         //Taken, no cards to Defend, max card on table, no cards for attack
                         if (player.Taken
                                 || player.inHand.Count == 0
@@ -150,8 +120,6 @@ public class GameController
         }
 
         _gameTable.ClearTable();
-        Console.ReadLine();
-        Console.Clear();
     }
 
     //launch game, set start info, set trump, player's turns, check the winning condition
@@ -169,33 +137,11 @@ public class GameController
 
         if (!repeat)
         {
-
             //logic for 1 human and 1 bot players
             if (playerCount + AIPlayerCount == 2 && playerCount == 1)
             {
                 Player player = new Player();
 
-                // if (player.Name != null)
-                // {
-                //     if (_scoreTable.IsNameExistInScores(player.Name))
-                //     {
-                //         Console.WriteLine("Имя {0} уже существует, выбрать другое? (да/нет)", player.Name);
-                //         string? answer = Console.ReadLine();
-
-                //         if (answer != null && answer.ToLower() == "да")
-                //         {
-                //             string? tempName = Console.ReadLine();
-
-                //             while (tempName == null)
-                //             {
-                //                 Console.WriteLine("Введите другое имя:");
-                //                 tempName = Console.ReadLine();
-                //             }
-
-                //             player.Name = tempName;
-                //         }
-                //     }
-                // }
                 player.Name = "Rat";
                 player.RefillHand(_deck);
                 _fools.Add(player.Name, player.IsFool);
@@ -210,32 +156,17 @@ public class GameController
         //logic for reload game for same players 
         else
         {
-
-            //reload 2 bot players
-            if (playerCount + AIPlayerCount == 2 && playerCount == 0)
+            foreach (var fool in _fools)
             {
-                foreach (var fool in _fools)
+                if (fool.Key.Contains("Бот"))
                 {
                     AIPlayer opponent = new AIPlayer(fool.Key, fool.Value);
                     opponent.RefillHand(_deck);
                 }
-            }
-
-            // reload for all remaining variables of type players
-            else
-            {
-                foreach (var fool in _fools)
+                else
                 {
-                    if (fool.Key.Contains("Бот"))
-                    {
-                        AIPlayer opponent = new AIPlayer(fool.Key, fool.Value);
-                        opponent.RefillHand(_deck);
-                    }
-                    else
-                    {
-                        Player player = new Player(fool.Key, fool.Value);
-                        player.RefillHand(_deck);
-                    }
+                    Player player = new Player(fool.Key, fool.Value);
+                    player.RefillHand(_deck);
                 }
             }
         }
@@ -245,7 +176,6 @@ public class GameController
         //remember first trump of each player
         firstTrumps.Add(GetFirstTrump(player.inHand));
         firstTrumps.Add(GetFirstTrump(opponent.inHand));
-
 
         //set first turns player
         SetStartTurnNumbers(firstTrumps);
@@ -262,15 +192,12 @@ public class GameController
         }
 
         //reset fool properties
-
         player.IsFool = false;
         opponent.IsFool = false;
 
         if (_fools.ContainsKey(player.Name))
             _fools[player.Name] = false;
 
-
-        int turns = 0;
 
         while (!_Finished)
         {
@@ -279,7 +206,7 @@ public class GameController
             Console.WriteLine($"Количество карт игрока {player.Name} : {player.inHand.Count}");
 
 
-            Turn(turns);
+            Turn();
 
             if (_deck.CardsAmount != 0)
             {
@@ -297,9 +224,6 @@ public class GameController
 
             //check winner condition
             Win();
-
-            //reset turns
-            turns = 0;
         }
     }
 
@@ -358,9 +282,6 @@ public class GameController
             }
         }
     }
-
-
-
 
     //check the winner, update and display score table
     private void Win()

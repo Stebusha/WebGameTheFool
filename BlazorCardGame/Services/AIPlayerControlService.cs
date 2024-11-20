@@ -44,7 +44,7 @@ public class AIPlayerControlService : IPlayerControl
     {
 
     }
-    public void TakeCards(Table gameTable, ref Player AIplayer)
+    public void TakeCards(Table gameTable, Player AIplayer)
     {
         AIplayer.Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();

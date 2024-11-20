@@ -19,7 +19,7 @@ public class PlayerControlService : IPlayerControl
     {
 
     }
-    public void TakeCards(Table gameTable, ref Player player)
+    public void TakeCards(Table gameTable, Player player)
     {
         player.Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();

@@ -9,7 +9,7 @@ public class AIPlayer
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
-    public bool IsAttack { get; set; } = true;
+    public bool IsAttack { get; set; }
 
     public AIPlayer() { }
     public AIPlayer(string _name, bool _fool)
@@ -141,10 +141,10 @@ public class AIPlayer
             {
                 int index = MakeDecision();
                 attackingCard = attackingCards[index];
+
                 Console.WriteLine($"\n{Name} походил картой: {attackingCard}");
+
                 gameTable.AddCardToTable(attackingCard);
-                //fixed
-                //first card delete before defend, comparison with next card -> bug defend 
                 inHand.Remove(attackingCard);
             }
         }
@@ -189,7 +189,7 @@ public class AIPlayer
     }
 
     //defend
-    public void Defend(Card attackingCard, Table gameTable)
+    public Card Defend(Card attackingCard, Table gameTable)
     {
         bool beaten = CanBeBeaten(attackingCard, gameTable);
         Card defendingCard = GetCardToDefend(attackingCard);
@@ -199,6 +199,7 @@ public class AIPlayer
             Console.WriteLine($"{Name} отбился картой: {defendingCard}");
             gameTable.AddCardToTable(defendingCard);
             inHand.Remove(defendingCard);
+            return defendingCard;
         }
         else
         {
@@ -206,7 +207,10 @@ public class AIPlayer
             Console.WriteLine("\nНечем отбиться");
             Console.ResetColor();
             TakeAllCards(gameTable);
+            Taken = true;
         }
+
+        return defendingCard;
     }
 
     //taken all cards from the game table, set property Taken
