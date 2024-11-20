@@ -20,17 +20,4 @@ public class Table
 
     //clear table
     public void ClearTable() => _onTable.Clear();
-    public override string ToString()
-    {
-        string onTableString = string.Empty;
-        onTableString = "\nКарты в игре: \t";
-
-        for (int i = 0; i < _onTable.Count; i++)
-        {
-            Card tempCard = _onTable[i];
-            onTableString += tempCard.ToString() + "\t";
-        }
-
-        return onTableString;
-    }
 }

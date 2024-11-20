@@ -1,6 +1,7 @@
 namespace BlazorCardGame.Models;
 
-public class AIPlayer{
+public class AIPlayer
+{
     private const int REQUIRED_CARDS_COUNT = 6;
     public List<Card> inHand { get; set; } = new List<Card>();
     public PlayerType playerType { get; set; } = PlayerType.AI;
@@ -9,6 +10,13 @@ public class AIPlayer{
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
     public bool IsAttack { get; set; } = true;
+
+    public AIPlayer() { }
+    public AIPlayer(string _name, bool _fool)
+    {
+        Name = _name;
+        IsFool = _fool;
+    }
 
     public void Sort()
     {

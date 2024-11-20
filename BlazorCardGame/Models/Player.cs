@@ -10,7 +10,15 @@ public class Player
     public int TurnNumber { get; set; }
     public bool Taken { get; set; }
     public bool IsFool { get; set; }
-    public bool IsAttack { get; set; } = true;
+    public bool IsAttack { get; set; } = false;
+
+    public Player() { }
+    public Player(string _name, bool _fool)
+    {
+        Name = _name;
+        IsFool = _fool;
+    }
+
     public void RefreshPlayable()
     {
         List<Card> selectedCard = new List<Card>();
@@ -228,11 +236,11 @@ public class Player
     }
 
     //attack chosen card
-    public List<Card> Attack(Table gameTable)
+    public Card Attack(Table gameTable)
     {
         bool isAttacking = CanBeAttacking(inHand, gameTable);
 
-        List<Card> selectedCardForAttack = new List<Card>();
+        Card selectedCardForAttack = new Card();
 
         if (isAttacking)
         {
@@ -247,19 +255,27 @@ public class Player
                         continue;
                     }
 
-                    selectedCardForAttack.Add(attackingCard);
+                    selectedCardForAttack = attackingCard;
 
+                    foreach (var card in inHand)
+                    {
+                        if (card != selectedCardForAttack)
+                        {
+                            card.IsSelected = false;
+                            card.IsPlayable = false;
+                        }
+                    }
+
+                    break;
                 }
 
-                foreach (var selectedCard in selectedCardForAttack)
-                {
-                    gameTable.AddCardToTable(selectedCard);
+                gameTable.AddCardToTable(selectedCardForAttack);
 
-                    inHand.Remove(selectedCard);
-                    Sort();
+                inHand.Remove(selectedCardForAttack);
+                Sort();
 
-                    attackingCards.Remove(selectedCard);
-                }
+                attackingCards.Remove(selectedCardForAttack);
+
             }
         }
 
@@ -286,7 +302,7 @@ public class Player
 
         return (false, cardsToBeat);
     }
-    private bool CanBeBeaten(List<Card> attackingCards, Table gameTable)
+    private bool CanBeBeaten(Card attackingCard, Table gameTable)
     {
 
         if (gameTable.Length() == 0)
@@ -296,14 +312,11 @@ public class Player
 
         foreach (var card in inHand)
         {
-            foreach (var attackingCard in attackingCards)
-            {
-                if (card > attackingCard)
-                {
-                    return true;
-                }
-            }
 
+            if (card > attackingCard)
+            {
+                return true;
+            }
         }
 
         return false;
@@ -311,7 +324,7 @@ public class Player
     }
 
     //return cards for defense from attacking card
-    private List<Card> GetCardsforDefense(List<Card> attackingCards, Table gameTable)
+    private List<Card> GetCardsforDefense(Card attackingCard, Table gameTable)
     {
 
         List<Card> defenseCards = new List<Card>();
@@ -321,19 +334,18 @@ public class Player
 
             foreach (var card in inHand)
             {
-                foreach (var attackingCard in attackingCards)
+
+                if (card > attackingCard)
                 {
-                    if (card > attackingCard)
-                    {
-                        defenseCards.Add(card);
-                        card.IsPlayable = true;
-                        break;
-                    }
-                    else
-                    {
-                        card.IsPlayable = false;
-                    }
+                    defenseCards.Add(card);
+                    card.IsPlayable = true;
+                    break;
                 }
+                else
+                {
+                    card.IsPlayable = false;
+                }
+
 
             }
         }
@@ -342,7 +354,7 @@ public class Player
     }
 
     //return chosen card to defend
-    private List<Card> GetCardToDefend(List<Card> attackingCards, Table gameTable)
+    private List<Card> GetCardToDefend(Card attackingCards, Table gameTable)
     {
         List<Card> defendingCards = GetCardsforDefense(attackingCards, gameTable);
 
@@ -350,10 +362,10 @@ public class Player
     }
 
     //defend
-    public void Defend(List<Card> attackingCards, Table gameTable)
+    public void Defend(Card attackingCard, Table gameTable)
     {
-        bool beaten = CanBeBeaten(attackingCards, gameTable);
-        List<Card> defendingCards = GetCardToDefend(attackingCards, gameTable);
+        bool beaten = CanBeBeaten(attackingCard, gameTable);
+        List<Card> defendingCards = GetCardToDefend(attackingCard, gameTable);
 
         if (beaten)
         {
