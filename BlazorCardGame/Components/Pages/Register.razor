@@ -10,19 +10,19 @@
 
     <div>
         <label for="login">Логин</label>
-        <InputText id="login" @bind-Value="registerModel.Login" />
+        <InputText id="login" Placeholder="Логин" @bind-Value="registerModel.Login" />
         <ValidationMessage For="@(() => registerModel.Login)" />
     </div>
     <br />
     <div>
         <label for="password">Пароль</label>
-        <InputText id="password" @bind-Value="registerModel.Password" />
+        <InputText id="password"  type="password" Placeholder ="Пароль" @bind-Value="registerModel.Password" />
         <ValidationMessage For="@(() => registerModel.Password)" />
     </div>
     <br />
     <div>
         <label for="confirm-password">Подтвердите Пароль</label>
-        <InputText id="confirm-password" @bind-Value="registerModel.ConfirmPassword" />
+        <InputText id="confirm-password" type="password" Placeholder ="Подтверждение пароля" @bind-Value="registerModel.ConfirmPassword" />
         <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
     </div>
     <br />

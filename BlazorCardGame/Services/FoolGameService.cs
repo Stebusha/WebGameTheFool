@@ -198,8 +198,11 @@ public class FoolGameService
     //rerfesh turn queue for next turn
     public void RefreshTurnQueue()
     {
-        Player.IsAttack = !Player.IsAttack;
-        Opponent.IsAttack = !Opponent.IsAttack;
+        if (!Player.Taken && !Opponent.Taken)
+        {
+            Player.IsAttack = !Player.IsAttack;
+            Opponent.IsAttack = !Opponent.IsAttack;
+        }
     }
     //get first trump card in player's hand
     private Card GetFirstTrump(List<Card> cards)

@@ -8,23 +8,23 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div>
+    <div class="login">
         <label for="login">Логин</label>
-        <InputText id="login" @bind-Value="loginModel.Login" />
+        <InputText id="login" placeholder="Логин" @bind-Value="loginModel.Login" />
         <ValidationMessage For="@(() => loginModel.Login)" />
     </div>
     <br />
-    <div>
+    <div class="password">
         <label for="password">Пароль</label>
-        <InputText id="password" @bind-Value="loginModel.Password" />
+        <InputText id="password" type="password" placeholder="Пароль" @bind-Value="loginModel.Password" />
         <ValidationMessage For="@(() => loginModel.Password)" />
     </div>
     <br />
-    <button type="submit">Войти</button>
+    <button type="submit" class="">Войти</button>
 </EditForm>
 
 @code {
-    private LoginModel loginModel = new LoginModel("admin", "admin");
+    private LoginModel loginModel = new LoginModel("", "");
     private void HandleLogin()
     {
         Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");

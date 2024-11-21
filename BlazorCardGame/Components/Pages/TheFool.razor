@@ -130,6 +130,8 @@
     }
     private void EndTurn()
     {
+        FoolGameService.RefreshTurnQueue();
+
         FoolGameService.AttackingCards.Clear();
         FoolGameService.DefendingCards.Clear();
 
@@ -148,8 +150,6 @@
 
         FoolGameService.Player.RefillHand(FoolGameService.Deck);
         FoolGameService.Opponent.RefillHand(FoolGameService.Deck);
-
-        FoolGameService.RefreshTurnQueue();
 
         PlayButton = RefreshPlayButtonName();
 
@@ -225,6 +225,5 @@
                 FoolGameService.Player.IsAttack = false;
             }
         }
-
     }
 }
