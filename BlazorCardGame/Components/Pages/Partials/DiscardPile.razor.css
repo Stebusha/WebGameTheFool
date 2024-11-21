@@ -1,0 +1,13 @@
+.card-stack {
+    position: relative;
+    width: 200px;
+    height: auto;
+}
+
+.stacked-back {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    right: 0;
+    top: 0;
+}

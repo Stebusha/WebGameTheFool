@@ -13,7 +13,7 @@ public class FoolGameService
     public List<Card> AttackingCards { get; set; } = new List<Card>();
     public List<Card> DefendingCards { get; set; } = new List<Card>();
     public bool Repeat { get; set; } = false;
-    public GameState gameState { get; private set; } = GameState.JustStarted;
+    public GameState gameState { get; set; } = GameState.JustStarted;
     public int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; private set; } = false;
     public bool TurnFinished { get; set; } = false;
@@ -72,8 +72,6 @@ public class FoolGameService
                     AttackingCards.Add(attackingCard);
                     DefendingCards.Add(defendingCard);
                 }
-
-
             }
             else
             {
@@ -198,10 +196,10 @@ public class FoolGameService
     }
 
     //rerfesh turn queue for next turn
-    private void RefreshTurnQueue(Player player, AIPlayer opponent)
+    public void RefreshTurnQueue()
     {
-        player.IsAttack = !player.IsAttack;
-        opponent.IsAttack = !opponent.IsAttack;
+        Player.IsAttack = !Player.IsAttack;
+        Opponent.IsAttack = !Opponent.IsAttack;
     }
     //get first trump card in player's hand
     private Card GetFirstTrump(List<Card> cards)

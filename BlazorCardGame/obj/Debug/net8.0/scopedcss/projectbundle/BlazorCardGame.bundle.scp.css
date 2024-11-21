@@ -242,6 +242,20 @@ button:hover[b-d6mti0tx0m]{
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
 }
+/* _content/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor.rz.scp.css */
+.card-stack[b-c3ukdjjxj4] {
+    position: relative;
+    width: 200px;
+    height: auto;
+}
+
+.stacked-back[b-c3ukdjjxj4] {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    right: 0;
+    top: 0;
+}
 /* _content/BlazorCardGame/Components/Pages/Partials/GameCard.razor.rz.scp.css */
 .card[b-0s7ewnrvps] {
     width: 100px;
@@ -292,12 +306,15 @@ h2[b-8b77zkgj9q],button[b-8b77zkgj9q],.modal-content[b-8b77zkgj9q],label[b-8b77z
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/Opponent.razor.rz.scp.css */
-.card-back[b-0nrmjuysbw]
-{
+.card-back[b-0nrmjuysbw] {
     width: 100px;
     height: auto;
     margin: 0 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.opponent-hand[b-0nrmjuysbw] {
+    justify-content: center;
+    display: flex;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor.rz.scp.css */
 .player-hand[b-g4mslbypke]{
@@ -351,7 +368,8 @@ button:hover[b-60ll6vbauw]{
 }
 /* _content/BlazorCardGame/Components/Pages/TheFool.razor.rz.scp.css */
 h1[b-0o9jxtxef0],
-h2[b-0o9jxtxef0] {
+h2[b-0o9jxtxef0],
+label[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
@@ -370,7 +388,7 @@ h2[b-0o9jxtxef0] {
 .opponent-cards[b-0o9jxtxef0],
 .player-cards[b-0o9jxtxef0] {
     position: absolute;
-    width: 100%;
+    width: 85%;
     display: flex;
     justify-content: center;
 }
@@ -387,22 +405,43 @@ h2[b-0o9jxtxef0] {
 .center-table[b-0o9jxtxef0] {
     position: relative;
     top: 27%;
-    left: 27%;
+    left: 9%;
     height: 200px;
-    width: 100%;
+    width: 68%;
+}
+
+.win-lose[b-0o9jxtxef0] {
+    position: relative;
+    top: 25%;
+    left: 15%;
+}
+
+.win[b-0o9jxtxef0]{
+    position: absolute;
+    left:-5%;
+    color:teal;
+    font-size: 50px;
+}
+
+.lose[b-0o9jxtxef0]{
+    color:darkred;
+    font-size: 50px;
+    position: absolute;
+    left: 10%;
 }
 
 .attacking-cards[b-0o9jxtxef0] {
     display: flex;
 }
 
-.defending-cards[b-0o9jxtxef0]{
+.defending-cards[b-0o9jxtxef0] {
     display: flex;
     position: absolute;
     top: 30px;
 }
 
-.attacking-card[b-0o9jxtxef0], .defending-card[b-0o9jxtxef0] {
+.attacking-card[b-0o9jxtxef0],
+.defending-card[b-0o9jxtxef0] {
     width: 100px;
     height: auto;
     margin: 0 15px;
@@ -411,15 +450,23 @@ h2[b-0o9jxtxef0] {
 .deck[b-0o9jxtxef0] {
     position: absolute;
     right: 20px;
-    top: 25%;
+    top: 34%;
     transform: translateY(-50%);
+}
+
+.discard-pile[b-0o9jxtxef0] {
+    position: absolute;
+    right: 80px;
+    top: 68%;
+    transform: rotate(270deg);
+
 }
 
 .controls[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     position: absolute;
     bottom: 20px;
-    left: 50%;
+    left: 42%;
     transform: translateX(-50%);
 }
 
@@ -436,6 +483,6 @@ button[b-0o9jxtxef0] {
     cursor: pointer;
 }
 
-button:hover[b-0o9jxtxef0]{
-    background-color:rgb(92, 180, 252);
+button:hover[b-0o9jxtxef0] {
+    background-color: rgb(92, 180, 252);
 }

@@ -48,3 +48,4 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\GameSettings.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\GameDeck.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\Opponent.razor.rz.scp.css
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\DiscardPile.razor.rz.scp.css

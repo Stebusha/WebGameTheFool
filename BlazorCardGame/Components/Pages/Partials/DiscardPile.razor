@@ -1,0 +1,29 @@
+@if (deck != null && player != null && opponent != null)
+{
+    int discardCardCount = 36 - deck.CardsAmount - player.inHand.Count - opponent.inHand.Count;
+
+    if (discardCardCount > 0)
+    {
+        <div class="card-stack">
+
+            @for (int i = 0; i < discardCardCount; i++)
+            {
+                <img src="/Images/back_cyan.png" alt="back @i" class="stacked-back"
+                    style="@($"transform: translate({-((i+1)*1)}px, 0px);")">
+            }
+        </div>
+    }
+}
+else if (deck != null)
+{
+    <img src="/Images/@Deck.TrumpSuitImageURL" class="trump-suit" />
+}
+
+@code {
+    [Parameter]
+    public Deck deck { get; set; } = new Deck();
+    [Parameter]
+    public Player player { get; set; } = new Player();
+    [Parameter]
+    public AIPlayer opponent { get; set; } = new AIPlayer();
+}

@@ -1,7 +1,10 @@
-.card-back
-{
+.card-back {
     width: 100px;
     height: auto;
     margin: 0 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.opponent-hand {
+    justify-content: center;
+    display: flex;
 }

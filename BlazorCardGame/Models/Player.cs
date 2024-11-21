@@ -41,37 +41,59 @@ public class Player
         }
         else
         {
-            List<RankType> ranks = new List<RankType>();
-
             foreach (var card in inHand)
             {
                 if (card.IsSelected)
                 {
-                    ranks.Add(card.Rank);
                     continue;
                 }
 
                 card.IsPlayable = false;
             }
+        }
+    }
 
-            if (ranks != null)
+    public void RefreshPlayableForAttack(Table table)
+    {
+        if (table.Length() == 0)
+        {
+            RefreshPlayable();
+            return;
+        }
+
+        List<RankType> ranks = new List<RankType>();
+
+        for (int i = 0; i < table.Length(); i++)
+        {
+            ranks.Add(table.GetCard(i).Rank);
+        }
+
+        ranks = ranks.Distinct().ToList();
+
+        if (ranks.Count != 0)
+        {
+            foreach (var card in inHand)
             {
-                foreach (var card in inHand)
+                card.IsPlayable = false;
+            }
+
+            foreach (var card in inHand)
+            {
+                foreach (var rank in ranks)
                 {
-                    foreach (var rank in ranks)
+                    if (card.Rank == rank)
                     {
-                        if (card.Rank == rank)
-                        {
-                            card.IsPlayable = true;
-                        }
+                        card.IsPlayable = true;
                     }
                 }
             }
         }
-    }
 
+
+    }
     public void RefreshPlayableForBeat(Card cardToBeat)
     {
+
         foreach (var card in inHand)
         {
             if (card > cardToBeat)
@@ -398,7 +420,7 @@ public class Player
         {
             Taken = true;
         }
-        
+
         return defendingCard;
     }
 

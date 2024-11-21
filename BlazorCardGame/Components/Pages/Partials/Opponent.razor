@@ -1,10 +1,13 @@
 @if (opponent != null)
 {
-    @foreach (var card in opponent.inHand)
-    {
-        <img src="/Images/back_cyan.png" class="card-back" />
-    }
+    <div class="opponent-hand">
+        @foreach (var card in opponent.inHand)
+        {
+            <img src="/Images/back_cyan.png" class="card-back" />
+        }
+    </div>
 }
+
 
 @code {
     [Parameter]
