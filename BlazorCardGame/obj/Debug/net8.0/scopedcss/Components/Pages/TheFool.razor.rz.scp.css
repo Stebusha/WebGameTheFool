@@ -50,8 +50,9 @@ label[b-0o9jxtxef0] {
 .win[b-0o9jxtxef0]{
     position: absolute;
     left:-5%;
-    color:teal;
+    color:rgb(1, 168, 112);
     font-size: 50px;
+    text-shadow: 2px 2px 2px rgb(1, 82, 78);
 }
 
 .lose[b-0o9jxtxef0]{
@@ -59,6 +60,7 @@ label[b-0o9jxtxef0] {
     font-size: 50px;
     position: absolute;
     left: 10%;
+    text-shadow: 2px 2px 2px rgb(48, 0, 10);
 }
 
 .attacking-cards[b-0o9jxtxef0] {
