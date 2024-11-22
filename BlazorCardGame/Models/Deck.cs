@@ -83,6 +83,23 @@ public class Deck
         return drawnCards;
     }
 
+    public Card DrawCard()
+    {
+        Card drawnCard = new();
+
+        if (CardsAmount != 0)
+        {
+
+            drawnCard = _cards.First();
+            _cards.RemoveAt(0);
+
+        }
+
+        CardsAmount = _cards.Count;
+
+        return drawnCard;
+    }
+
     //set trump - first card of deck, moves trump to the end of the deck
     public void Trump()
     {

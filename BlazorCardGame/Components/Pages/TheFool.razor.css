@@ -1,5 +1,6 @@
 h1,
 h2,
+h4,
 label {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -47,16 +48,16 @@ label {
     left: 15%;
 }
 
-.win{
+.win {
     position: absolute;
-    left:-5%;
-    color:rgb(1, 168, 112);
+    left: -5%;
+    color: rgb(1, 168, 112);
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(1, 82, 78);
 }
 
-.lose{
-    color:darkred;
+.lose {
+    color: darkred;
     font-size: 50px;
     position: absolute;
     left: 10%;

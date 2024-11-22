@@ -227,18 +227,32 @@ td[b-1mgci28981] {
     font-size: 18px;
 }
 /* _content/BlazorCardGame/Components/Pages/Login.razor.rz.scp.css */
-h3[b-d6mti0tx0m],input[b-d6mti0tx0m],text[b-d6mti0tx0m],label[b-d6mti0tx0m],button[b-d6mti0tx0m]{
+h3[b-d6mti0tx0m],
+input[b-d6mti0tx0m],
+p[b-d6mti0tx0m],
+button[b-d6mti0tx0m] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}    
+
+.login-form[b-d6mti0tx0m]{
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
-button[b-d6mti0tx0m]{
+
+h3[b-d6mti0tx0m]{
+    text-align: center;
+}
+
+button[b-d6mti0tx0m] {
     background-color: rgb(187, 250, 229);
     border-radius: 10px;
     border: rgb(149, 252, 218) solid;
 }
 
-button:hover[b-d6mti0tx0m]{
+button:hover[b-d6mti0tx0m] {
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
 }
@@ -351,9 +365,19 @@ details > div[b-eh1szv1vjs] {
     padding: 10px;
 }
 /* _content/BlazorCardGame/Components/Pages/Register.razor.rz.scp.css */
-h3[b-60ll6vbauw], label[b-60ll6vbauw], input[b-60ll6vbauw], text[b-60ll6vbauw], button[b-60ll6vbauw]{
+h3[b-60ll6vbauw], p[b-60ll6vbauw], input[b-60ll6vbauw], button[b-60ll6vbauw]{
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.register-form[b-60ll6vbauw]{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+h3[b-60ll6vbauw]{
+    text-align: center;
 }
 
 button[b-60ll6vbauw]{
@@ -369,6 +393,7 @@ button:hover[b-60ll6vbauw]{
 /* _content/BlazorCardGame/Components/Pages/TheFool.razor.rz.scp.css */
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
+h4[b-0o9jxtxef0],
 label[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -416,16 +441,16 @@ label[b-0o9jxtxef0] {
     left: 15%;
 }
 
-.win[b-0o9jxtxef0]{
+.win[b-0o9jxtxef0] {
     position: absolute;
-    left:-5%;
-    color:rgb(1, 168, 112);
+    left: -5%;
+    color: rgb(1, 168, 112);
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(1, 82, 78);
 }
 
-.lose[b-0o9jxtxef0]{
-    color:darkred;
+.lose[b-0o9jxtxef0] {
+    color: darkred;
     font-size: 50px;
     position: absolute;
     left: 10%;

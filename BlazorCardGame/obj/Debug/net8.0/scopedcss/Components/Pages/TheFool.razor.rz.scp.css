@@ -1,5 +1,6 @@
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
+h4[b-0o9jxtxef0],
 label[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -47,16 +48,16 @@ label[b-0o9jxtxef0] {
     left: 15%;
 }
 
-.win[b-0o9jxtxef0]{
+.win[b-0o9jxtxef0] {
     position: absolute;
-    left:-5%;
-    color:rgb(1, 168, 112);
+    left: -5%;
+    color: rgb(1, 168, 112);
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(1, 82, 78);
 }
 
-.lose[b-0o9jxtxef0]{
-    color:darkred;
+.lose[b-0o9jxtxef0] {
+    color: darkred;
     font-size: 50px;
     position: absolute;
     left: 10%;

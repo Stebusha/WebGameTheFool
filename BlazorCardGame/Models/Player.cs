@@ -291,13 +291,15 @@ public class Player
                     break;
                 }
 
-                gameTable.AddCardToTable(selectedCardForAttack);
+                if (selectedCardForAttack.ImageUrl != "")
+                {
+                    gameTable.AddCardToTable(selectedCardForAttack);
 
-                inHand.Remove(selectedCardForAttack);
-                Sort();
+                    inHand.Remove(selectedCardForAttack);
+                    Sort();
 
-                attackingCards.Remove(selectedCardForAttack);
-
+                    attackingCards.Remove(selectedCardForAttack);
+                }
             }
         }
 
@@ -328,6 +330,11 @@ public class Player
     {
 
         if (gameTable.Length() == 0)
+        {
+            return false;
+        }
+
+        if (attackingCard.ImageUrl == "")
         {
             return false;
         }
@@ -381,22 +388,37 @@ public class Player
         Card defendingCard = new Card();
         List<Card> defendingCards = GetCardsforDefense(attackingCards, gameTable);
 
+        int selectedCardCount = 0;
+
         foreach (var card in defendingCards)
         {
             if (card.IsSelected)
             {
-                defendingCard = card;
+                selectedCardCount++;
                 break;
             }
         }
 
-        foreach (var card in defendingCards)
+        if (selectedCardCount != 0)
         {
-            if (card != defendingCard)
+            foreach (var card in defendingCards)
             {
-                card.IsSelected = false;
+                if (card.IsSelected)
+                {
+                    defendingCard = card;
+                    break;
+                }
+            }
+
+            foreach (var card in defendingCards)
+            {
+                if (card != defendingCard)
+                {
+                    card.IsSelected = false;
+                }
             }
         }
+
 
         return defendingCard;
     }
@@ -409,12 +431,13 @@ public class Player
 
         if (beaten)
         {
+            if (defendingCard.ImageUrl != "")
+            {
+                gameTable.AddCardToTable(defendingCard);
+                inHand.Remove(defendingCard);
 
-            gameTable.AddCardToTable(defendingCard);
-            inHand.Remove(defendingCard);
-
-            Sort();
-
+                Sort();
+            }
         }
         else
         {

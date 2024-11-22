@@ -10,6 +10,15 @@
 <h1>Карточная игра "Дурак"</h1>
 <h2>Партия № @FoolGameService.CountOfGames</h2>
 
+@if (FoolGameService.Player.IsAttack)
+{
+    <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+}
+else
+{
+    <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+}
+
 <div class="game-table">
     <div class="opponent-cards">
         <Opponent opponent="FoolGameService.Opponent" />
@@ -39,7 +48,10 @@
             <div class="defending-cards">
                 @foreach (var card in FoolGameService.DefendingCards)
                 {
-                    <img src="@card.ImageUrl" class="defending-card" />
+                    if (card.ImageUrl != "")
+                    {
+                        <img src="@card.ImageUrl" class="defending-card" />
+                    }
                 }
             </div>
         }
@@ -66,8 +78,6 @@
     <div class="discard-pile">
         <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
     </div>
-
-
 
     <div class="controls">
         <button @onclick="StartTurn">Начать ход</button>
@@ -103,6 +113,7 @@
         if (!FoolGameService.Player.IsAttack)
         {
             SelectCardToBeat(card);
+            FoolGameService.Player.RefreshPlayableForBeat(card);
         }
     }
 
@@ -125,8 +136,12 @@
 
     private void DrawCards()
     {
-        playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
-        EndTurn();
+        if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
+        {
+            playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
+            EndTurn();
+        }
+
     }
     private void EndTurn()
     {
@@ -148,8 +163,7 @@
 
         FoolGameService.Table.ClearTable();
 
-        FoolGameService.Player.RefillHand(FoolGameService.Deck);
-        FoolGameService.Opponent.RefillHand(FoolGameService.Deck);
+        FoolGameService.RefillHands();
 
         PlayButton = RefreshPlayButtonName();
 
@@ -182,24 +196,36 @@
         if (!FoolGameService.Player.IsAttack)
         {
             Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
+            if (attackingCard.ImageUrl != "")
+            {
+                FoolGameService.AttackingCards.Add(attackingCard);
+            }
 
-            FoolGameService.AttackingCards.Add(attackingCard);
             FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
         }
     }
     private void Play()
     {
         FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
+        PlayButton = RefreshPlayButtonName();
 
         if (FoolGameService.Player.IsAttack)
         {
             Card attackingCard = FoolGameService.Player.Attack(FoolGameService.Table);
-            FoolGameService.AttackingCards.Add(attackingCard);
 
-            PlayButton = RefreshPlayButtonName();
+            if (attackingCard.ImageUrl != "")
+            {
+                PlayButton = RefreshPlayButtonName();
 
-            Card defendingCard = FoolGameService.Opponent.Defend(attackingCard, FoolGameService.Table);
-            FoolGameService.DefendingCards.Add(defendingCard);
+                FoolGameService.AttackingCards.Add(attackingCard);
+
+                Card defendingCard = FoolGameService.Opponent.Defend(attackingCard, FoolGameService.Table);
+
+                if (defendingCard.ImageUrl != "")
+                {
+                    FoolGameService.DefendingCards.Add(defendingCard);
+                }
+            }
 
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
 
@@ -212,12 +238,24 @@
         }
         else
         {
-            Card attackingCard = FoolGameService.AttackingCards.ElementAt(FoolGameService.AttackingCards.Count - 1);
+            if (FoolGameService.Table.Length() == 0 || FoolGameService.Table.Length() % 2 == 1)
+            {
+                Card attackingCard = FoolGameService.AttackingCards.Last();
 
-            Card defendingCard = FoolGameService.Player.Defend(attackingCard, FoolGameService.Table);
-            FoolGameService.DefendingCards.Add(defendingCard);
-            
-            FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
+                if (attackingCard.ImageUrl != "")
+                {
+                    Card defendingCard = FoolGameService.Player.Defend(attackingCard, FoolGameService.Table);
+
+                    if (defendingCard.ImageUrl != "")
+                    {
+                        FoolGameService.DefendingCards.Add(defendingCard);
+                    }
+
+                }
+
+                FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
+
+            }
 
             if (FoolGameService.Player.Taken)
             {

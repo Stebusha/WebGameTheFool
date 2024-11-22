@@ -126,6 +126,59 @@ public class FoolGameService
         Table.ClearTable();
     }
 
+    public void RefillHands()
+    {
+        if (Deck.CardsAmount <= 6 && Deck.CardsAmount != 0)
+        {
+            while (Deck.CardsAmount != 0 || Player.inHand.Count < 6 || Opponent.inHand.Count < 6)
+            {
+                if (Player.IsAttack)
+                {
+
+                    if (Player.inHand.Count < 6)
+                    {
+                        Player.inHand.Add(Deck.DrawCard());
+                    }
+
+
+                    if (Deck.CardsAmount != 0 && Opponent.inHand.Count < 6)
+                    {
+                        Opponent.inHand.Add(Deck.DrawCard());
+                    }
+
+                    if (Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6 || Deck.CardsAmount == 0)
+                    {
+                        break;
+                    }
+
+                }
+                else
+                {
+
+                    if (Opponent.inHand.Count < 6)
+                    {
+                        Opponent.inHand.Add(Deck.DrawCard());
+                    }
+
+                    if (Deck.CardsAmount != 0 && Player.inHand.Count < 6)
+                    {
+                        Player.inHand.Add(Deck.DrawCard());
+                    }
+
+                    if ((Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6) || Deck.CardsAmount == 0)
+                    {
+                        break;
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            Player.RefillHand(Deck);
+            Opponent.RefillHand(Deck);
+        }
+    }
 
 
     public void LoadGame()
@@ -146,11 +199,11 @@ public class FoolGameService
 
         Player = new Player();
         Player.Name = "Rat";
-        Player.RefillHand(Deck);
 
         Opponent = new AIPlayer();
         Opponent.Name = "Бот";
-        Opponent.RefillHand(Deck);
+
+        RefillHands();
 
         List<Card> firstTrumps = new List<Card>();
 

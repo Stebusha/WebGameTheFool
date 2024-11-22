@@ -160,6 +160,11 @@ public class AIPlayer
             return false;
         }
 
+        if (attackingCard.ImageUrl == "")
+        {
+            return false;
+        }
+
         foreach (var card in inHand)
         {
             if (card > attackingCard)
@@ -206,8 +211,12 @@ public class AIPlayer
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\nНечем отбиться");
             Console.ResetColor();
-            TakeAllCards(gameTable);
-            Taken = true;
+            if (gameTable.Length() % 2 != 0)
+            {
+                TakeAllCards(gameTable);
+                Taken = true;
+            }
+
         }
 
         return defendingCard;

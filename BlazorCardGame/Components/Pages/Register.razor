@@ -2,33 +2,39 @@
 
 @inject NavigationManager NavigationManager
 
-<h3>Регистрация</h3>
 
-<EditForm Model="@registerModel" @OnValidSubmit="HandleRegister">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
 
-    <div>
-        <label for="login">Логин</label>
-        <InputText id="login" Placeholder="Логин" @bind-Value="registerModel.Login" />
-        <ValidationMessage For="@(() => registerModel.Login)" />
-    </div>
-    <br />
-    <div>
-        <label for="password">Пароль</label>
-        <InputText id="password"  type="password" Placeholder ="Пароль" @bind-Value="registerModel.Password" />
-        <ValidationMessage For="@(() => registerModel.Password)" />
-    </div>
-    <br />
-    <div>
-        <label for="confirm-password">Подтвердите Пароль</label>
-        <InputText id="confirm-password" type="password" Placeholder ="Подтверждение пароля" @bind-Value="registerModel.ConfirmPassword" />
-        <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
-    </div>
-    <br />
-    <button type="submit">Зарегистрироваться</button>
+<div class="register-form">
 
-</EditForm>
+    <EditForm Model="@registerModel" @OnValidSubmit="HandleRegister">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        
+        <h3>Регистрация</h3>
+        <div class="login">
+            <p>Логин: <br />
+                <InputText id="login" Placeholder="Логин" @bind-Value="registerModel.Login" />
+                <ValidationMessage For="@(() => registerModel.Login)" />
+            </p>
+        </div>
+        <div class="password">
+            <p>Пароль:<br />
+                <InputText id="password" type="password" Placeholder="Пароль" @bind-Value="registerModel.Password" />
+                <ValidationMessage For="@(() => registerModel.Password)" />
+            </p>
+        </div>
+        <div class="confirm-password">
+            <p>Подтверждение:<br />
+                <InputText id="confirm-password" type="password" Placeholder="Подтвердите пароль"
+                    @bind-Value="registerModel.ConfirmPassword" />
+                <ValidationMessage For="@(() => registerModel.ConfirmPassword)" />
+            </p>
+        </div>
+        <button type="submit">Зарегистрироваться</button>
+
+    </EditForm>
+</div>
+
 
 @code {
     private RegisterModel registerModel = new RegisterModel();

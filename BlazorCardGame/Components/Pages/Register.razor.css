@@ -1,6 +1,16 @@
-h3, label, input, text, button{
+h3, p, input, button{
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.register-form{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+h3{
+    text-align: center;
 }
 
 button{

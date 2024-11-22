@@ -2,32 +2,38 @@
 
 @inject NavigationManager NavigationManager
 
-<h3>Вход</h3>
+<div class="login-form">
 
-<EditForm Model="@loginModel" @OnValidSubmit="HandleLogin">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <EditForm id="login-form" Model="@loginModel" @OnSubmit="HandleLogin">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-    <div class="login">
-        <label for="login">Логин</label>
-        <InputText id="login" placeholder="Логин" @bind-Value="loginModel.Login" />
-        <ValidationMessage For="@(() => loginModel.Login)" />
-    </div>
-    <br />
-    <div class="password">
-        <label for="password">Пароль</label>
-        <InputText id="password" type="password" placeholder="Пароль" @bind-Value="loginModel.Password" />
-        <ValidationMessage For="@(() => loginModel.Password)" />
-    </div>
-    <br />
-    <button type="submit" class="">Войти</button>
-</EditForm>
+        <h3>Вход</h3>
+        <div class="login">
+            <p>
+                Логин: <br />
+                <InputText id="login" placeholder="Логин" @bind-Value="loginModel.Login" />
+                <ValidationMessage For="@(() => loginModel.Login)" />
+            </p>
+        </div>
+        <div class="password">
+            <p>
+                Пароль:<br />
+                <InputText id="password" type="password" placeholder="Пароль" @bind-Value="loginModel.Password" />
+                <ValidationMessage For="@(() => loginModel.Password)" />
+            </p>
+        </div>
+        <button type="submit">Войти</button>
+    </EditForm>
+</div>
+
 
 @code {
-    private LoginModel loginModel = new ("", "");
+    private LoginModel loginModel = new("", "");
     private void HandleLogin()
     {
         Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");
-        NavigationManager.NavigateTo("/thefool");
+        if (loginModel.Login == "admin" && loginModel.Password == "admin")
+            NavigationManager.NavigateTo("/thefool");
     }
 }

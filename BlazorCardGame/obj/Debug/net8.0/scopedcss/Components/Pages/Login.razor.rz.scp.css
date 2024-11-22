@@ -1,15 +1,29 @@
-h3[b-d6mti0tx0m],input[b-d6mti0tx0m],text[b-d6mti0tx0m],label[b-d6mti0tx0m],button[b-d6mti0tx0m]{
+h3[b-d6mti0tx0m],
+input[b-d6mti0tx0m],
+p[b-d6mti0tx0m],
+button[b-d6mti0tx0m] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}    
+
+.login-form[b-d6mti0tx0m]{
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
-button[b-d6mti0tx0m]{
+
+h3[b-d6mti0tx0m]{
+    text-align: center;
+}
+
+button[b-d6mti0tx0m] {
     background-color: rgb(187, 250, 229);
     border-radius: 10px;
     border: rgb(149, 252, 218) solid;
 }
 
-button:hover[b-d6mti0tx0m]{
+button:hover[b-d6mti0tx0m] {
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
 }

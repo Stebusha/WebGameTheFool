@@ -1,6 +1,16 @@
-h3[b-60ll6vbauw], label[b-60ll6vbauw], input[b-60ll6vbauw], text[b-60ll6vbauw], button[b-60ll6vbauw]{
+h3[b-60ll6vbauw], p[b-60ll6vbauw], input[b-60ll6vbauw], button[b-60ll6vbauw]{
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.register-form[b-60ll6vbauw]{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+h3[b-60ll6vbauw]{
+    text-align: center;
 }
 
 button[b-60ll6vbauw]{
