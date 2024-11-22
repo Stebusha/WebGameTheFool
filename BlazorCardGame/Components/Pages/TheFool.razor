@@ -142,6 +142,11 @@ else
     }
     private void EndTurn()
     {
+        if (FoolGameService.Player.Taken)
+        {
+            playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
+        }
+
         FoolGameService.EndCurrentTurn();
 
         isAttack = true;
