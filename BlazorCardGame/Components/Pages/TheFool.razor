@@ -119,8 +119,6 @@ else
 
     private void SelectCardToBeat(Card card)
     {
-        card.IsCanToBeat = !card.IsCanToBeat;
-
         FoolGameService.Player.RefreshPlayableForBeat(card);
 
         foreach (var cardToBeat in FoolGameService.DefendingCards)
@@ -130,7 +128,6 @@ else
                 continue;
             }
 
-            cardToBeat.IsCanToBeat = true;
         }
     }
 
@@ -145,32 +142,10 @@ else
     }
     private void EndTurn()
     {
-        FoolGameService.RefreshTurnQueue();
-
-        FoolGameService.AttackingCards.Clear();
-        FoolGameService.DefendingCards.Clear();
-
-        FoolGameService.Player.Taken = false;
-        FoolGameService.Opponent.Taken = false;
-
-        foreach (var card in FoolGameService.Player.inHand)
-        {
-            card.IsSelected = false;
-            card.IsCanToBeat = true;
-        }
+        FoolGameService.EndCurrentTurn();
 
         isAttack = true;
-
-        FoolGameService.Table.ClearTable();
-
-        FoolGameService.RefillHands();
-
         PlayButton = RefreshPlayButtonName();
-
-        if (FoolGameService.Player.inHand.Count == 0 || FoolGameService.Opponent.inHand.Count == 0)
-        {
-            FoolGameService.gameState = GameState.Finished;
-        }
     }
 
     private string RefreshPlayButtonName()

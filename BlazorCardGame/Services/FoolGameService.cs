@@ -180,6 +180,30 @@ public class FoolGameService
         }
     }
 
+    public void EndCurrentTurn()
+    {
+        RefreshTurnQueue();
+        
+        AttackingCards.Clear();
+        DefendingCards.Clear();
+
+        Player.Taken = false;
+        Opponent.Taken = false;
+
+        foreach (var card in Player.inHand)
+        {
+            card.IsSelected = false;
+        }
+
+        Table.ClearTable();
+
+        RefillHands();
+
+        if (Player.inHand.Count == 0 || Opponent.inHand.Count == 0)
+        {
+            gameState = GameState.Finished;
+        }
+    }
 
     public void LoadGame()
     {

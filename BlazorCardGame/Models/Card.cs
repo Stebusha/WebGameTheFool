@@ -6,7 +6,6 @@ public class Card
     public string ImageUrl { get; set; } = string.Empty;
     public bool IsPlayable { get; set; } = false;
     public bool IsSelected { get; set; } = false;
-    public bool IsCanToBeat { get; set; } = true;
     public Card() { }
     public Card(SuitType _suit, RankType _rank)
     {
