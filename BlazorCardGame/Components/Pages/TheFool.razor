@@ -119,6 +119,8 @@ else
 
     private void SelectCardToBeat(Card card)
     {
+        card.IsSelected = !card.IsSelected; 
+
         FoolGameService.Player.RefreshPlayableForBeat(card);
 
         foreach (var cardToBeat in FoolGameService.DefendingCards)
@@ -230,11 +232,9 @@ else
                     {
                         FoolGameService.DefendingCards.Add(defendingCard);
                     }
-
                 }
 
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
-
             }
 
             if (FoolGameService.Player.Taken)
