@@ -1,5 +1,10 @@
 @page "/login"
 
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication
+
+<PageTitle>Вход</PageTitle>
+
 @inject NavigationManager NavigationManager
 
 <div class="login-form">
@@ -38,9 +43,28 @@
 
     [SupplyParameterFromForm(FormName = LOGIN_FORM)]
     private LoginModel loginModel { get; set; } = new("", "");
-    private void LoginUserAsync()
+
+    [CascadingParameter]
+    public HttpContext HttpContext { get; set; } = default!;
+    private async Task LoginUserAsync()
     {
+        await Task.Delay(2000);
+
+        LoggedInUserModel user = new LoggedInUserModel(1, "admin");
+
+        var claims = user.ToClaims();
+        var identity = new ClaimsIdentity(claims, Constants.AUTH_SCHEME);
+        var principal = new ClaimsPrincipal(identity);
+
+        var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = loginModel.RememberMe
+            };
+
         Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");
+
+        await HttpContext.SignInAsync(Constants.AUTH_SCHEME, principal, authProperties);
+
         if (loginModel.Login == "admin" && loginModel.Password == "admin")
             NavigationManager.NavigateTo("/thefool");
     }

@@ -1,6 +1,7 @@
 @page "/thefool"
 
 @attribute [StreamRendering]
+@attribute [Authorize]
 
 @rendermode InteractiveServer
 
@@ -83,9 +84,13 @@ else
             <GameDeck deck="FoolGameService.Deck" />
         </div>
 
-        <div class="discard-pile">
-            <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
-        </div>
+        @if (!FoolGameService.FirstTurn)
+        {
+            <div class="discard-pile">
+                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
+            </div>
+        }
+
 
         <div class="controls">
             <button @onclick="StartTurn">Начать ход</button>
@@ -160,6 +165,11 @@ else
     }
     private void EndTurn()
     {
+        if (FoolGameService.FirstTurn)
+        {
+            FoolGameService.FirstTurn = false;
+        }
+
         if ((FoolGameService.Player.Taken || FoolGameService.Table.Length() % 2 == 1) && !FoolGameService.Opponent.Taken)
         {
             playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
@@ -172,7 +182,7 @@ else
             isAttack = true;
             PlayButton = RefreshPlayButtonName();
 
-            if (!FoolGameService.Player.IsAttack)
+            if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
                 StartTurn();
             }
@@ -202,12 +212,17 @@ else
         if (!FoolGameService.Player.IsAttack)
         {
             Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
+
             if (attackingCard.ImageUrl != "")
             {
                 FoolGameService.AttackingCards.Add(attackingCard);
             }
 
             FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
+        }
+        else
+        {
+            FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
         }
     }
     private void Play()
@@ -217,6 +232,12 @@ else
 
         if (FoolGameService.Player.IsAttack)
         {
+            if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
+            {
+                FoolGameService.FirstTurn = false;
+                EndTurn();
+            }
+
             Card attackingCard = FoolGameService.Player.Attack(FoolGameService.Table);
 
             if (attackingCard.ImageUrl != "")
@@ -261,6 +282,12 @@ else
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
             }
 
+            if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
+            {
+                FoolGameService.FirstTurn = false;
+                EndTurn();
+            }
+
             if (FoolGameService.Table.Length() % 2 == 0
             && FoolGameService.Table.Length() != 12
             && FoolGameService.Player.inHand.Count != 0
@@ -281,6 +308,7 @@ else
                 FoolGameService.Opponent.IsAttack = true;
                 FoolGameService.Player.IsAttack = false;
             }
+
         }
     }
 }

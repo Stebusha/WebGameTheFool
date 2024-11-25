@@ -14,7 +14,7 @@ public class FoolGameService
     public bool Repeat { get; set; } = false;
     public GameState gameState { get; set; } = GameState.Loading;
     public int CountOfGames { get; set; } = 0;
-    public bool FirstTurn { get; private set; } = false;
+    public bool FirstTurn { get; set; } = false;
     public bool TurnFinished { get; set; } = false;
 
     public void BotTurn()
