@@ -4,7 +4,7 @@
 
 <div class="login-form">
 
-    <EditForm id="login-form" Model="@loginModel" @OnSubmit="HandleLogin">
+    <EditForm id="login-form" Model="@loginModel" @OnSubmit="HandleLogin" FormName="login-form">
         <DataAnnotationsValidator />
         <ValidationSummary />
 

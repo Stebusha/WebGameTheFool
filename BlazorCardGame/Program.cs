@@ -45,8 +45,8 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthentication()
+    .UseAuthorization();
 
 app.UseAntiforgery();
 
