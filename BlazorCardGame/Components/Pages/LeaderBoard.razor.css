@@ -10,13 +10,23 @@ select {
     font-size: 18px;
 }
 
+.score-table{
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+}
+
 th,
 td {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: darkorchid;
 }
 
 th {
     font-size: 20px;
+    background-color: rgb(210, 165, 221);
 }
 
 td {
