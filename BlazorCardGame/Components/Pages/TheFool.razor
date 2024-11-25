@@ -165,7 +165,7 @@ else
             playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
         }
 
-        if (FoolGameService.Table.Length() != 0)
+        if (FoolGameService.Table.Length() != 0 || FoolGameService.Opponent.Taken)
         {
             FoolGameService.EndCurrentTurn();
 
@@ -177,8 +177,6 @@ else
                 StartTurn();
             }
         }
-
-
     }
 
     private string RefreshPlayButtonName()
