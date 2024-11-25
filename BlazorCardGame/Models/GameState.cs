@@ -1,7 +1,8 @@
 namespace BlazorCardGame.Models;
 public enum GameState
 {
-    JustStarted = 0,
+    Loading = 0,
+    JustStarted,
     InProgress,
     Finished
 }

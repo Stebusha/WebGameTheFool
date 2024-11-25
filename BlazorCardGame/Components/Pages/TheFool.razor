@@ -1,4 +1,7 @@
 @page "/thefool"
+
+@attribute [StreamRendering]
+
 @rendermode InteractiveServer
 
 @inject PlayerControlService playerControl
@@ -6,94 +9,103 @@
 
 <PageTitle>Дурак</PageTitle>
 
-
-<h1>Карточная игра "Дурак"</h1>
-<h2>Партия № @FoolGameService.CountOfGames</h2>
-
-@if (FoolGameService.Player.IsAttack)
+@if (FoolGameService.CountOfGames == 0)
 {
-    <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    <p><em>Loading...</em></p>
 }
 else
 {
-    <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    <h1>Карточная игра "Дурак"</h1>
+    <h2>Партия № @FoolGameService.CountOfGames</h2>
+
+    @if (FoolGameService.Player.IsAttack)
+    {
+        <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    }
+    else
+    {
+        <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    }
+
+    <div class="game-table">
+        <div class="opponent-cards">
+            <Opponent opponent="FoolGameService.Opponent" />
+        </div>
+
+        <div class="player-cards">
+            <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
+        </div>
+
+
+        <div class="center-table">
+            @if (FoolGameService.AttackingCards.Count > 0)
+            {
+                <div class="attacking-cards">
+                    @foreach (var card in FoolGameService.AttackingCards)
+                    {
+                        if (card.ImageUrl != "")
+                        {
+                            <img src="@card.ImageUrl" class="attacking-card" />
+                        }
+                    }
+                </div>
+            }
+
+            @if (FoolGameService.DefendingCards.Count > 0)
+            {
+                <div class="defending-cards">
+                    @foreach (var card in FoolGameService.DefendingCards)
+                    {
+                        if (card.ImageUrl != "")
+                        {
+                            <img src="@card.ImageUrl" class="defending-card" />
+                        }
+                    }
+                </div>
+            }
+
+            @if (FoolGameService.gameState == GameState.Finished)
+            {
+                <div class="win-lose">
+                    @if (FoolGameService.Player.inHand.Count == 0)
+                    {
+                        <label class="win">Поздравляем! Бот остался в дураках :)</label>
+                    }
+                    else
+                    {
+                        <label class="lose">Увы, вы дурак :(</label>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="deck">
+            <GameDeck deck="FoolGameService.Deck" />
+        </div>
+
+        <div class="discard-pile">
+            <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
+        </div>
+
+        <div class="controls">
+            <button @onclick="StartTurn">Начать ход</button>
+            <button @onclick="Play" disabled="@(!isAttack)">@PlayButton</button>
+            <button @onclick="DrawCards">Взять карты</button>
+            <button @onclick="EndTurn">Завершить ход</button>
+        </div>
+    </div>
+
+    <TheFoolRules />
 }
 
-<div class="game-table">
-    <div class="opponent-cards">
-        <Opponent opponent="FoolGameService.Opponent" />
-    </div>
 
-    <div class="player-cards">
-        <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
-    </div>
-
-
-    <div class="center-table">
-        @if (FoolGameService.AttackingCards.Count > 0)
-        {
-            <div class="attacking-cards">
-                @foreach (var card in FoolGameService.AttackingCards)
-                {
-                    if (card.ImageUrl != "")
-                    {
-                        <img src="@card.ImageUrl" class="attacking-card" />
-                    }
-                }
-            </div>
-        }
-
-        @if (FoolGameService.DefendingCards.Count > 0)
-        {
-            <div class="defending-cards">
-                @foreach (var card in FoolGameService.DefendingCards)
-                {
-                    if (card.ImageUrl != "")
-                    {
-                        <img src="@card.ImageUrl" class="defending-card" />
-                    }
-                }
-            </div>
-        }
-
-        @if (FoolGameService.gameState == GameState.Finished)
-        {
-            <div class="win-lose">
-                @if (FoolGameService.Player.inHand.Count == 0)
-                {
-                    <label class="win">Поздравляем! Бот остался в дураках :)</label>
-                }
-                else
-                {
-                    <label class="lose">Увы, вы дурак :(</label>
-                }
-            </div>
-        }
-    </div>
-
-    <div class="deck">
-        <GameDeck deck="FoolGameService.Deck" />
-    </div>
-
-    <div class="discard-pile">
-        <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
-    </div>
-
-    <div class="controls">
-        <button @onclick="StartTurn">Начать ход</button>
-        <button @onclick="Play" disabled="@(!isAttack)">@PlayButton</button>
-        <button @onclick="DrawCards">Взять карты</button>
-        <button @onclick="EndTurn">Завершить ход</button>
-    </div>
-</div>
-
-<TheFoolRules />
 
 @code {
     private bool isAttack = true;
     private string PlayButton = string.Empty;
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(500);
         FoolGameService.LoadGame();
 
         PlayButton = RefreshPlayButtonName();
@@ -148,20 +160,25 @@ else
     }
     private void EndTurn()
     {
-        if (FoolGameService.Player.Taken)
+        if ((FoolGameService.Player.Taken || FoolGameService.Table.Length() % 2 == 1) && !FoolGameService.Opponent.Taken)
         {
             playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
         }
 
-        FoolGameService.EndCurrentTurn();
-
-        isAttack = true;
-        PlayButton = RefreshPlayButtonName();
-
-        if(!FoolGameService.Player.IsAttack)
+        if (FoolGameService.Table.Length() != 0)
         {
-            StartTurn();
+            FoolGameService.EndCurrentTurn();
+
+            isAttack = true;
+            PlayButton = RefreshPlayButtonName();
+
+            if (!FoolGameService.Player.IsAttack)
+            {
+                StartTurn();
+            }
         }
+
+
     }
 
     private string RefreshPlayButtonName()

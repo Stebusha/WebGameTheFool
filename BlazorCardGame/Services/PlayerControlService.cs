@@ -27,4 +27,12 @@ public class PlayerControlService : IPlayerControl
         player.inHand = player.inHand.Distinct().ToList();
         player.Sort();
     }
+    public void TakeCards(Table gameTable, AIPlayer player)
+    {
+        player.Taken = true;
+        List<Card> onTableCards = gameTable.TakeCardsFromTable();
+        player.inHand.AddRange(onTableCards);
+        player.inHand = player.inHand.Distinct().ToList();
+        player.Sort();
+    }
 }

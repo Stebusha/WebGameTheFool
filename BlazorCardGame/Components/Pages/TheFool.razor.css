@@ -1,7 +1,9 @@
 h1,
 h2,
 h4,
-label {
+label,
+p,
+em {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;

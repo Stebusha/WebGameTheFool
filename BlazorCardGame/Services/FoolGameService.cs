@@ -12,7 +12,7 @@ public class FoolGameService
     public List<Card> AttackingCards { get; set; } = new List<Card>();
     public List<Card> DefendingCards { get; set; } = new List<Card>();
     public bool Repeat { get; set; } = false;
-    public GameState gameState { get; set; } = GameState.JustStarted;
+    public GameState gameState { get; set; } = GameState.Loading;
     public int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; private set; } = false;
     public bool TurnFinished { get; set; } = false;
@@ -218,16 +218,6 @@ public class FoolGameService
 
     public void LoadGame()
     {
-        if (gameState != GameState.JustStarted)
-        {
-            gameState = GameState.JustStarted;
-        }
-        else
-        {
-            FirstTurn = true;
-            CountOfGames++;
-        }
-
         Deck = new Deck();
         Deck.Shuffle();
         Deck.Trump();
@@ -266,6 +256,16 @@ public class FoolGameService
 
         if (_fools.ContainsKey(Player.Name))
             _fools[Player.Name] = false;
+
+        if (gameState != GameState.Loading)
+        {
+            gameState = GameState.JustStarted;
+        }
+        else
+        {
+            FirstTurn = true;
+            CountOfGames++;
+        }
     }
 
     //set start turn queue

@@ -49,7 +49,6 @@ public class Player
             }
         }
     }
-
     public void RefreshPlayableForAttack(Table table)
     {
         if (table.Length() == 0)
@@ -376,7 +375,7 @@ public class Player
         }
 
         RefreshPlayableForBeat(attackingCard);
-        
+
         return defenseCards;
     }
 

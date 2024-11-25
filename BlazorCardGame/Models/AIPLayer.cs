@@ -2,7 +2,7 @@ namespace BlazorCardGame.Models;
 
 public class AIPlayer
 {
-    
+
     public List<Card> inHand { get; set; } = new List<Card>();
     public PlayerType playerType { get; set; } = PlayerType.AI;
     public string Name { get; set; } = string.Empty;
@@ -211,9 +211,11 @@ public class AIPlayer
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\nНечем отбиться");
             Console.ResetColor();
+
             if (gameTable.Length() % 2 != 0)
             {
                 TakeAllCards(gameTable);
+                gameTable.ClearTable();
                 Taken = true;
             }
 
@@ -228,6 +230,7 @@ public class AIPlayer
         Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
         inHand.AddRange(onTableCards);
+        inHand = inHand.Distinct().ToList();
         Sort();
 
         if (inHand.Count != 0)
