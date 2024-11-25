@@ -1,0 +1,14 @@
+<img class="card-back" src="Images/back_cyan.png" alt="@Card.ToString()" style="@GetStyle(counter)" />
+
+@code {
+    [Parameter]
+    public Card Card { get; set; } = new Card();
+
+    [Parameter]
+    public int counter { get; set; }
+
+    private string GetStyle(int index)
+    {
+        return $"position: absolute; left: {100 + index * 30}px;";
+    }
+}

@@ -1,7 +1,13 @@
 <div class="player-hand">
     @foreach (var card in player.inHand)
     {
-        <GameCard Card="card" OnCardSelected="HandleCardSelected" />
+        <GameCard Card="card" OnCardSelected="HandleCardSelected" counter="counter" />
+        counter++;
+    }
+
+    @if (counter >= player.inHand.Count)
+    {
+        counter = 0;
     }
 </div>
 
@@ -9,8 +15,11 @@
 {
     [Parameter]
     public Player player { get; set; } = new Player();
+
     [Parameter]
     public Table table { get; set; } = new Table();
+
+    private int counter = 0;
 
     private void HandleCardSelected(string cardName)
     {
@@ -26,7 +35,6 @@
                     {
                         card.IsSelected = !card.IsSelected;
                         player.RefreshPlayable();
-
                     }
                 }
             }

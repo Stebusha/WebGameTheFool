@@ -1,10 +1,8 @@
-.card-back[b-0nrmjuysbw] {
-    width: 100px;
-    height: auto;
-    margin: 0 5px;
-}
-
 .opponent-hand[b-0nrmjuysbw] {
     justify-content: center;
     display: flex;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: none;
 }

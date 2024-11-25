@@ -345,6 +345,10 @@
       "PackagePath": "staticwebassets\\Images\\spade.png"
     },
     {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Scores\\scores.txt",
+      "PackagePath": "staticwebassets\\Scores\\scores.txt"
+    },
+    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },

@@ -4,7 +4,6 @@ namespace BlazorCardGame.Models;
 
 public class GameController
 {
-    private const int MAX_CARDS_TO_ATTACK = 6;
     private Player player = new Player();
     private AIPlayer opponent = new AIPlayer();
     private ScoreTable _scoreTable = new ScoreTable();
@@ -33,7 +32,7 @@ public class GameController
                 Console.WriteLine("\nНачало партии\n");
                 Console.WriteLine($"Козырная масть - {_deck.GetTrumpSuitName()}");
 
-                for (int i = 0; i < MAX_CARDS_TO_ATTACK - 1; i++)
+                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK - 1; i++)
                 {
                     if (player.IsAttack)
                     {
@@ -75,7 +74,7 @@ public class GameController
             {
                 Console.WriteLine($"\nНачало хода: ");
 
-                for (int i = 0; i < MAX_CARDS_TO_ATTACK; i++)
+                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK; i++)
                 {
                     if (player.IsAttack)
                     {

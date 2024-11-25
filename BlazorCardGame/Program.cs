@@ -1,23 +1,28 @@
 using BlazorCardGame.Components;
 using BlazorCardGame.Hubs;
+using BlazorCardGame.Models;
 using BlazorCardGame.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-// builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//     .AddCookie(options =>
-//     {
-//         options.Cookie.Name = "auth_token";
-//         options.LoginPath = "/login";
-//         options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
-//         options.AccessDeniedPath = "/access-denied";
-//     });
+builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
+    .AddCookie(Constants.AUTH_SCHEME, options =>
+    {
+        options.Cookie.Name = Constants.AUTH_COOKIE;
+        options.LoginPath = "/login";
+        options.AccessDeniedPath = "/access-denied";
+        options.LogoutPath = "/logout";
 
-// builder.Services.AddAuthorization();
-// builder.Services.AddCascadingAuthenticationState();
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.SameSite = SameSiteMode.Strict;
+
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+        options.SlidingExpiration = true;
+    });
 
 builder.Services.AddScoped<PlayerControlService>();
 builder.Services.AddScoped<FoolGameService>();
@@ -39,10 +44,11 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-app.UseAntiforgery();
 
-// app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

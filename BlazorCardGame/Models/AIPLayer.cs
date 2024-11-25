@@ -2,7 +2,7 @@ namespace BlazorCardGame.Models;
 
 public class AIPlayer
 {
-    private const int REQUIRED_CARDS_COUNT = 6;
+    
     public List<Card> inHand { get; set; } = new List<Card>();
     public PlayerType playerType { get; set; } = PlayerType.AI;
     public string Name { get; set; } = string.Empty;
@@ -56,12 +56,12 @@ public class AIPlayer
     {
         if (inHand.Count == 0)
         {
-            inHand = deck.DrawCards(REQUIRED_CARDS_COUNT);
+            inHand = deck.DrawCards(Constants.REQUIRED_CARDS_COUNT);
             Sort();
         }
-        else if (inHand.Count < REQUIRED_CARDS_COUNT)
+        else if (inHand.Count < Constants.REQUIRED_CARDS_COUNT)
         {
-            inHand.AddRange(deck.DrawCards(REQUIRED_CARDS_COUNT - inHand.Count));
+            inHand.AddRange(deck.DrawCards(Constants.REQUIRED_CARDS_COUNT - inHand.Count));
             Sort();
         }
 

@@ -201,6 +201,62 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
+/* _content/BlazorCardGame/Components/Pages/Auth/Login.razor.rz.scp.css */
+h3[b-jsxfsfo6wj],
+input[b-jsxfsfo6wj],
+p[b-jsxfsfo6wj],
+button[b-jsxfsfo6wj] {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}    
+
+.login-form[b-jsxfsfo6wj]{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+h3[b-jsxfsfo6wj]{
+    text-align: center;
+}
+
+button[b-jsxfsfo6wj] {
+    background-color: rgb(187, 250, 229);
+    border-radius: 10px;
+    border: rgb(149, 252, 218) solid;
+}
+
+button:hover[b-jsxfsfo6wj] {
+    background-color: rgb(107, 223, 252);
+    border: rgb(107, 223, 252) solid;
+}
+/* _content/BlazorCardGame/Components/Pages/Auth/Register.razor.rz.scp.css */
+h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.register-form[b-vvfvrexj0l]{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+h3[b-vvfvrexj0l]{
+    text-align: center;
+}
+
+button[b-vvfvrexj0l]{
+    background-color: rgb(187, 250, 229);
+    border-radius: 10px;
+    border: rgb(149, 252, 218) solid;
+}
+
+button:hover[b-vvfvrexj0l]{
+    background-color: rgb(107, 223, 252);
+    border: rgb(107, 223, 252) solid;
+}
 /* _content/BlazorCardGame/Components/Pages/LeaderBoard.razor.rz.scp.css */
 h3[b-1mgci28981],
 p[b-1mgci28981] {
@@ -225,36 +281,6 @@ th[b-1mgci28981] {
 
 td[b-1mgci28981] {
     font-size: 18px;
-}
-/* _content/BlazorCardGame/Components/Pages/Login.razor.rz.scp.css */
-h3[b-d6mti0tx0m],
-input[b-d6mti0tx0m],
-p[b-d6mti0tx0m],
-button[b-d6mti0tx0m] {
-    color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}    
-
-.login-form[b-d6mti0tx0m]{
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-
-h3[b-d6mti0tx0m]{
-    text-align: center;
-}
-
-button[b-d6mti0tx0m] {
-    background-color: rgb(187, 250, 229);
-    border-radius: 10px;
-    border: rgb(149, 252, 218) solid;
-}
-
-button:hover[b-d6mti0tx0m] {
-    background-color: rgb(107, 223, 252);
-    border: rgb(107, 223, 252) solid;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor.rz.scp.css */
 .card-stack[b-c3ukdjjxj4] {
@@ -320,15 +346,22 @@ h2[b-8b77zkgj9q],button[b-8b77zkgj9q],.modal-content[b-8b77zkgj9q],label[b-8b77z
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/Opponent.razor.rz.scp.css */
-.card-back[b-0nrmjuysbw] {
-    width: 100px;
-    height: auto;
-    margin: 0 5px;
-}
-
 .opponent-hand[b-0nrmjuysbw] {
     justify-content: center;
     display: flex;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: none;
+}
+/* _content/BlazorCardGame/Components/Pages/Partials/OpponentCard.razor.rz.scp.css */
+.card-back[b-rfxkdhwbqh] {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+    background-color: thistle;
+    border: none;
+    flex-shrink: 1;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor.rz.scp.css */
 .player-hand[b-g4mslbypke]{
@@ -364,32 +397,6 @@ details > div[b-eh1szv1vjs] {
     border: 1px rgb(182, 154, 240) solid;
     padding: 10px;
 }
-/* _content/BlazorCardGame/Components/Pages/Register.razor.rz.scp.css */
-h3[b-60ll6vbauw], p[b-60ll6vbauw], input[b-60ll6vbauw], button[b-60ll6vbauw]{
-    color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.register-form[b-60ll6vbauw]{
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-h3[b-60ll6vbauw]{
-    text-align: center;
-}
-
-button[b-60ll6vbauw]{
-    background-color: rgb(187, 250, 229);
-    border-radius: 10px;
-    border: rgb(149, 252, 218) solid;
-}
-
-button:hover[b-60ll6vbauw]{
-    background-color: rgb(107, 223, 252);
-    border: rgb(107, 223, 252) solid;
-}
 /* _content/BlazorCardGame/Components/Pages/TheFool.razor.rz.scp.css */
 h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
@@ -414,6 +421,7 @@ label[b-0o9jxtxef0] {
 .player-cards[b-0o9jxtxef0] {
     position: absolute;
     width: 85%;
+    height: 141px;
     display: flex;
     justify-content: center;
 }

@@ -148,6 +148,8 @@ public class FoolGameService
 
                     if (Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6 || Deck.CardsAmount == 0)
                     {
+                        Player.Sort();
+                        Opponent.Sort();
                         break;
                     }
 
@@ -167,6 +169,8 @@ public class FoolGameService
 
                     if ((Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6) || Deck.CardsAmount == 0)
                     {
+                        Player.Sort();
+                        Opponent.Sort();
                         break;
                     }
                 }

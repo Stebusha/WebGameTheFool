@@ -21,6 +21,7 @@ label {
 .player-cards {
     position: absolute;
     width: 85%;
+    height: 141px;
     display: flex;
     justify-content: center;
 }

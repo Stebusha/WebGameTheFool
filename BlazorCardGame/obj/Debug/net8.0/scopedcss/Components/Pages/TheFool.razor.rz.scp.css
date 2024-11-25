@@ -21,6 +21,7 @@ label[b-0o9jxtxef0] {
 .player-cards[b-0o9jxtxef0] {
     position: absolute;
     width: 85%;
+    height: 141px;
     display: flex;
     justify-content: center;
 }

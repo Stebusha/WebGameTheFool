@@ -1,8 +1,7 @@
-<div class="card" @onclick="OnCardClick">
-    <img src="@Card.ImageUrl" alt="@Card.ToString()"
-        style="cursor: @(Card.IsPlayable ? "pointer" : "not-allowed");
+<img class="card" @onclick="OnCardClick" src="@Card.ImageUrl" alt="@Card.ToString()"
+    style="@GetStyle(counter) cursor: @(Card.IsPlayable ? "pointer" : "not-allowed");
         @(Card.IsSelected ? "transform : translateY(-10px); background-color: slateblue; border-radius: 5%; border: 5px solid slateblue; "  : "")" />
-</div>
+
 
 @code {
     [Parameter]
@@ -11,8 +10,15 @@
     [Parameter]
     public EventCallback<string> OnCardSelected { get; set; }
 
+    [Parameter]
+    public int counter { get; set; }
+
     private async Task OnCardClick()
     {
         await OnCardSelected.InvokeAsync(Card.ToString());
+    }
+    private string GetStyle(int index)
+    {
+        return $"position: absolute; left: {100 + index * 30}px;";
     }
 }

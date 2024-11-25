@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cusl52+YYLODHid3s4KG83sy2OCrHGHHSjuMhEs/v1M=",
+  "Hash": "mVxqFfZSaPlZc4QhhixIGam+k+uXhSfIoUD7+OqZi20=",
   "Source": "BlazorCardGame",
   "BasePath": "_content/BlazorCardGame",
   "Mode": "Default",
@@ -1801,6 +1801,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\MoveCardToCenter.js"
+    },
+    {
+      "Identity": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Scores\\scores.txt",
+      "SourceId": "BlazorCardGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\",
+      "BasePath": "_content/BlazorCardGame",
+      "RelativePath": "Scores/scores.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Scores\\scores.txt"
     }
   ]
 }

@@ -1,15 +1,20 @@
-@if (opponent != null)
-{
-    <div class="opponent-hand">
-        @foreach (var card in opponent.inHand)
-        {
-            <img src="/Images/back_cyan.png" class="card-back" />
-        }
-    </div>
-}
+<div class="opponent-hand">
+    @foreach (var card in opponent.inHand)
+    {
+        <OpponentCard Card="card" counter="counter" />
+        counter++;
+    }
+    
+    @if (counter >= opponent.inHand.Count)
+    {
+        counter = 0;
+    }
+</div>
+
 
 
 @code {
     [Parameter]
     public AIPlayer opponent { get; set; } = new AIPlayer();
+    private int counter = 0;
 }

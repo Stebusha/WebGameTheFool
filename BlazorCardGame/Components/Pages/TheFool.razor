@@ -138,6 +138,7 @@ else
         if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
         {
             playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
+            FoolGameService.Player.inHand = FoolGameService.Player.inHand.Distinct().ToList();
             EndTurn();
         }
 
