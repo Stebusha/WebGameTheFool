@@ -201,6 +201,7 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
+/* _content/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Login.razor.rz.scp.css */
 h3[b-jsxfsfo6wj],
 input[b-jsxfsfo6wj],
@@ -208,16 +209,16 @@ p[b-jsxfsfo6wj],
 button[b-jsxfsfo6wj] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}    
+}
 
-.login-form[b-jsxfsfo6wj]{
+.login-form[b-jsxfsfo6wj] {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
 
-h3[b-jsxfsfo6wj]{
+h3[b-jsxfsfo6wj] {
     text-align: center;
 }
 
@@ -231,6 +232,12 @@ button:hover[b-jsxfsfo6wj] {
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
 }
+
+.remember-me[b-jsxfsfo6wj] {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* _content/BlazorCardGame/Components/Pages/Auth/Logout.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Register.razor.rz.scp.css */
 h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
     color: black;

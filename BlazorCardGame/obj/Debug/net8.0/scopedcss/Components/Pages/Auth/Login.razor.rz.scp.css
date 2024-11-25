@@ -4,16 +4,16 @@ p[b-jsxfsfo6wj],
 button[b-jsxfsfo6wj] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}    
+}
 
-.login-form[b-jsxfsfo6wj]{
+.login-form[b-jsxfsfo6wj] {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
 
-h3[b-jsxfsfo6wj]{
+h3[b-jsxfsfo6wj] {
     text-align: center;
 }
 
@@ -26,4 +26,9 @@ button[b-jsxfsfo6wj] {
 button:hover[b-jsxfsfo6wj] {
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
+}
+
+.remember-me[b-jsxfsfo6wj] {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

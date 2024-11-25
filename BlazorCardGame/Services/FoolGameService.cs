@@ -4,7 +4,6 @@ namespace BlazorCardGame.Services;
 
 public class FoolGameService
 {
-    private const int MAX_CARDS_TO_ATTACK = 6;
     private Dictionary<string, bool> _fools = new Dictionary<string, bool>();
     public Player Player { get; set; } = new Player();
     public AIPlayer Opponent { get; set; } = new AIPlayer();
@@ -18,47 +17,30 @@ public class FoolGameService
     public bool FirstTurn { get; private set; } = false;
     public bool TurnFinished { get; set; } = false;
 
-    public void Turn()
+    public void BotTurn()
     {
         TurnFinished = false;
+
         Card attackingCard = new Card();
         Card defendingCard = new Card();
-
-        //reset taken properties
-        Player.Taken = false;
-        Opponent.Taken = false;
 
         while (!TurnFinished)
         {
             if (FirstTurn)
             {
-                Console.WriteLine("\nНачало партии\n");
-                Console.WriteLine($"Козырная масть - {Deck.GetTrumpSuitName()}");
-
-                if (AttackingCards.Count == MAX_CARDS_TO_ATTACK - 1)
+                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK - 1; i++)
                 {
-                    TurnFinished = true;
-                    FirstTurn = false;
-                    Console.WriteLine("\nКонец хода");
-                }
+                    Console.WriteLine("\nНачало партии\n");
+                    Console.WriteLine($"Козырная масть - {Deck.GetTrumpSuitName()}");
 
-                if (Player.IsAttack)
-                {
-                    //Taken or no cards for attack
-                    if (Opponent.Taken || Player.GetCardsForAttack(Table).Count == 0)
+                    if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK - 1)
                     {
                         TurnFinished = true;
                         FirstTurn = false;
+                        Console.WriteLine("\nКонец хода");
                         break;
                     }
 
-                    attackingCard = Player.Attack(Table);
-                    defendingCard = Opponent.Defend(attackingCard, Table);
-                    AttackingCards.Add(attackingCard);
-                    DefendingCards.Add(defendingCard);
-                }
-                else
-                {
                     //Taken or no cards for attack
                     if (Player.Taken || Opponent.GetCardsForAttack(Table).Count == 0)
                     {
@@ -66,43 +48,47 @@ public class FoolGameService
                         FirstTurn = false;
                         break;
                     }
-
                     attackingCard = Opponent.Attack(Table);
-                    defendingCard = Player.Defend(attackingCard, Table);
-                    AttackingCards.Add(attackingCard);
-                    DefendingCards.Add(defendingCard);
+
+                    if (attackingCard.ImageUrl != "")
+                    {
+                        AttackingCards.Add(attackingCard);
+                    }
+
+                    Player.RefreshPlayableForBeat(attackingCard);
+
+                    if (Table.Length() == 0 || Table.Length() % 2 == 1)
+                    {
+                        // attackingCard = AttackingCards.Last();
+
+                        if (attackingCard.ImageUrl != "")
+                        {
+                            defendingCard = Player.Defend(attackingCard, Table);
+
+                            if (defendingCard.ImageUrl != "")
+                            {
+                                DefendingCards.Add(defendingCard);
+                            }
+                        }
+
+                        Player.RefreshPlayableForBeat(attackingCard);
+                    }
                 }
+
             }
             else
             {
                 Console.WriteLine($"\nНачало хода: ");
 
-                if (AttackingCards.Count == MAX_CARDS_TO_ATTACK - 1)
+                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK; i++)
                 {
-                    TurnFinished = true;
-                    FirstTurn = false;
-                    Console.WriteLine("\nКонец хода");
-                }
-
-                if (Player.IsAttack)
-                {
-                    //Taken, no cards to Defend, max card on table, no cards for attack
-                    if (Opponent.Taken
-                            || Opponent.inHand.Count == 0
-                            || Table.Length() == 12
-                            || Player.GetCardsForAttack(Table).Count == 0)
+                    if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK)
                     {
                         TurnFinished = true;
+                        Console.WriteLine("\nКонец хода");
                         break;
                     }
 
-                    attackingCard = Player.Attack(Table);
-                    defendingCard = Opponent.Defend(attackingCard, Table);
-                    AttackingCards.Add(attackingCard);
-                    DefendingCards.Add(defendingCard);
-                }
-                else
-                {
                     //Taken, no cards to Defend, max card on table, no cards for attack
                     if (Player.Taken
                             || Player.inHand.Count == 0
@@ -114,9 +100,30 @@ public class FoolGameService
                     }
 
                     attackingCard = Opponent.Attack(Table);
-                    defendingCard = Player.Defend(attackingCard, Table);
-                    AttackingCards.Add(attackingCard);
-                    DefendingCards.Add(defendingCard);
+
+                    if (attackingCard.ImageUrl != "")
+                    {
+                        AttackingCards.Add(attackingCard);
+                    }
+
+                    Player.RefreshPlayableForBeat(attackingCard);
+
+                    if (Table.Length() == 0 || Table.Length() % 2 == 1)
+                    {
+                        // attackingCard = AttackingCards.Last();
+
+                        if (attackingCard.ImageUrl != "")
+                        {
+                            defendingCard = Player.Defend(attackingCard, Table);
+
+                            if (defendingCard.ImageUrl != "")
+                            {
+                                DefendingCards.Add(defendingCard);
+                            }
+                        }
+
+                        Player.RefreshPlayableForBeat(attackingCard);
+                    }
                 }
 
                 Console.WriteLine("\nКонец хода");
@@ -187,7 +194,7 @@ public class FoolGameService
     public void EndCurrentTurn()
     {
         RefreshTurnQueue();
-        
+
         AttackingCards.Clear();
         DefendingCards.Clear();
 

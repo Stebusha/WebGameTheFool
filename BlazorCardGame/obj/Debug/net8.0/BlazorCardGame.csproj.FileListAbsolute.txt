@@ -50,3 +50,5 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\OpponentCard.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Auth\Login.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Auth\Register.razor.rz.scp.css
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Auth\AccessDenied.razor.rz.scp.css
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Auth\Logout.razor.rz.scp.css

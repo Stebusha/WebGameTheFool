@@ -4,7 +4,7 @@
 
 <div class="login-form">
 
-    <EditForm id="login-form" Model="@loginModel" @OnSubmit="HandleLogin" FormName="login-form">
+    <EditForm id="login-form" Model="@loginModel" OnValidSubmit="LoginUserAsync" FormName="@LOGIN_FORM">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -23,14 +23,22 @@
                 <ValidationMessage For="@(() => loginModel.Password)" />
             </p>
         </div>
+        <div class="remember-me">
+            <InputCheckbox id="remeber-me" @bind-Value="loginModel.RememberMe" class="form-check-input" />
+            Запомнить?
+        </div>
         <button type="submit">Войти</button>
     </EditForm>
 </div>
 
 
 @code {
-    private LoginModel loginModel = new("", "");
-    private void HandleLogin()
+
+    private const string LOGIN_FORM = "login-form";
+
+    [SupplyParameterFromForm(FormName = LOGIN_FORM)]
+    private LoginModel loginModel { get; set; } = new("", "");
+    private void LoginUserAsync()
     {
         Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");
         if (loginModel.Login == "admin" && loginModel.Password == "admin")

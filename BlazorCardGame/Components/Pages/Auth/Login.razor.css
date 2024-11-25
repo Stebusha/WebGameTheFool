@@ -4,16 +4,16 @@ p,
 button {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}    
+}
 
-.login-form{
+.login-form {
     display: flex;
     justify-content: center;
     position: relative;
 }
 
 
-h3{
+h3 {
     text-align: center;
 }
 
@@ -26,4 +26,9 @@ button {
 button:hover {
     background-color: rgb(107, 223, 252);
     border: rgb(107, 223, 252) solid;
+}
+
+.remember-me {
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

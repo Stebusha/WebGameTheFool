@@ -112,14 +112,17 @@ else
 
         if (!FoolGameService.Player.IsAttack)
         {
-            SelectCardToBeat(card);
-            FoolGameService.Player.RefreshPlayableForBeat(card);
+            if (FoolGameService.Player.CanBeSelected(FoolGameService.Table))
+            {
+                SelectCardToBeat(card);
+                FoolGameService.Player.RefreshPlayableForBeat(card);
+            }
         }
     }
 
     private void SelectCardToBeat(Card card)
     {
-        card.IsSelected = !card.IsSelected; 
+        card.IsSelected = !card.IsSelected;
 
         FoolGameService.Player.RefreshPlayableForBeat(card);
 
@@ -154,6 +157,11 @@ else
 
         isAttack = true;
         PlayButton = RefreshPlayButtonName();
+
+        if(!FoolGameService.Player.IsAttack)
+        {
+            StartTurn();
+        }
     }
 
     private string RefreshPlayButtonName()
@@ -233,6 +241,21 @@ else
                     {
                         FoolGameService.DefendingCards.Add(defendingCard);
                     }
+                }
+
+                FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
+            }
+
+            if (FoolGameService.Table.Length() % 2 == 0
+            && FoolGameService.Table.Length() != 12
+            && FoolGameService.Player.inHand.Count != 0
+            && !FoolGameService.Player.Taken)
+            {
+                Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
+
+                if (attackingCard.ImageUrl != "")
+                {
+                    FoolGameService.AttackingCards.Add(attackingCard);
                 }
 
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard);

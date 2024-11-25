@@ -365,7 +365,6 @@ public class Player
                 {
                     defenseCards.Add(card);
                     card.IsPlayable = true;
-                    break;
                 }
                 else
                 {
@@ -376,6 +375,8 @@ public class Player
             }
         }
 
+        RefreshPlayableForBeat(attackingCard);
+        
         return defenseCards;
     }
 
