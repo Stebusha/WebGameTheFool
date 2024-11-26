@@ -5,6 +5,7 @@ namespace BlazorCardGame.Services;
 public class FoolGameService
 {
     private Dictionary<string, bool> _fools = new Dictionary<string, bool>();
+    public ScoreTable scoreTable = new ScoreTable();
     public Player Player { get; set; } = new Player();
     public AIPlayer Opponent { get; set; } = new AIPlayer();
     public Deck Deck { get; set; } = new Deck();
@@ -15,123 +16,122 @@ public class FoolGameService
     public GameState gameState { get; set; } = GameState.Loading;
     public int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; set; } = false;
-    public bool TurnFinished { get; set; } = false;
 
-    public void BotTurn()
-    {
-        TurnFinished = false;
+    // public void BotTurn()
+    // {
+    //     TurnFinished = false;
 
-        Card attackingCard = new Card();
-        Card defendingCard = new Card();
+    //     Card attackingCard = new Card();
+    //     Card defendingCard = new Card();
 
-        while (!TurnFinished)
-        {
-            if (FirstTurn)
-            {
-                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK - 1; i++)
-                {
-                    Console.WriteLine("\nНачало партии\n");
-                    Console.WriteLine($"Козырная масть - {Deck.GetTrumpSuitName()}");
+    //     while (!TurnFinished)
+    //     {
+    //         if (FirstTurn)
+    //         {
+    //             for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK - 1; i++)
+    //             {
+    //                 Console.WriteLine("\nНачало партии\n");
+    //                 Console.WriteLine($"Козырная масть - {Deck.GetTrumpSuitName()}");
 
-                    if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK - 1)
-                    {
-                        TurnFinished = true;
-                        FirstTurn = false;
-                        Console.WriteLine("\nКонец хода");
-                        break;
-                    }
+    //                 if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK - 1)
+    //                 {
+    //                     TurnFinished = true;
+    //                     FirstTurn = false;
+    //                     Console.WriteLine("\nКонец хода");
+    //                     break;
+    //                 }
 
-                    //Taken or no cards for attack
-                    if (Player.Taken || Opponent.GetCardsForAttack(Table).Count == 0)
-                    {
-                        TurnFinished = true;
-                        FirstTurn = false;
-                        break;
-                    }
-                    attackingCard = Opponent.Attack(Table);
+    //                 //Taken or no cards for attack
+    //                 if (Player.Taken || Opponent.GetCardsForAttack(Table).Count == 0)
+    //                 {
+    //                     TurnFinished = true;
+    //                     FirstTurn = false;
+    //                     break;
+    //                 }
+    //                 attackingCard = Opponent.Attack(Table);
 
-                    if (attackingCard.ImageUrl != "")
-                    {
-                        AttackingCards.Add(attackingCard);
-                    }
+    //                 if (attackingCard.ImageUrl != "")
+    //                 {
+    //                     AttackingCards.Add(attackingCard);
+    //                 }
 
-                    Player.RefreshPlayableForBeat(attackingCard);
+    //                 Player.RefreshPlayableForBeat(attackingCard);
 
-                    if (Table.Length() == 0 || Table.Length() % 2 == 1)
-                    {
-                        // attackingCard = AttackingCards.Last();
+    //                 if (Table.Length() == 0 || Table.Length() % 2 == 1)
+    //                 {
+    //                     // attackingCard = AttackingCards.Last();
 
-                        if (attackingCard.ImageUrl != "")
-                        {
-                            defendingCard = Player.Defend(attackingCard, Table);
+    //                     if (attackingCard.ImageUrl != "")
+    //                     {
+    //                         defendingCard = Player.Defend(attackingCard, Table);
 
-                            if (defendingCard.ImageUrl != "")
-                            {
-                                DefendingCards.Add(defendingCard);
-                            }
-                        }
+    //                         if (defendingCard.ImageUrl != "")
+    //                         {
+    //                             DefendingCards.Add(defendingCard);
+    //                         }
+    //                     }
 
-                        Player.RefreshPlayableForBeat(attackingCard);
-                    }
-                }
+    //                     Player.RefreshPlayableForBeat(attackingCard);
+    //                 }
+    //             }
 
-            }
-            else
-            {
-                Console.WriteLine($"\nНачало хода: ");
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine($"\nНачало хода: ");
 
-                for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK; i++)
-                {
-                    if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK)
-                    {
-                        TurnFinished = true;
-                        Console.WriteLine("\nКонец хода");
-                        break;
-                    }
+    //             for (int i = 0; i < Constants.MAX_CARDS_TO_ATTACK; i++)
+    //             {
+    //                 if (AttackingCards.Count == Constants.MAX_CARDS_TO_ATTACK)
+    //                 {
+    //                     TurnFinished = true;
+    //                     Console.WriteLine("\nКонец хода");
+    //                     break;
+    //                 }
 
-                    //Taken, no cards to Defend, max card on table, no cards for attack
-                    if (Player.Taken
-                            || Player.inHand.Count == 0
-                            || Table.Length() == 12
-                            || Opponent.GetCardsForAttack(Table).Count == 0)
-                    {
-                        TurnFinished = true;
-                        break;
-                    }
+    //                 //Taken, no cards to Defend, max card on table, no cards for attack
+    //                 if (Player.Taken
+    //                         || Player.inHand.Count == 0
+    //                         || Table.Length() == 12
+    //                         || Opponent.GetCardsForAttack(Table).Count == 0)
+    //                 {
+    //                     TurnFinished = true;
+    //                     break;
+    //                 }
 
-                    attackingCard = Opponent.Attack(Table);
+    //                 attackingCard = Opponent.Attack(Table);
 
-                    if (attackingCard.ImageUrl != "")
-                    {
-                        AttackingCards.Add(attackingCard);
-                    }
+    //                 if (attackingCard.ImageUrl != "")
+    //                 {
+    //                     AttackingCards.Add(attackingCard);
+    //                 }
 
-                    Player.RefreshPlayableForBeat(attackingCard);
+    //                 Player.RefreshPlayableForBeat(attackingCard);
 
-                    if (Table.Length() == 0 || Table.Length() % 2 == 1)
-                    {
-                        // attackingCard = AttackingCards.Last();
+    //                 if (Table.Length() == 0 || Table.Length() % 2 == 1)
+    //                 {
+    //                     // attackingCard = AttackingCards.Last();
 
-                        if (attackingCard.ImageUrl != "")
-                        {
-                            defendingCard = Player.Defend(attackingCard, Table);
+    //                     if (attackingCard.ImageUrl != "")
+    //                     {
+    //                         defendingCard = Player.Defend(attackingCard, Table);
 
-                            if (defendingCard.ImageUrl != "")
-                            {
-                                DefendingCards.Add(defendingCard);
-                            }
-                        }
+    //                         if (defendingCard.ImageUrl != "")
+    //                         {
+    //                             DefendingCards.Add(defendingCard);
+    //                         }
+    //                     }
 
-                        Player.RefreshPlayableForBeat(attackingCard);
-                    }
-                }
+    //                     Player.RefreshPlayableForBeat(attackingCard);
+    //                 }
+    //             }
 
-                Console.WriteLine("\nКонец хода");
-            }
-        }
+    //             Console.WriteLine("\nКонец хода");
+    //         }
+    //     }
 
-        Table.ClearTable();
-    }
+    //     Table.ClearTable();
+    // }
 
     public void RefillHands()
     {
@@ -193,6 +193,44 @@ public class FoolGameService
 
     public void EndCurrentTurn()
     {
+        if (Deck.CardsAmount == 0)
+        {
+
+            if (Player.inHand.Count == 0 || Opponent.inHand.Count == 0)
+            {
+                gameState = GameState.Finished;
+            }
+
+            if (Player.inHand.Count == 0 && Opponent.inHand.Count != 0)
+            {
+                Console.WriteLine($"Колода закончилась. Конец партии. Победил игрок {Player.Name}.");
+
+                Opponent.IsFool = true;
+
+                if (Opponent.Name != null)
+                {
+                    if (_fools.ContainsKey(Opponent.Name))
+                    {
+                        _fools[Opponent.Name] = Opponent.IsFool;
+                    }
+                }
+
+                int score = 1;
+
+                scoreTable.AddScore(Player.Name, score);
+            }
+            else if (Player.inHand.Count != 0 && Opponent.inHand.Count == 0)
+            {
+                Console.WriteLine($"Колода закончилась. Конец партии. Победил игрок {Opponent.Name}.");
+
+                Player.IsFool = true;
+                _fools[Player.Name] = Player.IsFool;
+
+                int score = 1;
+
+                scoreTable.AddScore(Opponent.Name, score);
+            }
+        }
         RefreshTurnQueue();
 
         AttackingCards.Clear();
@@ -210,12 +248,9 @@ public class FoolGameService
 
         RefillHands();
 
-        if (Player.inHand.Count == 0 || Opponent.inHand.Count == 0)
-        {
-            gameState = GameState.Finished;
-        }
-    }
 
+
+    }
     public void LoadGame()
     {
         Deck = new Deck();
@@ -223,10 +258,10 @@ public class FoolGameService
         Deck.Trump();
 
         Player = new Player();
-        Player.Name = "Rat";
+        Player.Name = "Admin";
 
         Opponent = new AIPlayer();
-        Opponent.Name = "Бот";
+        Opponent.Name = "Бот 1";
 
         RefillHands();
 

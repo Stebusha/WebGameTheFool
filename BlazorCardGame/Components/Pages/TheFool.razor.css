@@ -67,6 +67,14 @@ em {
     text-shadow: 2px 2px 2px rgb(48, 0, 10);
 }
 
+.draw {
+    color: rgb(78, 16, 129);
+    font-size: 50px;
+    position: absolute;
+    left: 10%;
+    text-shadow: 2px 2px 2px rgb(33, 0, 48);
+}
+
 .attacking-cards {
     display: flex;
 }

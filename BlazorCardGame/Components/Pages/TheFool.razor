@@ -7,6 +7,7 @@
 
 @inject PlayerControlService playerControl
 @inject FoolGameService FoolGameService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Дурак</PageTitle>
 
@@ -68,11 +69,15 @@ else
             @if (FoolGameService.gameState == GameState.Finished)
             {
                 <div class="win-lose">
-                    @if (FoolGameService.Player.inHand.Count == 0)
+                    @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
+                    {
+                        <label class="draw">Ничья!</label>
+                    }
+                    else if (FoolGameService.Player.inHand.Count == 0)
                     {
                         <label class="win">Поздравляем! Бот остался в дураках :)</label>
                     }
-                    else
+                    else if (FoolGameService.Opponent.inHand.Count == 0)
                     {
                         <label class="lose">Увы, вы дурак :(</label>
                     }
@@ -93,8 +98,8 @@ else
 
 
         <div class="controls">
-            <button @onclick="StartTurn">Начать ход</button>
-            <button @onclick="Play" disabled="@(!isAttack)">@PlayButton</button>
+            <button @onclick="StartTurn">@StartButton</button>
+            <button @onclick="Play">@PlayButton</button>
             <button @onclick="DrawCards">Взять карты</button>
             <button @onclick="EndTurn">Завершить ход</button>
         </div>
@@ -103,11 +108,9 @@ else
     <TheFoolRules />
 }
 
-
-
 @code {
-    private bool isAttack = true;
     private string PlayButton = string.Empty;
+    private string StartButton = "Новая игра";
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
@@ -115,7 +118,17 @@ else
 
         PlayButton = RefreshPlayButtonName();
     }
-
+    private void RefreshStartButtonText()
+    {
+        if (FoolGameService.gameState == GameState.Finished || FoolGameService.gameState == GameState.JustStarted)
+        {
+            StartButton = "Новая игра";
+        }
+        else if (FoolGameService.gameState == GameState.InProgress)
+        {
+            StartButton = "Начать ход";
+        }
+    }
     private void SelectPlayerCard(Card card)
     {
         if (card.IsPlayable && FoolGameService.Player.IsAttack)
@@ -149,7 +162,6 @@ else
             {
                 continue;
             }
-
         }
     }
 
@@ -161,10 +173,14 @@ else
             FoolGameService.Player.inHand = FoolGameService.Player.inHand.Distinct().ToList();
             EndTurn();
         }
-
     }
     private void EndTurn()
     {
+        if (FoolGameService.gameState == GameState.Finished)
+        {
+            RefreshStartButtonText();
+        }
+
         if (FoolGameService.FirstTurn)
         {
             FoolGameService.FirstTurn = false;
@@ -179,12 +195,14 @@ else
         {
             FoolGameService.EndCurrentTurn();
 
-            isAttack = true;
             PlayButton = RefreshPlayButtonName();
 
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
-                StartTurn();
+                if (FoolGameService.gameState != GameState.Finished)
+                {
+                    StartTurn();
+                }
             }
         }
     }
@@ -207,7 +225,18 @@ else
 
     private void StartTurn()
     {
+        if (FoolGameService.gameState == GameState.Finished)
+        {
+            var count = FoolGameService.CountOfGames;
+            FoolGameService.LoadGame();
+            FoolGameService.CountOfGames += count;
+        }
+
         PlayButton = RefreshPlayButtonName();
+
+        FoolGameService.gameState = GameState.InProgress;
+
+        RefreshStartButtonText();
 
         if (!FoolGameService.Player.IsAttack)
         {
@@ -230,7 +259,7 @@ else
         FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
         PlayButton = RefreshPlayButtonName();
 
-        if (FoolGameService.Player.IsAttack)
+        if (FoolGameService.Player.IsAttack && FoolGameService.Opponent.inHand.Count != 0)
         {
             if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
             {

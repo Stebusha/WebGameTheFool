@@ -11,7 +11,7 @@ public class Card
     {
         Suit = _suit;
         Rank = _rank;
-        ImageUrl = $"Images/Cards/{GetRankName(_rank)}{GetSuitName(_suit)}.png";
+        ImageUrl = $"/Images/Cards/{GetRankName(_rank)}{GetSuitName(_suit)}.png";
         IsPlayable = true;
     }
 
