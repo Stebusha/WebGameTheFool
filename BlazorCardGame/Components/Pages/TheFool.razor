@@ -86,9 +86,9 @@ else
         </div>
 
         <div class="deck">
-            <GameDeck deck="FoolGameService.Deck" />
+             <GameDeck deck="FoolGameService.Deck" />
         </div>
-
+        
         @if (!FoolGameService.FirstTurn)
         {
             <div class="discard-pile">
@@ -100,8 +100,8 @@ else
 
         <div class="controls">
             <button @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
-            <button @onclick="Play">@PlayButton</button>
-            <button @onclick="DrawCards">Взять карты</button>
+            <button @onclick="Play" disabled="@(!CanPlay)">@PlayButton</button>
+            <button @onclick="DrawCards" disabled="@(!CanDraw)">Взять карты</button>
             <button @onclick="EndTurn">Завершить ход</button>
         </div>
     </div>
@@ -110,8 +110,9 @@ else
 }
 
 @code {
-
     private bool IsLoaded = false;
+    private bool CanPlay = true;
+    private bool CanDraw = false;
     private string PlayButton = string.Empty;
     private string StartButton = "Новая игра";
     protected override async Task OnInitializedAsync()
@@ -120,7 +121,8 @@ else
         FoolGameService.LoadGame();
         RefreshPlayButtonName();
 
-        if(FoolGameService.Player.IsAttack){
+        if (FoolGameService.Player.IsAttack)
+        {
             IsLoaded = true;
         }
     }
@@ -187,6 +189,18 @@ else
         }
 
         RefreshStartButtonText();
+        CanPlay = true;
+
+        if (FoolGameService.Player.IsAttack)
+        {
+            CanDraw = false;
+        }
+        else
+        {
+            CanDraw = true;
+        }
+
+
         StateHasChanged();
     }
 
@@ -227,6 +241,7 @@ else
             if (attackingCard.ImageUrl != "")
             {
                 FoolGameService.AttackingCards.Add(attackingCard);
+                CanDraw = true;
             }
 
             FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
@@ -241,13 +256,6 @@ else
         FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
 
         RefreshPlayButtonName();
-
-        @* await FoolGameService.Turn();
-
-        if(FoolGameService.TurnFinished)
-        {
-            await EndTurn();
-        } *@
 
         if (FoolGameService.Player.IsAttack && FoolGameService.Opponent.inHand.Count != 0)
         {
@@ -272,12 +280,26 @@ else
 
                 if (defendingCard.ImageUrl != "")
                 {
-
                     FoolGameService.DefendingCards.Add(defendingCard);
                 }
             }
 
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
+
+            var nonPlayable = 0;
+
+            foreach (var card in FoolGameService.Player.inHand)
+            {
+                if (!card.IsPlayable)
+                {
+                    nonPlayable++;
+                }
+            }
+
+            if (nonPlayable == FoolGameService.Player.inHand.Count)
+            {
+                CanPlay = false;
+            }
 
             if (FoolGameService.Opponent.Taken)
             {
@@ -294,6 +316,8 @@ else
 
                 if (attackingCard.ImageUrl != "")
                 {
+                    CanDraw = true;
+
                     Card defendingCard = FoolGameService.Player.Defend(attackingCard, FoolGameService.Table);
 
                     if (defendingCard.ImageUrl != "")
@@ -323,6 +347,12 @@ else
                 if (attackingCard.ImageUrl != "")
                 {
                     FoolGameService.AttackingCards.Add(attackingCard);
+                    CanDraw = true;
+                }
+                else
+                {
+                    CanPlay = false;
+                    CanDraw = false;
                 }
 
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard);
