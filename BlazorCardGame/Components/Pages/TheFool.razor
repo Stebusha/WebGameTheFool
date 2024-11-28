@@ -116,7 +116,7 @@ else
         await Task.Delay(500);
         FoolGameService.LoadGame();
 
-        PlayButton = RefreshPlayButtonName();
+        RefreshPlayButtonName();
     }
     private void RefreshStartButtonText()
     {
@@ -165,20 +165,22 @@ else
         }
     }
 
-    private void DrawCards()
+    private async Task DrawCards()
     {
         if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
         {
             playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
             FoolGameService.Player.inHand = FoolGameService.Player.inHand.Distinct().ToList();
-            EndTurn();
+
+            await EndTurn();
         }
     }
-    private void EndTurn()
+    private async Task EndTurn()
     {
         if (FoolGameService.gameState == GameState.Finished)
         {
             RefreshStartButtonText();
+            StateHasChanged();
         }
 
         if (FoolGameService.FirstTurn)
@@ -195,32 +197,38 @@ else
         {
             FoolGameService.EndCurrentTurn();
 
-            PlayButton = RefreshPlayButtonName();
+            RefreshPlayButtonName();
 
+            if (FoolGameService.Player.IsAttack)
+            {
+                FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
+            }
+            
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
                 if (FoolGameService.gameState != GameState.Finished)
                 {
+                    await Task.Delay(500);
+
                     StartTurn();
                 }
             }
         }
     }
 
-    private string RefreshPlayButtonName()
+    private void RefreshPlayButtonName()
     {
         if (FoolGameService.Player.IsAttack)
         {
             if (FoolGameService.AttackingCards.Count == 0)
-                return "Походить";
+                PlayButton = "Походить";
             else
-                return "Подкинуть";
+                PlayButton = "Подкинуть";
         }
         else
         {
-            return "Отбиться";
+            PlayButton = "Отбиться";
         }
-
     }
 
     private void StartTurn()
@@ -232,7 +240,7 @@ else
             FoolGameService.CountOfGames += count;
         }
 
-        PlayButton = RefreshPlayButtonName();
+        RefreshPlayButtonName();
 
         FoolGameService.gameState = GameState.InProgress;
 
@@ -254,31 +262,35 @@ else
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
         }
     }
-    private void Play()
+    private async Task Play()
     {
         FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-        PlayButton = RefreshPlayButtonName();
+        RefreshPlayButtonName();
 
         if (FoolGameService.Player.IsAttack && FoolGameService.Opponent.inHand.Count != 0)
         {
             if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
             {
                 FoolGameService.FirstTurn = false;
-                EndTurn();
+                await EndTurn();
             }
 
             Card attackingCard = FoolGameService.Player.Attack(FoolGameService.Table);
 
             if (attackingCard.ImageUrl != "")
             {
-                PlayButton = RefreshPlayButtonName();
-
                 FoolGameService.AttackingCards.Add(attackingCard);
+
+                RefreshPlayButtonName();
+                StateHasChanged();
+
+                await Task.Delay(500);
 
                 Card defendingCard = FoolGameService.Opponent.Defend(attackingCard, FoolGameService.Table);
 
                 if (defendingCard.ImageUrl != "")
                 {
+
                     FoolGameService.DefendingCards.Add(defendingCard);
                 }
             }
@@ -287,7 +299,7 @@ else
 
             if (FoolGameService.Opponent.Taken)
             {
-                EndTurn();
+                await EndTurn();
                 FoolGameService.Opponent.IsAttack = false;
                 FoolGameService.Player.IsAttack = true;
             }
@@ -314,7 +326,7 @@ else
             if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
             {
                 FoolGameService.FirstTurn = false;
-                EndTurn();
+                await EndTurn();
             }
 
             if (FoolGameService.Table.Length() % 2 == 0
@@ -323,6 +335,8 @@ else
             && !FoolGameService.Player.Taken)
             {
                 Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
+
+                await Task.Delay(500);
 
                 if (attackingCard.ImageUrl != "")
                 {
