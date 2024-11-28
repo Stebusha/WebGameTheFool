@@ -131,3 +131,10 @@ button {
 button:hover {
     background-color: rgb(92, 180, 252);
 }
+
+button:disabled{
+    background-color: rgba(93, 109, 247, 0.596);
+    border: rgb(93, 109, 247, 0.596) solid;
+    cursor: default;
+    color: black;
+}

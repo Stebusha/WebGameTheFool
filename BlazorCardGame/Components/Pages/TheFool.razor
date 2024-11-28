@@ -99,7 +99,7 @@ else
 
 
         <div class="controls">
-            <button @onclick="StartTurn">@StartButton</button>
+            <button @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
             <button @onclick="Play">@PlayButton</button>
             <button @onclick="DrawCards">Взять карты</button>
             <button @onclick="EndTurn">Завершить ход</button>
@@ -110,24 +110,31 @@ else
 }
 
 @code {
+
+    private bool IsLoaded = false;
     private string PlayButton = string.Empty;
     private string StartButton = "Новая игра";
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
         FoolGameService.LoadGame();
-
         RefreshPlayButtonName();
+
+        if(FoolGameService.Player.IsAttack){
+            IsLoaded = true;
+        }
     }
     private void RefreshStartButtonText()
     {
         if (FoolGameService.gameState == GameState.Finished || FoolGameService.gameState == GameState.JustStarted)
         {
             StartButton = "Новая игра";
+
+            IsLoaded = false;
         }
         else if (FoolGameService.gameState == GameState.InProgress)
         {
-            StartButton = "Начать ход";
+            IsLoaded = true;
         }
     }
 
@@ -232,7 +239,15 @@ else
     private async Task Play()
     {
         FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
+
         RefreshPlayButtonName();
+
+        @* await FoolGameService.Turn();
+
+        if(FoolGameService.TurnFinished)
+        {
+            await EndTurn();
+        } *@
 
         if (FoolGameService.Player.IsAttack && FoolGameService.Opponent.inHand.Count != 0)
         {

@@ -559,3 +559,10 @@ button[b-0o9jxtxef0] {
 button:hover[b-0o9jxtxef0] {
     background-color: rgb(92, 180, 252);
 }
+
+button:disabled[b-0o9jxtxef0]{
+    background-color: rgba(93, 109, 247, 0.596);
+    border: rgb(93, 109, 247, 0.596) solid;
+    cursor: default;
+    color: black;
+}
