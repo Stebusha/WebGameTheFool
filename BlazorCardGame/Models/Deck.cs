@@ -1,7 +1,6 @@
 namespace BlazorCardGame.Models;
 public class Deck
 {
-    private const int MAX_CARD_AMOUNT = 36;
     private List<Card> _cards;
     public static SuitType s_trumpSuit = SuitType.Clubs;
     public int CardsAmount { get; private set; }
@@ -14,7 +13,7 @@ public class Deck
 
     public Deck()
     {
-        CardsAmount = MAX_CARD_AMOUNT;
+        CardsAmount = Constants.MAX_CARD_AMOUNT;
         _cards = new List<Card>(CardsAmount);
 
         foreach (var suit in (SuitType[])Enum.GetValues(typeof(SuitType)))

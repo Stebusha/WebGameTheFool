@@ -92,7 +92,8 @@ else
         @if (!FoolGameService.FirstTurn)
         {
             <div class="discard-pile">
-                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player" />
+                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
+                    discardCardCount="FoolGameService.discardCardCount" />
             </div>
         }
 
@@ -129,41 +130,6 @@ else
             StartButton = "Начать ход";
         }
     }
-    private void SelectPlayerCard(Card card)
-    {
-        if (card.IsPlayable && FoolGameService.Player.IsAttack)
-        {
-            if (FoolGameService.Player.CanBeSelected(FoolGameService.Table))
-            {
-                card.IsSelected = !card.IsSelected;
-                FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-            }
-        }
-
-        if (!FoolGameService.Player.IsAttack)
-        {
-            if (FoolGameService.Player.CanBeSelected(FoolGameService.Table))
-            {
-                SelectCardToBeat(card);
-                FoolGameService.Player.RefreshPlayableForBeat(card);
-            }
-        }
-    }
-
-    private void SelectCardToBeat(Card card)
-    {
-        card.IsSelected = !card.IsSelected;
-
-        FoolGameService.Player.RefreshPlayableForBeat(card);
-
-        foreach (var cardToBeat in FoolGameService.DefendingCards)
-        {
-            if (cardToBeat == card)
-            {
-                continue;
-            }
-        }
-    }
 
     private async Task DrawCards()
     {
@@ -177,12 +143,6 @@ else
     }
     private async Task EndTurn()
     {
-        if (FoolGameService.gameState == GameState.Finished)
-        {
-            RefreshStartButtonText();
-            StateHasChanged();
-        }
-
         if (FoolGameService.FirstTurn)
         {
             FoolGameService.FirstTurn = false;
@@ -195,6 +155,11 @@ else
 
         if (FoolGameService.Table.Length() != 0 || FoolGameService.Opponent.Taken)
         {
+            if (!FoolGameService.Player.Taken && !FoolGameService.Opponent.Taken)
+            {
+                FoolGameService.discardCardCount += FoolGameService.Table.Length();
+            }
+
             FoolGameService.EndCurrentTurn();
 
             RefreshPlayButtonName();
@@ -203,17 +168,19 @@ else
             {
                 FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
             }
-            
+
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
                 if (FoolGameService.gameState != GameState.Finished)
                 {
                     await Task.Delay(500);
-
                     StartTurn();
                 }
             }
         }
+
+        RefreshStartButtonText();
+        StateHasChanged();
     }
 
     private void RefreshPlayButtonName()

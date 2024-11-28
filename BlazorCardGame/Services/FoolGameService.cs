@@ -17,6 +17,8 @@ public class FoolGameService
     public int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; set; } = false;
 
+    public int discardCardCount { get; set; } = 0;
+
     public void RefillHands()
     {
         if (Deck.CardsAmount <= 6 && Deck.CardsAmount != 0)
@@ -137,6 +139,8 @@ public class FoolGameService
     }
     public void LoadGame()
     {
+        discardCardCount = 0;
+
         Deck = new Deck();
         Deck.Shuffle();
         Deck.Trump();
