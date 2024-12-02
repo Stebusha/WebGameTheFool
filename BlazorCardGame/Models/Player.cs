@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace BlazorCardGame.Models;
 public class Player
 {
@@ -40,8 +42,9 @@ public class Player
         {
             foreach (var card in inHand)
             {
-                if (card.IsSelected)
+                if (card == selectedCard.First())
                 {
+                    card.IsPlayable = true;
                     continue;
                 }
 
@@ -54,47 +57,52 @@ public class Player
         if (table.Length() == 0)
         {
             RefreshPlayable();
-            return;
         }
-
-        List<RankType> ranks = new List<RankType>();
-
-        for (int i = 0; i < table.Length(); i++)
+        else
         {
-            ranks.Add(table.GetCard(i).Rank);
-        }
+            List<RankType> ranks = new List<RankType>();
 
-        ranks = ranks.Distinct().ToList();
-
-        if (ranks.Count != 0)
-        {
-            foreach (var card in inHand)
+            for (int i = 0; i < table.Length(); i++)
             {
-                card.IsPlayable = false;
+                ranks.Add(table.GetCard(i).Rank);
             }
 
-            foreach (var card in inHand)
+            ranks = ranks.Distinct().ToList();
+
+            if (ranks.Count != 0)
             {
-                foreach (var rank in ranks)
+                foreach (var card in inHand)
                 {
-                    if (card.Rank == rank)
+                    card.IsPlayable = false;
+                }
+
+                foreach (var card in inHand)
+                {
+                    foreach (var rank in ranks)
                     {
-                        card.IsPlayable = true;
+                        if (card.Rank == rank)
+                        {
+                            card.IsPlayable = true;
+                        }
                     }
                 }
             }
         }
-
-
     }
-    public void RefreshPlayableForBeat(Card cardToBeat)
+    public void RefreshPlayableForBeat(Card cardToBeat, Table table)
     {
-
         foreach (var card in inHand)
         {
-            if (card > cardToBeat)
+            if (table.Length() % 2 != 0)
             {
-                card.IsPlayable = true;
+                if (card > cardToBeat)
+                {
+                    card.IsPlayable = true;
+                }
+                else
+                {
+                    card.IsPlayable = false;
+                }
             }
             else
             {
@@ -374,7 +382,7 @@ public class Player
             }
         }
 
-        RefreshPlayableForBeat(attackingCard);
+        RefreshPlayableForBeat(attackingCard, gameTable);
 
         return defenseCards;
     }

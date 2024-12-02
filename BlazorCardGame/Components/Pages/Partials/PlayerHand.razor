@@ -34,7 +34,28 @@
                     if (player.CanBeSelected(table))
                     {
                         card.IsSelected = !card.IsSelected;
-                        player.RefreshPlayable();
+
+                        if (player.IsAttack)
+                        {
+                            player.RefreshPlayableForAttack(table);
+
+                            if (card.IsSelected)
+                            {
+                                player.RefreshPlayable();
+                            }
+                        }
+                        else
+                        {
+                            if (table.Length() % 2 == 1)
+                            {
+                                player.RefreshPlayableForBeat(table.GetCard(table.Length() - 1), table);
+                            }
+
+                            if (card.IsSelected)
+                            {
+                                player.RefreshPlayable();
+                            }
+                        }
                     }
                 }
             }

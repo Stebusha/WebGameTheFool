@@ -2,8 +2,7 @@ h1,
 h2,
 h4,
 label,
-p,
-em {
+p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
@@ -132,7 +131,7 @@ button:hover {
     background-color: rgb(92, 180, 252);
 }
 
-button:disabled{
+button:disabled {
     background-color: rgba(93, 109, 247, 0.596);
     border: rgb(93, 109, 247, 0.596) solid;
     cursor: default;

@@ -132,7 +132,7 @@ public class FoolGameService
                     }
                 }
 
-                Player.RefreshPlayableForBeat(attackingCard);
+                Player.RefreshPlayableForBeat(attackingCard, Table);
             }
 
             if (FirstTurn && Table.Length() == 10)
@@ -153,7 +153,7 @@ public class FoolGameService
                     AttackingCards.Add(attackingCard);
                 }
 
-                Player.RefreshPlayableForBeat(attackingCard);
+                Player.RefreshPlayableForBeat(attackingCard, Table);
             }
 
             if (Player.Taken)

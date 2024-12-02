@@ -430,8 +430,7 @@ h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
 h4[b-0o9jxtxef0],
 label[b-0o9jxtxef0],
-p[b-0o9jxtxef0],
-em[b-0o9jxtxef0] {
+p[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
@@ -560,7 +559,7 @@ button:hover[b-0o9jxtxef0] {
     background-color: rgb(92, 180, 252);
 }
 
-button:disabled[b-0o9jxtxef0]{
+button:disabled[b-0o9jxtxef0] {
     background-color: rgba(93, 109, 247, 0.596);
     border: rgb(93, 109, 247, 0.596) solid;
     cursor: default;
