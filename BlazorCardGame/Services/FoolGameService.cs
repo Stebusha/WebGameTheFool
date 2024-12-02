@@ -272,15 +272,18 @@ public class FoolGameService
         if (_fools.ContainsKey(Player.Name))
             _fools[Player.Name] = false;
 
-        if (gameState != GameState.Loading)
+        if (gameState != GameState.JustStarted)
         {
             gameState = GameState.JustStarted;
+            FirstTurn = true;
+            CountOfGames++;
         }
         else
         {
             FirstTurn = true;
             CountOfGames++;
         }
+
     }
 
     //set start turn queue
@@ -344,7 +347,15 @@ public class FoolGameService
         {
             for (int i = 1; i < firstTrumpCards.Count; i++)
             {
-                if (firstTrumpCards[i].Rank < firstTrumpCards[i - 1].Rank)
+                if (firstTrumpCards[i].ImageUrl == "" && firstTrumpCards[i - 1].ImageUrl != "")
+                {
+                    number = 0;
+                }
+                else if (firstTrumpCards[i - 1].ImageUrl == "" && firstTrumpCards[i].ImageUrl != "")
+                {
+                    number++;
+                }
+                else if (firstTrumpCards[i].Rank < firstTrumpCards[i - 1].Rank)
                 {
                     number++;
                 }

@@ -99,10 +99,10 @@ else
 
 
         <div class="controls">
-            <button @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
-            <button @onclick="Play" disabled="@(!CanPlay)">@PlayButton</button>
-            <button @onclick="DrawCards" disabled="@(!CanDraw)">Взять карты</button>
-            <button @onclick="EndTurn" disabled="@(!CanEndTurn)">Завершить ход</button>
+            <button class="start-button" @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
+            <button class="play-button" @onclick="Play" disabled="@(!CanPlay)">@PlayButton</button>
+            <button class="draw-button" @onclick="DrawCards" disabled="@(!CanDraw)">Взять карты</button>
+            <button class="end-button" @onclick="EndTurn" disabled="@(!CanEndTurn)">Завершить ход</button>
         </div>
     </div>
 
@@ -118,26 +118,34 @@ else
     private string StartButton = "Новая игра";
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
-        FoolGameService.LoadGame();
-        RefreshPlayButtonName();
-
-        if (FoolGameService.Player.IsAttack)
+        if (FoolGameService.gameState == GameState.Loading)
         {
-            IsLoaded = true;
+            await Task.Delay(500);
+            FoolGameService.LoadGame();
+            RefreshPlayButtonName();
+
+            if (FoolGameService.Player.IsAttack)
+            {
+                IsLoaded = true;
+            }
+            else
+            {
+                CanPlay = false;
+            }
         }
+
     }
     private void RefreshStartButton()
     {
         if (FoolGameService.gameState == GameState.Finished || FoolGameService.gameState == GameState.JustStarted)
         {
-            StartButton = "Новая игра";
-
             IsLoaded = false;
+            CanPlay = false;
         }
         else if (FoolGameService.gameState == GameState.InProgress)
         {
             IsLoaded = true;
+            CanPlay = true;
         }
     }
 
@@ -203,8 +211,6 @@ else
         {
             CanDraw = true;
         }
-
-        StateHasChanged();
     }
 
     private void RefreshPlayButtonName()
@@ -233,6 +239,7 @@ else
         }
 
         //reset start game parameters
+
         RefreshPlayButtonName();
 
         FoolGameService.gameState = GameState.InProgress;
@@ -256,6 +263,25 @@ else
         else
         {
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
+        }
+    }
+
+    private void CheckNonPlayable()
+    {
+        //checking state of cards for setting enable property for "Play" button
+        var nonPlayable = 0;
+
+        foreach (var card in FoolGameService.Player.inHand)
+        {
+            if (!card.IsPlayable)
+            {
+                nonPlayable++;
+            }
+        }
+
+        if (nonPlayable == FoolGameService.Player.inHand.Count)
+        {
+            CanPlay = false;
         }
     }
 
@@ -287,7 +313,6 @@ else
                 FoolGameService.AttackingCards.Add(attackingCard);
 
                 RefreshPlayButtonName();
-                StateHasChanged();
 
                 //bot's defense
                 await Task.Delay(500);
@@ -312,21 +337,7 @@ else
 
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
 
-            //checking state of cards for setting enable property for "Play" button
-            var nonPlayable = 0;
-
-            foreach (var card in FoolGameService.Player.inHand)
-            {
-                if (!card.IsPlayable)
-                {
-                    nonPlayable++;
-                }
-            }
-
-            if (nonPlayable == FoolGameService.Player.inHand.Count)
-            {
-                CanPlay = false;
-            }
+            CheckNonPlayable();
 
             //end turn if opponent taken
             if (FoolGameService.Opponent.Taken)
@@ -368,6 +379,8 @@ else
                 }
 
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
+
+                CheckNonPlayable();
             }
 
             //checking count of discards for first turn can't be more than ten
@@ -403,6 +416,8 @@ else
                 }
 
                 FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
+
+                CheckNonPlayable();
             }
 
             //player taken

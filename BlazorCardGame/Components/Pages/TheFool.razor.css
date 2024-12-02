@@ -131,9 +131,30 @@ button:hover {
     background-color: rgb(92, 180, 252);
 }
 
-button:disabled {
-    background-color: rgba(93, 109, 247, 0.596);
-    border: rgb(93, 109, 247, 0.596) solid;
+.start-button:disabled {
+    background-color: rgba(132, 144, 253, 0.596);
+    border: rgb(132, 144, 253, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.play-button:disabled {
+    background-color: rgba(29, 207, 139, 0.596);
+    border: rgb(29, 207, 139, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.draw-button:disabled {
+    background-color: rgba(253, 176, 87, 0.76);
+    border: rgb(253, 176, 87, 0.76) solid;
+    cursor: default;
+    color: black;
+}
+
+.end-button:disabled {
+    background-color: rgba(247, 93, 93, 0.596);
+    border: rgb(247, 93, 93, 0.596) solid;
     cursor: default;
     color: black;
 }
