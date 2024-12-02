@@ -277,10 +277,11 @@ select[b-1mgci28981] {
     font-size: 18px;
 }
 
-.score-table[b-1mgci28981]{
+.score-table[b-1mgci28981] {
     border-radius: 10px;
-    border-spacing: 0;
+    border-spacing: 5px;
     text-align: center;
+    border-collapse: collapse;
 }
 
 th[b-1mgci28981],
@@ -288,7 +289,8 @@ td[b-1mgci28981] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-style: solid;
     border-width: 1px 1px 1px 1px;
-    border-color: darkorchid;
+    border-color: rgb(108, 0, 161);
+    padding: 5px 25px;
 }
 
 th[b-1mgci28981] {
@@ -296,8 +298,17 @@ th[b-1mgci28981] {
     background-color: rgb(210, 165, 221);
 }
 
+th:first-child[b-1mgci28981],
+td:first-child[b-1mgci28981] {
+    text-align: left;
+}
+
 td[b-1mgci28981] {
     font-size: 18px;
+}
+
+tr:nth-child(even)[b-1mgci28981]{
+    background-color: rgb(246, 231, 252);
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor.rz.scp.css */
 .card-stack[b-c3ukdjjxj4] {
@@ -419,8 +430,7 @@ h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
 h4[b-0o9jxtxef0],
 label[b-0o9jxtxef0],
-p[b-0o9jxtxef0],
-em[b-0o9jxtxef0] {
+p[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
@@ -547,4 +557,32 @@ button[b-0o9jxtxef0] {
 
 button:hover[b-0o9jxtxef0] {
     background-color: rgb(92, 180, 252);
+}
+
+.start-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(132, 144, 253, 0.596);
+    border: rgb(132, 144, 253, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.play-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(29, 207, 139, 0.596);
+    border: rgb(29, 207, 139, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.draw-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(253, 176, 87, 0.76);
+    border: rgb(253, 176, 87, 0.76) solid;
+    cursor: default;
+    color: black;
+}
+
+.end-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(247, 93, 93, 0.596);
+    border: rgb(247, 93, 93, 0.596) solid;
+    cursor: default;
+    color: black;
 }

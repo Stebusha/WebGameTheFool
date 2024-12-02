@@ -2,8 +2,7 @@ h1[b-0o9jxtxef0],
 h2[b-0o9jxtxef0],
 h4[b-0o9jxtxef0],
 label[b-0o9jxtxef0],
-p[b-0o9jxtxef0],
-em[b-0o9jxtxef0] {
+p[b-0o9jxtxef0] {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     color: black;
@@ -130,4 +129,32 @@ button[b-0o9jxtxef0] {
 
 button:hover[b-0o9jxtxef0] {
     background-color: rgb(92, 180, 252);
+}
+
+.start-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(132, 144, 253, 0.596);
+    border: rgb(132, 144, 253, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.play-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(29, 207, 139, 0.596);
+    border: rgb(29, 207, 139, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.draw-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(253, 176, 87, 0.76);
+    border: rgb(253, 176, 87, 0.76) solid;
+    cursor: default;
+    color: black;
+}
+
+.end-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(247, 93, 93, 0.596);
+    border: rgb(247, 93, 93, 0.596) solid;
+    cursor: default;
+    color: black;
 }
