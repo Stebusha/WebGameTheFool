@@ -3,7 +3,7 @@
 @attribute [StreamRendering]
 @attribute [Authorize]
 
-@rendermode InteractiveServer
+@rendermode @(new InteractiveServerRenderMode(false))
 
 @inject PlayerControlService playerControl
 @inject FoolGameService FoolGameService

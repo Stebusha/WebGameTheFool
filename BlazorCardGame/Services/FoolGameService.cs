@@ -14,7 +14,7 @@ public class FoolGameService
     public List<Card> DefendingCards { get; set; } = new List<Card>();
     public bool Repeat { get; set; } = false;
     public GameState gameState { get; set; } = GameState.Loading;
-    public int CountOfGames { get; set; } = 0;
+    public static int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; set; } = false;
     public bool TurnFinished { get; set; } = false;
     public int discardCardCount { get; set; } = 0;
@@ -278,12 +278,6 @@ public class FoolGameService
             FirstTurn = true;
             CountOfGames++;
         }
-        else
-        {
-            FirstTurn = true;
-            CountOfGames++;
-        }
-
     }
 
     //set start turn queue
