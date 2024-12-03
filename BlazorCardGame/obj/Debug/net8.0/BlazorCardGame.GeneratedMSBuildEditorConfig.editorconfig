@@ -17,95 +17,95 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorCardGame
 build_property.RootNamespace = BlazorCardGame
-build_property.ProjectDir = c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\
+build_property.ProjectDir = C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame
+build_property.MSBuildProjectDirectory = C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/App.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Error.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Home.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Routes.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/_Imports.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Layout/MainLayout.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-uxxx47e69p
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Layout/NavMenu.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-jo7cnduvuo
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXEFjY2Vzc0RlbmllZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-tcg5xgf3w4
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Login.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-jsxfsfo6wj
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Logout.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Logout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXExvZ291dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-jw3squrjv1
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Register.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXFJlZ2lzdGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-vvfvrexj0l
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/LeaderBoard.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/LeaderBoard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWFkZXJCb2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-1mgci28981
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xEaXNjYXJkUGlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-c3ukdjjxj4
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameCard.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameCard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xHYW1lQ2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0s7ewnrvps
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameDeck.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameDeck.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xHYW1lRGVjay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-4uwr5lm0ll
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameSettings.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/GameSettings.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xHYW1lU2V0dGluZ3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-8b77zkgj9q
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/Opponent.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/Opponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xPcHBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0nrmjuysbw
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/OpponentCard.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/OpponentCard.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xPcHBvbmVudENhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rfxkdhwbqh
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/PlayerHand.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xQbGF5ZXJIYW5kLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-g4mslbypke
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/TheFoolRules.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Partials/TheFoolRules.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXJ0aWFsc1xUaGVGb29sUnVsZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-eh1szv1vjs
 
-[c:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/TheFool.razor]
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/TheFool.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaGVGb29sLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-0o9jxtxef0

@@ -114,29 +114,6 @@ else
     private string PlayButton = "Походить";
     private string StartButton = "Новая игра";
 
-    @* protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            if (FoolGameService.gameState == GameState.Loading)
-            {
-                await Task.Delay(500);
-
-                FoolGameService.LoadGame();
-
-                RefreshPlayButtonName();
-
-                if (FoolGameService.Player.IsAttack)
-                {
-                    IsLoaded = true;
-                }
-                else
-                {
-                    CanPlay = false;
-                }
-            }
-        }
-    } *@
     protected override async Task OnInitializedAsync()
     {
         if (FoolGameService.gameState == GameState.Loading)
@@ -291,7 +268,6 @@ else
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
         }
     }
-
     private void CheckNonPlayable()
     {
         //checking state of cards for setting enable property for "Play" button

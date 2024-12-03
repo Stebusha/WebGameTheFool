@@ -143,15 +143,41 @@ public class FoolGameService
     {
         discardCardCount = 0;
 
-        Deck = new Deck();
-        Deck.Shuffle();
-        Deck.Trump();
+        if (CountOfGames == 0)
+        {
+            Deck = new Deck();
+            Deck.Shuffle();
+            Deck.Trump();
 
-        Player = new Player();
-        Player.Name = "Admin";
+            Player = new Player();
+            Player.Name = "Admin";
 
-        Opponent = new AIPlayer();
-        Opponent.Name = "Бот 1";
+            _fools.Add(Player.Name, Player.IsFool);
+
+            Opponent = new AIPlayer();
+            Opponent.Name = "Бот 1";
+
+            _fools.Add(Opponent.Name, Opponent.IsFool);
+        }
+        else
+        {
+            Player.inHand.Clear();
+            Opponent.inHand.Clear();
+
+            if (_fools.ContainsKey(Player.Name))
+            {
+                _fools[Player.Name] = Player.IsFool;
+            }
+
+            if (_fools.ContainsKey(Opponent.Name))
+            {
+                _fools[Opponent.Name] = Opponent.IsFool;
+            }
+
+            Deck = new Deck();
+            Deck.Shuffle();
+            Deck.Trump();
+        }
 
         RefillHands();
 
@@ -175,13 +201,9 @@ public class FoolGameService
         {
             Console.WriteLine($"\nПервым ходит игрок {Opponent.Name}\n");
         }
-
         //reset fool properties
         Player.IsFool = false;
         Opponent.IsFool = false;
-
-        if (_fools.ContainsKey(Player.Name))
-            _fools[Player.Name] = false;
 
         if (gameState != GameState.JustStarted)
         {
