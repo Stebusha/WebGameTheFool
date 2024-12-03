@@ -24,7 +24,6 @@ builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
         options.SlidingExpiration = true;
     });
 
-builder.Services.AddScoped<PlayerControlService>();
 builder.Services.AddScoped<FoolGameService>();
 
 // Add services to the container.

@@ -214,7 +214,7 @@ public class AIPlayer
 
             if (gameTable.Length() % 2 != 0)
             {
-                TakeAllCards(gameTable);
+                TakeCards(gameTable);
                 gameTable.ClearTable();
                 Taken = true;
             }
@@ -225,7 +225,7 @@ public class AIPlayer
     }
 
     //taken all cards from the game table, set property Taken
-    public void TakeAllCards(Table gameTable)
+    public void TakeCards(Table gameTable)
     {
         Taken = true;
         List<Card> onTableCards = gameTable.TakeCardsFromTable();

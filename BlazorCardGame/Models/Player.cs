@@ -453,13 +453,15 @@ public class Player
     }
 
     //taken all cards from the game table, set property Taken
-    public void TakeAllCards(Table gameTable)
+    public void TakeCards(Table gameTable)
     {
         Taken = true;
 
         List<Card> onTableCards = gameTable.TakeCardsFromTable();
 
         inHand.AddRange(onTableCards);
+        inHand = inHand.Distinct().ToList();
+        
         Sort();
     }
 

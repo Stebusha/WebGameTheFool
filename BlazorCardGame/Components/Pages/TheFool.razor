@@ -5,7 +5,6 @@
 
 @rendermode @(new InteractiveServerRenderMode(false))
 
-@inject PlayerControlService playerControl
 @inject FoolGameService FoolGameService
 @inject NavigationManager NavigationManager
 
@@ -37,7 +36,6 @@ else
         <div class="player-cards">
             <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
         </div>
-
 
         <div class="center-table">
             @if (FoolGameService.AttackingCards.Count > 0)
@@ -96,7 +94,6 @@ else
                     discardCardCount="FoolGameService.discardCardCount" />
             </div>
         }
-
 
         <div class="controls">
             <button class="start-button" @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
@@ -178,33 +175,37 @@ else
     {
         if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
         {
-            playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
-            FoolGameService.Player.inHand = FoolGameService.Player.inHand.Distinct().ToList();
-
+            FoolGameService.Player.TakeCards(FoolGameService.Table);
             await EndTurn();
         }
     }
     private async Task EndTurn()
     {
+        //end first turn
         if (FoolGameService.FirstTurn)
         {
             FoolGameService.FirstTurn = false;
         }
 
+        //take cards if player taken
         if ((FoolGameService.Player.Taken || FoolGameService.Table.Length() % 2 == 1) && !FoolGameService.Opponent.Taken)
         {
-            playerControl.TakeCards(FoolGameService.Table, FoolGameService.Player);
+            FoolGameService.Player.TakeCards(FoolGameService.Table);
         }
 
+        //if table not empty or bot taken
         if (FoolGameService.Table.Length() != 0 || FoolGameService.Opponent.Taken)
         {
+            //refresh discard pile if nobody taken
             if (!FoolGameService.Player.Taken && !FoolGameService.Opponent.Taken)
             {
                 FoolGameService.discardCardCount += FoolGameService.Table.Length();
             }
 
+            //method to end current turn, refresh turn properties
             FoolGameService.EndCurrentTurn();
 
+            //refresh buttons and cards state
             RefreshPlayButtonName();
 
             CanEndTurn = false;
@@ -214,6 +215,7 @@ else
                 FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
             }
 
+            //if bot's turn - start turn if game not finished
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
                 if (FoolGameService.gameState != GameState.Finished)
@@ -224,6 +226,7 @@ else
             }
         }
 
+        //continue refresh buttons state
         RefreshStartButton();
 
         CanPlay = true;
@@ -359,7 +362,6 @@ else
                 }
             }
 
-
             FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
 
             CheckNonPlayable();
@@ -451,7 +453,6 @@ else
                 FoolGameService.Opponent.IsAttack = true;
                 FoolGameService.Player.IsAttack = false;
             }
-
         }
     }
 }
