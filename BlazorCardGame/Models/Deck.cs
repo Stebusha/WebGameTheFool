@@ -48,11 +48,64 @@ public class Deck
         _ => "Suit Not Found"
     };
 
+    private bool CheckRetake()
+    {
+        Dictionary<SuitType, int> pairsPlayer = new();
+        Dictionary<SuitType, int> pairsOpponent = new();
+
+        for (int i = 1; i < 7; i++)
+        {
+            if (!pairsPlayer.ContainsKey(_cards.ElementAt(i).Suit))
+            {
+                pairsPlayer.Add(_cards.ElementAt(i).Suit, 1);
+            }
+            else
+            {
+                pairsPlayer[_cards.ElementAt(i).Suit]++;
+            }
+        }
+
+        for (int i = 7; i < 13; i++)
+        {
+            if (!pairsOpponent.ContainsKey(_cards.ElementAt(i).Suit))
+            {
+                pairsOpponent.Add(_cards.ElementAt(i).Suit, 1);
+            }
+            else
+            {
+                pairsOpponent[_cards.ElementAt(i).Suit]++;
+            }
+        }
+
+        foreach (var pair in pairsOpponent)
+        {
+            if (pair.Value >= 5)
+            {
+                return true;
+            }
+        }
+
+        foreach (var pair in pairsPlayer)
+        {
+            if (pair.Value >= 5)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     //shuffle cards on the deck
     public void Shuffle()
     {
         Random _random = new Random();
         _cards.Sort((a, b) => _random.Next(-2, 2));
+
+        while (CheckRetake())
+        {
+            _cards.Sort((a, b) => _random.Next(-2, 2));
+        }
     }
 
     //return cards of the deck

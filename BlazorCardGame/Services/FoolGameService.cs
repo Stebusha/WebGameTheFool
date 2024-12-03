@@ -74,94 +74,6 @@ public class FoolGameService
             Opponent.RefillHand(Deck);
         }
     }
-
-    // public async Task Turn()
-    // {
-    //     TurnFinished = false;
-
-    //     Player.RefreshPlayableForAttack(Table);
-
-    //     if (Player.IsAttack && Opponent.inHand.Count != 0)
-    //     {
-    //         if (FirstTurn && Table.Length() == 10)
-    //         {
-    //             FirstTurn = false;
-    //             TurnFinished = true;
-    //         }
-
-    //         Card attackingCard = Player.Attack(Table);
-
-    //         if (attackingCard.ImageUrl != "")
-    //         {
-    //             AttackingCards.Add(attackingCard);
-
-    //             await Task.Delay(500);
-
-    //             Card defendingCard = Opponent.Defend(attackingCard, Table);
-
-    //             if (defendingCard.ImageUrl != "")
-    //             {
-    //                 DefendingCards.Add(defendingCard);
-    //             }
-    //         }
-
-    //         Player.RefreshPlayableForAttack(Table);
-
-    //         if (Opponent.Taken)
-    //         {
-    //             TurnFinished = true;
-    //             Opponent.IsAttack = false;
-    //             Player.IsAttack = true;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         if (Table.Length() == 0 || Table.Length() % 2 == 1)
-    //         {
-    //             Card attackingCard = AttackingCards.Last();
-
-    //             if (attackingCard.ImageUrl != "")
-    //             {
-    //                 Card defendingCard = Player.Defend(attackingCard, Table);
-
-    //                 if (defendingCard.ImageUrl != "")
-    //                 {
-    //                     DefendingCards.Add(defendingCard);
-    //                 }
-    //             }
-
-    //             Player.RefreshPlayableForBeat(attackingCard, Table);
-    //         }
-
-    //         if (FirstTurn && Table.Length() == 10)
-    //         {
-    //             FirstTurn = false;
-    //             TurnFinished = true;
-    //         }
-
-    //         if (Table.Length() % 2 == 0 && Table.Length() != 12
-    //             && Player.inHand.Count != 0 && !Player.Taken)
-    //         {
-    //             Card attackingCard = Opponent.Attack(Table);
-
-    //             await Task.Delay(500);
-
-    //             if (attackingCard.ImageUrl != "")
-    //             {
-    //                 AttackingCards.Add(attackingCard);
-    //             }
-
-    //             Player.RefreshPlayableForBeat(attackingCard, Table);
-    //         }
-
-    //         if (Player.Taken)
-    //         {
-    //             Opponent.IsAttack = true;
-    //             Player.IsAttack = false;
-    //         }
-    //     }
-    // }
-
     public void EndCurrentTurn()
     {
         WinLose();
@@ -243,11 +155,12 @@ public class FoolGameService
 
         RefillHands();
 
-        List<Card> firstTrumps = new List<Card>();
-
-        //remember first trump of each player
-        firstTrumps.Add(GetFirstTrump(Player.inHand));
-        firstTrumps.Add(GetFirstTrump(Opponent.inHand));
+        List<Card> firstTrumps =
+        [
+            //remember first trump of each player
+            GetFirstTrump(Player.inHand),
+            GetFirstTrump(Opponent.inHand),
+        ];
 
         //set first turns player
         SetStartTurnNumbers(firstTrumps);
