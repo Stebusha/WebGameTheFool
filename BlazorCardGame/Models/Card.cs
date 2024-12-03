@@ -18,6 +18,10 @@ public class Card
     //return rank string for card output based on RankType
     private string GetRankName(RankType rank) => rank switch
     {
+        // RankType.Two => "2",
+        // RankType.Three => "3",
+        // RankType.Four => "4",
+        // RankType.Five => "5",
         RankType.Six => "6",
         RankType.Seven => "7",
         RankType.Eight => "8",
@@ -27,6 +31,7 @@ public class Card
         RankType.Queen => "Q",
         RankType.King => "K",
         RankType.Ace => "A",
+        // RankType.Joker => "joker_",
         _ => "Rank Not Found"
     };
 
@@ -37,6 +42,8 @@ public class Card
         SuitType.Hearts => "H",
         SuitType.Spades => "S",
         SuitType.Diams => "D",
+        // SuitType.Black => "male",
+        // SuitType.Red => "lady",
         _ => "Suit Not Found"
     };
 

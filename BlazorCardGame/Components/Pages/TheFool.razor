@@ -181,7 +181,7 @@ else
     }
     private async Task EndTurn()
     {
-        //end first turn
+        //set flag first turn
         if (FoolGameService.FirstTurn)
         {
             FoolGameService.FirstTurn = false;
@@ -261,9 +261,7 @@ else
         //reload game
         if (FoolGameService.gameState == GameState.Finished)
         {
-            var count = FoolGameService.CountOfGames;
             FoolGameService.LoadGame();
-            FoolGameService.CountOfGames += count;
         }
 
         //reset start game parameters

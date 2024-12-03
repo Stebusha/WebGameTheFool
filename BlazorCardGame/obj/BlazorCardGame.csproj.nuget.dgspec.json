@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {}
+    "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {
+    "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
+        "projectUniqueName": "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
         "projectName": "BlazorCardGame",
-        "projectPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
+        "projectPath": "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
         "packagesPath": "C:\\Users\\МиненковаНА\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\obj\\",
+        "outputPath": "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\МиненковаНА\\AppData\\Roaming\\NuGet\\NuGet.Config",

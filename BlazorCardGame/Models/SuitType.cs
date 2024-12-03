@@ -5,4 +5,6 @@ public enum SuitType
     Hearts,
     Spades,
     Diams
+    // Black,
+    // Red
 }

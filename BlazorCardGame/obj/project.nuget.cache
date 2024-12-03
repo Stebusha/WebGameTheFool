@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tCUFByml85A=",
+  "dgSpecHash": "1OA0okio+XE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
+  "projectFilePath": "c:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\МиненковаНА\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\МиненковаНА\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",

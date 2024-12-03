@@ -1,6 +1,10 @@
 namespace BlazorCardGame.Models;
 public enum RankType
 {
+    // Two = 0,
+    // Three,
+    // Four,
+    // Five,
     Six = 0,
     Seven,
     Eight,
@@ -10,4 +14,5 @@ public enum RankType
     Queen,
     King,
     Ace
+    // Joker
 }
