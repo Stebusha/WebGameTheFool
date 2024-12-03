@@ -10,7 +10,7 @@
 
 <PageTitle>Дурак</PageTitle>
 
-@if (FoolGameService.CountOfGames == 0)
+@if (FoolGameService.gameState == GameState.Loading)
 {
     <p><em>Loading...</em></p>
 }
@@ -258,9 +258,12 @@ else
             {
                 FoolGameService.AttackingCards.Add(attackingCard);
                 CanDraw = true;
+
             }
 
             FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
+            
+            CheckNonPlayable();
         }
         //refresh playable cards if first turn is player's
         else

@@ -2,7 +2,6 @@ namespace BlazorCardGame.Models;
 
 public class AIPlayer
 {
-
     public List<Card> inHand { get; set; } = new List<Card>();
     public PlayerType playerType { get; set; } = PlayerType.AI;
     public string Name { get; set; } = string.Empty;
@@ -11,13 +10,28 @@ public class AIPlayer
     public bool IsFool { get; set; }
     public bool IsAttack { get; set; }
 
-    public AIPlayer() { }
+    public AIPlayer()
+    {
+        if (Name == "")
+        {
+            var generated = SetName();
+            Name = generated != "" ? generated : "Бот 1";
+        }
+
+    }
     public AIPlayer(string _name, bool _fool)
     {
         Name = _name;
         IsFool = _fool;
     }
 
+    private string SetName()
+    {
+        Random random = new();
+        int generated = random.Next(0, Enum.GetValues(typeof(AINames)).Length);
+
+        return Enum.GetName(typeof(AINames), generated) ?? "Бот";
+    }
     public void Sort()
     {
         //sort all cards in hand
@@ -218,7 +232,6 @@ public class AIPlayer
                 gameTable.ClearTable();
                 Taken = true;
             }
-
         }
 
         return defendingCard;

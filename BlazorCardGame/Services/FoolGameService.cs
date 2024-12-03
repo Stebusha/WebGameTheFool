@@ -12,11 +12,9 @@ public class FoolGameService
     public Table Table { get; set; } = new Table();
     public List<Card> AttackingCards { get; set; } = new List<Card>();
     public List<Card> DefendingCards { get; set; } = new List<Card>();
-    public bool Repeat { get; set; } = false;
     public GameState gameState { get; set; } = GameState.Loading;
     public static int CountOfGames { get; set; } = 0;
     public bool FirstTurn { get; set; } = false;
-    public bool TurnFinished { get; set; } = false;
     public int discardCardCount { get; set; } = 0;
 
     public void RefillHands()
@@ -86,8 +84,6 @@ public class FoolGameService
         Player.Taken = false;
         Opponent.Taken = false;
 
-        TurnFinished = false;
-
         foreach (var card in Player.inHand)
         {
             card.IsSelected = false;
@@ -97,7 +93,6 @@ public class FoolGameService
 
         RefillHands();
     }
-
     private void WinLose()
     {
         if (Deck.CardsAmount == 0)
@@ -155,7 +150,6 @@ public class FoolGameService
             _fools.Add(Player.Name, Player.IsFool);
 
             Opponent = new AIPlayer();
-            Opponent.Name = "Бот 1";
 
             _fools.Add(Opponent.Name, Opponent.IsFool);
         }
@@ -237,6 +231,7 @@ public class FoolGameService
             Opponent.IsAttack = !Opponent.IsAttack;
         }
     }
+
     //get first trump card in player's hand
     private Card GetFirstTrump(List<Card> cards)
     {
@@ -300,5 +295,4 @@ public class FoolGameService
             }
         }
     }
-
 }

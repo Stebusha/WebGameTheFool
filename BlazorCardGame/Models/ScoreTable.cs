@@ -44,17 +44,6 @@ public class ScoreTable
         }
     }
 
-    //display score table in the console
-    public void DisplayScores()
-    {
-        Console.WriteLine("\nТаблица рекордов:");
-
-        foreach (var pair in scores)
-        {
-            Console.WriteLine("{0}: \t{1}", pair.Key, pair.Value);
-        }
-    }
-
     //check exist name in score table
     public bool IsNameExistInScores(string? name)
     {

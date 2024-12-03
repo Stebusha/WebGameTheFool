@@ -28,7 +28,6 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCardGame.pdb
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCardGame.genruntimeconfig.cache
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\ref\BlazorCardGame.dll
-C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Blazored.LocalStorage.dll
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCardGame.csproj.AssemblyReference.cache
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCa.9EB862D5.Up2Date
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Newtonsoft.Json.dll
@@ -191,8 +190,6 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\ExtraCards\Standart\5S.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\heart.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\spade.png
-C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\js\CardSelect.js
-C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\js\MoveCardToCenter.js
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Scores\scores.txt
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Humanizer.dll
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
