@@ -4,24 +4,24 @@ namespace BlazorCardGame.Services;
 
 public class FoolGameService
 {
-    private Dictionary<string, bool> _fools = new Dictionary<string, bool>();
-    private ScoreTable scoreTable = new ScoreTable();
+    private Dictionary<string, bool> _fools = [];
+    private ScoreTable scoreTable = new();
+    public Deck Deck { get; private set; } = new Deck();
+    public Table Table { get; private set; } = new Table();
+    public GameState GameState { get; private set; } = GameState.Loading;
+    public bool IsLoaded { get; private set; } = false;
+    public bool CanPlay { get; private set; } = true;
+    public bool CanDraw { get; private set; } = false;
+    public bool CanEndTurn { get; private set; } = false;
+    public string PlayButton { get; private set; } = "Походить";
+    public string StartButton { get; private set; } = "Новая игра";
+    public static int CountOfGames { get; private set; } = 0;
+    public int DiscardCardCount { get; private set; } = 0;
+    public bool FirstTurn { get; set; } = false;
     public Player Player { get; set; } = new Player();
     public AIPlayer Opponent { get; set; } = new AIPlayer();
-    public Deck Deck { get; set; } = new Deck();
-    public Table Table { get; set; } = new Table();
-    public List<Card> AttackingCards { get; set; } = new List<Card>();
-    public List<Card> DefendingCards { get; set; } = new List<Card>();
-    public GameState gameState { get; set; } = GameState.Loading;
-    public static int CountOfGames { get; set; } = 0;
-    public bool FirstTurn { get; set; } = false;
-    public int discardCardCount { get; set; } = 0;
-    public bool IsLoaded { get; set; } = false;
-    public bool CanPlay { get; set; } = true;
-    public bool CanDraw { get; set; } = false;
-    public bool CanEndTurn { get; set; } = false;
-    public string PlayButton { get; set; } = "Походить";
-    public string StartButton { get; set; } = "Новая игра";
+    public List<Card> AttackingCards { get; set; } = [];
+    public List<Card> DefendingCards { get; set; } = [];
 
     //get first trump card in player's hand
     private Card GetFirstTrump(List<Card> cards)
@@ -172,7 +172,7 @@ public class FoolGameService
     //load game
     public void LoadGame()
     {
-        discardCardCount = 0;
+        DiscardCardCount = 0;
 
         if (CountOfGames == 0)
         {
@@ -235,9 +235,9 @@ public class FoolGameService
         Player.IsFool = false;
         Opponent.IsFool = false;
 
-        if (gameState != GameState.JustStarted)
+        if (GameState != GameState.JustStarted)
         {
-            gameState = GameState.JustStarted;
+            GameState = GameState.JustStarted;
             FirstTurn = true;
             CountOfGames++;
         }
@@ -256,12 +256,12 @@ public class FoolGameService
 
     private void RefreshStartButton()
     {
-        if (gameState == GameState.Finished || gameState == GameState.JustStarted)
+        if (GameState == GameState.Finished || GameState == GameState.JustStarted)
         {
             IsLoaded = false;
             CanPlay = false;
         }
-        else if (gameState == GameState.InProgress)
+        else if (GameState == GameState.InProgress)
         {
             IsLoaded = true;
             CanPlay = true;
@@ -299,6 +299,36 @@ public class FoolGameService
         if (nonPlayable == Player.inHand.Count)
         {
             CanPlay = false;
+        }
+    }
+
+    public void StartCurrentTurn()
+    {
+        RefreshPlayButtonName();
+
+        GameState = GameState.InProgress;
+
+        RefreshStartButton();
+
+        //start attack if first turn is bot's
+        if (!Player.IsAttack)
+        {
+            Card attackingCard = Opponent.Attack(Table);
+
+            if (attackingCard.ImageUrl != "")
+            {
+                AttackingCards.Add(attackingCard);
+                CanDraw = true;
+            }
+
+            Player.RefreshPlayableForBeat(attackingCard, Table);
+
+            CheckNonPlayable();
+        }
+        //refresh playable cards if first turn is player's
+        else
+        {
+            Player.RefreshPlayableForAttack(Table);
         }
     }
 
@@ -459,35 +489,6 @@ public class FoolGameService
             }
         }
     }
-    public void StartCurrentTurn()
-    {
-        RefreshPlayButtonName();
-
-        gameState = GameState.InProgress;
-
-        RefreshStartButton();
-
-        //start attack if first turn is bot's
-        if (!Player.IsAttack)
-        {
-            Card attackingCard = Opponent.Attack(Table);
-
-            if (attackingCard.ImageUrl != "")
-            {
-                AttackingCards.Add(attackingCard);
-                CanDraw = true;
-            }
-
-            Player.RefreshPlayableForBeat(attackingCard, Table);
-
-            CheckNonPlayable();
-        }
-        //refresh playable cards if first turn is player's
-        else
-        {
-            Player.RefreshPlayableForAttack(Table);
-        }
-    }
 
     //cheking win lose condition and set winner
     private void WinLose()
@@ -497,7 +498,7 @@ public class FoolGameService
 
             if (Player.inHand.Count == 0 || Opponent.inHand.Count == 0)
             {
-                gameState = GameState.Finished;
+                GameState = GameState.Finished;
             }
 
             if (Player.inHand.Count == 0 && Opponent.inHand.Count != 0)
@@ -550,7 +551,7 @@ public class FoolGameService
         //refresh discard pile if nobody taken
         if (!Player.Taken && !Opponent.Taken)
         {
-            discardCardCount += Table.Length();
+            DiscardCardCount += Table.Length();
         }
 
         WinLose();

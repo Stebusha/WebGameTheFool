@@ -10,7 +10,7 @@
 
 <PageTitle>Дурак</PageTitle>
 
-@if (FoolGameService.gameState == GameState.Loading)
+@if (FoolGameService.GameState == GameState.Loading)
 {
     <p><em>Loading...</em></p>
 }
@@ -64,7 +64,7 @@ else
                 </div>
             }
 
-            @if (FoolGameService.gameState == GameState.Finished)
+            @if (FoolGameService.GameState == GameState.Finished)
             {
                 <div class="win-lose">
                     @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
@@ -91,7 +91,7 @@ else
         {
             <div class="discard-pile">
                 <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
-                    discardCardCount="FoolGameService.discardCardCount" />
+                    discardCardCount="FoolGameService.DiscardCardCount" />
             </div>
         }
 
@@ -111,7 +111,7 @@ else
 @code {
     protected override async Task OnInitializedAsync()
     {
-        if (FoolGameService.gameState == GameState.Loading)
+        if (FoolGameService.GameState == GameState.Loading)
         {
             await Task.Delay(500);
 
@@ -137,7 +137,7 @@ else
             //if bot's turn - start turn if game not finished
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
             {
-                if (FoolGameService.gameState != GameState.Finished)
+                if (FoolGameService.GameState != GameState.Finished)
                 {
                     await Task.Delay(500);
                     StartTurn();
@@ -149,11 +149,11 @@ else
     private void StartTurn()
     {
         //reload game
-        if (FoolGameService.gameState == GameState.Finished)
+        if (FoolGameService.GameState == GameState.Finished)
         {
             FoolGameService.LoadGame();
         }
-        
+
         //reset start game parameters
         FoolGameService.StartCurrentTurn();
     }
