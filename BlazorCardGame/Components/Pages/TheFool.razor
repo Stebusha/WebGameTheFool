@@ -96,10 +96,12 @@ else
         }
 
         <div class="controls">
-            <button class="start-button" @onclick="StartTurn" disabled="@IsLoaded">@StartButton</button>
-            <button class="play-button" @onclick="Play" disabled="@(!CanPlay)">@PlayButton</button>
-            <button class="draw-button" @onclick="DrawCards" disabled="@(!CanDraw)">Взять карты</button>
-            <button class="end-button" @onclick="EndTurn" disabled="@(!CanEndTurn)">Завершить ход</button>
+            <button class="start-button" @onclick="StartTurn"
+                disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
+            <button class="play-button" @onclick="Play"
+                disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
+            <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
+            <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
         </div>
     </div>
 
@@ -107,13 +109,6 @@ else
 }
 
 @code {
-    private bool IsLoaded = false;
-    private bool CanPlay = true;
-    private bool CanDraw = false;
-    private bool CanEndTurn = false;
-    private string PlayButton = "Походить";
-    private string StartButton = "Новая игра";
-
     protected override async Task OnInitializedAsync()
     {
         if (FoolGameService.gameState == GameState.Loading)
@@ -121,33 +116,8 @@ else
             await Task.Delay(500);
 
             FoolGameService.LoadGame();
-
-            RefreshPlayButtonName();
-
-            if (FoolGameService.Player.IsAttack)
-            {
-                IsLoaded = true;
-            }
-            else
-            {
-                CanPlay = false;
-            }
         }
     }
-    private void RefreshStartButton()
-    {
-        if (FoolGameService.gameState == GameState.Finished || FoolGameService.gameState == GameState.JustStarted)
-        {
-            IsLoaded = false;
-            CanPlay = false;
-        }
-        else if (FoolGameService.gameState == GameState.InProgress)
-        {
-            IsLoaded = true;
-            CanPlay = true;
-        }
-    }
-
     private async Task DrawCards()
     {
         if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
@@ -158,39 +128,11 @@ else
     }
     private async Task EndTurn()
     {
-        //set flag first turn
-        if (FoolGameService.FirstTurn)
-        {
-            FoolGameService.FirstTurn = false;
-        }
-
-        //take cards if player taken
-        if ((FoolGameService.Player.Taken || FoolGameService.Table.Length() % 2 == 1) && !FoolGameService.Opponent.Taken)
-        {
-            FoolGameService.Player.TakeCards(FoolGameService.Table);
-        }
-
         //if table not empty or bot taken
         if (FoolGameService.Table.Length() != 0 || FoolGameService.Opponent.Taken)
         {
-            //refresh discard pile if nobody taken
-            if (!FoolGameService.Player.Taken && !FoolGameService.Opponent.Taken)
-            {
-                FoolGameService.discardCardCount += FoolGameService.Table.Length();
-            }
-
             //method to end current turn, refresh turn properties
             FoolGameService.EndCurrentTurn();
-
-            //refresh buttons and cards state
-            RefreshPlayButtonName();
-
-            CanEndTurn = false;
-
-            if (FoolGameService.Player.IsAttack)
-            {
-                FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-            }
 
             //if bot's turn - start turn if game not finished
             if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
@@ -202,35 +144,6 @@ else
                 }
             }
         }
-
-        //continue refresh buttons state
-        RefreshStartButton();
-
-        CanPlay = true;
-
-        if (FoolGameService.Player.IsAttack)
-        {
-            CanDraw = false;
-        }
-        else
-        {
-            CanDraw = true;
-        }
-    }
-
-    private void RefreshPlayButtonName()
-    {
-        if (FoolGameService.Player.IsAttack)
-        {
-            if (FoolGameService.AttackingCards.Count == 0)
-                PlayButton = "Походить";
-            else
-                PlayButton = "Подкинуть";
-        }
-        else
-        {
-            PlayButton = "Отбиться";
-        }
     }
 
     private void StartTurn()
@@ -240,196 +153,36 @@ else
         {
             FoolGameService.LoadGame();
         }
-
+        
         //reset start game parameters
-
-        RefreshPlayButtonName();
-
-        FoolGameService.gameState = GameState.InProgress;
-
-        RefreshStartButton();
-
-        //start attack if first turn is bot's
-        if (!FoolGameService.Player.IsAttack)
-        {
-            Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
-
-            if (attackingCard.ImageUrl != "")
-            {
-                FoolGameService.AttackingCards.Add(attackingCard);
-                CanDraw = true;
-
-            }
-
-            FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
-            
-            CheckNonPlayable();
-        }
-        //refresh playable cards if first turn is player's
-        else
-        {
-            FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-        }
-    }
-    private void CheckNonPlayable()
-    {
-        //checking state of cards for setting enable property for "Play" button
-        var nonPlayable = 0;
-
-        foreach (var card in FoolGameService.Player.inHand)
-        {
-            if (!card.IsPlayable)
-            {
-                nonPlayable++;
-            }
-        }
-
-        if (nonPlayable == FoolGameService.Player.inHand.Count)
-        {
-            CanPlay = false;
-        }
+        FoolGameService.StartCurrentTurn();
     }
 
     //method-controller for attack/defend in game
     private async Task Play()
     {
-        //refresh start properties for game
-        FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-
-        RefreshPlayButtonName();
-
-        //player attack
-        if (FoolGameService.Player.IsAttack && FoolGameService.Opponent.inHand.Count != 0)
+        await FoolGameService.Turn();
+        //checking count of discards for first turn can't be more than ten
+        if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
         {
-            //check first turn discards can't be more than ten
-            if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
-            {
-                FoolGameService.FirstTurn = false;
-                await EndTurn();
-            }
+            FoolGameService.FirstTurn = false;
 
-            //choose attacking card
-            Card attackingCard = FoolGameService.Player.Attack(FoolGameService.Table);
+            await EndTurn();
 
-            //if attacking card exists
-            if (attackingCard.ImageUrl != "")
-            {
-                //add to center table
-                FoolGameService.AttackingCards.Add(attackingCard);
-
-                RefreshPlayButtonName();
-
-                //bot's defense
-                await Task.Delay(500);
-
-                Card defendingCard = FoolGameService.Opponent.Defend(attackingCard, FoolGameService.Table);
-
-                //if defending card exists
-                if (defendingCard.ImageUrl != "")
-                {
-                    //add to center table
-                    FoolGameService.DefendingCards.Add(defendingCard);
-
-                    //refresh enable property for "EndTurn" button
-                    if (FoolGameService.Table.Length() % 2 == 0)
-                    {
-                        CanEndTurn = true;
-                        CanDraw = false;
-                    }
-                }
-            }
-
-            FoolGameService.Player.RefreshPlayableForAttack(FoolGameService.Table);
-
-            CheckNonPlayable();
-
-            //end turn if opponent taken
             if (FoolGameService.Opponent.Taken)
             {
-                await EndTurn();
                 FoolGameService.Opponent.IsAttack = false;
                 FoolGameService.Player.IsAttack = true;
             }
         }
 
-        //bot's attack
-        else
+        //end turn if opponent taken
+        else if (FoolGameService.Opponent.Taken)
         {
-            //getting card for player defense if attacking card exists
-            if (FoolGameService.Table.Length() % 2 == 1)
-            {
-                Card attackingCard = FoolGameService.AttackingCards.Last();
+            await EndTurn();
 
-                if (attackingCard.ImageUrl != "")
-                {
-                    CanDraw = true;
-                    CanPlay = true;
-
-                    Card defendingCard = FoolGameService.Player.Defend(attackingCard, FoolGameService.Table);
-
-                    //defense if attacking card exists
-                    if (defendingCard.ImageUrl != "")
-                    {
-                        FoolGameService.DefendingCards.Add(defendingCard);
-
-                        //refresh enable property for "EndTurn" button
-                        if (FoolGameService.Table.Length() % 2 == 0)
-                        {
-                            CanEndTurn = true;
-                            CanDraw = false;
-                            CanPlay = false;
-                        }
-                    }
-                }
-
-                FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
-
-                CheckNonPlayable();
-            }
-
-            //checking count of discards for first turn can't be more than ten
-            if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
-            {
-                FoolGameService.FirstTurn = false;
-                await EndTurn();
-            }
-
-            //all the attacking card defend, not max count of cards on table, player had cards in hand, player not taken
-            if (FoolGameService.Table.Length() % 2 == 0
-            && FoolGameService.Table.Length() != 12
-            && FoolGameService.Player.inHand.Count != 0
-            && !FoolGameService.Player.Taken)
-            {
-                //bot's attack
-                Card attackingCard = FoolGameService.Opponent.Attack(FoolGameService.Table);
-
-                await Task.Delay(500);
-
-                if (attackingCard.ImageUrl != "")
-                {
-                    //add attacking card to center table if exists
-                    FoolGameService.AttackingCards.Add(attackingCard);
-                    CanDraw = true;
-                    CanPlay = true;
-                }
-                else
-                {
-                    //refresh enable properties for buttons "Play" and "DrawCards"
-                    CanPlay = false;
-                    CanDraw = false;
-                }
-
-                FoolGameService.Player.RefreshPlayableForBeat(attackingCard, FoolGameService.Table);
-
-                CheckNonPlayable();
-            }
-
-            //player taken
-            if (FoolGameService.Player.Taken)
-            {
-                FoolGameService.Opponent.IsAttack = true;
-                FoolGameService.Player.IsAttack = false;
-            }
+            FoolGameService.Opponent.IsAttack = false;
+            FoolGameService.Player.IsAttack = true;
         }
     }
 }
