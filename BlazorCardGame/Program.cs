@@ -12,8 +12,8 @@ builder.Services.AddSignalR();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(connectionString, new MySqlServerVersion("9.1.0")));
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseMySql(connectionString, new MySqlServerVersion("9.1.0")));
 
 builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
     .AddCookie(Constants.AUTH_SCHEME, options =>
