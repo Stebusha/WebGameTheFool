@@ -127,15 +127,33 @@ button[b-0o9jxtxef0] {
     cursor: pointer;
 }
 
-button:hover[b-0o9jxtxef0] {
-    background-color: rgb(92, 180, 252);
+.start-button[b-0o9jxtxef0] {
+    background-color: rgb(168, 177, 255);
+    border: rgb(96, 112, 250) solid;
+    cursor: default;
+    color: black;
+}
+
+.start-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(96, 112, 250);
 }
 
 .start-button:disabled[b-0o9jxtxef0] {
-    background-color: rgba(132, 144, 253, 0.596);
-    border: rgb(132, 144, 253, 0.596) solid;
+    background-color: rgb(120, 131, 230);
+    border: rgba(111, 124, 245, 0.795) solid;
     cursor: default;
     color: black;
+}
+
+.play-button[b-0o9jxtxef0] {
+    background-color: rgba(139, 250, 207, 0.774);
+    border: rgba(12, 172, 111, 0.747) solid;
+    cursor: default;
+    color: black;
+}
+
+.play-button:hover[b-0o9jxtxef0] {
+    background-color: rgba(29, 207, 139, 0.774);
 }
 
 .play-button:disabled[b-0o9jxtxef0] {
@@ -145,6 +163,17 @@ button:hover[b-0o9jxtxef0] {
     color: black;
 }
 
+.draw-button[b-0o9jxtxef0] {
+    background-color: rgb(253, 214, 169);
+    border: rgba(252, 158, 50, 0.925) solid;
+    cursor: default;
+    color: black;
+}
+
+.draw-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(253, 176, 87, 0.76);
+}
+
 .draw-button:disabled[b-0o9jxtxef0] {
     background-color: rgba(253, 176, 87, 0.76);
     border: rgb(253, 176, 87, 0.76) solid;
@@ -152,9 +181,20 @@ button:hover[b-0o9jxtxef0] {
     color: black;
 }
 
-.end-button:disabled[b-0o9jxtxef0] {
-    background-color: rgba(247, 93, 93, 0.596);
+.end-button[b-0o9jxtxef0] {
+    background-color: rgb(252, 188, 188);
     border: rgb(247, 93, 93, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.end-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(247, 93, 93, 0.596);
+}
+
+.end-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(224, 47, 47, 0.671);
+    border: rgba(189, 54, 54, 0.616) solid;
     cursor: default;
     color: black;
 }

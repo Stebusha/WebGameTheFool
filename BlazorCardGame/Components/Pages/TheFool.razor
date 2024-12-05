@@ -109,6 +109,8 @@ else
 }
 
 @code {
+
+    //load game om initialized component
     protected override async Task OnInitializedAsync()
     {
         if (FoolGameService.GameState == GameState.Loading)
@@ -118,6 +120,8 @@ else
             FoolGameService.LoadGame();
         }
     }
+
+    //method for player draw cards from table
     private async Task DrawCards()
     {
         if (FoolGameService.AttackingCards.Count != FoolGameService.DefendingCards.Count)
@@ -126,6 +130,8 @@ else
             await EndTurn();
         }
     }
+
+    //end turn
     private async Task EndTurn()
     {
         //if table not empty or bot taken
@@ -146,6 +152,7 @@ else
         }
     }
 
+    //start turn
     private void StartTurn()
     {
         //reload game
@@ -161,7 +168,9 @@ else
     //method-controller for attack/defend in game
     private async Task Play()
     {
+        //launch turn
         await FoolGameService.Turn();
+
         //checking count of discards for first turn can't be more than ten
         if (FoolGameService.FirstTurn && FoolGameService.Table.Length() == 10)
         {

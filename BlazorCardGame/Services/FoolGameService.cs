@@ -45,6 +45,7 @@ public class FoolGameService
     {
         int number = 1;
 
+        //set start turn numbers from the fool
         if (Player.IsFool == true)
         {
             Opponent.TurnNumber = 1;
@@ -55,14 +56,15 @@ public class FoolGameService
             Player.TurnNumber = 1;
             Opponent.TurnNumber = 2;
         }
-
+        //set start turn number base on first trumps
         else
         {
+            //checking minimal trump
             for (int i = 1; i < firstTrumpCards.Count; i++)
             {
                 if (firstTrumpCards[i].ImageUrl == "" && firstTrumpCards[i - 1].ImageUrl != "")
                 {
-                    number = 0;
+                    break;
                 }
                 else if (firstTrumpCards[i - 1].ImageUrl == "" && firstTrumpCards[i].ImageUrl != "")
                 {
@@ -74,6 +76,7 @@ public class FoolGameService
                 }
             }
 
+            //set numbers
             if (number == 1)
             {
                 Player.TurnNumber = 1;
@@ -112,27 +115,31 @@ public class FoolGameService
         }
     }
 
-    //refill cards in hand
+    //refill cards in hands
     public void RefillHands()
     {
+        //deck card count <= 6
         if (Deck.CardsAmount <= 6 && Deck.CardsAmount != 0)
         {
+            //if can draw card
             while (Deck.CardsAmount != 0 || Player.inHand.Count < 6 || Opponent.inHand.Count < 6)
             {
+                //player's take first
                 if (Player.IsAttack)
                 {
-
+                    //if can player's take
                     if (Player.inHand.Count < 6)
                     {
                         Player.inHand.Add(Deck.DrawCard());
                     }
 
-
+                    //if cards exist and bot can bot's take
                     if (Deck.CardsAmount != 0 && Opponent.inHand.Count < 6)
                     {
                         Opponent.inHand.Add(Deck.DrawCard());
                     }
 
+                    //if cards in hand enough or deck card end sort card in hands and exit
                     if (Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6 || Deck.CardsAmount == 0)
                     {
                         Player.Sort();
@@ -140,19 +147,22 @@ public class FoolGameService
                         break;
                     }
                 }
+                //bot's take first
                 else
                 {
-
+                    //if cards exist and bot can bot's take
                     if (Opponent.inHand.Count < 6)
                     {
                         Opponent.inHand.Add(Deck.DrawCard());
                     }
 
+                    //if can player's take
                     if (Deck.CardsAmount != 0 && Player.inHand.Count < 6)
                     {
                         Player.inHand.Add(Deck.DrawCard());
                     }
 
+                    //if cards in hand enough or deck card end sort card in hands and exit
                     if ((Player.inHand.Count >= 6 && Opponent.inHand.Count >= 6) || Deck.CardsAmount == 0)
                     {
                         Player.Sort();
@@ -162,6 +172,7 @@ public class FoolGameService
                 }
             }
         }
+        //deck cards count > 6
         else
         {
             Player.RefillHand(Deck);
@@ -174,6 +185,7 @@ public class FoolGameService
     {
         DiscardCardCount = 0;
 
+        //first load
         if (CountOfGames == 0)
         {
             Deck = new Deck();
@@ -189,6 +201,7 @@ public class FoolGameService
 
             _fools.Add(Opponent.Name, Opponent.IsFool);
         }
+        //repeat load
         else
         {
             Player.inHand.Clear();
@@ -231,6 +244,7 @@ public class FoolGameService
         {
             Console.WriteLine($"\nПервым ходит игрок {Opponent.Name}\n");
         }
+
         //reset fool properties
         Player.IsFool = false;
         Opponent.IsFool = false;
@@ -254,12 +268,15 @@ public class FoolGameService
         }
     }
 
+    //refresh start button properties
     private void RefreshStartButton()
     {
         if (GameState == GameState.Finished || GameState == GameState.JustStarted)
         {
             IsLoaded = false;
             CanPlay = false;
+            CanDraw = false;
+            CanEndTurn = false;
         }
         else if (GameState == GameState.InProgress)
         {
@@ -268,6 +285,7 @@ public class FoolGameService
         }
     }
 
+    //refresh play button's name
     private void RefreshPlayButtonName()
     {
         if (Player.IsAttack)
@@ -283,11 +301,13 @@ public class FoolGameService
         }
     }
 
+    //check non playable cards, set play button disable property if can't play
     private void CheckNonPlayable()
     {
         //checking state of cards for setting enable property for "Play" button
         var nonPlayable = 0;
 
+        //count non playable cards
         foreach (var card in Player.inHand)
         {
             if (!card.IsPlayable)
@@ -296,12 +316,14 @@ public class FoolGameService
             }
         }
 
+        //if all cards non playable set button disabled
         if (nonPlayable == Player.inHand.Count)
         {
             CanPlay = false;
         }
     }
 
+    //start current turn
     public void StartCurrentTurn()
     {
         RefreshPlayButtonName();
@@ -332,6 +354,7 @@ public class FoolGameService
         }
     }
 
+    //turn logic
     public async Task Turn()
     {
         //refresh start properties for game
@@ -391,6 +414,8 @@ public class FoolGameService
                     //add to center table
                     AttackingCards.Add(attackingCard);
 
+                    CanEndTurn = false;
+
                     RefreshPlayButtonName();
 
                     //bot's defense
@@ -430,6 +455,7 @@ public class FoolGameService
                 {
                     CanDraw = true;
                     CanPlay = true;
+                    CanEndTurn = false;
 
                     Card defendingCard = Player.Defend(attackingCard, Table);
 
@@ -468,6 +494,7 @@ public class FoolGameService
                     AttackingCards.Add(attackingCard);
                     CanDraw = true;
                     CanPlay = true;
+                    CanEndTurn = false;
                 }
                 else
                 {
@@ -490,17 +517,21 @@ public class FoolGameService
         }
     }
 
-    //cheking win lose condition and set winner
+    //checking win lose condition and set winner
     private void WinLose()
     {
+        //check deck ends
         if (Deck.CardsAmount == 0)
         {
-
+            //set game state if game ends
             if (Player.inHand.Count == 0 || Opponent.inHand.Count == 0)
             {
                 GameState = GameState.Finished;
+                CanDraw = false;
+                CanPlay = false;
             }
 
+            //player win
             if (Player.inHand.Count == 0 && Opponent.inHand.Count != 0)
             {
                 Console.WriteLine($"Колода закончилась. Конец партии. Победил игрок {Player.Name}.");
@@ -519,6 +550,7 @@ public class FoolGameService
 
                 scoreTable.AddScore(Player.Name, score);
             }
+            //bot win
             else if (Player.inHand.Count != 0 && Opponent.inHand.Count == 0)
             {
                 Console.WriteLine($"Колода закончилась. Конец партии. Победил игрок {Opponent.Name}.");
@@ -585,15 +617,18 @@ public class FoolGameService
         //continue refresh buttons state
         RefreshStartButton();
 
-        CanPlay = true;
+        if (GameState != GameState.Finished)
+        {
+            CanPlay = true;
 
-        if (Player.IsAttack)
-        {
-            CanDraw = false;
-        }
-        else
-        {
-            CanDraw = true;
+            if (Player.IsAttack)
+            {
+                CanDraw = false;
+            }
+            else
+            {
+                CanDraw = true;
+            }
         }
     }
 }
