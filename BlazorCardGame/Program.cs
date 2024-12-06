@@ -10,11 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseMySql(connectionString, new MySqlServerVersion("8.4.3")));
-
 builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
     .AddCookie(Constants.AUTH_SCHEME, options =>
     {
