@@ -1,4 +1,4 @@
-using System.Linq.Expressions;
+using BlazorCardGame.DataMangerAPI.Entities;
 
 namespace BlazorCardGame.Models;
 public class Player

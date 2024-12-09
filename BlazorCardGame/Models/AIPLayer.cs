@@ -1,3 +1,5 @@
+using BlazorCardGame.DataMangerAPI.Entities;
+
 namespace BlazorCardGame.Models;
 
 public class AIPlayer

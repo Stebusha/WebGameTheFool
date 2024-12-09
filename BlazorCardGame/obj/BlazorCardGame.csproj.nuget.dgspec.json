@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\Blazorcardgame\\BlazorCardGame.csproj": {}
+    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\Blazorcardgame\\BlazorCardGame.csproj": {
+    "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\Blazorcardgame\\BlazorCardGame.csproj",
+        "projectUniqueName": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
         "projectName": "BlazorCardGame",
-        "projectPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\Blazorcardgame\\BlazorCardGame.csproj",
+        "projectPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\BlazorCardGame.csproj",
         "packagesPath": "C:\\Users\\МиненковаНА\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\Blazorcardgame\\obj\\",
+        "outputPath": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\МиненковаНА\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -49,6 +49,26 @@
             "Microsoft.AspNetCore.SignalR": {
               "target": "Package",
               "version": "[1.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
