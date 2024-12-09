@@ -310,6 +310,32 @@ td[b-1mgci28981] {
 tr:nth-child(even)[b-1mgci28981] {
     background-color: rgb(246, 231, 252);
 }
+/* _content/BlazorCardGame/Components/Pages/Partials/ConfirmDialog.razor.rz.scp.css */
+.confirm-dialog-container[b-r4x1wg9m0l] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+
+.confirm-dialog[b-r4x1wg9m0l] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 20rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: white;
+    margin-top: 1.5rem;
+    position: fixed;
+}
 /* _content/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor.rz.scp.css */
 .card-stack[b-c3ukdjjxj4] {
     position: relative;

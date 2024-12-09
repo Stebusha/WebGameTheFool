@@ -1,0 +1,24 @@
+@if (Show)
+{
+    <div class="confirm-dialog-container">
+        <div class="confirm-dialog">
+            @ChildContent
+            <div class="d-flex flex-row justify-content-end mt-3">
+                <button @onclick="OnOK" class="btn btn-danger shadow-none ms-3">
+                    ОК
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public bool Show { get; set; }
+
+    [Parameter]
+    public EventCallback OnOK { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

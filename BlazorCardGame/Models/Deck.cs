@@ -1,8 +1,11 @@
+using System.Collections;
+
 namespace BlazorCardGame.Models;
 public class Deck
 {
     private List<Card> _cards;
     public static SuitType s_trumpSuit = SuitType.Clubs;
+    public static DeckStyle s_style = DeckStyle.Fantasy;
     public int CardsAmount { get; private set; }
     public static string TrumpSuitImageURL
     {
@@ -38,7 +41,18 @@ public class Deck
         SuitType.Diams => "♦",
         _ => "Suit Not Found"
     };
+    public void ChangeStyle(string selectedStyle)
+    {
+        foreach (var style in Enum.GetNames(typeof(DeckStyle)))
+        {
+            if (style == selectedStyle)
+            {
+                s_style = (DeckStyle)Enum.Parse(typeof(DeckStyle), style);
+            }
+        }
+    }
 
+    public DeckStyle GetDeckStyle() => s_style;
     private static string GetTrumpSuitURL() => s_trumpSuit switch
     {
         SuitType.Clubs => "club.png",

@@ -1,10 +1,7 @@
 using BlazorCardGame.Components;
-using BlazorCardGame.Data;
 using BlazorCardGame.Hubs;
 using BlazorCardGame.Models;
 using BlazorCardGame.Services;
-using Microsoft.EntityFrameworkCore;
-
 
 var builder = WebApplication.CreateBuilder(args);
 

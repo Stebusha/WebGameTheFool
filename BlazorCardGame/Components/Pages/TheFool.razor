@@ -106,21 +106,55 @@ else
     </div>
 
     <TheFoolRules />
+
+    <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
+        <h3>Выберите настройки игры</h3>
+
+        <select class="deck-style" @onchange="OnStyleSelected">
+            <option value="">Стиль колоды</option>
+            @foreach (var style in Enum.GetNames(typeof(DeckStyle)))
+            {
+                <option value="@style">@GetStyleName(style)</option>
+            }
+        </select>
+
+    </ConfirmDialog>
 }
 
 @code {
+    private bool ShowSettings = false;
 
-    //load game om initialized component
+    //load game on initialized component
     protected override async Task OnInitializedAsync()
     {
         if (FoolGameService.GameState == GameState.Loading)
         {
             await Task.Delay(500);
 
+            ShowSettings = true;
             FoolGameService.LoadGame();
         }
     }
 
+    private string GetStyleName(string style) => style switch
+    {
+        "Fantasy" => "Фэнтези",
+        "Standard" => "Стандартный",
+        _ => "Style Not Found"
+    };
+
+    private void OnStyleSelected(ChangeEventArgs e)
+    {
+        if (e.Value?.ToString() != "")
+        {
+            FoolGameService.Deck.ChangeStyle(e.Value?.ToString() ?? "Fantasy");
+        }
+    }
+    private void SetGame()
+    {
+        ShowSettings = false;
+        Console.WriteLine(FoolGameService.Deck.GetDeckStyle());
+    }
     //method for player draw cards from table
     private async Task DrawCards()
     {
