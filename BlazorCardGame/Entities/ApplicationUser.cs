@@ -6,7 +6,7 @@ namespace BlazorCardGame.DataMangerAPI.Entities;
 public class ApplicationUser
 {
     public int Id { get; set; }
-    public int FoolGameId { get; set; }
+    public int? FoolGameId { get; set; }
     public FoolGame FoolGame { get; set; } = null!;
 
     [Required(ErrorMessage = "Введите логин")]

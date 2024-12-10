@@ -58,7 +58,7 @@ namespace BlazorCardGame.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FoolGameId = table.Column<int>(type: "int", nullable: false),
+                    FoolGameId = table.Column<int>(type: "int", nullable: true),
                     Login = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
@@ -74,8 +74,7 @@ namespace BlazorCardGame.Migrations
                         name: "FK_Users_Games_FoolGameId",
                         column: x => x.FoolGameId,
                         principalTable: "Games",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 

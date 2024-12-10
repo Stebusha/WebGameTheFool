@@ -30,7 +30,7 @@ namespace BlazorCardGame.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FoolGameId")
+                    b.Property<int?>("FoolGameId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAttack")
@@ -134,9 +134,7 @@ namespace BlazorCardGame.Migrations
                 {
                     b.HasOne("BlazorCardGame.DataMangerAPI.Entities.FoolGame", "FoolGame")
                         .WithMany("Players")
-                        .HasForeignKey("FoolGameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FoolGameId");
 
                     b.Navigation("FoolGame");
                 });

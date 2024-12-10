@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    [Migration("20241210100322_InitialCreate")]
+    [Migration("20241210110205_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace BlazorCardGame.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FoolGameId")
+                    b.Property<int?>("FoolGameId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAttack")
@@ -137,9 +137,7 @@ namespace BlazorCardGame.Migrations
                 {
                     b.HasOne("BlazorCardGame.DataMangerAPI.Entities.FoolGame", "FoolGame")
                         .WithMany("Players")
-                        .HasForeignKey("FoolGameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FoolGameId");
 
                     b.Navigation("FoolGame");
                 });
