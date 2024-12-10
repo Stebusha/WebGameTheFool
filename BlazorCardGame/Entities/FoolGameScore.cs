@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazorCardGame.DataMangerAPI.Entities;
+namespace BlazorCardGame.Entities;
 
-public class FoolGameScores
+public class FoolGameScore
 {
     public int Id { get; set; }
-    public int UserId { get; set; }
+    public string UserLogin {get; set;} = null!;
     public ApplicationUser User { get; set; } = null!;
 
     [Range(0, int.MaxValue)]

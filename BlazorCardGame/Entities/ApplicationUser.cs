@@ -1,16 +1,17 @@
 using System.ComponentModel.DataAnnotations;
 using BlazorCardGame.Enums;
+using Microsoft.EntityFrameworkCore;
 
-namespace BlazorCardGame.DataMangerAPI.Entities;
+namespace BlazorCardGame.Entities;
 
 public class ApplicationUser
 {
-    public int Id { get; set; }
     public int? FoolGameId { get; set; }
     public FoolGame FoolGame { get; set; } = null!;
 
     [Required(ErrorMessage = "Введите логин")]
     [StringLength(20)]
+    [Key]
     public string Login { get; set; } = null!;
 
     [Required(ErrorMessage = "Введите пароль")]

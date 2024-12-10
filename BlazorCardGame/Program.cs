@@ -4,6 +4,7 @@ using BlazorCardGame.Models;
 using BlazorCardGame.Services;
 using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,9 @@ builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
         options.SlidingExpiration = true;
     });
 
+builder.Services.AddScoped<JSRuntime>();
 builder.Services.AddScoped<FoolGameService>();
+builder.Services.AddScoped<DataManager>();
 
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {

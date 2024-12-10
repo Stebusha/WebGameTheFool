@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using BlazorCardGame.Enums;
 
-namespace BlazorCardGame.DataMangerAPI.Entities;
+namespace BlazorCardGame.Entities;
 
 public class CardInfo
 {

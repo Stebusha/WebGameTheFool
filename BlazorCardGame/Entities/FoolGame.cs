@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazorCardGame.DataMangerAPI.Entities;
+namespace BlazorCardGame.Entities;
 
 public class FoolGame
 {

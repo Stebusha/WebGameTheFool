@@ -1,3 +1,5 @@
+using BlazorCardGame.Entities;
+
 namespace BlazorCardGame.Models;
 
 public class ScoreTable

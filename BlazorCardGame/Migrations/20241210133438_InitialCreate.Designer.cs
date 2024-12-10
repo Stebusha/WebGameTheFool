@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    [Migration("20241210110205_InitialCreate")]
+    [Migration("20241210133438_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,13 +25,11 @@ namespace BlazorCardGame.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.ApplicationUser", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Login")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<int?>("FoolGameId")
                         .HasColumnType("int");
@@ -42,11 +40,6 @@ namespace BlazorCardGame.Migrations
                     b.Property<DateTime?>("LastEnterTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -55,14 +48,14 @@ namespace BlazorCardGame.Migrations
                     b.Property<int>("PlayerType")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Login");
 
                     b.HasIndex("FoolGameId");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.CardInfo", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +80,7 @@ namespace BlazorCardGame.Migrations
                     b.ToTable("Cards");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.FoolGame", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +96,7 @@ namespace BlazorCardGame.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.FoolGameScores", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -123,28 +116,29 @@ namespace BlazorCardGame.Migrations
                     b.Property<int?>("NumerOfDraws")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserLogin")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserLogin");
 
                     b.ToTable("Scores");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.ApplicationUser", b =>
                 {
-                    b.HasOne("BlazorCardGame.DataMangerAPI.Entities.FoolGame", "FoolGame")
+                    b.HasOne("BlazorCardGame.Entities.FoolGame", "FoolGame")
                         .WithMany("Players")
                         .HasForeignKey("FoolGameId");
 
                     b.Navigation("FoolGame");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.CardInfo", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
                 {
-                    b.HasOne("BlazorCardGame.DataMangerAPI.Entities.FoolGame", "FoolGame")
+                    b.HasOne("BlazorCardGame.Entities.FoolGame", "FoolGame")
                         .WithMany()
                         .HasForeignKey("FoolGameId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -153,18 +147,18 @@ namespace BlazorCardGame.Migrations
                     b.Navigation("FoolGame");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.FoolGameScores", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
                 {
-                    b.HasOne("BlazorCardGame.DataMangerAPI.Entities.ApplicationUser", "User")
+                    b.HasOne("BlazorCardGame.Entities.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserLogin")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.DataMangerAPI.Entities.FoolGame", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
                 {
                     b.Navigation("Players");
                 });

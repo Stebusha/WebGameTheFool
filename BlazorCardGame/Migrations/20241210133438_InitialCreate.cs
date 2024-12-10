@@ -56,11 +56,9 @@ namespace BlazorCardGame.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FoolGameId = table.Column<int>(type: "int", nullable: true),
                     Login = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    FoolGameId = table.Column<int>(type: "int", nullable: true),
                     Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastEnterTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -69,7 +67,7 @@ namespace BlazorCardGame.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Login);
                     table.ForeignKey(
                         name: "FK_Users_Games_FoolGameId",
                         column: x => x.FoolGameId,
@@ -84,7 +82,8 @@ namespace BlazorCardGame.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserLogin = table.Column<string>(type: "varchar(20)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfWins = table.Column<int>(type: "int", nullable: true),
                     NumberOfLosses = table.Column<int>(type: "int", nullable: true),
                     NumerOfDraws = table.Column<int>(type: "int", nullable: true),
@@ -94,10 +93,10 @@ namespace BlazorCardGame.Migrations
                 {
                     table.PrimaryKey("PK_Scores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Scores_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Scores_Users_UserLogin",
+                        column: x => x.UserLogin,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "Login",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -108,9 +107,9 @@ namespace BlazorCardGame.Migrations
                 column: "FoolGameId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Scores_UserId",
+                name: "IX_Scores_UserLogin",
                 table: "Scores",
-                column: "UserId");
+                column: "UserLogin");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_FoolGameId",
