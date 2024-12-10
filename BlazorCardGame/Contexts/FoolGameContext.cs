@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using BlazorCardGame.DataMangerAPI.Entities;
 
-namespace BlazorCardGame.DataMangerAPI.Contexts;
+namespace BlazorCardGame.Contexts;
 
 public class FoolGameContext : DbContext
 {
@@ -9,7 +9,7 @@ public class FoolGameContext : DbContext
     {
 
     }
-    public DbSet<ApplicationUser> Users { get; set; }
-    public DbSet<FoolGameState> LastGames { get; set; }
-    public DbSet<FoolGameScores> Scores { get; set; }
+    public DbSet<ApplicationUser> Users { get; set; } = null!;
+    public DbSet<FoolGameState> LastGames { get; set; } = null!;
+    public DbSet<FoolGameScores> Scores { get; set; } = null!;
 }

@@ -1,4 +1,4 @@
-namespace BlazorCardGame.DataMangerAPI.Entities;
+namespace BlazorCardGame.Enums;
 
 public enum CardType
 {

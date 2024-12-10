@@ -1,4 +1,5 @@
 namespace BlazorCardGame.Models;
+using BlazorCardGame.Enums;
 public class GameInfo
 {
     public string Name { get; set; } = string.Empty;

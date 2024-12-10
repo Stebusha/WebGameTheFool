@@ -1,4 +1,5 @@
 using BlazorCardGame.Models;
+using BlazorCardGame.Enums;
 
 namespace BlazorCardGame.Services;
 

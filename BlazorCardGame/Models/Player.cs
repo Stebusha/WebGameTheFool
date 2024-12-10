@@ -1,4 +1,4 @@
-using BlazorCardGame.DataMangerAPI.Entities;
+using BlazorCardGame.Enums;
 
 namespace BlazorCardGame.Models;
 public class Player

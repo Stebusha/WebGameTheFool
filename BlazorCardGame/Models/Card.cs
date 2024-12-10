@@ -1,4 +1,5 @@
 namespace BlazorCardGame.Models;
+using BlazorCardGame.Enums;
 public class Card
 {
     public SuitType Suit { get; set; }

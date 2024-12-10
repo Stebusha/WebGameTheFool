@@ -8,9 +8,17 @@ public class FoolGameScores
 
     [Required]
     [StringLength(20)]
-    public string? UserLogin { get; set; }
+    public int? ApplicationUserID { get; set; }
+
+    [Range(0,int.MaxValue)]
     public int? NumberOfWins { get; set; }
+
+    [Range(0,int.MaxValue)]
     public int? NumberOfLosses { get; set; }
+
+    [Range(0,int.MaxValue)]
     public int? NumerOfDraws { get; set; }
+
+    [Range(0,int.MaxValue)]
     public int? CountOfGames { get; set; }
 }

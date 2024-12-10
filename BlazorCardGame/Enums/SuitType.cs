@@ -1,4 +1,4 @@
-namespace BlazorCardGame.Models;
+namespace BlazorCardGame.Enums;
 public enum SuitType
 {
     Clubs = 0,

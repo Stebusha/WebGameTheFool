@@ -2,6 +2,8 @@ using BlazorCardGame.Components;
 using BlazorCardGame.Hubs;
 using BlazorCardGame.Models;
 using BlazorCardGame.Services;
+using BlazorCardGame.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,11 @@ builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
     });
 
 builder.Services.AddScoped<FoolGameService>();
+
+builder.Services.AddDbContextFactory<FoolGameContext>(options =>
+{
+    options.UseMySql(builder.Configuration.GetConnectionString("FoolGameConnection"), new MySqlServerVersion("8.4.3"));
+});
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

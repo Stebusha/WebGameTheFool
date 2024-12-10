@@ -1,4 +1,4 @@
-using System.Collections;
+using BlazorCardGame.Enums;
 
 namespace BlazorCardGame.Models;
 public class Deck

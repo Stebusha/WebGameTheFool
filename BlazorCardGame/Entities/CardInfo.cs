@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using BlazorCardGame.Enums;
 
 namespace BlazorCardGame.DataMangerAPI.Entities;
 
 public class CardInfo
 {
+    public int Id { get; set; }
+
     [Required]
     public string? ImageUrl { get; set; }
 
