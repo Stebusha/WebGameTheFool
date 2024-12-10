@@ -10,6 +10,7 @@ public class FoolGameContext : DbContext
 
     }
     public DbSet<ApplicationUser> Users { get; set; } = null!;
-    public DbSet<FoolGameState> LastGames { get; set; } = null!;
+    public DbSet<FoolGame> Games { get; set; } = null!;
     public DbSet<FoolGameScores> Scores { get; set; } = null!;
+    public DbSet<CardInfo> Cards { get; set; } = null!;
 }
