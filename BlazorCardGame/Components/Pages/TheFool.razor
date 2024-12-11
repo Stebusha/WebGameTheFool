@@ -7,6 +7,7 @@
 
 @inject FoolGameService FoolGameService
 @inject NavigationManager NavigationManager
+@inject DataManager DataManager
 
 <PageTitle>Дурак</PageTitle>
 
@@ -16,97 +17,6 @@
 }
 else
 {
-    <h1>Карточная игра "Дурак"</h1>
-    <h2>Партия № @FoolGameService.CountOfGames</h2>
-
-    @if (FoolGameService.Player.IsAttack)
-    {
-        <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-    }
-    else
-    {
-        <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-    }
-
-    <div class="game-table">
-        <div class="opponent-cards">
-            <Opponent opponent="FoolGameService.Opponent" />
-        </div>
-
-        <div class="player-cards">
-            <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
-        </div>
-
-        <div class="center-table">
-            @if (FoolGameService.AttackingCards.Count > 0)
-            {
-                <div class="attacking-cards">
-                    @foreach (var card in FoolGameService.AttackingCards)
-                    {
-                        if (card.ImageUrl != "")
-                        {
-                            <img src="@card.ImageUrl" class="attacking-card" />
-                        }
-                    }
-                </div>
-            }
-
-            @if (FoolGameService.DefendingCards.Count > 0)
-            {
-                <div class="defending-cards">
-                    @foreach (var card in FoolGameService.DefendingCards)
-                    {
-                        if (card.ImageUrl != "")
-                        {
-                            <img src="@card.ImageUrl" class="defending-card" />
-                        }
-                    }
-                </div>
-            }
-
-            @if (FoolGameService.GameState == GameState.Finished)
-            {
-                <div class="win-lose">
-                    @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
-                    {
-                        <label class="draw">Ничья!</label>
-                    }
-                    else if (FoolGameService.Player.inHand.Count == 0)
-                    {
-                        <label class="win">Поздравляем! Бот остался в дураках :)</label>
-                    }
-                    else if (FoolGameService.Opponent.inHand.Count == 0)
-                    {
-                        <label class="lose">Увы, вы дурак :(</label>
-                    }
-                </div>
-            }
-        </div>
-
-        <div class="deck">
-            <GameDeck deck="FoolGameService.Deck" />
-        </div>
-
-        @if (!FoolGameService.FirstTurn)
-        {
-            <div class="discard-pile">
-                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
-                    discardCardCount="FoolGameService.DiscardCardCount" />
-            </div>
-        }
-
-        <div class="controls">
-            <button class="start-button" @onclick="StartTurn"
-                disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
-            <button class="play-button" @onclick="Play"
-                disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
-            <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
-            <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
-        </div>
-    </div>
-
-    <TheFoolRules />
-
     <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
         <h3>Выберите настройки игры</h3>
 
@@ -119,10 +29,106 @@ else
         </select>
 
     </ConfirmDialog>
+
+    if (!ShowSettings)
+    {
+        <h1>Карточная игра "Дурак"</h1>
+        <h2>Партия № @FoolGameService.CountOfGames</h2>
+
+        @if (FoolGameService.Player.IsAttack)
+        {
+            <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+        }
+        else
+        {
+            <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+        }
+
+        <div class="game-table">
+            <div class="opponent-cards">
+                <Opponent opponent="FoolGameService.Opponent" />
+            </div>
+
+            <div class="player-cards">
+                <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
+            </div>
+
+            <div class="center-table">
+                @if (FoolGameService.AttackingCards.Count > 0)
+                {
+                    <div class="attacking-cards">
+                        @foreach (var card in FoolGameService.AttackingCards)
+                        {
+                            if (card.ImageUrl != "")
+                            {
+                                <img src="@card.ImageUrl" class="attacking-card" />
+                            }
+                        }
+                    </div>
+                }
+
+                @if (FoolGameService.DefendingCards.Count > 0)
+                {
+                    <div class="defending-cards">
+                        @foreach (var card in FoolGameService.DefendingCards)
+                        {
+                            if (card.ImageUrl != "")
+                            {
+                                <img src="@card.ImageUrl" class="defending-card" />
+                            }
+                        }
+                    </div>
+                }
+
+                @if (FoolGameService.GameState == GameState.Finished)
+                {
+                    <div class="win-lose">
+                        @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
+                        {
+                            <label class="draw">Ничья!</label>
+                        }
+                        else if (FoolGameService.Player.inHand.Count == 0)
+                        {
+                            <label class="win">Поздравляем! Бот остался в дураках :)</label>
+                        }
+                        else if (FoolGameService.Opponent.inHand.Count == 0)
+                        {
+                            <label class="lose">Увы, вы дурак :(</label>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="deck">
+                <GameDeck deck="FoolGameService.Deck" />
+            </div>
+
+            @if (!FoolGameService.FirstTurn)
+            {
+                <div class="discard-pile">
+                    <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
+                        discardCardCount="FoolGameService.DiscardCardCount" />
+                </div>
+            }
+
+            <div class="controls">
+                <button class="start-button" @onclick="StartTurn"
+                    disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
+                <button class="play-button" @onclick="Play"
+                    disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
+                <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
+                <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
+            </div>
+        </div>
+
+        <TheFoolRules />
+    }
 }
 
 @code {
     private bool ShowSettings = false;
+    private List<FoolGameScore>? scores;
+    private List<ApplicationUser>? players;
 
     //load game on initialized component
     protected override async Task OnInitializedAsync()
@@ -133,6 +139,46 @@ else
 
             ShowSettings = true;
             FoolGameService.LoadGame();
+
+            if (scores is null)
+            {
+                scores = await DataManager.GetAllScoresAsync();
+                @* players = await DataManager.GetAllUsersAsync();  *@
+                
+                @* bool opponentExisted = false; *@
+
+                @* foreach (var player in players)
+                {
+                    if (FoolGameService.Opponent.Name == player.Login)
+                    {
+                        opponentExisted = true;
+                    }
+                } *@
+
+                @* if (!opponentExisted)
+                {
+                    var opponent = new ApplicationUser
+                        {
+                            Login = FoolGameService.Opponent.Name,
+                            Password = "admin",
+                            PlayerType = PlayerType.AI,
+                            IsAttack = FoolGameService.Opponent.IsAttack
+                        };
+
+                    await DataManager.AddUserAsync(opponent);
+                }
+                else
+                {
+                    var opponent = await DataManager.GetUserByLoginAsync(FoolGameService.Opponent.Name);
+                    if (opponent is not null)
+                    {
+                        opponent.IsAttack = FoolGameService.Opponent.IsAttack;
+                        await DataManager.UpdateUserAsync(opponent);
+                    }
+                } *@
+            }
+
+
         }
     }
 
@@ -155,6 +201,253 @@ else
         ShowSettings = false;
         Console.WriteLine(FoolGameService.Deck.GetDeckStyle());
     }
+    private async Task AddScores(string playerName, string opponentName)
+    {
+        var scorePlayer = new FoolGameScore
+            {
+                UserLogin = playerName,
+                NumberOfWins = 1,
+                CountOfGames = 1
+            };
+
+        var scoreOpponent = new FoolGameScore
+            {
+                UserLogin = opponentName,
+                NumberOfLosses = 1,
+                CountOfGames = 1
+            };
+
+        await DataManager.AddScoreAsync(scorePlayer);
+        await DataManager.AddScoreAsync(scoreOpponent);
+    }
+    private async Task AddDraws(string playerName, string opponentName)
+    {
+        var scorePlayer = new FoolGameScore
+            {
+                UserLogin = playerName,
+                NumberOfDraws = 1,
+                CountOfGames = 1
+            };
+
+        var scoreOpponent = new FoolGameScore
+            {
+                UserLogin = opponentName,
+                NumberOfDraws = 1,
+                CountOfGames = 1
+            };
+
+        await DataManager.AddScoreAsync(scorePlayer);
+        await DataManager.AddScoreAsync(scoreOpponent);
+    }
+    private async Task UpdateDraws(string playerName, string opponentName)
+    {
+        var scorePlayer = new FoolGameScore
+            {
+                UserLogin = playerName,
+                NumberOfDraws = 1,
+                CountOfGames = 1
+            };
+
+        var scoreOpponent = new FoolGameScore
+            {
+                UserLogin = opponentName,
+                NumberOfDraws = 1,
+                CountOfGames = 1
+            };
+
+        await DataManager.UpdateScoreAsync(scorePlayer);
+        await DataManager.UpdateScoreAsync(scoreOpponent);
+    }
+    private async Task UpdateScoresForWins(string name, FoolGameScore score)
+    {
+        score.NumberOfWins++;
+        score.CountOfGames++;
+
+        await DataManager.UpdateScoreAsync(score);
+
+        var scoreOpponent = new FoolGameScore
+            {
+                UserLogin = name,
+                CountOfGames = 1,
+                NumberOfLosses = 1
+            };
+
+        await DataManager.AddScoreAsync(scoreOpponent);
+    }
+    private async Task UpdateScoresForLose(string name, FoolGameScore score)
+    {
+        score.NumberOfLosses++;
+        score.CountOfGames++;
+
+        await DataManager.UpdateScoreAsync(score);
+
+        var scoreOpponent = new FoolGameScore
+            {
+                UserLogin = name,
+                CountOfGames = 1,
+                NumberOfWins = 1
+            };
+
+        await DataManager.AddScoreAsync(scoreOpponent);
+    }
+    private async Task SetScore()
+    {
+        if (FoolGameService.GameState == GameState.Finished)
+        {
+            bool playerExist = false;
+            bool opponentExist = false;
+
+            if (scores is not null)
+            {
+                foreach (var score in scores)
+                {
+                    if (FoolGameService.Player.Name == score.UserLogin)
+                    {
+                        playerExist = true;
+                    }
+
+                    if (FoolGameService.Opponent.Name == score.UserLogin)
+                    {
+                        opponentExist = true;
+                    }
+
+                    if (opponentExist && playerExist)
+                    {
+                        break;
+                    }
+                }
+
+                if (!playerExist && !opponentExist)
+                {
+                    if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
+                    {
+                        await AddScores(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                    }
+                    else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
+                    {
+                        await AddScores(FoolGameService.Opponent.Name, FoolGameService.Player.Name);
+                    }
+                    else
+                    {
+                        await AddDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                    }
+                }
+                else if (playerExist && !opponentExist)
+                {
+                    if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Player.Name)
+                            {
+                                await UpdateScoresForWins(FoolGameService.Opponent.Name, score);
+                                break;
+                            }
+                        }
+
+                    }
+                    else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Player.Name)
+                            {
+                                await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await UpdateDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                    }
+                }
+                else if (!playerExist && opponentExist)
+                {
+                    if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            {
+                                await UpdateScoresForWins(FoolGameService.Player.Name, score);
+                                break;
+                            }
+                        }
+
+                    }
+                    else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            {
+                                await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await UpdateDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                    }
+                }
+                else
+                {
+                    if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Player.Name)
+                            {
+                                score.NumberOfWins++;
+                                score.CountOfGames++;
+
+                                await DataManager.UpdateScoreAsync(score);
+                            }
+
+                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            {
+                                score.NumberOfLosses++;
+                                score.CountOfGames++;
+
+                                await DataManager.UpdateScoreAsync(score);
+                            }
+
+                        }
+
+                    }
+                    else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
+                    {
+                        foreach (var score in scores)
+                        {
+                            if (score.UserLogin == FoolGameService.Player.Name)
+                            {
+                                score.NumberOfLosses++;
+                                score.CountOfGames++;
+
+                                await DataManager.UpdateScoreAsync(score);
+                            }
+
+                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            {
+                                score.NumberOfWins++;
+                                score.CountOfGames++;
+
+                                await DataManager.UpdateScoreAsync(score);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await UpdateDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                    }
+                }
+            }
+
+        }
+    }
+
     //method for player draw cards from table
     private async Task DrawCards()
     {
@@ -174,14 +467,15 @@ else
             //method to end current turn, refresh turn properties
             FoolGameService.EndCurrentTurn();
 
-            //if bot's turn - start turn if game not finished
-            if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
+            if (FoolGameService.GameState == GameState.Finished)
             {
-                if (FoolGameService.GameState != GameState.Finished)
-                {
-                    await Task.Delay(500);
-                    StartTurn();
-                }
+                await SetScore();
+            }
+            //if bot's turn - start turn if game not finished
+            else if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
+            {
+                await Task.Delay(500);
+                StartTurn();
             }
         }
     }

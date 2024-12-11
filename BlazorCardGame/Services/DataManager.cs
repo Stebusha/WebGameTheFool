@@ -71,6 +71,11 @@ public class DataManager
     }
 
     //update table in database
+    public async Task UpdateUserAsync(ApplicationUser user)
+    {
+        context.Entry(user).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+    }
     public async Task UpdateScoreAsync(FoolGameScore score)
     {
         context.Entry(score).State = EntityState.Modified;

@@ -2,9 +2,12 @@
 
 @rendermode InteractiveServer
 
+@inject DataManager DataManager
+
 <PageTitle> Таблицы рекордов</PageTitle>
 
 <h3>@selectedBoard</h3>
+
 <select @onchange="OnGameSelected">
     <option value="">Список игр</option>
 
@@ -14,28 +17,42 @@
     }
 </select>
 
-@if (scoreTable != null)
+@if (IsGameSelected)
 {
-    <br />
-    <br />
-    <table class="score-table">
-        <thead>
-            <tr>
-                <th>Игрок</th>
-                <th>Результат</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var pair in scoreTable.scores)
-            {
+    @if (scores is null)
+    {
+        <p>
+            Загружаем рекорды...
+        </p>
+    }
+    else if (scores.Any())
+    {
+        <br />
+        <br />
+        <table class="score-table">
+            <thead>
                 <tr>
-                    <td>@pair.Key</td>
-                    <td>@pair.Value</td>
+                    <th>Игрок</th>
+                    <th>Результат</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <br />
+            </thead>
+            <tbody>
+                @foreach (var score in scores)
+                {
+                    <tr>
+                        <td>@score.UserLogin</td>
+                        <td>@score.NumberOfWins</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    }
+    else
+    {
+        <br />
+        <p>Рекордов нет.</p>
+    }
 }
 else
 {
@@ -44,8 +61,15 @@ else
 }
 
 @code {
+    private List<FoolGameScore>? scores;
 
-    private ScoreTable? scoreTable;
+    private bool IsGameSelected = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        scores = await DataManager.GetAllScoresAsync();
+        scores = scores.OrderByDescending(score => score.NumberOfWins).ToList();
+    }
     private string selectedBoard = "Выберите игру из списка";
     private List<String> gameRecord = new List<String>() { "Дурак" };
     private void OnGameSelected(ChangeEventArgs e)
@@ -59,11 +83,11 @@ else
 
         if (e.Value?.ToString() == "Дурак")
         {
-            scoreTable = new ScoreTable();
+            IsGameSelected = true;
         }
         else
         {
-            scoreTable = null;
+            IsGameSelected = false;
         }
     }
 }

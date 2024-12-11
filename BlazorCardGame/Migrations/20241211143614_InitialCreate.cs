@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -61,8 +60,6 @@ namespace BlazorCardGame.Migrations
                     FoolGameId = table.Column<int>(type: "int", nullable: true),
                     Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastEnterTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    PlayerType = table.Column<int>(type: "int", nullable: false),
                     IsAttack = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -86,7 +83,7 @@ namespace BlazorCardGame.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfWins = table.Column<int>(type: "int", nullable: true),
                     NumberOfLosses = table.Column<int>(type: "int", nullable: true),
-                    NumerOfDraws = table.Column<int>(type: "int", nullable: true),
+                    NumberOfDraws = table.Column<int>(type: "int", nullable: true),
                     CountOfGames = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

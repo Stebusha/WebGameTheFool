@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using BlazorCardGame.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlazorCardGame.Entities;
 
@@ -18,34 +18,35 @@ public class ApplicationUser
     [StringLength(20)]
     public string Password { get; set; } = null!;
 
-    // [Display(Name = "Запомнить?")]
-    // public bool RememberMe { get; set; }
-    public DateTime? LastEnterTime
-    {
-        get { return LastEnterTime; }
-        set { LastEnterTime = DateTime.Now; }
-    }
+    [NotMapped]
+    [Display(Name = "Запомнить?")]
+    public bool RememberMe { get; set; }
+    // public DateTime? LastEnterTime
+    // {
+    //     get { return LastEnterTime; }
+    //     set { LastEnterTime = DateTime.Now; }
+    // }
 
-    [EnumDataType(typeof(PlayerType))]
-    public PlayerType PlayerType
-    {
-        get { return PlayerType; }
-        set
-        {
-            foreach (var name in Enum.GetNames(typeof(AINames)))
-            {
-                if (Login == name)
-                {
-                    PlayerType = PlayerType.AI;
-                    break;
-                }
-            }
+    // [EnumDataType(typeof(PlayerType))]
+    // public PlayerType PlayerType
+    // {
+    //     get { return PlayerType; }
+    //     set
+    //     {
+    //         foreach (var name in Enum.GetNames(typeof(AINames)))
+    //         {
+    //             if (Login == name)
+    //             {
+    //                 PlayerType = PlayerType.AI;
+    //                 break;
+    //             }
+    //         }
 
-            if (PlayerType != PlayerType.AI)
-            {
-                PlayerType = PlayerType.Human;
-            }
-        }
-    }
+    //         if (PlayerType != PlayerType.AI)
+    //         {
+    //             PlayerType = PlayerType.Human;
+    //         }
+    //     }
+    // }
     public bool IsAttack { get; set; }
 }

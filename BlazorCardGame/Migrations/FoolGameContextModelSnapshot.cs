@@ -34,16 +34,10 @@ namespace BlazorCardGame.Migrations
                     b.Property<bool>("IsAttack")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime?>("LastEnterTime")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
-
-                    b.Property<int>("PlayerType")
-                        .HasColumnType("int");
 
                     b.HasKey("Login");
 
@@ -104,13 +98,13 @@ namespace BlazorCardGame.Migrations
                     b.Property<int?>("CountOfGames")
                         .HasColumnType("int");
 
+                    b.Property<int?>("NumberOfDraws")
+                        .HasColumnType("int");
+
                     b.Property<int?>("NumberOfLosses")
                         .HasColumnType("int");
 
                     b.Property<int?>("NumberOfWins")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("NumerOfDraws")
                         .HasColumnType("int");
 
                     b.Property<string>("UserLogin")

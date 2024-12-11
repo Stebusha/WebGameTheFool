@@ -26,7 +26,7 @@ builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
         options.SlidingExpiration = true;
     });
 
-builder.Services.AddScoped<JSRuntime>();
+// builder.Services.AddScoped<JSRuntime>();
 builder.Services.AddScoped<FoolGameService>();
 builder.Services.AddScoped<DataManager>();
 

@@ -3,68 +3,115 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authentication
 
-<PageTitle>Вход</PageTitle>
-
+@inject DataManager DataManager
 @inject NavigationManager NavigationManager
 
-<div class="login-form">
+<PageTitle>Вход</PageTitle>
 
-    <EditForm id="login-form" Model="@loginModel" OnValidSubmit="LoginUserAsync" FormName="@LOGIN_FORM">
-        <DataAnnotationsValidator />
+@if (!NeedRegistration)
+{
+    <div class="login-form">
 
-        <h3>Вход</h3>
-        <div class="login">
-            <p>
-                Логин: <br />
-                <InputText id="login" placeholder="Логин" @bind-Value="loginModel.Login" />
-                <ValidationMessage For="@(() => loginModel.Login)" />
-            </p>
-        </div>
-        <div class="password">
-            <p>
-                Пароль:<br />
-                <InputText id="password" type="password" placeholder="Пароль" @bind-Value="loginModel.Password" />
-                <ValidationMessage For="@(() => loginModel.Password)" />
-            </p>
-        </div>
-        <div class="remember-me">
-            <InputCheckbox id="remeber-me" @bind-Value="loginModel.RememberMe" class="form-check-input" />
-            Запомнить?
-        </div>
-        <button type="submit">Войти</button>
-    </EditForm>
-</div>
+        <EditForm id="login-form" Model="@User" OnValidSubmit="LoginUserAsync" FormName="@LOGIN_FORM">
+            <DataAnnotationsValidator />
+
+            <h3>Вход</h3>
+            <div class="login">
+                <p>
+                    Логин: <br />
+                    <InputText id="login" placeholder="Логин" @bind-Value="User.Login" />
+                    <ValidationMessage For="@(() => User.Login)" />
+                </p>
+            </div>
+            <div class="password">
+                <p>
+                    Пароль:<br />
+                    <InputText id="password" type="password" placeholder="Пароль" @bind-Value="User.Password" />
+                    <ValidationMessage For="@(() => User.Password)" />
+                </p>
+            </div>
+            <div class="remember-me">
+                <InputCheckbox id="remeber-me" @bind-Value="User.RememberMe" class="form-check-input" />
+                Запомнить?
+            </div>
+            <button type="submit">Войти</button>
+        </EditForm>
+    </div>
+}
+else
+{
+    <ConfirmDialog Show="NeedRegistration" OnOK="ToRegister">
+        <h3>Чтобы продолжить, необходимо зарегистрироваться. Перейти?</h3>
+    </ConfirmDialog>
+}
+
 
 
 @code {
-
     private const string LOGIN_FORM = "login-form";
 
+    private bool NeedRegistration { get; set; } = false;
+
     [SupplyParameterFromForm(FormName = LOGIN_FORM)]
-    private LoginModel loginModel { get; set; } = new("", "");
+    private ApplicationUser User { get; set; } = new();
 
     [CascadingParameter]
     public HttpContext HttpContext { get; set; } = default!;
+
+    private List<ApplicationUser>? users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await DataManager.GetAllUsersAsync();
+    }
+
+    private void ToRegister()
+    {
+        NavigationManager.NavigateTo("/register");
+    }
     private async Task LoginUserAsync()
     {
         await Task.Delay(2000);
 
-        LoggedInUserModel user = new LoggedInUserModel(1, "admin");
+        if (users is not null)
+        {
+            bool existed = false;
 
-        var claims = user.ToClaims();
-        var identity = new ClaimsIdentity(claims, Constants.AUTH_SCHEME);
-        var principal = new ClaimsPrincipal(identity);
-
-        var authProperties = new AuthenticationProperties
+            foreach (var us in users)
             {
-                IsPersistent = loginModel.RememberMe
-            };
+                if (us.Login == User.Login && us.Password == User.Password)
+                {
+                    existed = true;
 
-        Console.WriteLine($"Login: {loginModel.Login}\nPasssword: {loginModel.Password}");
+                    LoggedInUserModel user = new LoggedInUserModel(1, User.Login);
 
-        await HttpContext.SignInAsync(Constants.AUTH_SCHEME, principal, authProperties);
+                    var claims = user.ToClaims();
+                    var identity = new ClaimsIdentity(claims, Constants.AUTH_SCHEME);
+                    var principal = new ClaimsPrincipal(identity);
 
-        if (loginModel.Login == "admin" && loginModel.Password == "admin")
-            NavigationManager.NavigateTo("/thefool");
+                    var authProperties = new AuthenticationProperties
+                        {
+                            IsPersistent = User.RememberMe
+                        };
+
+                    Console.WriteLine($"Login: {User.Login}\nPasssword: {User.Password}");
+
+                    await HttpContext.SignInAsync(Constants.AUTH_SCHEME, principal, authProperties);
+
+                    NavigationManager.NavigateTo("/thefool");
+
+                    break;
+                }
+            }
+
+            if (!existed)
+            {
+                NeedRegistration = true;
+            }
+        }
+        else
+        {
+            NeedRegistration = true;
+        }
     }
 }

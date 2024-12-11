@@ -134,9 +134,9 @@ public class Player
         }
         else
         {
-            for (int i = 0; i < gameTable.Length(); i++)
+            for (int i = 0; i < gameTable.Length(); i+=2)
             {
-                if (CanBeDefend(gameTable.GetCard(i)).Item1)
+                if (CanBeBeaten(gameTable.GetCard(i),gameTable))
                 {
                     return true;
                 }
@@ -311,25 +311,25 @@ public class Player
     }
 
     //check attacking card can be beaten
-    private (bool, List<Card>) CanBeDefend(Card cardToDefend)
-    {
-        List<Card> cardsToBeat = new List<Card>();
+    // private (bool, List<Card>) CanBeDefend(Card cardToDefend)
+    // {
+    //     List<Card> cardsToBeat = new List<Card>();
 
-        foreach (var card in inHand)
-        {
-            if (card > cardToDefend)
-            {
-                cardsToBeat.Add(card);
-            }
-        }
+    //     foreach (var card in inHand)
+    //     {
+    //         if (card > cardToDefend)
+    //         {
+    //             cardsToBeat.Add(card);
+    //         }
+    //     }
 
-        if (cardsToBeat.Count != 0)
-        {
-            return (true, cardsToBeat);
-        }
+    //     if (cardsToBeat.Count != 0)
+    //     {
+    //         return (true, cardsToBeat);
+    //     }
 
-        return (false, cardsToBeat);
-    }
+    //     return (false, cardsToBeat);
+    // }
     private bool CanBeBeaten(Card attackingCard, Table gameTable)
     {
 
