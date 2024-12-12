@@ -21,6 +21,12 @@ public class DataManager
         await context.SaveChangesAsync();
     }
 
+    public async Task AddScoresAsync(FoolGameScore score1, FoolGameScore score2)
+    {
+        context.Scores.AddRange(score1, score2);
+        await context.SaveChangesAsync();
+    }
+
     public async Task AddUserAsync(ApplicationUser user)
     {
         context.Users.Add(user);
@@ -70,6 +76,12 @@ public class DataManager
         return user;
     }
 
+    public async Task<FoolGameScore?> GetScoreByLoginAsync(string login)
+    {
+        var score = await context.Scores.FirstOrDefaultAsync(e => e.UserLogin == login);
+        return score;
+    }
+
     //update table in database
     public async Task UpdateUserAsync(ApplicationUser user)
     {
@@ -79,6 +91,13 @@ public class DataManager
     public async Task UpdateScoreAsync(FoolGameScore score)
     {
         context.Entry(score).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+    }
+
+    public async Task UpdateScoresAsync(FoolGameScore score1, FoolGameScore score2)
+    {
+        context.Entry(score1).State = EntityState.Modified;
+        context.Entry(score2).State = EntityState.Modified;
         await context.SaveChangesAsync();
     }
     public async Task UpdateCardAsync(CardInfo card)

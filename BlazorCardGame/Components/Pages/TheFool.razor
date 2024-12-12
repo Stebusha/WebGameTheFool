@@ -22,6 +22,7 @@ else
 
         <select class="deck-style" @onchange="OnStyleSelected">
             <option value="">Стиль колоды</option>
+            
             @foreach (var style in Enum.GetNames(typeof(DeckStyle)))
             {
                 <option value="@style">@GetStyleName(style)</option>
@@ -143,25 +144,24 @@ else
             if (scores is null)
             {
                 scores = await DataManager.GetAllScoresAsync();
-                @* players = await DataManager.GetAllUsersAsync();  *@
-                
-                @* bool opponentExisted = false; *@
+                players = await DataManager.GetAllUsersAsync();
 
-                @* foreach (var player in players)
+                bool opponentExisted = false;
+
+                foreach (var player in players)
                 {
                     if (FoolGameService.Opponent.Name == player.Login)
                     {
                         opponentExisted = true;
                     }
-                } *@
+                }
 
-                @* if (!opponentExisted)
+                if (!opponentExisted)
                 {
                     var opponent = new ApplicationUser
                         {
                             Login = FoolGameService.Opponent.Name,
                             Password = "admin",
-                            PlayerType = PlayerType.AI,
                             IsAttack = FoolGameService.Opponent.IsAttack
                         };
 
@@ -170,15 +170,14 @@ else
                 else
                 {
                     var opponent = await DataManager.GetUserByLoginAsync(FoolGameService.Opponent.Name);
+
                     if (opponent is not null)
                     {
                         opponent.IsAttack = FoolGameService.Opponent.IsAttack;
                         await DataManager.UpdateUserAsync(opponent);
                     }
-                } *@
+                }
             }
-
-
         }
     }
 
@@ -207,18 +206,21 @@ else
             {
                 UserLogin = playerName,
                 NumberOfWins = 1,
-                CountOfGames = 1
+                CountOfGames = 1,
+                NumberOfDraws = 0,
+                NumberOfLosses = 0
             };
 
         var scoreOpponent = new FoolGameScore
             {
                 UserLogin = opponentName,
                 NumberOfLosses = 1,
-                CountOfGames = 1
+                CountOfGames = 1,
+                NumberOfDraws = 0,
+                NumberOfWins = 0
             };
 
-        await DataManager.AddScoreAsync(scorePlayer);
-        await DataManager.AddScoreAsync(scoreOpponent);
+        await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
     }
     private async Task AddDraws(string playerName, string opponentName)
     {
@@ -226,37 +228,37 @@ else
             {
                 UserLogin = playerName,
                 NumberOfDraws = 1,
-                CountOfGames = 1
+                CountOfGames = 1,
+                NumberOfLosses = 0,
+                NumberOfWins = 0
             };
 
         var scoreOpponent = new FoolGameScore
             {
                 UserLogin = opponentName,
                 NumberOfDraws = 1,
-                CountOfGames = 1
+                CountOfGames = 1,
+                NumberOfLosses = 0,
+                NumberOfWins = 0
             };
 
-        await DataManager.AddScoreAsync(scorePlayer);
-        await DataManager.AddScoreAsync(scoreOpponent);
+        await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
     }
     private async Task UpdateDraws(string playerName, string opponentName)
     {
-        var scorePlayer = new FoolGameScore
-            {
-                UserLogin = playerName,
-                NumberOfDraws = 1,
-                CountOfGames = 1
-            };
+        var scorePlayer = await DataManager.GetScoreByLoginAsync(playerName);
+        var scoreOpponent = await DataManager.GetScoreByLoginAsync(opponentName);
 
-        var scoreOpponent = new FoolGameScore
-            {
-                UserLogin = opponentName,
-                NumberOfDraws = 1,
-                CountOfGames = 1
-            };
+        if (scorePlayer is not null && scoreOpponent is not null)
+        {
+            scorePlayer.NumberOfDraws++;
+            scorePlayer.CountOfGames++;
 
-        await DataManager.UpdateScoreAsync(scorePlayer);
-        await DataManager.UpdateScoreAsync(scoreOpponent);
+            scoreOpponent.NumberOfDraws++;
+            scoreOpponent.CountOfGames++;
+
+            await DataManager.UpdateScoresAsync(scorePlayer, scoreOpponent);
+        }
     }
     private async Task UpdateScoresForWins(string name, FoolGameScore score)
     {
@@ -269,7 +271,9 @@ else
             {
                 UserLogin = name,
                 CountOfGames = 1,
-                NumberOfLosses = 1
+                NumberOfLosses = 1,
+                NumberOfWins = 0,
+                NumberOfDraws = 0
             };
 
         await DataManager.AddScoreAsync(scoreOpponent);
@@ -285,7 +289,9 @@ else
             {
                 UserLogin = name,
                 CountOfGames = 1,
-                NumberOfWins = 1
+                NumberOfWins = 1,
+                NumberOfLosses = 0,
+                NumberOfDraws = 0
             };
 
         await DataManager.AddScoreAsync(scoreOpponent);
@@ -382,7 +388,7 @@ else
                         {
                             if (score.UserLogin == FoolGameService.Opponent.Name)
                             {
-                                await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
+                                await UpdateScoresForLose(FoolGameService.Player.Name, score);
                                 break;
                             }
                         }
@@ -469,7 +475,11 @@ else
 
             if (FoolGameService.GameState == GameState.Finished)
             {
+                scores?.Clear();
+                scores = await DataManager.GetAllScoresAsync();
+
                 await SetScore();
+
             }
             //if bot's turn - start turn if game not finished
             else if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)
