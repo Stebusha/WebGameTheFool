@@ -13,4 +13,5 @@ public class FoolGameContext : DbContext
     public DbSet<FoolGame> Games { get; set; } = null!;
     public DbSet<FoolGameScore> Scores { get; set; } = null!;
     public DbSet<CardInfo> Cards { get; set; } = null!;
+    public DbSet<PlayerInfo> Players { get; set; } = null!;
 }

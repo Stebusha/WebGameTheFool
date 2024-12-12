@@ -28,11 +28,11 @@ namespace BlazorCardGame.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int?>("FoolGameId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("LastEnteredTime")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("IsAttack")
-                        .HasColumnType("tinyint(1)");
+                    MySqlPropertyBuilderExtensions.UseMySqlComputedColumn(b.Property<DateTime>("LastEnteredTime"));
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -40,8 +40,6 @@ namespace BlazorCardGame.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.HasKey("Login");
-
-                    b.HasIndex("FoolGameId");
 
                     b.ToTable("Users");
                 });
@@ -118,13 +116,34 @@ namespace BlazorCardGame.Migrations
                     b.ToTable("Scores");
                 });
 
-            modelBuilder.Entity("BlazorCardGame.Entities.ApplicationUser", b =>
+            modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
                 {
-                    b.HasOne("BlazorCardGame.Entities.FoolGame", "FoolGame")
-                        .WithMany("Players")
-                        .HasForeignKey("FoolGameId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("FoolGame");
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("FoolGameId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAttack")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("PlayerType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserLogin")
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoolGameId");
+
+                    b.HasIndex("UserLogin")
+                        .IsUnique();
+
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
@@ -147,6 +166,24 @@ namespace BlazorCardGame.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
+                {
+                    b.HasOne("BlazorCardGame.Entities.FoolGame", null)
+                        .WithMany("Players")
+                        .HasForeignKey("FoolGameId");
+
+                    b.HasOne("BlazorCardGame.Entities.ApplicationUser", "User")
+                        .WithOne("playerInfo")
+                        .HasForeignKey("BlazorCardGame.Entities.PlayerInfo", "UserLogin");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlazorCardGame.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("playerInfo");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>

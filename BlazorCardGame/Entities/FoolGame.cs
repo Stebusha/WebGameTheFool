@@ -7,7 +7,7 @@ public class FoolGame
     public int Id { get; set; }
 
     [Required]
-    public List<ApplicationUser> Players { get; set; } = new();
+    public List<PlayerInfo> Players { get; set; } = new();
 
     [Required]
     List<CardInfo> Cards { get; set; } = new();

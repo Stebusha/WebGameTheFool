@@ -62,7 +62,15 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        users = await DataManager.GetAllUsersAsync();
+        try
+        {
+            users = await DataManager.GetAllUsersAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
     }
 
     private void ToRegister()
@@ -83,6 +91,17 @@ else
                 {
                     existed = true;
 
+                    us.LastEnteredTime = DateTime.Now;
+                    
+                    try
+                    {
+                        await DataManager.UpdateUserAsync(us);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+
                     LoggedInUserModel user = new LoggedInUserModel(1, User.Login);
 
                     var claims = user.ToClaims();
@@ -95,6 +114,8 @@ else
                         };
 
                     Console.WriteLine($"Login: {User.Login}\nPasssword: {User.Password}");
+
+
 
                     await HttpContext.SignInAsync(Constants.AUTH_SCHEME, principal, authProperties);
 

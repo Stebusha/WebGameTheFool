@@ -172,7 +172,7 @@ else
                         {
                             Login = FoolGameService.Opponent.Name,
                             Password = "admin",
-                            IsAttack = FoolGameService.Opponent.IsAttack
+                            @* IsAttack = FoolGameService.Opponent.IsAttack *@
                         };
 
                     try
@@ -190,7 +190,7 @@ else
 
                     if (opponent is not null)
                     {
-                        opponent.IsAttack = FoolGameService.Opponent.IsAttack;
+                        @* opponent.IsAttack = FoolGameService.Opponent.IsAttack; *@
 
                         try
                         {
@@ -284,6 +284,27 @@ else
             Console.WriteLine(e.Message);
         }
     }
+
+    private async Task AddDraw(string Name)
+    {
+        var score = new FoolGameScore
+            {
+                UserLogin = Name,
+                NumberOfDraws = 1,
+                CountOfGames = 1,
+                NumberOfLosses = 0,
+                NumberOfWins = 0
+            };
+        
+        try
+        {
+            await DataManager.AddScoreAsync(score);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+    }
     private async Task UpdateDraws(string playerName, string opponentName)
     {
         var scorePlayer = await DataManager.GetScoreByLoginAsync(playerName);
@@ -300,6 +321,30 @@ else
             try
             {
                 await DataManager.UpdateScoresAsync(scorePlayer, scoreOpponent);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+    }
+
+    private async Task UpdateDraw(string Name)
+    {
+        var score = await DataManager.GetScoreByLoginAsync(Name);
+
+        if (score is not null)
+        {
+            score.NumberOfDraws++;
+            score.CountOfGames++;
+
+            score.NumberOfDraws++;
+            score.CountOfGames++;
+
+            try
+            {
+                await DataManager.UpdateScoreAsync(score);
             }
             catch (Exception e)
             {
@@ -441,7 +486,8 @@ else
                     }
                     else
                     {
-                        await UpdateDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                        await AddDraw(FoolGameService.Opponent.Name);
+                        await UpdateDraw(FoolGameService.Player.Name);
                     }
                 }
                 else if (!playerExist && opponentExist)
@@ -470,7 +516,8 @@ else
                     }
                     else
                     {
-                        await UpdateDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
+                        await AddDraw(FoolGameService.Player.Name);
+                        await UpdateDraw(FoolGameService.Opponent.Name);
                     }
                 }
                 else
