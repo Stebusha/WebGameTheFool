@@ -22,7 +22,7 @@ else
 
         <select class="deck-style" @onchange="OnStyleSelected">
             <option value="">Стиль колоды</option>
-            
+
             @foreach (var style in Enum.GetNames(typeof(DeckStyle)))
             {
                 <option value="@style">@GetStyleName(style)</option>
@@ -143,16 +143,26 @@ else
 
             if (scores is null)
             {
-                scores = await DataManager.GetAllScoresAsync();
-                players = await DataManager.GetAllUsersAsync();
+                try
+                {
+                    scores = await DataManager.GetAllScoresAsync();
+                    players = await DataManager.GetAllUsersAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
                 bool opponentExisted = false;
 
-                foreach (var player in players)
+                if (players is not null)
                 {
-                    if (FoolGameService.Opponent.Name == player.Login)
+                    foreach (var player in players)
                     {
-                        opponentExisted = true;
+                        if (FoolGameService.Opponent.Name == player.Login)
+                        {
+                            opponentExisted = true;
+                        }
                     }
                 }
 
@@ -165,7 +175,14 @@ else
                             IsAttack = FoolGameService.Opponent.IsAttack
                         };
 
-                    await DataManager.AddUserAsync(opponent);
+                    try
+                    {
+                        await DataManager.AddUserAsync(opponent);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
                 else
                 {
@@ -174,7 +191,15 @@ else
                     if (opponent is not null)
                     {
                         opponent.IsAttack = FoolGameService.Opponent.IsAttack;
-                        await DataManager.UpdateUserAsync(opponent);
+
+                        try
+                        {
+                            await DataManager.UpdateUserAsync(opponent);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
                     }
                 }
             }
@@ -220,7 +245,15 @@ else
                 NumberOfWins = 0
             };
 
-        await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
+        try
+        {
+            await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
     }
     private async Task AddDraws(string playerName, string opponentName)
     {
@@ -242,7 +275,14 @@ else
                 NumberOfWins = 0
             };
 
-        await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
+        try
+        {
+            await DataManager.AddScoresAsync(scorePlayer, scoreOpponent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
     private async Task UpdateDraws(string playerName, string opponentName)
     {
@@ -257,7 +297,15 @@ else
             scoreOpponent.NumberOfDraws++;
             scoreOpponent.CountOfGames++;
 
-            await DataManager.UpdateScoresAsync(scorePlayer, scoreOpponent);
+            try
+            {
+                await DataManager.UpdateScoresAsync(scorePlayer, scoreOpponent);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
     }
     private async Task UpdateScoresForWins(string name, FoolGameScore score)
@@ -265,7 +313,14 @@ else
         score.NumberOfWins++;
         score.CountOfGames++;
 
-        await DataManager.UpdateScoreAsync(score);
+        try
+        {
+            await DataManager.UpdateScoreAsync(score);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
 
         var scoreOpponent = new FoolGameScore
             {
@@ -276,14 +331,29 @@ else
                 NumberOfDraws = 0
             };
 
-        await DataManager.AddScoreAsync(scoreOpponent);
+        try
+        {
+            await DataManager.AddScoreAsync(scoreOpponent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
     private async Task UpdateScoresForLose(string name, FoolGameScore score)
     {
         score.NumberOfLosses++;
         score.CountOfGames++;
 
-        await DataManager.UpdateScoreAsync(score);
+        try
+        {
+            await DataManager.UpdateScoreAsync(score);
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
 
         var scoreOpponent = new FoolGameScore
             {
@@ -294,7 +364,14 @@ else
                 NumberOfDraws = 0
             };
 
-        await DataManager.AddScoreAsync(scoreOpponent);
+        try
+        {
+            await DataManager.AddScoreAsync(scoreOpponent);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
     private async Task SetScore()
     {
@@ -350,7 +427,6 @@ else
                                 break;
                             }
                         }
-
                     }
                     else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
                     {
@@ -380,7 +456,6 @@ else
                                 break;
                             }
                         }
-
                     }
                     else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
                     {
@@ -409,7 +484,15 @@ else
                                 score.NumberOfWins++;
                                 score.CountOfGames++;
 
-                                await DataManager.UpdateScoreAsync(score);
+                                try
+                                {
+                                    await DataManager.UpdateScoreAsync(score);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                }
+
                             }
 
                             if (score.UserLogin == FoolGameService.Opponent.Name)
@@ -417,11 +500,16 @@ else
                                 score.NumberOfLosses++;
                                 score.CountOfGames++;
 
-                                await DataManager.UpdateScoreAsync(score);
+                                try
+                                {
+                                    await DataManager.UpdateScoreAsync(score);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                }
                             }
-
                         }
-
                     }
                     else if (FoolGameService.Player.IsFool && !FoolGameService.Opponent.IsFool)
                     {
@@ -432,7 +520,14 @@ else
                                 score.NumberOfLosses++;
                                 score.CountOfGames++;
 
-                                await DataManager.UpdateScoreAsync(score);
+                                try
+                                {
+                                    await DataManager.UpdateScoreAsync(score);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                }
                             }
 
                             if (score.UserLogin == FoolGameService.Opponent.Name)
@@ -440,7 +535,14 @@ else
                                 score.NumberOfWins++;
                                 score.CountOfGames++;
 
-                                await DataManager.UpdateScoreAsync(score);
+                                try
+                                {
+                                    await DataManager.UpdateScoreAsync(score);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                }
                             }
                         }
                     }
@@ -450,7 +552,6 @@ else
                     }
                 }
             }
-
         }
     }
 
@@ -476,10 +577,17 @@ else
             if (FoolGameService.GameState == GameState.Finished)
             {
                 scores?.Clear();
-                scores = await DataManager.GetAllScoresAsync();
+
+                try
+                {
+                    scores = await DataManager.GetAllScoresAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
                 await SetScore();
-
             }
             //if bot's turn - start turn if game not finished
             else if (!FoolGameService.Player.IsAttack && FoolGameService.Player.inHand.Count != 0)

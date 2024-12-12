@@ -39,10 +39,13 @@
             <tbody>
                 @foreach (var score in scores)
                 {
-                    <tr>
-                        <td>@score.UserLogin</td>
-                        <td>@score.NumberOfWins</td>
-                    </tr>
+                    if (score.NumberOfWins != 0)
+                    {
+                        <tr>
+                            <td>@score.UserLogin</td>
+                            <td>@score.NumberOfWins</td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
@@ -67,8 +70,17 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        scores = await DataManager.GetAllScoresAsync();
-        scores = scores.OrderByDescending(score => score.NumberOfWins).ToList();
+        try
+        {
+            scores = await DataManager.GetAllScoresAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        if (scores is not null)
+            scores = scores.OrderByDescending(score => score.NumberOfWins).ToList();
     }
     private string selectedBoard = "Выберите игру из списка";
     private List<String> gameRecord = new List<String>() { "Дурак" };
