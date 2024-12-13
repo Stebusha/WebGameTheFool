@@ -32,6 +32,8 @@ public class Deck
     //return trump suit
     public SuitType GetTrumpSuit() => s_trumpSuit;
 
+    public Card GetTrumpCard() => s_trumpCard;
+
     //return trump suit unicode char string
     public string GetTrumpSuitName() => s_trumpSuit switch
     {
@@ -52,6 +54,7 @@ public class Deck
         }
     }
 
+    public List<Card> GetDeckCards() => _cards;
     public DeckStyle GetDeckStyle() => s_style;
     private static string GetTrumpSuitURL() => s_trumpSuit switch
     {

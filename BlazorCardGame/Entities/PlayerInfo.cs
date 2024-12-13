@@ -6,7 +6,9 @@ namespace BlazorCardGame.Entities;
 
 public class PlayerInfo
 {
-    public int Id { get; set; }
+    [Required]
+    [Key]
+    public string Name { get; set; } = null!;
     public string? UserLogin { get; set; }
     public ApplicationUser? User { get; set; }
 

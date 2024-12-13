@@ -128,8 +128,10 @@ else
 
 @code {
     private bool ShowSettings = false;
+    private FoolGame? game;
     private List<FoolGameScore>? scores;
-    private List<ApplicationUser>? players;
+    private List<ApplicationUser>? users;
+    private List<PlayerInfo>? players;
 
     //load game on initialized component
     protected override async Task OnInitializedAsync()
@@ -146,7 +148,8 @@ else
                 try
                 {
                     scores = await DataManager.GetAllScoresAsync();
-                    players = await DataManager.GetAllUsersAsync();
+                    users = await DataManager.GetAllUsersAsync();
+                    players = await DataManager.GetAllPlayersAsync();
                 }
                 catch (Exception e)
                 {
@@ -154,30 +157,36 @@ else
                 }
 
                 bool opponentExisted = false;
+                bool playerExisted = false;
 
                 if (players is not null)
                 {
                     foreach (var player in players)
                     {
-                        if (FoolGameService.Opponent.Name == player.Login)
+                        if (FoolGameService.Opponent.Name == player.Name)
                         {
                             opponentExisted = true;
+                        }
+
+                        if (FoolGameService.Player.Name == player.Name)
+                        {
+                            playerExisted = true;
                         }
                     }
                 }
 
                 if (!opponentExisted)
                 {
-                    var opponent = new ApplicationUser
+                    var opponent = new PlayerInfo
                         {
-                            Login = FoolGameService.Opponent.Name,
-                            Password = "admin",
-                            @* IsAttack = FoolGameService.Opponent.IsAttack *@
+                            Name = FoolGameService.Opponent.Name,
+                            IsAttack = FoolGameService.Opponent.IsAttack,
+                            PlayerType = PlayerType.AI
                         };
 
                     try
                     {
-                        await DataManager.AddUserAsync(opponent);
+                        await DataManager.AddPlayerAsync(opponent);
                     }
                     catch (Exception e)
                     {
@@ -186,15 +195,54 @@ else
                 }
                 else
                 {
-                    var opponent = await DataManager.GetUserByLoginAsync(FoolGameService.Opponent.Name);
+                    var opponent = await DataManager.GetPlayerByNameAsync(FoolGameService.Opponent.Name);
 
                     if (opponent is not null)
                     {
-                        @* opponent.IsAttack = FoolGameService.Opponent.IsAttack; *@
+                        opponent.IsAttack = FoolGameService.Opponent.IsAttack;
 
                         try
                         {
-                            await DataManager.UpdateUserAsync(opponent);
+                            await DataManager.UpdatePlayerAsync(opponent);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                    }
+                }
+
+                if (!playerExisted)
+                {
+
+                    var player = new PlayerInfo
+                        {
+                            Name = FoolGameService.Player.Name,
+                            IsAttack = FoolGameService.Player.IsAttack,
+                            PlayerType = PlayerType.Human,
+                            UserLogin = FoolGameService.Player.Name
+                        };
+
+                    try
+                    {
+                        await DataManager.AddPlayerAsync(player);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                else
+                {
+                    var player = await DataManager.GetPlayerByNameAsync(FoolGameService.Player.Name);
+
+                    if (player is not null)
+                    {
+                        player.IsAttack = FoolGameService.Player.IsAttack;
+
+                        try
+                        {
+                            await DataManager.UpdatePlayerAsync(player);
                         }
                         catch (Exception e)
                         {
@@ -220,6 +268,112 @@ else
             FoolGameService.Deck.ChangeStyle(e.Value?.ToString() ?? "Fantasy");
         }
     }
+
+    private async Task SaveCurrentGame()
+    {
+        if (game is null)
+        {
+            List<PlayerInfo> players = new();
+            List<CardInfo> cards = new();
+
+            var player = new PlayerInfo
+                {
+                    Name = FoolGameService.Player.Name,
+                    IsAttack = FoolGameService.Player.IsAttack,
+                    PlayerType = PlayerType.Human,
+                    UserLogin = FoolGameService.Player.Name
+                };
+
+            var opponent = new PlayerInfo
+                {
+                    Name = FoolGameService.Opponent.Name,
+                    IsAttack = FoolGameService.Opponent.IsAttack,
+                    PlayerType = PlayerType.AI,
+                };
+
+            players.Add(player);
+            players.Add(opponent);
+
+            foreach (var card in FoolGameService.AttackingCards)
+            {
+                var tempCard = new CardInfo
+                    {
+                        ImageUrl = card.ImageUrl,
+                        CardType = CardType.Attacking
+                    };
+
+                cards.Add(tempCard);
+            }
+
+            foreach (var card in FoolGameService.DefendingCards)
+            {
+                var tempCard = new CardInfo
+                    {
+                        ImageUrl = card.ImageUrl,
+                        CardType = CardType.Defending
+                    };
+
+                cards.Add(tempCard);
+            }
+
+            foreach (var card in FoolGameService.Deck.GetDeckCards())
+            {
+                var tempCard = new CardInfo
+                    {
+                        ImageUrl = card.ImageUrl,
+                        CardType = CardType.InDeck
+                    };
+
+                if (card == FoolGameService.Deck.GetTrumpCard())
+                {
+                    tempCard.CardType = CardType.Trump;
+                }
+
+                cards.Add(tempCard);
+            }
+
+            foreach (var card in FoolGameService.Player.inHand)
+            {
+                var tempCard = new CardInfo
+                    {
+                        ImageUrl = card.ImageUrl,
+                        CardType = CardType.Player
+                    };
+
+                cards.Add(tempCard);
+            }
+
+            foreach (var card in FoolGameService.Opponent.inHand)
+            {
+                var tempCard = new CardInfo
+                    {
+                        ImageUrl = card.ImageUrl,
+                        CardType = CardType.Opponent
+                    };
+
+                cards.Add(tempCard);
+            }
+
+            game = new FoolGame
+                {
+                    Players = players,
+                    CountOfGames = FoolGameService.CountOfGames,
+                    DicardsCardCount = FoolGameService.DiscardCardCount,
+                    Cards = cards
+                };
+
+            try
+            {
+                await DataManager.AddGameAsync(game);
+                Console.WriteLine("Saved");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+    }
     private void SetGame()
     {
         ShowSettings = false;
@@ -229,7 +383,7 @@ else
     {
         var scorePlayer = new FoolGameScore
             {
-                UserLogin = playerName,
+                PlayerInfoName = playerName,
                 NumberOfWins = 1,
                 CountOfGames = 1,
                 NumberOfDraws = 0,
@@ -238,7 +392,7 @@ else
 
         var scoreOpponent = new FoolGameScore
             {
-                UserLogin = opponentName,
+                PlayerInfoName = opponentName,
                 NumberOfLosses = 1,
                 CountOfGames = 1,
                 NumberOfDraws = 0,
@@ -259,7 +413,7 @@ else
     {
         var scorePlayer = new FoolGameScore
             {
-                UserLogin = playerName,
+                PlayerInfoName = playerName,
                 NumberOfDraws = 1,
                 CountOfGames = 1,
                 NumberOfLosses = 0,
@@ -268,7 +422,7 @@ else
 
         var scoreOpponent = new FoolGameScore
             {
-                UserLogin = opponentName,
+                PlayerInfoName = opponentName,
                 NumberOfDraws = 1,
                 CountOfGames = 1,
                 NumberOfLosses = 0,
@@ -289,13 +443,13 @@ else
     {
         var score = new FoolGameScore
             {
-                UserLogin = Name,
+                PlayerInfoName = Name,
                 NumberOfDraws = 1,
                 CountOfGames = 1,
                 NumberOfLosses = 0,
                 NumberOfWins = 0
             };
-        
+
         try
         {
             await DataManager.AddScoreAsync(score);
@@ -307,8 +461,8 @@ else
     }
     private async Task UpdateDraws(string playerName, string opponentName)
     {
-        var scorePlayer = await DataManager.GetScoreByLoginAsync(playerName);
-        var scoreOpponent = await DataManager.GetScoreByLoginAsync(opponentName);
+        var scorePlayer = await DataManager.GetScoreByNameAsync(playerName);
+        var scoreOpponent = await DataManager.GetScoreByNameAsync(opponentName);
 
         if (scorePlayer is not null && scoreOpponent is not null)
         {
@@ -329,10 +483,9 @@ else
 
         }
     }
-
     private async Task UpdateDraw(string Name)
     {
-        var score = await DataManager.GetScoreByLoginAsync(Name);
+        var score = await DataManager.GetScoreByNameAsync(Name);
 
         if (score is not null)
         {
@@ -369,7 +522,7 @@ else
 
         var scoreOpponent = new FoolGameScore
             {
-                UserLogin = name,
+                PlayerInfoName = name,
                 CountOfGames = 1,
                 NumberOfLosses = 1,
                 NumberOfWins = 0,
@@ -402,7 +555,7 @@ else
 
         var scoreOpponent = new FoolGameScore
             {
-                UserLogin = name,
+                PlayerInfoName = name,
                 CountOfGames = 1,
                 NumberOfWins = 1,
                 NumberOfLosses = 0,
@@ -429,12 +582,12 @@ else
             {
                 foreach (var score in scores)
                 {
-                    if (FoolGameService.Player.Name == score.UserLogin)
+                    if (FoolGameService.Player.Name == score.PlayerInfoName)
                     {
                         playerExist = true;
                     }
 
-                    if (FoolGameService.Opponent.Name == score.UserLogin)
+                    if (FoolGameService.Opponent.Name == score.PlayerInfoName)
                     {
                         opponentExist = true;
                     }
@@ -466,7 +619,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Player.Name)
+                            if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
                                 await UpdateScoresForWins(FoolGameService.Opponent.Name, score);
                                 break;
@@ -477,7 +630,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Player.Name)
+                            if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
                                 await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
                                 break;
@@ -496,7 +649,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            if (score.PlayerInfoName == FoolGameService.Opponent.Name)
                             {
                                 await UpdateScoresForWins(FoolGameService.Player.Name, score);
                                 break;
@@ -507,7 +660,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            if (score.PlayerInfoName == FoolGameService.Opponent.Name)
                             {
                                 await UpdateScoresForLose(FoolGameService.Player.Name, score);
                                 break;
@@ -526,7 +679,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Player.Name)
+                            if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
                                 score.NumberOfWins++;
                                 score.CountOfGames++;
@@ -542,7 +695,7 @@ else
 
                             }
 
-                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            if (score.PlayerInfoName == FoolGameService.Opponent.Name)
                             {
                                 score.NumberOfLosses++;
                                 score.CountOfGames++;
@@ -562,7 +715,7 @@ else
                     {
                         foreach (var score in scores)
                         {
-                            if (score.UserLogin == FoolGameService.Player.Name)
+                            if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
                                 score.NumberOfLosses++;
                                 score.CountOfGames++;
@@ -577,7 +730,7 @@ else
                                 }
                             }
 
-                            if (score.UserLogin == FoolGameService.Opponent.Name)
+                            if (score.PlayerInfoName == FoolGameService.Opponent.Name)
                             {
                                 score.NumberOfWins++;
                                 score.CountOfGames++;
@@ -620,6 +773,8 @@ else
         {
             //method to end current turn, refresh turn properties
             FoolGameService.EndCurrentTurn();
+
+            await SaveCurrentGame();
 
             if (FoolGameService.GameState == GameState.Finished)
             {

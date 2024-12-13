@@ -1,5 +1,6 @@
 using BlazorCardGame.Contexts;
 using BlazorCardGame.Entities;
+using BlazorCardGame.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorCardGame.Services;
@@ -32,6 +33,18 @@ public class DataManager
         context.Users.Add(user);
         await context.SaveChangesAsync();
     }
+
+     public async Task AddPlayerAsync(PlayerInfo player)
+    {
+        context.Players.Add(player);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task AddPlayersAsync(PlayerInfo player1, PlayerInfo player2)
+    {
+        context.Players.AddRange(player1, player2);
+        await context.SaveChangesAsync();
+    }
     public async Task AddCardAsync(CardInfo card)
     {
         context.Cards.Add(card);
@@ -51,10 +64,22 @@ public class DataManager
         return users;
     }
 
+    public async Task<List<PlayerInfo>> GetAllPlayersAsync()
+    {
+        var players = await context.Players.ToListAsync();
+        return players;
+    }
+
     public async Task<List<FoolGameScore>> GetAllScoresAsync()
     {
         var scores = await context.Scores.ToListAsync();
         return scores;
+    }
+
+    public async Task<List<FoolGame>> GetAllGamesAsync()
+    {
+        var games = await context.Games.ToListAsync();
+        return games;
     }
 
     public async Task<List<CardInfo>> GetAllCardsAsync()
@@ -76,9 +101,15 @@ public class DataManager
         return user;
     }
 
-    public async Task<FoolGameScore?> GetScoreByLoginAsync(string login)
+    public async Task<PlayerInfo?> GetPlayerByNameAsync(string name)
     {
-        var score = await context.Scores.FirstOrDefaultAsync(e => e.UserLogin == login);
+        var player = await context.Players.FirstOrDefaultAsync(e => e.Name == name);
+        return player;
+    }
+
+    public async Task<FoolGameScore?> GetScoreByNameAsync(string name)
+    {
+        var score = await context.Scores.FirstOrDefaultAsync(e => e.PlayerInfoName == name);
         return score;
     }
 
@@ -86,6 +117,12 @@ public class DataManager
     public async Task UpdateUserAsync(ApplicationUser user)
     {
         context.Entry(user).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+    }
+
+    public async Task UpdatePlayerAsync(PlayerInfo player)
+    {
+        context.Entry(player).State = EntityState.Modified;
         await context.SaveChangesAsync();
     }
     public async Task UpdateScoreAsync(FoolGameScore score)

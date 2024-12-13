@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    [Migration("20241212134623_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241213082450_ReCreation")]
+    partial class ReCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,11 +31,8 @@ namespace BlazorCardGame.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime>("LastEnteredTime")
-                        .ValueGeneratedOnAddOrUpdate()
+                    b.Property<DateTime?>("LastEnteredTime")
                         .HasColumnType("datetime(6)");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlComputedColumn(b.Property<DateTime>("LastEnteredTime"));
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -108,24 +105,21 @@ namespace BlazorCardGame.Migrations
                     b.Property<int?>("NumberOfWins")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserLogin")
+                    b.Property<string>("PlayerInfoName")
                         .IsRequired()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserLogin");
+                    b.HasIndex("PlayerInfoName");
 
                     b.ToTable("Scores");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Name")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("FoolGameId")
                         .HasColumnType("int");
@@ -139,7 +133,7 @@ namespace BlazorCardGame.Migrations
                     b.Property<string>("UserLogin")
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
                     b.HasIndex("FoolGameId");
 
@@ -162,13 +156,13 @@ namespace BlazorCardGame.Migrations
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
                 {
-                    b.HasOne("BlazorCardGame.Entities.ApplicationUser", "User")
+                    b.HasOne("BlazorCardGame.Entities.PlayerInfo", "PlayerInfo")
                         .WithMany()
-                        .HasForeignKey("UserLogin")
+                        .HasForeignKey("PlayerInfoName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("PlayerInfo");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>

@@ -10,8 +10,11 @@ public class FoolGame
     public List<PlayerInfo> Players { get; set; } = new();
 
     [Required]
-    List<CardInfo> Cards { get; set; } = new();
-    
+    public List<CardInfo> Cards { get; set; } = new();
+
+    [Required]
+    public int DicardsCardCount { get; set; } = 0;
+
     [Required]
     [Range(0, int.MaxValue)]
     public int CountOfGames { get; set; }

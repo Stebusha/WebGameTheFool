@@ -4,6 +4,7 @@ using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    partial class FoolGameContextModelSnapshot : ModelSnapshot
+    [Migration("20241213090658_ChangeTableUsers")]
+    partial class ChangeTableUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,9 +78,6 @@ namespace BlazorCardGame.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CountOfGames")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DicardsCardCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -146,7 +146,7 @@ namespace BlazorCardGame.Migrations
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
                 {
                     b.HasOne("BlazorCardGame.Entities.FoolGame", "FoolGame")
-                        .WithMany("Cards")
+                        .WithMany()
                         .HasForeignKey("FoolGameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -185,8 +185,6 @@ namespace BlazorCardGame.Migrations
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
                 {
-                    b.Navigation("Cards");
-
                     b.Navigation("Players");
                 });
 #pragma warning restore 612, 618

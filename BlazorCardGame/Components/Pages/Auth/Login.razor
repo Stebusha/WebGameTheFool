@@ -34,22 +34,24 @@
                 <InputCheckbox id="remeber-me" @bind-Value="User.RememberMe" class="form-check-input" />
                 Запомнить?
             </div>
+            @* <div class="to-register">
+                <a href="/register" @onclick="ToRegister">Зарегистрироваться?</a>
+            </div> *@
             <button type="submit">Войти</button>
         </EditForm>
     </div>
 }
 else
 {
-    <ConfirmDialog Show="NeedRegistration" OnOK="ToRegister">
+    @* <ConfirmDialog Show="NeedRegistration" OnOK="ToRegister">
         <h3>Чтобы продолжить, необходимо зарегистрироваться. Перейти?</h3>
-    </ConfirmDialog>
+    </ConfirmDialog> *@
 }
 
 
 
 @code {
     private const string LOGIN_FORM = "login-form";
-
     private bool NeedRegistration { get; set; } = false;
 
     [SupplyParameterFromForm(FormName = LOGIN_FORM)]
@@ -71,11 +73,14 @@ else
             Console.WriteLine(e.Message);
         }
 
+        await base.OnInitializedAsync();
     }
 
     private void ToRegister()
     {
-        NavigationManager.NavigateTo("/register");
+        NeedRegistration = false;
+        Console.WriteLine("Переходи на страницу регистрации");
+        NavigationManager.NavigateTo("/register", true);
     }
     private async Task LoginUserAsync()
     {
@@ -92,7 +97,7 @@ else
                     existed = true;
 
                     us.LastEnteredTime = DateTime.Now;
-                    
+
                     try
                     {
                         await DataManager.UpdateUserAsync(us);

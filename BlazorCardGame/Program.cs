@@ -4,7 +4,6 @@ using BlazorCardGame.Models;
 using BlazorCardGame.Services;
 using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.JSInterop;
 
 var builder = WebApplication.CreateBuilder(args);
 

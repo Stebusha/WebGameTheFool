@@ -17,6 +17,6 @@ public class ApplicationUser
 
     [NotMapped]
     [Display(Name = "Запомнить?")]
-    public bool RememberMe { get; set; }
+    public bool RememberMe { get; set; } = false;
     public PlayerInfo? playerInfo { get; set; }
 }

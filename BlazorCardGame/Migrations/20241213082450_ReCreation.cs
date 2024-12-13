@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlazorCardGame.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class ReCreation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,8 +37,7 @@ namespace BlazorCardGame.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastEnteredTime = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn)
+                    LastEnteredTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,8 +72,8 @@ namespace BlazorCardGame.Migrations
                 name: "Players",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UserLogin = table.Column<string>(type: "varchar(20)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PlayerType = table.Column<int>(type: "int", nullable: false),
@@ -83,7 +82,7 @@ namespace BlazorCardGame.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.Id);
+                    table.PrimaryKey("PK_Players", x => x.Name);
                     table.ForeignKey(
                         name: "FK_Players_Games_FoolGameId",
                         column: x => x.FoolGameId,
@@ -103,7 +102,7 @@ namespace BlazorCardGame.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserLogin = table.Column<string>(type: "varchar(20)", nullable: false)
+                    PlayerInfoName = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfWins = table.Column<int>(type: "int", nullable: true),
                     NumberOfLosses = table.Column<int>(type: "int", nullable: true),
@@ -114,10 +113,10 @@ namespace BlazorCardGame.Migrations
                 {
                     table.PrimaryKey("PK_Scores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Scores_Users_UserLogin",
-                        column: x => x.UserLogin,
-                        principalTable: "Users",
-                        principalColumn: "Login",
+                        name: "FK_Scores_Players_PlayerInfoName",
+                        column: x => x.PlayerInfoName,
+                        principalTable: "Players",
+                        principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -139,9 +138,9 @@ namespace BlazorCardGame.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Scores_UserLogin",
+                name: "IX_Scores_PlayerInfoName",
                 table: "Scores",
-                column: "UserLogin");
+                column: "PlayerInfoName");
         }
 
         /// <inheritdoc />
@@ -151,10 +150,10 @@ namespace BlazorCardGame.Migrations
                 name: "Cards");
 
             migrationBuilder.DropTable(
-                name: "Players");
+                name: "Scores");
 
             migrationBuilder.DropTable(
-                name: "Scores");
+                name: "Players");
 
             migrationBuilder.DropTable(
                 name: "Games");
