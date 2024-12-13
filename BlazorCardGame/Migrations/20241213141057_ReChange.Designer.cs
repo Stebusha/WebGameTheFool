@@ -4,6 +4,7 @@ using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    partial class FoolGameContextModelSnapshot : ModelSnapshot
+    [Migration("20241213141057_ReChange")]
+    partial class ReChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +80,7 @@ namespace BlazorCardGame.Migrations
                     b.Property<int>("CountOfGames")
                         .HasColumnType("int");
 
-                    b.Property<int>("DiscardCardsCount")
+                    b.Property<int>("DicardsCardCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

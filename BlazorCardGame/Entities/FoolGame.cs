@@ -13,7 +13,7 @@ public class FoolGame
     public List<CardInfo> Cards { get; set; } = new();
 
     [Required]
-    public int DicardsCardCount { get; set; } = 0;
+    public int DiscardCardsCount { get; set; } = 0;
 
     [Required]
     [Range(0, int.MaxValue)]
