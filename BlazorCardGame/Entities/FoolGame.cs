@@ -1,21 +1,22 @@
-// using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-// namespace BlazorCardGame.Entities;
+namespace BlazorCardGame.Entities;
 
-// public class FoolGame
-// {
-//     public int Id { get; set; }
+public class FoolGame
+{
+    [Required]
+    public string PlayerInfoName { get; set; } = null!;
 
-//     [Required]
-//     public List<PlayerInfo> Players { get; set; } = new();
+    [Required]
+    public string OpponentInfoName { get; set; } = null!;
 
-//     [Required]
-//     public List<CardInfo> Cards { get; set; } = new();
+    [Required]
+    public List<CardInfo> Cards { get; set; } = new();
 
-//     [Required]
-//     public int DiscardCardsCount { get; set; } = 0;
+    [Required]
+    public int DiscardCardsCount { get; set; } = 0;
 
-//     [Required]
-//     [Range(0, int.MaxValue)]
-//     public int CountOfGames { get; set; }
-// }
+    [Required]
+    [Range(0, int.MaxValue)]
+    public int CountOfGames { get; set; }
+}

@@ -4,6 +4,7 @@ using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    partial class FoolGameContextModelSnapshot : ModelSnapshot
+    [Migration("20241216110846_ChangeTableGames")]
+    partial class ChangeTableGames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,10 +58,15 @@ namespace BlazorCardGame.Migrations
                     b.Property<int>("CardType")
                         .HasColumnType("int");
 
+                    b.Property<int>("FoolGameId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FoolGameOpponentInfoName")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("FoolGamePlayerInfoName")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("ImageUrl")
@@ -146,9 +154,13 @@ namespace BlazorCardGame.Migrations
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
                 {
-                    b.HasOne("BlazorCardGame.Entities.FoolGame", null)
+                    b.HasOne("BlazorCardGame.Entities.FoolGame", "FoolGame")
                         .WithMany("Cards")
-                        .HasForeignKey("FoolGamePlayerInfoName", "FoolGameOpponentInfoName");
+                        .HasForeignKey("FoolGamePlayerInfoName", "FoolGameOpponentInfoName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FoolGame");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>

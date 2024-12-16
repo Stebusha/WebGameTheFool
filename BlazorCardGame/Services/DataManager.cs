@@ -34,7 +34,7 @@ public class DataManager
         await context.SaveChangesAsync();
     }
 
-     public async Task AddPlayerAsync(PlayerInfo player)
+    public async Task AddPlayerAsync(PlayerInfo player)
     {
         context.Players.Add(player);
         await context.SaveChangesAsync();
@@ -43,6 +43,12 @@ public class DataManager
     public async Task AddPlayersAsync(PlayerInfo player1, PlayerInfo player2)
     {
         context.Players.AddRange(player1, player2);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task AddGameAsync(FoolGame game)
+    {
+        context.Games.Add(game);
         await context.SaveChangesAsync();
     }
 
@@ -83,6 +89,12 @@ public class DataManager
         return score;
     }
 
+    public async Task<FoolGame?> GetFoolGameByKeyAsync(string playerName)
+    {
+        var game = await context.Games.FirstOrDefaultAsync(g => g.PlayerInfoName == playerName);
+        return game;
+    }
+
     //update table in database
     public async Task UpdateUserAsync(ApplicationUser user)
     {
@@ -108,14 +120,31 @@ public class DataManager
         await context.SaveChangesAsync();
     }
 
+    public async Task UpdateGameAsync(FoolGame game)
+    {
+        context.Entry(game).State = EntityState.Modified;
+        await context.SaveChangesAsync();
+    }
+
     //delete 
-    public async Task DeleteUserByIdAsync(string login)
+    public async Task DeleteUserByLoginAsync(string login)
     {
         var user = await GetUserByLoginAsync(login);
 
         if (user is not null)
         {
             context.Users.Remove(user);
+            await context.SaveChangesAsync();
+        }
+    }
+
+    public async Task DeleteGameByKeyAsync(string playerName, string opponentName)
+    {
+        var game = await GetFoolGameByKeyAsync(playerName);
+
+        if(game is not null)
+        {
+            context.Games.Remove(game);
             await context.SaveChangesAsync();
         }
     }
