@@ -12,9 +12,9 @@ public class LoginModel
     [Display(Name = "Запомнить?")]
     public bool RememberMe { get; set; }
 
-    public LoginModel(string _login, string _password)
-    {
-        Login = _login;
-        Password = _password;
-    }
+    // public LoginModel(string _login, string _password)
+    // {
+    //     Login = _login;
+    //     Password = _password;
+    // }
 }

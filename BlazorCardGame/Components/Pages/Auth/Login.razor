@@ -34,9 +34,9 @@
                 <InputCheckbox id="remeber-me" @bind-Value="User.RememberMe" class="form-check-input" />
                 Запомнить?
             </div>
-            @* <div class="to-register">
+            <div class="to-register">
                 <a href="/register" @onclick="ToRegister">Зарегистрироваться?</a>
-            </div> *@
+            </div>
             <button type="submit">Войти</button>
         </EditForm>
     </div>
@@ -55,7 +55,7 @@ else
     private bool NeedRegistration { get; set; } = false;
 
     [SupplyParameterFromForm(FormName = LOGIN_FORM)]
-    private ApplicationUser User { get; set; } = new();
+    private LoginModel User { get; set; } = new();
 
     [CascadingParameter]
     public HttpContext HttpContext { get; set; } = default!;

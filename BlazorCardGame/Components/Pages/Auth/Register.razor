@@ -1,14 +1,13 @@
 @page "/register"
 
 @inject NavigationManager NavigationManager
-
-
+@inject DataManager DataManager
 
 <div class="register-form">
 
-    <EditForm Model="@registerModel" @OnValidSubmit="HandleRegister">
+    <EditForm Model="@registerModel" FormName="RegisterForm" @OnValidSubmit="HandleRegister">
         <DataAnnotationsValidator />
-        
+
         <h3>Регистрация</h3>
         <div class="login">
             <p>Логин: <br />
@@ -36,9 +35,32 @@
 
 
 @code {
-    private RegisterModel registerModel = new RegisterModel();
-    private void HandleRegister()
+    [SupplyParameterFromForm(FormName = "RegisterForm")]
+    private RegisterModel registerModel { get; set; } = new();
+    private ApplicationUser? newUser;
+    private async Task HandleRegister()
     {
-        NavigationManager.NavigateTo("/thefool");
+        if (newUser is null)
+        {
+            newUser = new ApplicationUser
+                {
+                    Login = registerModel.Login,
+                    IsLoggedIn = true,
+                    Password = registerModel.Password,
+                    LastEnteredTime = DateTime.Now
+                };
+
+            try
+            {
+                await DataManager.AddUserAsync(newUser);
+                Console.WriteLine("IsRegistered");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error line 54\n" + e.Message);
+            }
+        }
+        
+        @* NavigationManager.NavigateTo("/thefool"); *@
     }
 }
