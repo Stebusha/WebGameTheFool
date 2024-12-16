@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,14 +11,18 @@ public class FoolGameScore
     public PlayerInfo? PlayerInfo { get; set; } = null!;
 
     [Range(0, int.MaxValue)]
+    [DefaultValue(0)]
     public int? NumberOfWins { get; set; }
 
     [Range(0, int.MaxValue)]
+    [DefaultValue(0)]
     public int? NumberOfLosses { get; set; }
 
     [Range(0, int.MaxValue)]
+    [DefaultValue(0)]
     public int? NumberOfDraws { get; set; }
 
     [Range(0, int.MaxValue)]
+    [DefaultValue(0)]
     public int? CountOfGames { get; set; }
 }

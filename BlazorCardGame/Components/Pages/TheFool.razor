@@ -128,7 +128,6 @@ else
 
 @code {
     private bool ShowSettings = false;
-    private FoolGame? game;
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
@@ -140,11 +139,14 @@ else
         {
             await Task.Delay(500);
 
+            //choose game settings
             ShowSettings = true;
+            //load game
             FoolGameService.LoadGame();
-
+            //if info not loaded from db
             if (scores is null)
             {
+                //try load info from db
                 try
                 {
                     scores = await DataManager.GetAllScoresAsync();
@@ -153,14 +155,25 @@ else
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Error line 158\n" + e.Message);
                 }
 
                 bool opponentExisted = false;
                 bool playerExisted = false;
 
-                if (players is not null)
+                //checked existed players or opponent
+                if (players is not null && users is not null)
                 {
+                    foreach (var user in users)
+                    {
+                        if (user.IsLoggedIn)
+                        {
+                            playerExisted = true;
+                            FoolGameService.Player.Name = user.Login;
+                            break;
+                        }
+                    }
+
                     foreach (var player in players)
                     {
                         if (FoolGameService.Opponent.Name == player.Name)
@@ -168,13 +181,13 @@ else
                             opponentExisted = true;
                         }
 
-                        if (FoolGameService.Player.Name == player.Name)
+                        if (playerExisted && opponentExisted)
                         {
-                            playerExisted = true;
+                            break;
                         }
                     }
                 }
-
+                //add info of opponent to db
                 if (!opponentExisted)
                 {
                     var opponent = new PlayerInfo
@@ -187,12 +200,16 @@ else
                     try
                     {
                         await DataManager.AddPlayerAsync(opponent);
+
+                        players?.Clear();
+                        await DataManager.GetAllPlayersAsync();
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Error line 196\n" + e.Message);
                     }
                 }
+                //update info in db if opponent existed
                 else
                 {
                     var opponent = await DataManager.GetPlayerByNameAsync(FoolGameService.Opponent.Name);
@@ -207,13 +224,24 @@ else
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Error line 214\n" + e.Message);
                         }
                     }
                 }
-
+                //add info to db if player is new
                 if (!playerExisted)
                 {
+                    if (users is not null)
+                    {
+                        foreach (var user in users)
+                        {
+                            if (user.IsLoggedIn)
+                            {
+                                FoolGameService.Player.Name = user.Login;
+                                break;
+                            }
+                        }
+                    }
 
                     var player = new PlayerInfo
                         {
@@ -226,12 +254,17 @@ else
                     try
                     {
                         await DataManager.AddPlayerAsync(player);
+                        playerExisted = true;
+
+                        players?.Clear();
+                        await DataManager.GetAllPlayersAsync();
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Error line 247\n" + e.Message);
                     }
                 }
+                //update info in db if player is existed
                 else
                 {
                     var player = await DataManager.GetPlayerByNameAsync(FoolGameService.Player.Name);
@@ -246,7 +279,7 @@ else
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Error line 265\n" + e.Message);
                         }
                     }
                 }
@@ -254,6 +287,7 @@ else
         }
     }
 
+    //get deck's style name
     private string GetStyleName(string style) => style switch
     {
         "Fantasy" => "Фэнтези",
@@ -261,6 +295,7 @@ else
         _ => "Style Not Found"
     };
 
+    //change deck style based on selected value
     private void OnStyleSelected(ChangeEventArgs e)
     {
         if (e.Value?.ToString() != "")
@@ -269,116 +304,13 @@ else
         }
     }
 
-    private async Task SaveCurrentGame()
-    {
-        if (game is null)
-        {
-            List<PlayerInfo> players = new();
-            List<CardInfo> cards = new();
-
-            var player = new PlayerInfo
-                {
-                    Name = FoolGameService.Player.Name,
-                    IsAttack = FoolGameService.Player.IsAttack,
-                    PlayerType = PlayerType.Human,
-                    UserLogin = FoolGameService.Player.Name
-                };
-
-            var opponent = new PlayerInfo
-                {
-                    Name = FoolGameService.Opponent.Name,
-                    IsAttack = FoolGameService.Opponent.IsAttack,
-                    PlayerType = PlayerType.AI,
-                };
-
-            players.Add(player);
-            players.Add(opponent);
-
-            foreach (var card in FoolGameService.AttackingCards)
-            {
-                var tempCard = new CardInfo
-                    {
-                        ImageUrl = card.ImageUrl,
-                        CardType = CardType.Attacking
-                    };
-
-                cards.Add(tempCard);
-            }
-
-            foreach (var card in FoolGameService.DefendingCards)
-            {
-                var tempCard = new CardInfo
-                    {
-                        ImageUrl = card.ImageUrl,
-                        CardType = CardType.Defending
-                    };
-
-                cards.Add(tempCard);
-            }
-
-            foreach (var card in FoolGameService.Deck.GetDeckCards())
-            {
-                var tempCard = new CardInfo
-                    {
-                        ImageUrl = card.ImageUrl,
-                        CardType = CardType.InDeck
-                    };
-
-                if (card == FoolGameService.Deck.GetTrumpCard())
-                {
-                    tempCard.CardType = CardType.Trump;
-                }
-
-                cards.Add(tempCard);
-            }
-
-            foreach (var card in FoolGameService.Player.inHand)
-            {
-                var tempCard = new CardInfo
-                    {
-                        ImageUrl = card.ImageUrl,
-                        CardType = CardType.Player
-                    };
-
-                cards.Add(tempCard);
-            }
-
-            foreach (var card in FoolGameService.Opponent.inHand)
-            {
-                var tempCard = new CardInfo
-                    {
-                        ImageUrl = card.ImageUrl,
-                        CardType = CardType.Opponent
-                    };
-
-                cards.Add(tempCard);
-            }
-
-            game = new FoolGame
-                {
-                    Players = players,
-                    CountOfGames = FoolGameService.CountOfGames,
-                    DiscardCardsCount = FoolGameService.DiscardCardCount,
-                    Cards = cards
-                };
-
-            try
-            {
-                await DataManager.AddGameAsync(game);
-                Console.WriteLine("Saved");
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-    }
     private void SetGame()
     {
         ShowSettings = false;
         Console.WriteLine(FoolGameService.Deck.GetDeckStyle());
     }
+
+    //add two scores info to db
     private async Task AddScores(string playerName, string opponentName)
     {
         var scorePlayer = new FoolGameScore
@@ -405,10 +337,12 @@ else
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine("Error line 323" + e.Message);
         }
 
     }
+
+    //add two scores info to db for draw
     private async Task AddDraws(string playerName, string opponentName)
     {
         var scorePlayer = new FoolGameScore
@@ -435,10 +369,11 @@ else
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine("Error line 355" + e.Message);
         }
     }
 
+    //add info about one draw to db
     private async Task AddDraw(string Name)
     {
         var score = new FoolGameScore
@@ -456,9 +391,11 @@ else
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine("Error line 377" + e.Message);
         }
     }
+
+    //update info about two draws in db
     private async Task UpdateDraws(string playerName, string opponentName)
     {
         var scorePlayer = await DataManager.GetScoreByNameAsync(playerName);
@@ -478,11 +415,13 @@ else
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error line 401" + e.Message);
             }
 
         }
     }
+
+    //update info about one draw in db
     private async Task UpdateDraw(string Name)
     {
         var score = await DataManager.GetScoreByNameAsync(Name);
@@ -501,11 +440,13 @@ else
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error line 426" + e.Message);
             }
 
         }
     }
+
+    //update scores info in db for wins
     private async Task UpdateScoresForWins(string name, FoolGameScore score)
     {
         score.NumberOfWins++;
@@ -517,7 +458,7 @@ else
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine("Error line 444" + e.Message);
         }
 
         var scoreOpponent = new FoolGameScore
@@ -538,6 +479,8 @@ else
             Console.WriteLine(e.Message);
         }
     }
+
+    //update scores info in db for lose
     private async Task UpdateScoresForLose(string name, FoolGameScore score)
     {
         score.NumberOfLosses++;
@@ -550,7 +493,7 @@ else
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine("Error line 479" + e.Message);
         }
 
         var scoreOpponent = new FoolGameScore
@@ -571,15 +514,20 @@ else
             Console.WriteLine(e.Message);
         }
     }
+
+    //set scores in db
     private async Task SetScore()
     {
+        //checked game finished
         if (FoolGameService.GameState == GameState.Finished)
         {
             bool playerExist = false;
             bool opponentExist = false;
 
+            //if scores existed
             if (scores is not null)
             {
+                //check existed of player and opponent
                 foreach (var score in scores)
                 {
                     if (FoolGameService.Player.Name == score.PlayerInfoName)
@@ -598,6 +546,7 @@ else
                     }
                 }
 
+                //add scores if player and opponent is new
                 if (!playerExist && !opponentExist)
                 {
                     if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
@@ -613,6 +562,7 @@ else
                         await AddDraws(FoolGameService.Player.Name, FoolGameService.Opponent.Name);
                     }
                 }
+                //add scores if player existed and opponent not existed
                 else if (playerExist && !opponentExist)
                 {
                     if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
@@ -632,6 +582,7 @@ else
                         {
                             if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
+
                                 await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
                                 break;
                             }
@@ -643,6 +594,7 @@ else
                         await UpdateDraw(FoolGameService.Player.Name);
                     }
                 }
+                //add scores if player not existed and opponent existed
                 else if (!playerExist && opponentExist)
                 {
                     if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
@@ -673,6 +625,7 @@ else
                         await UpdateDraw(FoolGameService.Opponent.Name);
                     }
                 }
+                //add scores if player and opponent both existed
                 else
                 {
                     if (!FoolGameService.Player.IsFool && FoolGameService.Opponent.IsFool)
@@ -690,7 +643,7 @@ else
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine("Error line 691" + e.Message);
                                 }
 
                             }
@@ -706,7 +659,7 @@ else
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine("Error line 707" + e.Message);
                                 }
                             }
                         }
@@ -726,7 +679,7 @@ else
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine("Error line 727" + e.Message);
                                 }
                             }
 
@@ -741,7 +694,7 @@ else
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine("Error line 742" + e.Message);
                                 }
                             }
                         }
@@ -773,8 +726,6 @@ else
         {
             //method to end current turn, refresh turn properties
             FoolGameService.EndCurrentTurn();
-
-            await SaveCurrentGame();
 
             if (FoolGameService.GameState == GameState.Finished)
             {

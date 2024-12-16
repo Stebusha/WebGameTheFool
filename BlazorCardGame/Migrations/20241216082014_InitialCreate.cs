@@ -7,26 +7,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlazorCardGame.Migrations
 {
     /// <inheritdoc />
-    public partial class ReCreation : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Games",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CountOfGames = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Games", x => x.Id);
-                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -37,34 +23,12 @@ namespace BlazorCardGame.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Password = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastEnteredTime = table.Column<DateTime>(type: "datetime(6)", nullable: true)
+                    LastEnteredTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    IsLoggedIn = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Login);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Cards",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ImageUrl = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CardType = table.Column<int>(type: "int", nullable: false),
-                    FoolGameId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cards", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cards_Games_FoolGameId",
-                        column: x => x.FoolGameId,
-                        principalTable: "Games",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -77,17 +41,11 @@ namespace BlazorCardGame.Migrations
                     UserLogin = table.Column<string>(type: "varchar(20)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PlayerType = table.Column<int>(type: "int", nullable: false),
-                    IsAttack = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    FoolGameId = table.Column<int>(type: "int", nullable: true)
+                    IsAttack = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Players", x => x.Name);
-                    table.ForeignKey(
-                        name: "FK_Players_Games_FoolGameId",
-                        column: x => x.FoolGameId,
-                        principalTable: "Games",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Players_Users_UserLogin",
                         column: x => x.UserLogin,
@@ -122,16 +80,6 @@ namespace BlazorCardGame.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cards_FoolGameId",
-                table: "Cards",
-                column: "FoolGameId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Players_FoolGameId",
-                table: "Players",
-                column: "FoolGameId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Players_UserLogin",
                 table: "Players",
                 column: "UserLogin",
@@ -147,16 +95,10 @@ namespace BlazorCardGame.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cards");
-
-            migrationBuilder.DropTable(
                 name: "Scores");
 
             migrationBuilder.DropTable(
                 name: "Players");
-
-            migrationBuilder.DropTable(
-                name: "Games");
 
             migrationBuilder.DropTable(
                 name: "Users");

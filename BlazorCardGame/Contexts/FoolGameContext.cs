@@ -7,11 +7,9 @@ public class FoolGameContext : DbContext
 {
     public FoolGameContext(DbContextOptions<FoolGameContext> options) : base(options)
     {
-
+        
     }
     public DbSet<ApplicationUser> Users { get; set; } = null!;
-    public DbSet<FoolGame> Games { get; set; } = null!;
     public DbSet<FoolGameScore> Scores { get; set; } = null!;
-    public DbSet<CardInfo> Cards { get; set; } = null!;
     public DbSet<PlayerInfo> Players { get; set; } = null!;
 }

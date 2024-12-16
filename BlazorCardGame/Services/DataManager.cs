@@ -45,17 +45,6 @@ public class DataManager
         context.Players.AddRange(player1, player2);
         await context.SaveChangesAsync();
     }
-    public async Task AddCardAsync(CardInfo card)
-    {
-        context.Cards.Add(card);
-        await context.SaveChangesAsync();
-    }
-
-    public async Task AddGameAsync(FoolGame game)
-    {
-        context.Games.Add(game);
-        await context.SaveChangesAsync();
-    }
 
     //get all from database
     public async Task<List<ApplicationUser>> GetAllUsersAsync()
@@ -74,25 +63,6 @@ public class DataManager
     {
         var scores = await context.Scores.ToListAsync();
         return scores;
-    }
-
-    public async Task<List<FoolGame>> GetAllGamesAsync()
-    {
-        var games = await context.Games.ToListAsync();
-        return games;
-    }
-
-    public async Task<List<CardInfo>> GetAllCardsAsync()
-    {
-        var cards = await context.Cards.ToListAsync();
-        return cards;
-    }
-
-    //get from database by id
-    public async Task<FoolGame?> GetGameByIdAsync(int id)
-    {
-        var game = await context.Games.FirstOrDefaultAsync(e => e.Id == id);
-        return game;
     }
 
     public async Task<ApplicationUser?> GetUserByLoginAsync(string login)
@@ -137,16 +107,6 @@ public class DataManager
         context.Entry(score2).State = EntityState.Modified;
         await context.SaveChangesAsync();
     }
-    public async Task UpdateCardAsync(CardInfo card)
-    {
-        context.Entry(card).State = EntityState.Modified;
-        await context.SaveChangesAsync();
-    }
-    public async Task UpdateGameAsync(FoolGame game)
-    {
-        context.Entry(game).State = EntityState.Modified;
-        await context.SaveChangesAsync();
-    }
 
     //delete 
     public async Task DeleteUserByIdAsync(string login)
@@ -156,17 +116,6 @@ public class DataManager
         if (user is not null)
         {
             context.Users.Remove(user);
-            await context.SaveChangesAsync();
-        }
-    }
-
-    public async Task DeleteGameByIdAsync(int id)
-    {
-        var game = await GetGameByIdAsync(id);
-
-        if (game is not null)
-        {
-            context.Games.Remove(game);
             await context.SaveChangesAsync();
         }
     }

@@ -194,7 +194,6 @@ public class FoolGameService
             Deck.Trump();
 
             Player = new Player();
-            Player.Name = "Чхуль";
 
             _fools.Add(Player.Name, Player.IsFool);
 

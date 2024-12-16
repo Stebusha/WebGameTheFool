@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,9 @@ public class ApplicationUser
     [StringLength(20)]
     public string Password { get; set; } = null!;
     public DateTime? LastEnteredTime { get; set; }
+
+    [DefaultValue(false)]
+    public bool IsLoggedIn { get; set; }
 
     [NotMapped]
     [Display(Name = "Запомнить?")]

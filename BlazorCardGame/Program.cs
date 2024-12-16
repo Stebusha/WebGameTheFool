@@ -32,6 +32,7 @@ builder.Services.AddScoped<DataManager>();
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("FoolGameConnection"), new MySqlServerVersion("8.4.3"));
+    options.EnableSensitiveDataLogging();
 });
 
 // Add services to the container.
