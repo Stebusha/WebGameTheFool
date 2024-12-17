@@ -225,6 +225,10 @@
       "PackagePath": "staticwebassets\\Images\\ExtraCards\\Fantasy\\joker_lady.png"
     },
     {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\ExtraCards\\Fantasy\\joker_male.png",
+      "PackagePath": "staticwebassets\\Images\\ExtraCards\\Fantasy\\joker_male.png"
+    },
+    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\ExtraCards\\Standart\\2C.png",
       "PackagePath": "staticwebassets\\Images\\ExtraCards\\Standart\\2C.png"
     },
@@ -367,14 +371,6 @@
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\favicon_standart.png",
       "PackagePath": "staticwebassets\\favicon_standart.png"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\CardSelect.js",
-      "PackagePath": "staticwebassets\\js\\CardSelect.js"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\js\\MoveCardToCenter.js",
-      "PackagePath": "staticwebassets\\js\\MoveCardToCenter.js"
     },
     {
       "Id": "obj\\Release\\net8.0\\win-x64\\staticwebassets\\msbuild.BlazorCardGame.Microsoft.AspNetCore.StaticWebAssets.props",

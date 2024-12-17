@@ -1,6 +1,5 @@
 using BlazorCardGame.Contexts;
 using BlazorCardGame.Entities;
-using BlazorCardGame.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorCardGame.Services;

@@ -666,13 +666,3 @@ button[b-0o9jxtxef0] {
     cursor: default;
     color: black;
 }
-
-a[b-0o9jxtxef0]{
-    text-decoration:  none;
-    display: inline-block;
-    padding: 5px 10px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    color: #006134;
-}

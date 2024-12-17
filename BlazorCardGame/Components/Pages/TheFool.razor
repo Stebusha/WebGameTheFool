@@ -124,21 +124,22 @@ else
 
     <TheFoolRules />
 
-    @* } *@
+    <button @onclick="Logout">Выйти</button>
+
 }
 
+
 @code {
-    @* private bool ShowSettings = false; *@
-    @* private bool Reload = false; *@
+
+    @* private bool ShowSettings = false; 
+    private bool Reload = false; 
+    private int Count = 0; 
+    private FoolGame? game; *@
+
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
-    private int Count = 0;
 
-    @* [CascadingParameter]
-    public HttpContext HttpContext { get; set; } = default!; *@
-
-    @* private FoolGame? game; *@
 
     //load game on initialized component
     protected override async Task OnInitializedAsync()
@@ -149,6 +150,7 @@ else
 
             @* //choose game settings
             ShowSettings = true; *@
+
             //load game
             FoolGameService.LoadGame();
             //if info not loaded from db
@@ -297,8 +299,6 @@ else
                 }
             }
         }
-
-        @* await SaveGame(); *@
     }
 
     //get deck's style name
@@ -431,7 +431,6 @@ else
             {
                 Console.WriteLine("Error line 414\n" + e.Message);
             }
-
         }
     }
 
@@ -463,7 +462,7 @@ else
     //update scores info in db for wins
     private async Task UpdateScoresForWins(string name, FoolGameScore score)
     {
-        score.NumberOfWins++;
+        score.NumberOfLosses++;
         score.CountOfGames++;
 
         try
@@ -479,8 +478,8 @@ else
             {
                 PlayerInfoName = name,
                 CountOfGames = 1,
-                NumberOfLosses = 1,
-                NumberOfWins = 0,
+                NumberOfLosses = 0,
+                NumberOfWins = 1,
                 NumberOfDraws = 0
             };
 
@@ -497,7 +496,7 @@ else
     //update scores info in db for lose
     private async Task UpdateScoresForLose(string name, FoolGameScore score)
     {
-        score.NumberOfLosses;
+        score.NumberOfWins++;
         score.CountOfGames++;
 
         try
@@ -513,8 +512,8 @@ else
             {
                 PlayerInfoName = name,
                 CountOfGames = 1,
-                NumberOfWins = 1,
-                NumberOfLosses = 0,
+                NumberOfWins = 0,
+                NumberOfLosses = 1,
                 NumberOfDraws = 0
             };
 
@@ -584,7 +583,7 @@ else
                         {
                             if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
-                                await UpdateScoresForWins(FoolGameService.Opponent.Name, score);
+                                await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
                                 break;
                             }
                         }
@@ -596,7 +595,7 @@ else
                             if (score.PlayerInfoName == FoolGameService.Player.Name)
                             {
 
-                                await UpdateScoresForLose(FoolGameService.Opponent.Name, score);
+                                await UpdateScoresForWins(FoolGameService.Opponent.Name, score);
                                 break;
                             }
                         }
@@ -750,7 +749,7 @@ else
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Error line 748\n" + e.Message);
                 }
 
                 await SetScore();
@@ -807,14 +806,18 @@ else
         }
     }
 
+    private void Logout()
+    {
+        NavigationManager.NavigateTo("/logout");
+    }
 
-    private async void Dispose()
+    @* private void Dispose()
     {
         Count = FoolGameService.CountOfGames;
     }
 
     //save game info
-    @* public async Task SaveGame()
+     public async Task SaveGame()
     {
         List<CardInfo> cards = new();
 

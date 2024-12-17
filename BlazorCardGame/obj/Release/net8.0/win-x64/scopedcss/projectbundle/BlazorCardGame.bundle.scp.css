@@ -144,6 +144,10 @@ main[b-uxxx47e69p] {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-list-nested' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
 }
 
+.bi-activity[b-jo7cnduvuo]{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-activity' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.151-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2'/%3E%3C/svg%3E");
+}
+
 .nav-item[b-jo7cnduvuo] {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
@@ -237,6 +241,16 @@ button:hover[b-jsxfsfo6wj] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+a[b-jsxfsfo6wj] {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #006134;
+}
 /* _content/BlazorCardGame/Components/Pages/Auth/Logout.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Register.razor.rz.scp.css */
 h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
@@ -290,7 +304,7 @@ td[b-1mgci28981] {
     border-style: solid;
     border-width: 1px 1px 1px 1px;
     border-color: rgb(108, 0, 161);
-    padding: 5px 25px;
+    padding: 5px 50px;
 }
 
 th[b-1mgci28981] {
@@ -307,8 +321,34 @@ td[b-1mgci28981] {
     font-size: 18px;
 }
 
-tr:nth-child(even)[b-1mgci28981]{
+tr:nth-child(even)[b-1mgci28981] {
     background-color: rgb(246, 231, 252);
+}
+/* _content/BlazorCardGame/Components/Pages/Partials/ConfirmDialog.razor.rz.scp.css */
+.confirm-dialog-container[b-r4x1wg9m0l] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+
+.confirm-dialog[b-r4x1wg9m0l] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 50rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: white;
+    margin-top: 1.5rem;
+    position: fixed;
 }
 /* _content/BlazorCardGame/Components/Pages/Partials/DiscardPile.razor.rz.scp.css */
 .card-stack[b-c3ukdjjxj4] {
@@ -555,15 +595,33 @@ button[b-0o9jxtxef0] {
     cursor: pointer;
 }
 
-button:hover[b-0o9jxtxef0] {
-    background-color: rgb(92, 180, 252);
+.start-button[b-0o9jxtxef0] {
+    background-color: rgb(168, 177, 255);
+    border: rgb(96, 112, 250) solid;
+    cursor: default;
+    color: black;
+}
+
+.start-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(96, 112, 250);
 }
 
 .start-button:disabled[b-0o9jxtxef0] {
-    background-color: rgba(132, 144, 253, 0.596);
-    border: rgb(132, 144, 253, 0.596) solid;
+    background-color: rgb(120, 131, 230);
+    border: rgba(111, 124, 245, 0.795) solid;
     cursor: default;
     color: black;
+}
+
+.play-button[b-0o9jxtxef0] {
+    background-color: rgba(139, 250, 207, 0.774);
+    border: rgba(12, 172, 111, 0.747) solid;
+    cursor: default;
+    color: black;
+}
+
+.play-button:hover[b-0o9jxtxef0] {
+    background-color: rgba(29, 207, 139, 0.774);
 }
 
 .play-button:disabled[b-0o9jxtxef0] {
@@ -573,6 +631,17 @@ button:hover[b-0o9jxtxef0] {
     color: black;
 }
 
+.draw-button[b-0o9jxtxef0] {
+    background-color: rgb(253, 214, 169);
+    border: rgba(252, 158, 50, 0.925) solid;
+    cursor: default;
+    color: black;
+}
+
+.draw-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(253, 176, 87, 0.76);
+}
+
 .draw-button:disabled[b-0o9jxtxef0] {
     background-color: rgba(253, 176, 87, 0.76);
     border: rgb(253, 176, 87, 0.76) solid;
@@ -580,9 +649,20 @@ button:hover[b-0o9jxtxef0] {
     color: black;
 }
 
-.end-button:disabled[b-0o9jxtxef0] {
-    background-color: rgba(247, 93, 93, 0.596);
+.end-button[b-0o9jxtxef0] {
+    background-color: rgb(252, 188, 188);
     border: rgb(247, 93, 93, 0.596) solid;
+    cursor: default;
+    color: black;
+}
+
+.end-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(247, 93, 93, 0.596);
+}
+
+.end-button:disabled[b-0o9jxtxef0] {
+    background-color: rgba(224, 47, 47, 0.671);
+    border: rgba(189, 54, 54, 0.616) solid;
     cursor: default;
     color: black;
 }
