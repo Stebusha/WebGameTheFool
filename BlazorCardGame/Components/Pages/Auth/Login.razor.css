@@ -32,3 +32,13 @@ button:hover {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #006134;
+}

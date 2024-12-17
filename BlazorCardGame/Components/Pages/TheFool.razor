@@ -17,7 +17,7 @@
 }
 else
 {
-    <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
+    @* <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
         <h3>Выберите настройки игры</h3>
 
         <select class="deck-style" @onchange="OnStyleSelected">
@@ -32,106 +32,112 @@ else
     </ConfirmDialog>
 
     if (!ShowSettings)
+    { *@
+    <h1>Карточная игра "Дурак"</h1>
+    <h2>Партия № @FoolGameService.CountOfGames</h2>
+
+    @if (FoolGameService.Player.IsAttack)
     {
-        <h1>Карточная игра "Дурак"</h1>
-        <h2>Партия № @FoolGameService.CountOfGames</h2>
+        <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    }
+    else
+    {
+        <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+    }
 
-        @if (FoolGameService.Player.IsAttack)
-        {
-            <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-        }
-        else
-        {
-            <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-        }
+    <div class="game-table">
+        <div class="opponent-cards">
+            <Opponent opponent="FoolGameService.Opponent" />
+        </div>
 
-        <div class="game-table">
-            <div class="opponent-cards">
-                <Opponent opponent="FoolGameService.Opponent" />
-            </div>
+        <div class="player-cards">
+            <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
+        </div>
 
-            <div class="player-cards">
-                <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
-            </div>
-
-            <div class="center-table">
-                @if (FoolGameService.AttackingCards.Count > 0)
-                {
-                    <div class="attacking-cards">
-                        @foreach (var card in FoolGameService.AttackingCards)
-                        {
-                            if (card.ImageUrl != "")
-                            {
-                                <img src="@card.ImageUrl" class="attacking-card" />
-                            }
-                        }
-                    </div>
-                }
-
-                @if (FoolGameService.DefendingCards.Count > 0)
-                {
-                    <div class="defending-cards">
-                        @foreach (var card in FoolGameService.DefendingCards)
-                        {
-                            if (card.ImageUrl != "")
-                            {
-                                <img src="@card.ImageUrl" class="defending-card" />
-                            }
-                        }
-                    </div>
-                }
-
-                @if (FoolGameService.GameState == GameState.Finished)
-                {
-                    <div class="win-lose">
-                        @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
-                        {
-                            <label class="draw">Ничья!</label>
-                        }
-                        else if (FoolGameService.Player.inHand.Count == 0)
-                        {
-                            <label class="win">Поздравляем! Бот остался в дураках :)</label>
-                        }
-                        else if (FoolGameService.Opponent.inHand.Count == 0)
-                        {
-                            <label class="lose">Увы, вы дурак :(</label>
-                        }
-                    </div>
-                }
-            </div>
-
-            <div class="deck">
-                <GameDeck deck="FoolGameService.Deck" />
-            </div>
-
-            @if (!FoolGameService.FirstTurn)
+        <div class="center-table">
+            @if (FoolGameService.AttackingCards.Count > 0)
             {
-                <div class="discard-pile">
-                    <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
-                        discardCardCount="FoolGameService.DiscardCardCount" />
+                <div class="attacking-cards">
+                    @foreach (var card in FoolGameService.AttackingCards)
+                    {
+                        if (card.ImageUrl != "")
+                        {
+                            <img src="@card.ImageUrl" class="attacking-card" />
+                        }
+                    }
                 </div>
             }
 
-            <div class="controls">
-                <button class="start-button" @onclick="StartTurn"
-                    disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
-                <button class="play-button" @onclick="Play"
-                    disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
-                <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
-                <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
-            </div>
+            @if (FoolGameService.DefendingCards.Count > 0)
+            {
+                <div class="defending-cards">
+                    @foreach (var card in FoolGameService.DefendingCards)
+                    {
+                        if (card.ImageUrl != "")
+                        {
+                            <img src="@card.ImageUrl" class="defending-card" />
+                        }
+                    }
+                </div>
+            }
+
+            @if (FoolGameService.GameState == GameState.Finished)
+            {
+                <div class="win-lose">
+                    @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
+                    {
+                        <label class="draw">Ничья!</label>
+                    }
+                    else if (FoolGameService.Player.inHand.Count == 0)
+                    {
+                        <label class="win">Поздравляем! Бот остался в дураках :)</label>
+                    }
+                    else if (FoolGameService.Opponent.inHand.Count == 0)
+                    {
+                        <label class="lose">Увы, вы дурак :(</label>
+                    }
+                </div>
+            }
         </div>
 
-        <TheFoolRules />
-    }
+        <div class="deck">
+            <GameDeck deck="FoolGameService.Deck" />
+        </div>
+
+        @if (!FoolGameService.FirstTurn)
+        {
+            <div class="discard-pile">
+                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
+                    discardCardCount="FoolGameService.DiscardCardCount" />
+            </div>
+        }
+
+        <div class="controls">
+            <button class="start-button" @onclick="StartTurn"
+                disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
+            <button class="play-button" @onclick="Play"
+                disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
+            <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
+            <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
+        </div>
+    </div>
+
+    <TheFoolRules />
+
+    @* } *@
 }
 
 @code {
-    private bool ShowSettings = false;
+    @* private bool ShowSettings = false; *@
     @* private bool Reload = false; *@
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
+    private int Count = 0;
+
+    @* [CascadingParameter]
+    public HttpContext HttpContext { get; set; } = default!; *@
+
     @* private FoolGame? game; *@
 
     //load game on initialized component
@@ -141,8 +147,8 @@ else
         {
             await Task.Delay(500);
 
-            //choose game settings
-            ShowSettings = true;
+            @* //choose game settings
+            ShowSettings = true; *@
             //load game
             FoolGameService.LoadGame();
             //if info not loaded from db
@@ -170,7 +176,6 @@ else
                     {
                         if (user.IsLoggedIn)
                         {
-                            playerExisted = true;
                             FoolGameService.Player.Name = user.Login;
                             break;
                         }
@@ -181,6 +186,11 @@ else
                         if (FoolGameService.Opponent.Name == player.Name)
                         {
                             opponentExisted = true;
+                        }
+
+                        if (FoolGameService.Player.Name == player.Name)
+                        {
+                            playerExisted = true;
                         }
 
                         if (playerExisted && opponentExisted)
@@ -310,7 +320,7 @@ else
 
     private void SetGame()
     {
-        ShowSettings = false;
+        @* ShowSettings = false; *@
         Console.WriteLine(FoolGameService.Deck.GetDeckStyle());
     }
 
@@ -487,7 +497,7 @@ else
     //update scores info in db for lose
     private async Task UpdateScoresForLose(string name, FoolGameScore score)
     {
-        score.NumberOfLosses++;
+        score.NumberOfLosses;
         score.CountOfGames++;
 
         try
@@ -797,12 +807,13 @@ else
         }
     }
 
-    @* private async void Dispose()
-    {
-        await SaveGame();
-    } *@
 
-        //save game info
+    private async void Dispose()
+    {
+        Count = FoolGameService.CountOfGames;
+    }
+
+    //save game info
     @* public async Task SaveGame()
     {
         List<CardInfo> cards = new();

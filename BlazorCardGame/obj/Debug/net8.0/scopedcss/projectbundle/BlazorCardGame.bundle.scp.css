@@ -241,6 +241,16 @@ button:hover[b-jsxfsfo6wj] {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+a[b-jsxfsfo6wj] {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #006134;
+}
 /* _content/BlazorCardGame/Components/Pages/Auth/Logout.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Register.razor.rz.scp.css */
 h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
@@ -655,4 +665,14 @@ button[b-0o9jxtxef0] {
     border: rgba(189, 54, 54, 0.616) solid;
     cursor: default;
     color: black;
+}
+
+a[b-0o9jxtxef0]{
+    text-decoration:  none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #006134;
 }
