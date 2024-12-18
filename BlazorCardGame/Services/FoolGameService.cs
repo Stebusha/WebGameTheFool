@@ -285,6 +285,12 @@ public class FoolGameService
         }
     }
 
+    public void SetStateLoading() 
+    { 
+        GameState = GameState.Loading; 
+        CountOfGames = 0; 
+    }
+
     //refresh start button properties
     private void RefreshStartButton()
     {
