@@ -14,7 +14,7 @@
 
             @foreach (var index in discardCardIndexes)
             {
-                <img src="/Images/back_cyan.png" alt="back @index" class="stacked-back"
+                <img src="@Deck.s_back" alt="back @index" class="stacked-back"
                     style="@($"transform: translate({-((index+1)*1)}px, 0px);")">
             }
         </div>

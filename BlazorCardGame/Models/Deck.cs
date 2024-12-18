@@ -6,6 +6,7 @@ public class Deck
     private List<Card> _cards;
     public static SuitType s_trumpSuit = SuitType.Clubs;
     public static DeckStyle s_style = DeckStyle.Fantasy;
+    public static string s_back = "Images/back_cyan.png";
     public int CardsAmount { get; private set; }
     public static string TrumpSuitImageURL
     {
@@ -55,7 +56,6 @@ public class Deck
     }
 
     public List<Card> GetDeckCards() => _cards;
-    public DeckStyle GetDeckStyle() => s_style;
     private static string GetTrumpSuitURL() => s_trumpSuit switch
     {
         SuitType.Clubs => "club.png",

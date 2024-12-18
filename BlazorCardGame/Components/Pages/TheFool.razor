@@ -17,9 +17,9 @@
 }
 else
 {
-    @* <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
+    <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
         <h3>Выберите настройки игры</h3>
-
+        <br />
         <select class="deck-style" @onchange="OnStyleSelected">
             <option value="">Стиль колоды</option>
 
@@ -28,118 +28,139 @@ else
                 <option value="@style">@GetStyleName(style)</option>
             }
         </select>
+        <br />
+        <p>Рубашка:</p>
+
+        <div>
+            <InputRadioGroup @bind-Value="selectedBack">
+
+                @foreach (var back in backs)
+                {
+                    <InputRadio Value="@back" />
+                    <img class="selection-back" src="@back" />
+                }
+            </InputRadioGroup>
+        </div>
+
+
 
     </ConfirmDialog>
 
     if (!ShowSettings)
-    { *@
-    <h1>Карточная игра "Дурак"</h1>
-    <h2>Партия № @FoolGameService.CountOfGames</h2>
-
-    @if (FoolGameService.Player.IsAttack)
     {
-        <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-    }
-    else
-    {
-        <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
-    }
+        <h1>Карточная игра "Дурак"</h1>
+        <h2>Партия № @FoolGameService.CountOfGames</h2>
 
-    <div class="game-table">
-        <div class="opponent-cards">
-            <Opponent opponent="FoolGameService.Opponent" />
-        </div>
-
-        <div class="player-cards">
-            <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
-        </div>
-
-        <div class="center-table">
-            @if (FoolGameService.AttackingCards.Count > 0)
-            {
-                <div class="attacking-cards">
-                    @foreach (var card in FoolGameService.AttackingCards)
-                    {
-                        if (card.ImageUrl != "")
-                        {
-                            <img src="@card.ImageUrl" class="attacking-card" />
-                        }
-                    }
-                </div>
-            }
-
-            @if (FoolGameService.DefendingCards.Count > 0)
-            {
-                <div class="defending-cards">
-                    @foreach (var card in FoolGameService.DefendingCards)
-                    {
-                        if (card.ImageUrl != "")
-                        {
-                            <img src="@card.ImageUrl" class="defending-card" />
-                        }
-                    }
-                </div>
-            }
-
-            @if (FoolGameService.GameState == GameState.Finished)
-            {
-                <div class="win-lose">
-                    @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
-                    {
-                        <label class="draw">Ничья!</label>
-                    }
-                    else if (FoolGameService.Player.inHand.Count == 0)
-                    {
-                        <label class="win">Поздравляем! Бот остался в дураках :)</label>
-                    }
-                    else if (FoolGameService.Opponent.inHand.Count == 0)
-                    {
-                        <label class="lose">Увы, вы дурак :(</label>
-                    }
-                </div>
-            }
-        </div>
-
-        <div class="deck">
-            <GameDeck deck="FoolGameService.Deck" />
-        </div>
-
-        @if (!FoolGameService.FirstTurn)
+        @if (FoolGameService.Player.IsAttack)
         {
-            <div class="discard-pile">
-                <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
-                    discardCardCount="FoolGameService.DiscardCardCount" />
-            </div>
+            <h4>Ходит игрок:@FoolGameService.Player.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
+        }
+        else
+        {
+            <h4>Ходит игрок:@FoolGameService.Opponent.Name <br />Карт в колоде осталось:@FoolGameService.Deck.CardsAmount</h4>
         }
 
-        <div class="controls">
-            <button class="start-button" @onclick="StartTurn"
-                disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
-            <button class="play-button" @onclick="Play"
-                disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
-            <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
-            <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
+        <div class="game-table">
+            <div class="opponent-cards">
+                <Opponent opponent="FoolGameService.Opponent" />
+            </div>
+
+            <div class="player-cards">
+                <PlayerHand player="FoolGameService.Player" table="FoolGameService.Table" />
+            </div>
+
+            <div class="center-table">
+                @if (FoolGameService.AttackingCards.Count > 0)
+                {
+                    <div class="attacking-cards">
+                        @foreach (var card in FoolGameService.AttackingCards)
+                        {
+                            if (card.ImageUrl != "")
+                            {
+                                <img src="@card.ImageUrl" class="attacking-card" />
+                            }
+                        }
+                    </div>
+                }
+
+                @if (FoolGameService.DefendingCards.Count > 0)
+                {
+                    <div class="defending-cards">
+                        @foreach (var card in FoolGameService.DefendingCards)
+                        {
+                            if (card.ImageUrl != "")
+                            {
+                                <img src="@card.ImageUrl" class="defending-card" />
+                            }
+                        }
+                    </div>
+                }
+
+                @if (FoolGameService.GameState == GameState.Finished)
+                {
+                    <div class="win-lose">
+                        @if (FoolGameService.Player.inHand.Count == 0 && FoolGameService.Opponent.inHand.Count == 0)
+                        {
+                            <label class="draw">Ничья!</label>
+                        }
+                        else if (FoolGameService.Player.inHand.Count == 0)
+                        {
+                            <label class="win">Поздравляем! Бот остался в дураках :)</label>
+                        }
+                        else if (FoolGameService.Opponent.inHand.Count == 0)
+                        {
+                            <label class="lose">Увы, вы дурак :(</label>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="deck">
+                <GameDeck deck="FoolGameService.Deck" />
+            </div>
+
+            @if (!FoolGameService.FirstTurn)
+            {
+                <div class="discard-pile">
+                    <DiscardPile deck="FoolGameService.Deck" opponent="FoolGameService.Opponent" player="FoolGameService.Player"
+                        discardCardCount="FoolGameService.DiscardCardCount" />
+                </div>
+            }
+
+            <div class="controls">
+                <button class="start-button" @onclick="StartTurn"
+                    disabled="@FoolGameService.IsLoaded">@FoolGameService.StartButton</button>
+                <button class="play-button" @onclick="Play"
+                    disabled="@(!FoolGameService.CanPlay)">@FoolGameService.PlayButton</button>
+                <button class="draw-button" @onclick="DrawCards" disabled="@(!FoolGameService.CanDraw)">Взять карты</button>
+                <button class="end-button" @onclick="EndTurn" disabled="@(!FoolGameService.CanEndTurn)">Завершить ход</button>
+            </div>
         </div>
-    </div>
 
-    <TheFoolRules />
+        <TheFoolRules />
 
-    <button @onclick="Logout">Выйти</button>
-
+        <button class="exit-button" @onclick="Logout">Выйти</button>
+    }
 }
-
 
 @code {
 
-    @* private bool ShowSettings = false; 
-    private bool Reload = false; 
+    @*private bool Reload = false; 
     private int Count = 0; 
     private FoolGame? game; *@
 
+    private List<string> backs = new List<string>
+{
+"Images/back_cyan.png",
+"Images/back_black1.png",
+"Images/back_black2.png"
+};
+
+    private string selectedBack = string.Empty;
+    private bool ShowSettings = false;
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
-
 
     //load game on initialized component
     protected override async Task OnInitializedAsync()
@@ -148,8 +169,8 @@ else
         {
             await Task.Delay(500);
 
-            @* //choose game settings
-            ShowSettings = true; *@
+            //choose game settings
+            ShowSettings = true;
 
             //load game
             FoolGameService.LoadGame();
@@ -320,8 +341,9 @@ else
 
     private void SetGame()
     {
-        @* ShowSettings = false; *@
-        Console.WriteLine(FoolGameService.Deck.GetDeckStyle());
+        ShowSettings = false;
+        Deck.s_back = selectedBack;
+        Console.WriteLine(Deck.s_style);
     }
 
     //add two scores info to db
@@ -808,6 +830,7 @@ else
 
     private void Logout()
     {
+        FoolGameService.ResetGame();
         NavigationManager.NavigateTo("/logout");
     }
 

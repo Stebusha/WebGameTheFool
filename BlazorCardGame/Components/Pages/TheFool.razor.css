@@ -198,3 +198,21 @@ button {
     cursor: default;
     color: black;
 }
+
+.exit-button {
+    background-color: rgb(252, 188, 188);
+    border: rgb(114, 119, 168) solid;
+    cursor: default;
+    color: black;
+    border: rgb(54, 63, 138) solid;
+    left: 50%;
+}
+
+.exit-button:hover {
+    background-color: rgb(67, 77, 167);
+}
+
+.selection-back {
+    width: auto;
+    height: 150px;
+}

@@ -181,6 +181,23 @@ public class FoolGameService
         }
     }
 
+    //reset game on logout
+    public void ResetGame()
+    {
+        DiscardCardCount = 0;
+        CountOfGames = 0;
+        GameState = GameState.Loading;
+        FirstTurn = false;
+        DefendingCards.Clear();
+        AttackingCards.Clear();
+        IsLoaded = false;
+        CanPlay = true;
+        CanDraw = false;
+        CanEndTurn = false;
+        PlayButton = "Походить";
+        StartButton = "Новая игра";
+        _fools = [];
+    }
     //load game
     public void LoadGame()
     {

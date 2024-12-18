@@ -408,11 +408,6 @@ tr:nth-child(even)[b-1mgci28981] {
     right: 0;
     top: 0;
 }
-/* _content/BlazorCardGame/Components/Pages/Partials/GameSettings.razor.rz.scp.css */
-h2[b-8b77zkgj9q],button[b-8b77zkgj9q],.modal-content[b-8b77zkgj9q],label[b-8b77zkgj9q],select[b-8b77zkgj9q]{
-    color: black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 /* _content/BlazorCardGame/Components/Pages/Partials/Opponent.razor.rz.scp.css */
 .opponent-hand[b-0nrmjuysbw] {
     justify-content: center;
@@ -665,4 +660,22 @@ button[b-0o9jxtxef0] {
     border: rgba(189, 54, 54, 0.616) solid;
     cursor: default;
     color: black;
+}
+
+.exit-button[b-0o9jxtxef0] {
+    background-color: rgb(252, 188, 188);
+    border: rgb(114, 119, 168) solid;
+    cursor: default;
+    color: black;
+    border: rgb(54, 63, 138) solid;
+    left: 50%;
+}
+
+.exit-button:hover[b-0o9jxtxef0] {
+    background-color: rgb(67, 77, 167);
+}
+
+.selection-back[b-0o9jxtxef0] {
+    width: auto;
+    height: 150px;
 }
