@@ -285,10 +285,10 @@ public class FoolGameService
         }
     }
 
-    public void SetStateLoading() 
-    { 
-        GameState = GameState.Loading; 
-        CountOfGames = 0; 
+    public void SetStateLoading()
+    {
+        GameState = GameState.Loading;
+        CountOfGames = 0;
     }
 
     //refresh start button properties
@@ -591,8 +591,16 @@ public class FoolGameService
     //end current turn, refresh game's properties for next turn
     public void EndCurrentTurn()
     {
+        if (Opponent.Taken)
+        {
+            if (GameState == GameState.JustStarted)
+            {
+                GameState = GameState.InProgress;
+                IsLoaded = true;
+            }
+        }
         //set flag first turn
-        if (FirstTurn)
+        if (FirstTurn && !Opponent.Taken && !Player.Taken)
         {
             FirstTurn = false;
         }
