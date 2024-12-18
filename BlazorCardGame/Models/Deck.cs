@@ -201,7 +201,7 @@ public class Deck
 
         if (UseExtra)
         {
-            while (trumpCard.Rank == RankType.Joker)
+            while (trumpCard.Rank == RankType.Joker || trumpCard.Rank == RankType.Ace)
             {
                 _cards.RemoveAt(0);
                 _cards.Add(trumpCard);

@@ -165,8 +165,8 @@ else
 
 @code {
 
-    @*private bool Reload = false; 
-    private int Count = 0; 
+    @* private bool Reload = false;  *@
+    @*private int Count = 0; 
     private FoolGame? game; *@
 
     private List<string> backs = new List<string>
@@ -177,6 +177,8 @@ else
 };
 
     private string selectedBack = "Images/back_cyan.png";
+
+    private DeckStyle deckStyle = DeckStyle.Fantasy;
     private int selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private List<FoolGameScore>? scores;
@@ -186,6 +188,11 @@ else
     //load game on initialized component
     protected override async Task OnInitializedAsync()
     {
+        @* if(Reload)
+        {
+            await SetGame();
+        }
+        else *@ 
         if(FoolGameService.GameState == GameState.Settings)
         {
             await Task.Delay(500);
@@ -224,6 +231,8 @@ else
 
         Console.WriteLine($"Стиль колоды: {Deck.s_style}\n Рубашка: {Deck.s_back}\n Количество карт в колоде: {selectedCardsAmount}\n");
 
+        await Task.Delay(500);
+        
         //load game
         FoolGameService.LoadGame();
         //if info not loaded from db
@@ -863,11 +872,23 @@ else
 
     @* private void Dispose()
     {
-        Count = FoolGameService.CountOfGames;
-    }
+        Reload = true;
+        selectedBack = Deck.s_back;
+        
+        if(Deck.UseExtra)
+        {
+            selectedCardsAmount = Constants.MAX_CARD_AMOUNT_EXTENDED;
+        }
+        else
+        {
+            selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
+        }
 
-    //save game info
-     public async Task SaveGame()
+        deckStyle = Deck.s_style;
+    } *@
+
+    @* //save game info
+    public async Task SaveGame()
     {
         List<CardInfo> cards = new();
 
