@@ -9,7 +9,7 @@ public class FoolGameService
     private ScoreTable scoreTable = new();
     public Deck Deck { get; private set; } = new Deck();
     public Table Table { get; private set; } = new Table();
-    public GameState GameState { get; private set; } = GameState.Loading;
+    public GameState GameState { get; private set; } = GameState.Settings;
     public bool IsLoaded { get; private set; } = false;
     public bool CanPlay { get; private set; } = true;
     public bool CanDraw { get; private set; } = false;

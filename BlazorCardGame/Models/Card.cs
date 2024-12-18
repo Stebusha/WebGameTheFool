@@ -1,5 +1,7 @@
 namespace BlazorCardGame.Models;
 using BlazorCardGame.Enums;
+using Microsoft.EntityFrameworkCore.Storage;
+
 public class Card
 {
     public SuitType Suit { get; set; }
@@ -19,10 +21,10 @@ public class Card
     //return rank string for card output based on RankType
     private string GetRankName(RankType rank) => rank switch
     {
-        // RankType.Two => "2",
-        // RankType.Three => "3",
-        // RankType.Four => "4",
-        // RankType.Five => "5",
+        RankType.Two => "Extra/2",
+        RankType.Three => "Extra/3",
+        RankType.Four => "Extra/4",
+        RankType.Five => "Extra/5",
         RankType.Six => "6",
         RankType.Seven => "7",
         RankType.Eight => "8",
@@ -32,7 +34,7 @@ public class Card
         RankType.Queen => "Q",
         RankType.King => "K",
         RankType.Ace => "A",
-        // RankType.Joker => "joker_",
+        RankType.Joker => "Extra/joker_",
         _ => "Rank Not Found"
     };
 
@@ -43,8 +45,8 @@ public class Card
         SuitType.Hearts => "H",
         SuitType.Spades => "S",
         SuitType.Diams => "D",
-        // SuitType.Black => "male",
-        // SuitType.Red => "lady",
+        SuitType.Black => "male",
+        SuitType.Red => "lady",
         _ => "Suit Not Found"
     };
 
@@ -65,6 +67,26 @@ public class Card
         if (card1.Suit == card2.Suit)
         {
             return card1.Rank > card2.Rank;
+        }
+        //first joker
+        else if (card1.Rank == RankType.Joker && card2.Rank != RankType.Joker)
+        {
+            return true;
+        }
+        //second joker
+        else if (card1.Rank != RankType.Joker && card2.Rank == RankType.Joker)
+        {
+            return false;
+        }
+        // first red, second black
+        else if (card1.Suit == SuitType.Red && card2.Suit == SuitType.Black)
+        {
+            return true;
+        }
+        // first black, second red
+        else if (card1.Suit == SuitType.Black && card2.Suit == SuitType.Red)
+        {
+            return false;
         }
         //first trump
         else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
@@ -90,6 +112,26 @@ public class Card
         {
             return card1.Rank < card2.Rank;
         }
+        //first joker
+        else if (card1.Rank == RankType.Joker && card2.Rank != RankType.Joker)
+        {
+            return false;
+        }
+        //second joker
+        else if (card1.Rank != RankType.Joker && card2.Rank == RankType.Joker)
+        {
+            return true;
+        }
+        // first red, second black
+        else if (card1.Suit == SuitType.Red && card2.Suit == SuitType.Black)
+        {
+            return false;
+        }
+        // first black, second red
+        else if (card1.Suit == SuitType.Black && card2.Suit == SuitType.Red)
+        {
+            return true;
+        }
         //first trump
         else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
         {
@@ -113,6 +155,26 @@ public class Card
         if (card1.Suit == card2.Suit && card1.Rank == card2.Rank)
         {
             return true;
+        }
+        //first joker
+        else if (card1.Rank == RankType.Joker && card2.Rank != RankType.Joker)
+        {
+            return true;
+        }
+        //second joker
+        else if (card1.Rank != RankType.Joker && card2.Rank == RankType.Joker)
+        {
+            return false;
+        }
+        // first red, second black
+        else if (card1.Suit == SuitType.Red && card2.Suit == SuitType.Black)
+        {
+            return true;
+        }
+        // first black, second red
+        else if (card1.Suit == SuitType.Black && card2.Suit == SuitType.Red)
+        {
+            return false;
         }
         //first trump
         else if (card1.Suit == Deck.s_trumpSuit && card2.Suit != Deck.s_trumpSuit)
@@ -145,6 +207,26 @@ public class Card
     {
         //same rank, suit
         if (card1.Suit == card2.Suit && card1.Rank == card2.Rank)
+        {
+            return true;
+        }
+        //first joker
+        else if (card1.Rank == RankType.Joker && card2.Rank != RankType.Joker)
+        {
+            return false;
+        }
+        //second joker
+        else if (card1.Rank != RankType.Joker && card2.Rank == RankType.Joker)
+        {
+            return true;
+        }
+        // first red, second black
+        else if (card1.Suit == SuitType.Red && card2.Suit == SuitType.Black)
+        {
+            return false;
+        }
+        // first black, second red
+        else if (card1.Suit == SuitType.Black && card2.Suit == SuitType.Red)
         {
             return true;
         }

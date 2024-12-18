@@ -134,9 +134,9 @@ public class Player
         }
         else
         {
-            for (int i = 0; i < gameTable.Length(); i+=2)
+            for (int i = 0; i < gameTable.Length(); i += 2)
             {
-                if (CanBeBeaten(gameTable.GetCard(i),gameTable))
+                if (CanBeBeaten(gameTable.GetCard(i), gameTable))
                 {
                     return true;
                 }
@@ -151,7 +151,8 @@ public class Player
         //sort all cards in hand
         inHand = inHand.OrderBy(c => c.Rank).ToList();
 
-        List<Card> trumpCards = new List<Card>();
+        List<Card> trumpCards = [];
+        List<Card> jokers = [];
 
         //remember trump cards
         foreach (var card in inHand)
@@ -160,9 +161,14 @@ public class Player
             {
                 trumpCards.Add(card);
             }
+
+            if (card.Rank == RankType.Joker)
+            {
+                jokers.Add(card);
+            }
         }
 
-        if (trumpCards != null)
+        if (trumpCards is not null)
         {
             //remove trump cards from hands
             foreach (var trump in trumpCards)
@@ -171,13 +177,32 @@ public class Player
             }
 
             //sort trumps
-            trumpCards = trumpCards.OrderBy(t => t.Rank).ToList();
+            if (trumpCards.Count > 1)
+            {
+                trumpCards = trumpCards.OrderBy(t => t.Rank).ToList();
+            }
 
             //add sorted trumps to hand
-            foreach (var trump in trumpCards)
+            inHand.AddRange(trumpCards);
+        }
+
+        if (jokers is not null)
+        {
+            //remove joker cards from hands
+            foreach (var joker in jokers)
             {
-                inHand.Add(trump);
+                inHand.Remove(joker);
             }
+
+            //sort jokers
+            if (jokers.Count > 1)
+            {
+
+                jokers = jokers.OrderBy(t => t.Suit).ToList();
+            }
+
+            //add sorted jokers to hand
+            inHand.AddRange(jokers);
         }
     }
     public void RefillHand(Deck deck)
@@ -461,7 +486,7 @@ public class Player
 
         inHand.AddRange(onTableCards);
         inHand = inHand.Distinct().ToList();
-        
+
         Sort();
     }
 

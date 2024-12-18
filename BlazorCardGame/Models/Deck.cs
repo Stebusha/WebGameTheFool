@@ -8,6 +8,7 @@ public class Deck
     public static DeckStyle s_style = DeckStyle.Fantasy;
     public static string s_back = "Images/back_cyan.png";
     public int CardsAmount { get; private set; }
+    public static bool UseExtra = false;
     public static string TrumpSuitImageURL
     {
         get => GetTrumpSuitURL();
@@ -17,17 +18,40 @@ public class Deck
 
     public Deck()
     {
-        CardsAmount = Constants.MAX_CARD_AMOUNT;
-        _cards = new List<Card>(CardsAmount);
-
-        foreach (var suit in (SuitType[])Enum.GetValues(typeof(SuitType)))
+        //cards amount 54
+        if (UseExtra)
         {
-            foreach (var rank in (RankType[])Enum.GetValues(typeof(RankType)))
+            CardsAmount = Constants.MAX_CARD_AMOUNT_EXTENDED;
+            _cards = new List<Card>(CardsAmount);
+
+            for (int s = 0; s < 4; s++)
             {
-                Card cardToCreate = new Card(suit, rank);
-                _cards.Add(cardToCreate);
+                for (int r = 0; r < 13; r++)
+                {
+                    Card cardToCreate = new Card((SuitType)s, (RankType)r);
+                    _cards.Add(cardToCreate);
+                }
+            }
+
+            List<Card> jokers = [new Card(SuitType.Black, RankType.Joker), new Card(SuitType.Red, RankType.Joker)];
+            _cards.AddRange(jokers);
+        }
+        //cards amount 36
+        else
+        {
+            CardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
+            _cards = new List<Card>(CardsAmount);
+
+            for (int s = 0; s < 4; s++)
+            {
+                for (int r = 4; r < 13; r++)
+                {
+                    Card cardToCreate = new Card((SuitType)s, (RankType)r);
+                    _cards.Add(cardToCreate);
+                }
             }
         }
+
     }
 
     //return trump suit
@@ -174,6 +198,26 @@ public class Deck
     {
         Card trumpCard;
         trumpCard = _cards.First();
+
+        if (UseExtra)
+        {
+            while (trumpCard.Rank == RankType.Joker)
+            {
+                _cards.RemoveAt(0);
+                _cards.Add(trumpCard);
+                trumpCard = _cards.First();
+            }
+        }
+        else
+        {
+            while (trumpCard.Rank == RankType.Ace)
+            {
+                _cards.RemoveAt(0);
+                _cards.Add(trumpCard);
+                trumpCard = _cards.First();
+            }
+        }
+
         s_trumpCard = trumpCard;
         _cards.RemoveAt(0);
         _cards.Add(trumpCard);

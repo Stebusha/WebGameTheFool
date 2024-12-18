@@ -15,7 +15,7 @@
 {
     <p><em>Loading...</em></p>
 }
-else
+else if(FoolGameService.GameState == GameState.Settings)
 {
     <ConfirmDialog Show="ShowSettings" OnOK="SetGame">
         <h3>Выберите настройки игры</h3>
@@ -29,9 +29,10 @@ else
             }
         </select>
         <br />
-        <p>Рубашка:</p>
 
         <div>
+            <p>Рубашка:</p>
+
             <InputRadioGroup @bind-Value="selectedBack">
 
                 @foreach (var back in backs)
@@ -41,11 +42,27 @@ else
                 }
             </InputRadioGroup>
         </div>
+        <br />
+        <div>
+            <h6>Количество карт в колоде:</h6>
 
+            <InputRadioGroup @bind-Value="selectedCardsAmount">
 
+                <InputRadio Value="Constants.MAX_CARD_AMOUNT_STANDARD" />
+                36
+
+                <InputRadio Value="Constants.MAX_CARD_AMOUNT_EXTENDED" />
+                54
+
+            </InputRadioGroup>
+
+            
+        </div>
 
     </ConfirmDialog>
-
+}
+else
+{
     if (!ShowSettings)
     {
         <h1>Карточная игра "Дурак"</h1>
@@ -140,8 +157,11 @@ else
         <TheFoolRules />
 
         <button class="exit-button" @onclick="Logout">Выйти</button>
+        <br />
+        <br />
     }
 }
+
 
 @code {
 
@@ -156,7 +176,8 @@ else
 "Images/back_black2.png"
 };
 
-    private string selectedBack = string.Empty;
+    private string selectedBack = "Images/back_cyan.png";
+    private int selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
@@ -165,160 +186,12 @@ else
     //load game on initialized component
     protected override async Task OnInitializedAsync()
     {
-        if (FoolGameService.GameState == GameState.Loading)
+        if(FoolGameService.GameState == GameState.Settings)
         {
             await Task.Delay(500);
 
             //choose game settings
             ShowSettings = true;
-
-            //load game
-            FoolGameService.LoadGame();
-            //if info not loaded from db
-            if (scores is null)
-            {
-                //try load info from db
-                try
-                {
-                    scores = await DataManager.GetAllScoresAsync();
-                    users = await DataManager.GetAllUsersAsync();
-                    players = await DataManager.GetAllPlayersAsync();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Error line 151-153\n" + e.Message);
-                }
-
-                bool opponentExisted = false;
-                bool playerExisted = false;
-
-                //checked existed players or opponent
-                if (players is not null && users is not null)
-                {
-                    foreach (var user in users)
-                    {
-                        if (user.IsLoggedIn)
-                        {
-                            FoolGameService.Player.Name = user.Login;
-                            break;
-                        }
-                    }
-
-                    foreach (var player in players)
-                    {
-                        if (FoolGameService.Opponent.Name == player.Name)
-                        {
-                            opponentExisted = true;
-                        }
-
-                        if (FoolGameService.Player.Name == player.Name)
-                        {
-                            playerExisted = true;
-                        }
-
-                        if (playerExisted && opponentExisted)
-                        {
-                            break;
-                        }
-                    }
-                }
-                //add info of opponent to db
-                if (!opponentExisted)
-                {
-                    var opponent = new PlayerInfo
-                        {
-                            Name = FoolGameService.Opponent.Name,
-                            IsAttack = FoolGameService.Opponent.IsAttack,
-                            PlayerType = PlayerType.AI
-                        };
-
-                    try
-                    {
-                        await DataManager.AddPlayerAsync(opponent);
-
-                        players?.Clear();
-                        await DataManager.GetAllPlayersAsync();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Error line 202\n" + e.Message);
-                    }
-                }
-                //update info in db if opponent existed
-                else
-                {
-                    var opponent = await DataManager.GetPlayerByNameAsync(FoolGameService.Opponent.Name);
-
-                    if (opponent is not null)
-                    {
-                        opponent.IsAttack = FoolGameService.Opponent.IsAttack;
-
-                        try
-                        {
-                            await DataManager.UpdatePlayerAsync(opponent);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error line 223\n" + e.Message);
-                        }
-                    }
-                }
-                //add info to db if player is new
-                if (!playerExisted)
-                {
-                    if (users is not null)
-                    {
-                        foreach (var user in users)
-                        {
-                            if (user.IsLoggedIn)
-                            {
-                                FoolGameService.Player.Name = user.Login;
-                                break;
-                            }
-                        }
-                    }
-
-                    var player = new PlayerInfo
-                        {
-                            Name = FoolGameService.Player.Name,
-                            IsAttack = FoolGameService.Player.IsAttack,
-                            PlayerType = PlayerType.Human,
-                            UserLogin = FoolGameService.Player.Name
-                        };
-
-                    try
-                    {
-                        await DataManager.AddPlayerAsync(player);
-                        playerExisted = true;
-
-                        players?.Clear();
-                        await DataManager.GetAllPlayersAsync();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("Error line 256-260\n" + e.Message);
-                    }
-                }
-                //update info in db if player is existed
-                else
-                {
-                    var player = await DataManager.GetPlayerByNameAsync(FoolGameService.Player.Name);
-
-                    if (player is not null)
-                    {
-                        player.IsAttack = FoolGameService.Player.IsAttack;
-
-                        try
-                        {
-                            await DataManager.UpdatePlayerAsync(player);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Error line 278\n" + e.Message);
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -339,11 +212,165 @@ else
         }
     }
 
-    private void SetGame()
+    private async Task SetGame()
     {
         ShowSettings = false;
         Deck.s_back = selectedBack;
-        Console.WriteLine(Deck.s_style);
+        
+        if(selectedCardsAmount == Constants.MAX_CARD_AMOUNT_EXTENDED)
+        {
+            Deck.UseExtra = true;
+        }
+
+        Console.WriteLine($"Стиль колоды: {Deck.s_style}\n Рубашка: {Deck.s_back}\n Количество карт в колоде: {selectedCardsAmount}\n");
+
+        //load game
+        FoolGameService.LoadGame();
+        //if info not loaded from db
+        if (scores is null)
+        {
+            //try load info from db
+            try
+            {
+                scores = await DataManager.GetAllScoresAsync();
+                users = await DataManager.GetAllUsersAsync();
+                players = await DataManager.GetAllPlayersAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error line 151-153\n" + e.Message);
+            }
+
+            bool opponentExisted = false;
+            bool playerExisted = false;
+
+            //checked existed players or opponent
+            if (players is not null && users is not null)
+            {
+                foreach (var user in users)
+                {
+                    if (user.IsLoggedIn)
+                    {
+                        FoolGameService.Player.Name = user.Login;
+                        break;
+                    }
+                }
+
+                foreach (var player in players)
+                {
+                    if (FoolGameService.Opponent.Name == player.Name)
+                    {
+                        opponentExisted = true;
+                    }
+
+                    if (FoolGameService.Player.Name == player.Name)
+                    {
+                        playerExisted = true;
+                    }
+
+                    if (playerExisted && opponentExisted)
+                    {
+                        break;
+                    }
+                }
+            }
+            //add info of opponent to db
+            if (!opponentExisted)
+            {
+                var opponent = new PlayerInfo
+                    {
+                        Name = FoolGameService.Opponent.Name,
+                        IsAttack = FoolGameService.Opponent.IsAttack,
+                        PlayerType = PlayerType.AI
+                    };
+
+                try
+                {
+                    await DataManager.AddPlayerAsync(opponent);
+
+                    players?.Clear();
+                    await DataManager.GetAllPlayersAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error line 202\n" + e.Message);
+                }
+            }
+            //update info in db if opponent existed
+            else
+            {
+                var opponent = await DataManager.GetPlayerByNameAsync(FoolGameService.Opponent.Name);
+
+                if (opponent is not null)
+                {
+                    opponent.IsAttack = FoolGameService.Opponent.IsAttack;
+
+                    try
+                    {
+                        await DataManager.UpdatePlayerAsync(opponent);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error line 223\n" + e.Message);
+                    }
+                }
+            }
+            //add info to db if player is new
+            if (!playerExisted)
+            {
+                if (users is not null)
+                {
+                    foreach (var user in users)
+                    {
+                        if (user.IsLoggedIn)
+                        {
+                            FoolGameService.Player.Name = user.Login;
+                            break;
+                        }
+                    }
+                }
+
+                var player = new PlayerInfo
+                    {
+                        Name = FoolGameService.Player.Name,
+                        IsAttack = FoolGameService.Player.IsAttack,
+                        PlayerType = PlayerType.Human,
+                        UserLogin = FoolGameService.Player.Name
+                    };
+
+                try
+                {
+                    await DataManager.AddPlayerAsync(player);
+                    playerExisted = true;
+
+                    players?.Clear();
+                    await DataManager.GetAllPlayersAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error line 256-260\n" + e.Message);
+                }
+            }
+            //update info in db if player is existed
+            else
+            {
+                var player = await DataManager.GetPlayerByNameAsync(FoolGameService.Player.Name);
+
+                if (player is not null)
+                {
+                    player.IsAttack = FoolGameService.Player.IsAttack;
+
+                    try
+                    {
+                        await DataManager.UpdatePlayerAsync(player);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error line 278\n" + e.Message);
+                    }
+                }
+            }
+        } 
     }
 
     //add two scores info to db

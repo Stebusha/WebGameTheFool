@@ -1,11 +1,11 @@
 namespace BlazorCardGame.Enums;
 public enum RankType
 {
-    // Two = 0,
-    // Three,
-    // Four,
-    // Five,
-    Six = 0,
+    Two = 0,
+    Three,
+    Four,
+    Five,
+    Six,
     Seven,
     Eight,
     Nine,
@@ -13,6 +13,6 @@ public enum RankType
     Jack,
     Queen,
     King,
-    Ace
-    // Joker
+    Ace,
+    Joker
 }

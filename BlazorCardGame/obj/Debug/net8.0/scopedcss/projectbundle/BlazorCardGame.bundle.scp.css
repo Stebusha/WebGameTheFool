@@ -663,16 +663,16 @@ button[b-0o9jxtxef0] {
 }
 
 .exit-button[b-0o9jxtxef0] {
-    background-color: rgb(252, 188, 188);
-    border: rgb(114, 119, 168) solid;
+    background-color: rgb(175, 182, 247);
+    border: rgb(125, 135, 219) solid;
     cursor: default;
     color: black;
-    border: rgb(54, 63, 138) solid;
+    position: absolute;
     left: 50%;
 }
 
 .exit-button:hover[b-0o9jxtxef0] {
-    background-color: rgb(67, 77, 167);
+    background-color: rgb(125, 135, 219);
 }
 
 .selection-back[b-0o9jxtxef0] {
