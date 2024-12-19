@@ -164,21 +164,18 @@ else
 
 
 @code {
-
-    @* private bool Reload = false;  *@
-    @*private int Count = 0; 
-    private FoolGame? game; *@
-
-    private List<string> backs = new List<string>
-{
-"Images/back_cyan.png",
-"Images/back_black1.png",
-"Images/back_black2.png"
-};
+    private List<string> backs =
+    [
+        "Images/back_cyan.png",
+        "Images/back_black1.png",
+        "Images/back_blue.png",
+        "Images/back_green.png",
+        "Images/back_orange.png",
+        "Images/back_red.png",
+        "Images/back_purple.png"
+    ];
 
     private string selectedBack = "Images/back_cyan.png";
-
-    private DeckStyle deckStyle = DeckStyle.Fantasy;
     private int selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private List<FoolGameScore>? scores;
@@ -188,11 +185,6 @@ else
     //load game on initialized component
     protected override async Task OnInitializedAsync()
     {
-        @* if(Reload)
-        {
-            await SetGame();
-        }
-        else *@ 
         if(FoolGameService.GameState == GameState.Settings)
         {
             await Task.Delay(500);

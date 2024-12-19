@@ -137,7 +137,7 @@ public class DataManager
         }
     }
 
-    public async Task DeleteGameByKeyAsync(string playerName, string opponentName)
+    public async Task DeleteGameByKeyAsync(string playerName)
     {
         var game = await GetFoolGameByKeyAsync(playerName);
 

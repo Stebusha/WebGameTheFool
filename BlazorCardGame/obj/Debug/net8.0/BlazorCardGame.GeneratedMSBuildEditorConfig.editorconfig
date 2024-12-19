@@ -22,16 +22,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXEFjY2Vzc0RlbmllZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXExvZ291dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Statistics.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGF0aXN0aWNzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Routes.razor]
@@ -50,17 +54,9 @@ build_metadata.AdditionalFiles.CssScope = b-uxxx47e69p
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-jo7cnduvuo
 
-[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXEFjY2Vzc0RlbmllZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-tcg5xgf3w4
-
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-jsxfsfo6wj
-
-[C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Logout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXExvZ291dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-jw3squrjv1
 
 [C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/Components/Pages/Auth/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBdXRoXFJlZ2lzdGVyLnJhem9y

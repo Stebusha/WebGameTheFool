@@ -205,7 +205,6 @@ main[b-uxxx47e69p] {
         overflow-y: auto;
     }
 }
-/* _content/BlazorCardGame/Components/Pages/Auth/AccessDenied.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Login.razor.rz.scp.css */
 h3[b-jsxfsfo6wj],
 input[b-jsxfsfo6wj],
@@ -243,7 +242,6 @@ button:hover[b-jsxfsfo6wj] {
 }
 
 a[b-jsxfsfo6wj] {
-    text-decoration: none;
     display: inline-block;
     padding: 5px 10px;
     letter-spacing: 1px;
@@ -251,7 +249,6 @@ a[b-jsxfsfo6wj] {
     border-top: 1px solid transparent;
     color: #006134;
 }
-/* _content/BlazorCardGame/Components/Pages/Auth/Logout.razor.rz.scp.css */
 /* _content/BlazorCardGame/Components/Pages/Auth/Register.razor.rz.scp.css */
 h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
     color: black;
