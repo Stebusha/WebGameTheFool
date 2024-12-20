@@ -676,3 +676,14 @@ button[b-0o9jxtxef0] {
     width: auto;
     height: 150px;
 }
+
+.container-back[b-0o9jxtxef0]{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.back-element[b-0o9jxtxef0]{
+    display: flex;
+    flex-direction: column;
+}
