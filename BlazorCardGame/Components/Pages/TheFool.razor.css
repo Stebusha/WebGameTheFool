@@ -216,3 +216,14 @@ button {
     width: auto;
     height: 150px;
 }
+
+.container-back{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.back-element{
+    display: flex;
+    flex-direction: column;
+}

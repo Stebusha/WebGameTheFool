@@ -30,12 +30,17 @@
             <p>Рубашка:</p>
 
             <InputRadioGroup @bind-Value="selectedBack">
-
-                @foreach (var back in backs)
-                {
-                    <InputRadio Value="@back" />
-                    <img class="selection-back" src="@back" />
-                }
+                <div class="container-back">
+                    @foreach (var back in backs)
+                    {
+                        <div class="back-element">
+                            <img class="selection-back" src="@back" /> 
+                            <InputRadio Value="@back" />
+                        </div>
+                    
+                    }   
+                </div>
+                
             </InputRadioGroup>
         </div>
         <br />
