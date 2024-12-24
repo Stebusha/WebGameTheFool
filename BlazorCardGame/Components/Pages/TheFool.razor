@@ -7,7 +7,7 @@
 
 @inject FoolGameService FoolGameService
 @inject NavigationManager NavigationManager
-@inject DataManager DataManager
+@inject FoolDataManager DataManager
 
 <PageTitle>Дурак</PageTitle>
 
@@ -49,10 +49,10 @@
 
             <InputRadioGroup @bind-Value="selectedCardsAmount">
 
-                <InputRadio Value="Constants.MAX_CARD_AMOUNT_STANDARD" />
+                <InputRadio Value="GameConstants.MAX_CARD_AMOUNT_STANDARD" />
                 36
 
-                <InputRadio Value="Constants.MAX_CARD_AMOUNT_EXTENDED" />
+                <InputRadio Value="GameConstants.MAX_CARD_AMOUNT_EXTENDED" />
                 54
 
             </InputRadioGroup>
@@ -181,7 +181,7 @@ else
     ];
 
     private string selectedBack = "Images/back_cyan.png";
-    private int selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
+    private int selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
@@ -222,7 +222,7 @@ else
         ShowSettings = false;
         Deck.s_back = selectedBack;
         
-        if(selectedCardsAmount == Constants.MAX_CARD_AMOUNT_EXTENDED)
+        if(selectedCardsAmount == GameConstants.MAX_CARD_AMOUNT_EXTENDED)
         {
             Deck.UseExtra = true;
         }
@@ -877,17 +877,16 @@ else
         
         if(Deck.UseExtra)
         {
-            selectedCardsAmount = Constants.MAX_CARD_AMOUNT_EXTENDED;
+            selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_EXTENDED;
         }
         else
         {
-            selectedCardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
+            selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
         }
 
         deckStyle = Deck.s_style;
-    } *@
-
-    @* //save game info
+    } 
+     //save game info
     public async Task SaveGame()
     {
         List<CardInfo> cards = new();

@@ -391,3 +391,17 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\White\QD.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\White\QH.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\White\QS.png
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Syncfusion.ExcelExport.Net.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Syncfusion.Licensing.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Syncfusion.PdfExport.Net.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Syncfusion.Blazor.dll

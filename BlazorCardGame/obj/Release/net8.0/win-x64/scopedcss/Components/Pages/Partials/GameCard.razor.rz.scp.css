@@ -1,0 +1,15 @@
+.card[b-0s7ewnrvps] {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: thistle;
+    border: none;
+}
+
+.card:hover[b-0s7ewnrvps] {
+    transform: translateY(-10px);
+    background-color: thistle;
+    border-radius: 5%;
+    border: none;
+}

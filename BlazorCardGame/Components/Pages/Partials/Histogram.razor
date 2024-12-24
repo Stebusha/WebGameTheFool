@@ -1,0 +1,110 @@
+@inject FoolDataManager DataManager
+
+@rendermode InteractiveServer
+
+@if (histoModelsHumans is not null)
+{
+    <SfChart Title="Статистика среди реальных игроков">
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
+        </ChartPrimaryXAxis>
+
+        <ChartPrimaryYAxis Title="Количество игр">
+        </ChartPrimaryYAxis>
+
+        <ChartLegendSettings Visible="true"></ChartLegendSettings>
+        <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+
+        <ChartSeriesCollection>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Wins">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Losses">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Draws">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Total">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+        </ChartSeriesCollection>
+    </SfChart>
+}
+
+@* @if (histoModelsAIs is not null)
+{
+    <SfChart Title="Статистика среди ботов">
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
+        </ChartPrimaryXAxis>
+
+        <ChartPrimaryYAxis Title="Количество игр">
+        </ChartPrimaryYAxis>
+
+        <ChartLegendSettings Visible="true"></ChartLegendSettings>
+        <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+
+        <ChartSeriesCollection>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Wins">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Losses">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Draws">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Total">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true"></ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+        </ChartSeriesCollection>
+    </SfChart> 
+} *@
+
+@code {
+    [Parameter]
+    public required List<FoolGameScore> Scores { get; set; }
+    private List<HistoModel> histoModelsHumans = [];
+    private List<HistoModel> histoModelsAIs = [];
+
+    protected override void OnParametersSet()
+    {
+        SetHistoModelList();
+    }
+    private void SetHistoModelList()
+    {
+        if (Scores is not null)
+        {
+            foreach (var score in Scores)
+            {
+                if (Enum.IsDefined(typeof(AINames), score.PlayerInfoName))
+                {
+                    var ai = new HistoModel(score.PlayerInfoName, score.NumberOfWins, score.NumberOfLosses, score.NumberOfDraws,
+                    score.CountOfGames);
+                    histoModelsAIs.Add(ai);
+                }
+                else
+                {
+                    var human = new HistoModel(score.PlayerInfoName, score.NumberOfWins, score.NumberOfLosses, score.NumberOfDraws,
+                    score.CountOfGames);
+                    histoModelsHumans.Add(human);
+                }
+            }
+        }
+    }
+}

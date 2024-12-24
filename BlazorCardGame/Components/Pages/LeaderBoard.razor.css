@@ -43,3 +43,8 @@ td {
 tr:nth-child(even) {
     background-color: rgb(246, 231, 252);
 }
+
+.statistics-container{
+    display: flex;
+    flex-direction: row;
+}

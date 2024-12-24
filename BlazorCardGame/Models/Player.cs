@@ -209,12 +209,12 @@ public class Player
     {
         if (inHand.Count == 0)
         {
-            inHand = deck.DrawCards(Constants.REQUIRED_CARDS_COUNT);
+            inHand = deck.DrawCards(GameConstants.REQUIRED_CARDS_COUNT);
             Sort();
         }
-        else if (inHand.Count < Constants.REQUIRED_CARDS_COUNT)
+        else if (inHand.Count < GameConstants.REQUIRED_CARDS_COUNT)
         {
-            inHand.AddRange(deck.DrawCards(Constants.REQUIRED_CARDS_COUNT - inHand.Count));
+            inHand.AddRange(deck.DrawCards(GameConstants.REQUIRED_CARDS_COUNT - inHand.Count));
             Sort();
         }
 

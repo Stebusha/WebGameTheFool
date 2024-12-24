@@ -4,15 +4,18 @@ using BlazorCardGame.Models;
 using BlazorCardGame.Services;
 using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
-    .AddCookie(Constants.AUTH_SCHEME, options =>
+builder.Services.AddSyncfusionBlazor();
+
+builder.Services.AddAuthentication(GameConstants.AUTH_SCHEME)
+    .AddCookie(GameConstants.AUTH_SCHEME, options =>
     {
-        options.Cookie.Name = Constants.AUTH_COOKIE;
+        options.Cookie.Name = GameConstants.AUTH_COOKIE;
         options.LoginPath = "/login";
         options.AccessDeniedPath = "/access-denied";
         options.LogoutPath = "/logout";
@@ -27,7 +30,7 @@ builder.Services.AddAuthentication(Constants.AUTH_SCHEME)
 
 // builder.Services.AddScoped<JSRuntime>();
 builder.Services.AddScoped<FoolGameService>();
-builder.Services.AddScoped<DataManager>();
+builder.Services.AddScoped<FoolDataManager>();
 
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {

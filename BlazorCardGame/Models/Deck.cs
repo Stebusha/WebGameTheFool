@@ -21,7 +21,7 @@ public class Deck
         //cards amount 54
         if (UseExtra)
         {
-            CardsAmount = Constants.MAX_CARD_AMOUNT_EXTENDED;
+            CardsAmount = GameConstants.MAX_CARD_AMOUNT_EXTENDED;
             _cards = new List<Card>(CardsAmount);
 
             for (int s = 0; s < 4; s++)
@@ -39,7 +39,7 @@ public class Deck
         //cards amount 36
         else
         {
-            CardsAmount = Constants.MAX_CARD_AMOUNT_STANDARD;
+            CardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
             _cards = new List<Card>(CardsAmount);
 
             for (int s = 0; s < 4; s++)

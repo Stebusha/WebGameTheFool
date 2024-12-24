@@ -321,6 +321,11 @@ td[b-1mgci28981] {
 tr:nth-child(even)[b-1mgci28981] {
     background-color: rgb(246, 231, 252);
 }
+
+.statistics-container[b-1mgci28981]{
+    display: flex;
+    flex-direction: row;
+}
 /* _content/BlazorCardGame/Components/Pages/Partials/ConfirmDialog.razor.rz.scp.css */
 .confirm-dialog-container[b-r4x1wg9m0l] {
     position: absolute;

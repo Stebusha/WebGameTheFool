@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlazorCardGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e644dfc25ea1009184d487ea415706bcf29bedc0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5793908cbc92a7e2cdafe88bf3ff8f610ace2181")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlazorCardGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlazorCardGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

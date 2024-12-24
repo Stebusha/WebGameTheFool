@@ -3,7 +3,7 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authentication
 
-@inject DataManager DataManager
+@inject FoolDataManager DataManager
 @inject NavigationManager NavigationManager
 
 <PageTitle>Вход</PageTitle>
@@ -112,7 +112,7 @@
                     LoggedInUserModel user = new LoggedInUserModel(1, User.Login);
 
                     var claims = user.ToClaims();
-                    var identity = new ClaimsIdentity(claims, Constants.AUTH_SCHEME);
+                    var identity = new ClaimsIdentity(claims, GameConstants.AUTH_SCHEME);
                     var principal = new ClaimsPrincipal(identity);
 
                     var authProperties = new AuthenticationProperties
@@ -122,7 +122,7 @@
 
                     Console.WriteLine($"Login: {User.Login}\nPasssword: {User.Password}");
 
-                    await HttpContext.SignInAsync(Constants.AUTH_SCHEME, principal, authProperties);
+                    await HttpContext.SignInAsync(GameConstants.AUTH_SCHEME, principal, authProperties);
 
                     NavigationManager.NavigateTo("/thefool");
                 }

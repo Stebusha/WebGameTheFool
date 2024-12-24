@@ -13,7 +13,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await HttpContext.SignOutAsync(Constants.AUTH_SCHEME);
+        await HttpContext.SignOutAsync(GameConstants.AUTH_SCHEME);
         NavigationManager.NavigateTo("/", replace: true);
     }
 }
