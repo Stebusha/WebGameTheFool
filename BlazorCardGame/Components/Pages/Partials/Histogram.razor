@@ -5,33 +5,24 @@
 @rendermode InteractiveServer
 
 <RadzenStack class="rz-p-0 rz-p-md-6 rz-p-lg-12" Orientation="Orientation.Vertical">
-    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: auto">
-        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Победы" ValueProperty="Wins" />
-        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Проигрыши"
-            ValueProperty="Losses" />
-        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws" />
-        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Всего" ValueProperty="Total" />
-        <RadzenColumnOptions Radius="5"  Margin="0" />
+    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: 1000px; height: 400px;">
 
-        <RadzenValueAxis>
-            <RadzenAxisTitle Text="Количество игр" />
-            <RadzenGridLines Visible="true" />
-        </RadzenValueAxis>
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Победы" ValueProperty="Wins">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
 
-        <RadzenCategoryAxis Padding="20" LabelAutoRotation="-45">
-            <RadzenAxisTitle Text="Игроки" />
-        </RadzenCategoryAxis>
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Проигрыши" ValueProperty="Losses">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
 
-        <RadzenLegend Position="LegendPosition.Bottom" />
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
 
-    </RadzenChart>
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Всего" ValueProperty="Total">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
 
-
-    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: auto">
-        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Победы" ValueProperty="Wins" />
-        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Проигрыши" ValueProperty="Losses" />
-        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws" />
-        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Всего" ValueProperty="Total" />
         <RadzenColumnOptions Radius="5" Margin="0" />
 
         <RadzenValueAxis>
@@ -39,103 +30,46 @@
             <RadzenGridLines Visible="true" />
         </RadzenValueAxis>
 
-        <RadzenCategoryAxis Padding="20" LabelAutoRotation="-45">
+        <RadzenCategoryAxis LabelAutoRotation="-45">
+            <RadzenAxisTitle Text="Игроки" />
+        </RadzenCategoryAxis>
+
+        <RadzenLegend Position="LegendPosition.Bottom" />
+    </RadzenChart>
+
+    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: 1000px; height: 400px;">
+
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Победы" ValueProperty="Wins">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
+
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Проигрыши" ValueProperty="Losses">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
+
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
+
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Всего" ValueProperty="Total">
+            <RadzenSeriesDataLabels Visible=true />
+        </RadzenColumnSeries>
+
+        <RadzenColumnOptions Radius="5" Margin="0" />
+
+        <RadzenValueAxis>
+            <RadzenAxisTitle Text="Количество игр" />
+            <RadzenGridLines Visible="true" />
+        </RadzenValueAxis>
+
+        <RadzenCategoryAxis LabelAutoRotation="-45">
             <RadzenAxisTitle Text="Боты" />
         </RadzenCategoryAxis>
 
         <RadzenLegend Position="LegendPosition.Bottom" />
 
     </RadzenChart>
-
 </RadzenStack>
-
-
-
-
-@* <RadzenChart>
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Wins" LineType="LineType.Dashed"
-        ValueProperty="Wins">
-        <RadzenSeriesDataLabels Visible="true" />
-    </RadzenColumnSeries>
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Losses" ValueProperty="Losses">
-        <RadzenSeriesDataLabels Visible="@true" />
-    </RadzenColumnSeries>
-    <RadzenColumnOptions Radius="5" />
-</RadzenChart> *@
-
-@* @if (histoModelsHumans is not null)
-{
-    <SfChart Title="Статистика среди реальных игроков">
-        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
-        </ChartPrimaryXAxis>
-
-        <ChartPrimaryYAxis Title="Количество игр">
-        </ChartPrimaryYAxis>
-
-        <ChartLegendSettings Visible="true"></ChartLegendSettings>
-        <ChartTooltipSettings Enable="true"></ChartTooltipSettings> 
-
-        <ChartSeriesCollection>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Wins">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Losses">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Draws">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Total">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-        </ChartSeriesCollection>
-    </SfChart>
-}
-
- @if (histoModelsAIs is not null)
-{
-    <SfChart Title="Статистика среди ботов">
-        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
-        </ChartPrimaryXAxis>
-
-        <ChartPrimaryYAxis Title="Количество игр">
-        </ChartPrimaryYAxis>
-
-        <ChartLegendSettings Visible="true"></ChartLegendSettings>
-        <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
-
-        <ChartSeriesCollection>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Wins">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Losses">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Draws">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-            <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsAIs" XName="Name" YName="Total">
-                <ChartMarker>
-                    <ChartDataLabel Visible="true"></ChartDataLabel>
-                </ChartMarker>
-            </ChartSeries>
-        </ChartSeriesCollection>
-    </SfChart> 
-}*@
 
 @code {
     [Parameter]
