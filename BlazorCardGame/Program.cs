@@ -4,13 +4,13 @@ using BlazorCardGame.Models;
 using BlazorCardGame.Services;
 using BlazorCardGame.Contexts;
 using Microsoft.EntityFrameworkCore;
-using Syncfusion.Blazor;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-builder.Services.AddSyncfusionBlazor();
+builder.Services.AddRadzenComponents();
 
 builder.Services.AddAuthentication(GameConstants.AUTH_SCHEME)
     .AddCookie(GameConstants.AUTH_SCHEME, options =>

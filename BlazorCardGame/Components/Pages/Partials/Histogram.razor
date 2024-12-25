@@ -1,8 +1,37 @@
+@using System.Globalization
+
 @inject FoolDataManager DataManager
 
 @rendermode InteractiveServer
 
-@if (histoModelsHumans is not null)
+
+<RadzenChart ColorScheme="ColorScheme.Monochrome">
+
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Wins" ValueProperty="Wins" />
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Losses" ValueProperty="Losses" />
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Draws" ValueProperty="Draws" />
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Total" ValueProperty="Total" />
+
+    <RadzenColumnOptions Margin="0" />
+</RadzenChart>
+
+
+
+
+
+
+@* <RadzenChart>
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Wins" LineType="LineType.Dashed"
+        ValueProperty="Wins">
+        <RadzenSeriesDataLabels Visible="true" />
+    </RadzenColumnSeries>
+    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Losses" ValueProperty="Losses">
+        <RadzenSeriesDataLabels Visible="@true" />
+    </RadzenColumnSeries>
+    <RadzenColumnOptions Radius="5" />
+</RadzenChart> *@
+
+@* @if (histoModelsHumans is not null)
 {
     <SfChart Title="Статистика среди реальных игроков">
         <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
@@ -12,7 +41,7 @@
         </ChartPrimaryYAxis>
 
         <ChartLegendSettings Visible="true"></ChartLegendSettings>
-        <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+        <ChartTooltipSettings Enable="true"></ChartTooltipSettings> 
 
         <ChartSeriesCollection>
             <ChartSeries Type="ChartSeriesType.Column" DataSource="@histoModelsHumans" XName="Name" YName="Wins">
@@ -39,7 +68,7 @@
     </SfChart>
 }
 
-@* @if (histoModelsAIs is not null)
+ @if (histoModelsAIs is not null)
 {
     <SfChart Title="Статистика среди ботов">
         <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Title="Игроки">
@@ -74,11 +103,15 @@
             </ChartSeries>
         </ChartSeriesCollection>
     </SfChart> 
-} *@
+}*@
 
 @code {
     [Parameter]
     public required List<FoolGameScore> Scores { get; set; }
+
+    ColorScheme tryScheme = ColorScheme.Monochrome;
+    IEnumerable<ColorScheme> colorSchemes = Enum.GetValues(typeof(ColorScheme)).Cast<ColorScheme>();
+    ColorScheme colorScheme = ColorScheme.Palette;
     private List<HistoModel> histoModelsHumans = [];
     private List<HistoModel> histoModelsAIs = [];
 
