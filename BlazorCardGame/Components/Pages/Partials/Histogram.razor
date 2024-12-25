@@ -4,18 +4,50 @@
 
 @rendermode InteractiveServer
 
+<RadzenStack class="rz-p-0 rz-p-md-6 rz-p-lg-12" Orientation="Orientation.Vertical">
+    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: auto">
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Победы" ValueProperty="Wins" />
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Проигрыши"
+            ValueProperty="Losses" />
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws" />
+        <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Всего" ValueProperty="Total" />
+        <RadzenColumnOptions Radius="5"  Margin="0" />
 
-<RadzenChart ColorScheme="ColorScheme.Monochrome">
+        <RadzenValueAxis>
+            <RadzenAxisTitle Text="Количество игр" />
+            <RadzenGridLines Visible="true" />
+        </RadzenValueAxis>
 
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Wins" ValueProperty="Wins" />
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Losses" ValueProperty="Losses" />
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Draws" ValueProperty="Draws" />
-    <RadzenColumnSeries Data="@histoModelsHumans" CategoryProperty="Name" Title="Total" ValueProperty="Total" />
+        <RadzenCategoryAxis Padding="20" LabelAutoRotation="-45">
+            <RadzenAxisTitle Text="Игроки" />
+        </RadzenCategoryAxis>
 
-    <RadzenColumnOptions Margin="0" />
-</RadzenChart>
+        <RadzenLegend Position="LegendPosition.Bottom" />
+
+    </RadzenChart>
 
 
+    <RadzenChart ColorScheme="ColorScheme.Pastel" style="width: auto">
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Победы" ValueProperty="Wins" />
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Проигрыши" ValueProperty="Losses" />
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Ничьи" ValueProperty="Draws" />
+        <RadzenColumnSeries Data="@histoModelsAIs" CategoryProperty="Name" Title="Всего" ValueProperty="Total" />
+        <RadzenColumnOptions Radius="5" Margin="0" />
+
+        <RadzenValueAxis>
+            <RadzenAxisTitle Text="Количество игр" />
+            <RadzenGridLines Visible="true" />
+        </RadzenValueAxis>
+
+        <RadzenCategoryAxis Padding="20" LabelAutoRotation="-45">
+            <RadzenAxisTitle Text="Боты" />
+        </RadzenCategoryAxis>
+
+        <RadzenLegend Position="LegendPosition.Bottom" />
+
+    </RadzenChart>
+
+</RadzenStack>
 
 
 
@@ -108,10 +140,6 @@
 @code {
     [Parameter]
     public required List<FoolGameScore> Scores { get; set; }
-
-    ColorScheme tryScheme = ColorScheme.Monochrome;
-    IEnumerable<ColorScheme> colorSchemes = Enum.GetValues(typeof(ColorScheme)).Cast<ColorScheme>();
-    ColorScheme colorScheme = ColorScheme.Palette;
     private List<HistoModel> histoModelsHumans = [];
     private List<HistoModel> histoModelsAIs = [];
 

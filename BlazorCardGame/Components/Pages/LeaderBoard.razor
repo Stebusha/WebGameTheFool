@@ -29,32 +29,31 @@
     {
         <br />
         <br />
-        <div class="statistics-container">
-            <table class="score-table">
-                <thead>
-                    <tr>
-                        <th>Игрок</th>
-                        <th>Результат</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var score in scores)
+
+        <table class="score-table">
+            <thead>
+                <tr>
+                    <th>Игрок</th>
+                    <th>Результат</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var score in scores)
+                {
+                    if (score.NumberOfWins != 0)
                     {
-                        if (score.NumberOfWins != 0)
-                        {
-                            <tr>
-                                <td>@score.PlayerInfoName</td>
-                                <td>@score.NumberOfWins</td>
-                            </tr>
-                        }
+                        <tr>
+                            <td>@score.PlayerInfoName</td>
+                            <td>@score.NumberOfWins</td>
+                        </tr>
                     }
-                </tbody>
-            </table>
-            <br />
-            <div class="histo-container">
-                <Histogram Scores="scores"/>
-            </div>
-        </div>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <Histogram Scores="scores" />
+
 
     }
     else
