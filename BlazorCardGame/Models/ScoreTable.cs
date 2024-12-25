@@ -3,7 +3,7 @@ namespace BlazorCardGame.Models;
 public class ScoreTable
 {
     public Dictionary<string, int> scores = new Dictionary<string, int>();
-    private string _pathScores = "C:/Users/МиненковаНА/Projects/WebGameTheFool/BlazorCardGame/wwwroot/Scores/scores.txt";
+    private string _pathScores = "scores.txt";
 
     public ScoreTable()
     {
