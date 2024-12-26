@@ -9,6 +9,8 @@
 @inject NavigationManager NavigationManager
 @inject FoolDataManager DataManager
 
+@implements IDisposable
+
 <PageTitle>Дурак</PageTitle>
 
 @if(FoolGameService.GameState == GameState.Settings)
@@ -870,9 +872,9 @@ else
         NavigationManager.NavigateTo("/logout");
     }
 
-    @* private void Dispose()
+    public void Dispose()
     {
-        Reload = true;
+        @* Reload = true; *@
         selectedBack = Deck.s_back;
         
         if(Deck.UseExtra)
@@ -884,10 +886,10 @@ else
             selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
         }
 
-        deckStyle = Deck.s_style;
+        @* deckStyle = Deck.s_style; *@
     } 
      //save game info
-    public async Task SaveGame()
+    @* public async Task SaveGame()
     {
         List<CardInfo> cards = new();
 
@@ -995,5 +997,5 @@ else
                 Console.WriteLine("Error line 808\n" + e.Message);
             }
         }
-    } *@
+    }  *@
 }

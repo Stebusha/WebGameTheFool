@@ -30,8 +30,6 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\ref\BlazorCardGame.dll
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCardGame.csproj.AssemblyReference.cache
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\BlazorCa.9EB862D5.Up2Date
-C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 c:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\TheFool.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\TheFoolRules.razor.rz.scp.css
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\obj\Debug\net8.0\scopedcss\Components\Pages\Partials\PlayerHand.razor.rz.scp.css

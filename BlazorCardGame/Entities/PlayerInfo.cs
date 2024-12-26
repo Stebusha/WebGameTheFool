@@ -15,8 +15,10 @@ public class PlayerInfo
     [DefaultValue(PlayerType.AI)]
     [EnumDataType(typeof(PlayerType))]
     public PlayerType PlayerType { get; set; }
-    
+
     [DefaultValue(false)]
     public bool IsAttack { get; set; }
+
+    public FoolGameScore? Score { get; set; }
 
 }

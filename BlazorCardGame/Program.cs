@@ -1,5 +1,4 @@
 using BlazorCardGame.Components;
-using BlazorCardGame.Hubs;
 using BlazorCardGame.Models;
 using BlazorCardGame.Services;
 using BlazorCardGame.Contexts;
@@ -7,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddSignalR();
 
 builder.Services.AddRadzenComponents();
 
@@ -33,6 +30,7 @@ builder.Services.AddScoped<FoolGameService>();
 builder.Services.AddScoped<FoolDataManager>();
 builder.Services.AddScoped<DataExportService>();
 
+builder.Services.AddScoped<IDisposable>();
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("FoolGameConnection"), new MySqlServerVersion("8.4.3"));
@@ -64,7 +62,5 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
-app.MapHub<GameHub>("/gamehub");
 
 app.Run();

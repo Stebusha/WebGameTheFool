@@ -295,7 +295,7 @@
     "$values": [
       {
         "$id": "36",
-        "Id": 27,
+        "Id": 34,
         "PlayerInfoName": "Admin",
         "PlayerInfo": {
           "$ref": "4"
@@ -307,7 +307,19 @@
       },
       {
         "$id": "37",
-        "Id": 28,
+        "Id": 35,
+        "PlayerInfoName": "Admin",
+        "PlayerInfo": {
+          "$ref": "4"
+        },
+        "NumberOfWins": 73,
+        "NumberOfLosses": 59,
+        "NumberOfDraws": 43,
+        "CountOfGames": 175
+      },
+      {
+        "$id": "38",
+        "Id": 36,
         "PlayerInfoName": "\u0427\u0445\u0443\u043B\u044C",
         "PlayerInfo": {
           "$ref": "19"
@@ -318,8 +330,8 @@
         "CountOfGames": 15
       },
       {
-        "$id": "38",
-        "Id": 29,
+        "$id": "39",
+        "Id": 37,
         "PlayerInfoName": "\u0410\u043D\u043E\u043D\u0438\u043C\u0443\u0441",
         "PlayerInfo": {
           "$ref": "21"
@@ -328,18 +340,6 @@
         "NumberOfLosses": 1,
         "NumberOfDraws": 0,
         "CountOfGames": 2
-      },
-      {
-        "$id": "39",
-        "Id": 30,
-        "PlayerInfoName": "Admin",
-        "PlayerInfo": {
-          "$ref": "4"
-        },
-        "NumberOfWins": 73,
-        "NumberOfLosses": 59,
-        "NumberOfDraws": 43,
-        "CountOfGames": 175
       }
     ]
   }

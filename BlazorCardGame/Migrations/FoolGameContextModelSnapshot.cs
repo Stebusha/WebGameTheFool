@@ -41,7 +41,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("Login");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
@@ -69,7 +69,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasIndex("FoolGamePlayerInfoName", "FoolGameOpponentInfoName");
 
-                    b.ToTable("CardInfo");
+                    b.ToTable("CardInfo", (string)null);
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
@@ -88,7 +88,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("PlayerInfoName", "OpponentInfoName");
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
@@ -119,7 +119,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasIndex("PlayerInfoName");
 
-                    b.ToTable("Scores");
+                    b.ToTable("Scores", (string)null);
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
@@ -141,7 +141,7 @@ namespace BlazorCardGame.Migrations
                     b.HasIndex("UserLogin")
                         .IsUnique();
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
