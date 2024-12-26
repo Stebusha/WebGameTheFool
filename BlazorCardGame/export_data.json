@@ -1,0 +1,346 @@
+{
+  "$id": "1",
+  "Users": {
+    "$id": "2",
+    "$values": [
+      {
+        "$id": "3",
+        "Login": "Admin",
+        "Password": "Admin",
+        "LastEnteredTime": "2024-12-16T11:35:08.0482",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": {
+          "$id": "4",
+          "Name": "Admin",
+          "UserLogin": "Admin",
+          "User": {
+            "$ref": "3"
+          },
+          "PlayerType": 1,
+          "IsAttack": false
+        }
+      },
+      {
+        "$id": "5",
+        "Login": "Bless",
+        "Password": "15qQ#",
+        "LastEnteredTime": "2024-12-19T17:26:19.159457",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "6",
+        "Login": "Corps",
+        "Password": "12wW@",
+        "LastEnteredTime": "2024-12-19T17:23:24.114646",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "7",
+        "Login": "Doob",
+        "Password": "111qQ@",
+        "LastEnteredTime": "2024-12-25T17:16:59.856309",
+        "IsLoggedIn": true,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "8",
+        "Login": "Fork",
+        "Password": "13qQ@",
+        "LastEnteredTime": "2024-12-19T17:24:08.443174",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "9",
+        "Login": "Rat",
+        "Password": "132qQ@",
+        "LastEnteredTime": "2024-12-24T15:01:18.061692",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": {
+          "$id": "10",
+          "Name": "Rat",
+          "UserLogin": "Rat",
+          "User": {
+            "$ref": "9"
+          },
+          "PlayerType": 1,
+          "IsAttack": true
+        }
+      },
+      {
+        "$id": "11",
+        "Login": "Scissors",
+        "Password": "15qE$",
+        "LastEnteredTime": "2024-12-19T17:28:40.885812",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "12",
+        "Login": "Spike",
+        "Password": "11rR!",
+        "LastEnteredTime": "2024-12-19T17:25:14.320801",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "13",
+        "Login": "\u0411\u0430\u0440\u0431\u043E\u0441",
+        "Password": "12qQ@",
+        "LastEnteredTime": "2024-12-19T17:09:49.031924",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": {
+          "$id": "14",
+          "Name": "\u0411\u0430\u0440\u0431\u043E\u0441",
+          "UserLogin": "\u0411\u0430\u0440\u0431\u043E\u0441",
+          "User": {
+            "$ref": "13"
+          },
+          "PlayerType": 1,
+          "IsAttack": false
+        }
+      },
+      {
+        "$id": "15",
+        "Login": "\u0411\u043E\u0440\u0449",
+        "Password": "12qQ@",
+        "LastEnteredTime": "2024-12-25T15:33:45.147354",
+        "IsLoggedIn": true,
+        "RememberMe": false,
+        "playerInfo": {
+          "$id": "16",
+          "Name": "\u0411\u043E\u0440\u0449",
+          "UserLogin": "\u0411\u043E\u0440\u0449",
+          "User": {
+            "$ref": "15"
+          },
+          "PlayerType": 1,
+          "IsAttack": false
+        }
+      },
+      {
+        "$id": "17",
+        "Login": "\u0425\u0442\u043E\u043D\u044C",
+        "Password": "11qQ@",
+        "LastEnteredTime": "2024-12-25T17:13:10.815678",
+        "IsLoggedIn": true,
+        "RememberMe": false,
+        "playerInfo": null
+      },
+      {
+        "$id": "18",
+        "Login": "\u0427\u0445\u0443\u043B\u044C",
+        "Password": "132qQ@",
+        "LastEnteredTime": "2024-12-16T17:01:41.686987",
+        "IsLoggedIn": false,
+        "RememberMe": false,
+        "playerInfo": {
+          "$id": "19",
+          "Name": "\u0427\u0445\u0443\u043B\u044C",
+          "UserLogin": "\u0427\u0445\u0443\u043B\u044C",
+          "User": {
+            "$ref": "18"
+          },
+          "PlayerType": 1,
+          "IsAttack": true
+        }
+      }
+    ]
+  },
+  "Players": {
+    "$id": "20",
+    "$values": [
+      {
+        "$ref": "4"
+      },
+      {
+        "$ref": "10"
+      },
+      {
+        "$id": "21",
+        "Name": "\u0410\u043D\u043E\u043D\u0438\u043C\u0443\u0441",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$ref": "14"
+      },
+      {
+        "$id": "22",
+        "Name": "\u0411\u043E\u0440\u0437\u044B\u0439",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$ref": "16"
+      },
+      {
+        "$id": "23",
+        "Name": "\u0411\u043E\u0441\u044F",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "24",
+        "Name": "\u0412\u0430\u0441\u0438\u043B\u0438\u0439",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "25",
+        "Name": "\u0412\u0435\u0440\u043E\u0447\u043A\u0430777",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "26",
+        "Name": "\u041A\u043E\u043D\u044C",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "27",
+        "Name": "\u041A\u0440\u0430\u0441\u0430V\u0447\u0438\u041A",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "28",
+        "Name": "\u041A\u0443\u0440\u043E\u0447\u043A\u0438\u043D",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": true
+      },
+      {
+        "$id": "29",
+        "Name": "\u041D\u0435\u0443\u043C\u0435\u0445\u0430",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "30",
+        "Name": "\u041D\u0438\u043D\u0434\u0437\u044F",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "31",
+        "Name": "\u0421\u0438\u0433\u043D\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "32",
+        "Name": "\u0421\u043E\u0432\u0430",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$id": "33",
+        "Name": "\u0423\u043C\u043D\u0438\u043A",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": false
+      },
+      {
+        "$ref": "19"
+      },
+      {
+        "$id": "34",
+        "Name": "\u0428\u043E\u0440\u043A",
+        "UserLogin": null,
+        "User": null,
+        "PlayerType": 0,
+        "IsAttack": true
+      }
+    ]
+  },
+  "Scores": {
+    "$id": "35",
+    "$values": [
+      {
+        "$id": "36",
+        "Id": 34,
+        "PlayerInfoName": "Admin",
+        "PlayerInfo": {
+          "$ref": "4"
+        },
+        "NumberOfWins": 73,
+        "NumberOfLosses": 59,
+        "NumberOfDraws": 43,
+        "CountOfGames": 175
+      },
+      {
+        "$id": "37",
+        "Id": 35,
+        "PlayerInfoName": "Admin",
+        "PlayerInfo": {
+          "$ref": "4"
+        },
+        "NumberOfWins": 73,
+        "NumberOfLosses": 59,
+        "NumberOfDraws": 43,
+        "CountOfGames": 175
+      },
+      {
+        "$id": "38",
+        "Id": 36,
+        "PlayerInfoName": "\u0427\u0445\u0443\u043B\u044C",
+        "PlayerInfo": {
+          "$ref": "19"
+        },
+        "NumberOfWins": 10,
+        "NumberOfLosses": 4,
+        "NumberOfDraws": 1,
+        "CountOfGames": 15
+      },
+      {
+        "$id": "39",
+        "Id": 37,
+        "PlayerInfoName": "\u0410\u043D\u043E\u043D\u0438\u043C\u0443\u0441",
+        "PlayerInfo": {
+          "$ref": "21"
+        },
+        "NumberOfWins": 1,
+        "NumberOfLosses": 1,
+        "NumberOfDraws": 0,
+        "CountOfGames": 2
+      }
+    ]
+  }
+}

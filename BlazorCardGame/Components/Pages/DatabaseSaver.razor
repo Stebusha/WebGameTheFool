@@ -1,0 +1,73 @@
+@page "/database"
+
+@inject DataExportService DataExportService
+
+@rendermode InteractiveServer
+
+<h3>Выгрузка базы данных</h3>
+
+<button @onclick="ExportDatabase">Выгрузить БД</button>
+
+<h3>Восстановление базы данных</h3>
+
+<InputFile OnChange="HandleFileSelected" />
+
+<button @onclick="RestoreDatabase" disabled="@(!FileSelected)">Восстановить БД</button>
+
+@if (Exported)
+{
+    <h1>БД выгружена</h1>
+}
+
+@if (Restored)
+{
+    <h1>БД восстановлена</h1>
+}
+
+@code
+{
+    bool Exported = false;
+    bool Restored = false;
+
+    private IBrowserFile? selectedFile;
+    private bool FileSelected = false;
+    private async Task ExportDatabase()
+    {
+        Exported = false;
+        Restored = false;
+
+        var path = await DataExportService.ExportDatabaseAsync();
+
+        Console.WriteLine($"База данных выгружена в файл: {path}");
+
+        Exported = true;
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.GetMultipleFiles(1).FirstOrDefault();
+        FileSelected = selectedFile != null;
+    }
+    private async Task RestoreDatabase()
+    {
+        Exported = false;
+        Restored = false;
+
+        try
+        {
+            if (selectedFile is not null)
+            {
+                var filePath = Path.Combine(Environment.CurrentDirectory, selectedFile.Name);
+
+                await DataExportService.RestoreDatabaseAsync(filePath);
+
+                Console.WriteLine($"База данных восстановлена");
+                Restored = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при восстановлении базы данных: {ex.Message}"); ;
+        }
+    }
+}

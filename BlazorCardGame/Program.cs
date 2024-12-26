@@ -31,6 +31,7 @@ builder.Services.AddAuthentication(GameConstants.AUTH_SCHEME)
 // builder.Services.AddScoped<JSRuntime>();
 builder.Services.AddScoped<FoolGameService>();
 builder.Services.AddScoped<FoolDataManager>();
+builder.Services.AddScoped<DataExportService>();
 
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {

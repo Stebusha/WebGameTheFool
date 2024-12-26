@@ -1,4 +1,6 @@
 @page "/register"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication
 
 @rendermode InteractiveServer
 
@@ -79,6 +81,20 @@
 
             }
 
+            @* LoggedInUserModel user = new LoggedInUserModel(1, newUser.Login);
+
+            var claims = user.ToClaims();
+            var identity = new ClaimsIdentity(claims, GameConstants.AUTH_SCHEME);
+            var principal = new ClaimsPrincipal(identity);
+
+            var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = false
+                };
+
+            Console.WriteLine($"Login: {newUser.Login}\nPasssword: {newUser.Password}");
+
+            await HttpContext.SignInAsync(GameConstants.AUTH_SCHEME, principal, authProperties); *@
             NavigationManager.NavigateTo("/thefool");
         }
     }

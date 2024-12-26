@@ -390,3 +390,5 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\White\QS.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\Radzen.Blazor.dll
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\export_data1.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\export_data.json
