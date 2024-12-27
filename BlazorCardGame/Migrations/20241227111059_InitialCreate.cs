@@ -16,6 +16,23 @@ namespace BlazorCardGame.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    PlayerInfoName = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OpponentInfoName = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DiscardCardsCount = table.Column<int>(type: "int", nullable: false),
+                    CountOfGames = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => new { x.PlayerInfoName, x.OpponentInfoName });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -29,6 +46,31 @@ namespace BlazorCardGame.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Login);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CardInfo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ImageUrl = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CardType = table.Column<int>(type: "int", nullable: false),
+                    FoolGameOpponentInfoName = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FoolGamePlayerInfoName = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CardInfo", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CardInfo_Games_FoolGamePlayerInfoName_FoolGameOpponentInfoNa~",
+                        columns: x => new { x.FoolGamePlayerInfoName, x.FoolGameOpponentInfoName },
+                        principalTable: "Games",
+                        principalColumns: new[] { "PlayerInfoName", "OpponentInfoName" });
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -80,6 +122,11 @@ namespace BlazorCardGame.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CardInfo_FoolGamePlayerInfoName_FoolGameOpponentInfoName",
+                table: "CardInfo",
+                columns: new[] { "FoolGamePlayerInfoName", "FoolGameOpponentInfoName" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Players_UserLogin",
                 table: "Players",
                 column: "UserLogin",
@@ -88,14 +135,21 @@ namespace BlazorCardGame.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_PlayerInfoName",
                 table: "Scores",
-                column: "PlayerInfoName");
+                column: "PlayerInfoName",
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CardInfo");
+
+            migrationBuilder.DropTable(
                 name: "Scores");
+
+            migrationBuilder.DropTable(
+                name: "Games");
 
             migrationBuilder.DropTable(
                 name: "Players");

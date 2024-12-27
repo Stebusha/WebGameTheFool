@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorCardGame.Migrations
 {
     [DbContext(typeof(FoolGameContext))]
-    [Migration("20241216121312_Changes")]
-    partial class Changes
+    [Migration("20241227111059_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,7 +120,8 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlayerInfoName");
+                    b.HasIndex("PlayerInfoName")
+                        .IsUnique();
 
                     b.ToTable("Scores");
                 });
@@ -157,8 +158,8 @@ namespace BlazorCardGame.Migrations
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
                 {
                     b.HasOne("BlazorCardGame.Entities.PlayerInfo", "PlayerInfo")
-                        .WithMany()
-                        .HasForeignKey("PlayerInfoName")
+                        .WithOne("Score")
+                        .HasForeignKey("BlazorCardGame.Entities.FoolGameScore", "PlayerInfoName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -182,6 +183,11 @@ namespace BlazorCardGame.Migrations
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
                 {
                     b.Navigation("Cards");
+                });
+
+            modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
+                {
+                    b.Navigation("Score");
                 });
 #pragma warning restore 612, 618
         }

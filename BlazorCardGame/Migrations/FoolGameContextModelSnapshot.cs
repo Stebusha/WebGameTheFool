@@ -41,7 +41,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("Login");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
@@ -69,7 +69,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasIndex("FoolGamePlayerInfoName", "FoolGameOpponentInfoName");
 
-                    b.ToTable("CardInfo", (string)null);
+                    b.ToTable("CardInfo");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
@@ -88,7 +88,7 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("PlayerInfoName", "OpponentInfoName");
 
-                    b.ToTable("Games", (string)null);
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
@@ -117,9 +117,10 @@ namespace BlazorCardGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlayerInfoName");
+                    b.HasIndex("PlayerInfoName")
+                        .IsUnique();
 
-                    b.ToTable("Scores", (string)null);
+                    b.ToTable("Scores");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
@@ -141,7 +142,7 @@ namespace BlazorCardGame.Migrations
                     b.HasIndex("UserLogin")
                         .IsUnique();
 
-                    b.ToTable("Players", (string)null);
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("BlazorCardGame.Entities.CardInfo", b =>
@@ -154,8 +155,8 @@ namespace BlazorCardGame.Migrations
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGameScore", b =>
                 {
                     b.HasOne("BlazorCardGame.Entities.PlayerInfo", "PlayerInfo")
-                        .WithMany()
-                        .HasForeignKey("PlayerInfoName")
+                        .WithOne("Score")
+                        .HasForeignKey("BlazorCardGame.Entities.FoolGameScore", "PlayerInfoName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -179,6 +180,11 @@ namespace BlazorCardGame.Migrations
             modelBuilder.Entity("BlazorCardGame.Entities.FoolGame", b =>
                 {
                     b.Navigation("Cards");
+                });
+
+            modelBuilder.Entity("BlazorCardGame.Entities.PlayerInfo", b =>
+                {
+                    b.Navigation("Score");
                 });
 #pragma warning restore 612, 618
         }
