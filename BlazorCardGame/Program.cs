@@ -30,7 +30,6 @@ builder.Services.AddScoped<FoolGameService>();
 builder.Services.AddScoped<FoolDataManager>();
 builder.Services.AddScoped<DataExportService>();
 
-builder.Services.AddScoped<IDisposable>();
 builder.Services.AddDbContextFactory<FoolGameContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("FoolGameConnection"), new MySqlServerVersion("8.4.3"));

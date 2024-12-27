@@ -185,6 +185,8 @@ else
     private string selectedBack = "Images/back_cyan.png";
     private int selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
+    private bool Reload { get; set; } = false;
+    private DeckStyle deckStyle;
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
@@ -192,7 +194,11 @@ else
     //load game on initialized component
     protected override async Task OnInitializedAsync()
     {
-        if(FoolGameService.GameState == GameState.Settings)
+        if(Reload)
+        {
+            ShowSettings = false;
+        }
+        else if(FoolGameService.GameState == GameState.Settings)
         {
             await Task.Delay(500);
 
@@ -515,7 +521,6 @@ else
             {
                 Console.WriteLine("Error line 439\n" + e.Message);
             }
-
         }
     }
 
@@ -717,7 +722,6 @@ else
                                 {
                                     Console.WriteLine("Error line 641\n" + e.Message);
                                 }
-
                             }
 
                             if (score.PlayerInfoName == FoolGameService.Opponent.Name)
@@ -874,7 +878,9 @@ else
 
     public void Dispose()
     {
-        @* Reload = true; *@
+        Reload = true;
+        ShowSettings = false;
+
         selectedBack = Deck.s_back;
         
         if(Deck.UseExtra)
@@ -886,7 +892,7 @@ else
             selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
         }
 
-        @* deckStyle = Deck.s_style; *@
+        deckStyle = Deck.s_style;
     } 
      //save game info
     @* public async Task SaveGame()
