@@ -1,0 +1,8 @@
+.card-back[b-rfxkdhwbqh] {
+    width: 100px;
+    height: auto;
+    margin: 0 5px;
+    background-color: thistle;
+    border: none;
+    flex-shrink: 1;
+}

@@ -1,0 +1,25 @@
+h3[b-vvfvrexj0l], p[b-vvfvrexj0l], input[b-vvfvrexj0l], button[b-vvfvrexj0l]{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.register-form[b-vvfvrexj0l]{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+h3[b-vvfvrexj0l]{
+    text-align: center;
+}
+
+button[b-vvfvrexj0l]{
+    background-color: rgb(187, 250, 229);
+    border-radius: 10px;
+    border: rgb(149, 252, 218) solid;
+}
+
+button:hover[b-vvfvrexj0l]{
+    background-color: rgb(107, 223, 252);
+    border: rgb(107, 223, 252) solid;
+}

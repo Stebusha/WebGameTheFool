@@ -21,15 +21,15 @@
           "IsAttack": false,
           "Score": {
             "$id": "5",
-            "Id": 41,
+            "Id": 1,
             "PlayerInfoName": "Admin",
             "PlayerInfo": {
               "$ref": "4"
             },
-            "NumberOfWins": 73,
-            "NumberOfLosses": 59,
-            "NumberOfDraws": 43,
-            "CountOfGames": 175
+            "NumberOfWins": 74,
+            "NumberOfLosses": 60,
+            "NumberOfDraws": 44,
+            "CountOfGames": 178
           }
         }
       },
@@ -56,12 +56,33 @@
         "Login": "Doob",
         "Password": "111qQ@",
         "LastEnteredTime": "2024-12-25T17:16:59.856309",
-        "IsLoggedIn": false,
+        "IsLoggedIn": true,
         "RememberMe": false,
-        "playerInfo": null
+        "playerInfo": {
+          "$id": "9",
+          "Name": "Doob",
+          "UserLogin": "Doob",
+          "User": {
+            "$ref": "8"
+          },
+          "PlayerType": 1,
+          "IsAttack": true,
+          "Score": {
+            "$id": "10",
+            "Id": 27,
+            "PlayerInfoName": "Doob",
+            "PlayerInfo": {
+              "$ref": "9"
+            },
+            "NumberOfWins": 0,
+            "NumberOfLosses": 1,
+            "NumberOfDraws": 0,
+            "CountOfGames": 1
+          }
+        }
       },
       {
-        "$id": "9",
+        "$id": "11",
         "Login": "Fork",
         "Password": "13qQ@",
         "LastEnteredTime": "2024-12-19T17:24:08.443174",
@@ -70,26 +91,37 @@
         "playerInfo": null
       },
       {
-        "$id": "10",
+        "$id": "12",
         "Login": "Rat",
         "Password": "132qQ@",
         "LastEnteredTime": "2024-12-24T15:01:18.061692",
         "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": {
-          "$id": "11",
+          "$id": "13",
           "Name": "Rat",
           "UserLogin": "Rat",
           "User": {
-            "$ref": "10"
+            "$ref": "12"
           },
           "PlayerType": 1,
           "IsAttack": true,
-          "Score": null
+          "Score": {
+            "$id": "14",
+            "Id": 21,
+            "PlayerInfoName": "Rat",
+            "PlayerInfo": {
+              "$ref": "13"
+            },
+            "NumberOfWins": 2,
+            "NumberOfLosses": 2,
+            "NumberOfDraws": 0,
+            "CountOfGames": 4
+          }
         }
       },
       {
-        "$id": "12",
+        "$id": "15",
         "Login": "Scissors",
         "Password": "15qE$",
         "LastEnteredTime": "2024-12-19T17:28:40.885812",
@@ -98,7 +130,7 @@
         "playerInfo": null
       },
       {
-        "$id": "13",
+        "$id": "16",
         "Login": "Spike",
         "Password": "11rR!",
         "LastEnteredTime": "2024-12-19T17:25:14.320801",
@@ -107,18 +139,18 @@
         "playerInfo": null
       },
       {
-        "$id": "14",
+        "$id": "17",
         "Login": "\u0411\u0430\u0440\u0431\u043E\u0441",
         "Password": "12qQ@",
         "LastEnteredTime": "2024-12-19T17:09:49.031924",
         "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": {
-          "$id": "15",
+          "$id": "18",
           "Name": "\u0411\u0430\u0440\u0431\u043E\u0441",
           "UserLogin": "\u0411\u0430\u0440\u0431\u043E\u0441",
           "User": {
-            "$ref": "14"
+            "$ref": "17"
           },
           "PlayerType": 1,
           "IsAttack": false,
@@ -126,122 +158,136 @@
         }
       },
       {
-        "$id": "16",
+        "$id": "19",
         "Login": "\u0411\u043E\u0440\u0449",
         "Password": "12qQ@",
-        "LastEnteredTime": "2024-12-27T10:52:43.572866",
+        "LastEnteredTime": "2024-12-25T15:33:45.147354",
         "IsLoggedIn": true,
         "RememberMe": false,
         "playerInfo": {
-          "$id": "17",
+          "$id": "20",
           "Name": "\u0411\u043E\u0440\u0449",
           "UserLogin": "\u0411\u043E\u0440\u0449",
           "User": {
-            "$ref": "16"
+            "$ref": "19"
           },
           "PlayerType": 1,
           "IsAttack": false,
           "Score": {
-            "$id": "18",
-            "Id": 45,
+            "$id": "21",
+            "Id": 15,
             "PlayerInfoName": "\u0411\u043E\u0440\u0449",
             "PlayerInfo": {
-              "$ref": "17"
+              "$ref": "20"
             },
-            "NumberOfWins": 7,
-            "NumberOfLosses": 2,
+            "NumberOfWins": 4,
+            "NumberOfLosses": 10,
             "NumberOfDraws": 1,
-            "CountOfGames": 10
+            "CountOfGames": 15
           }
         }
       },
       {
-        "$id": "19",
+        "$id": "22",
         "Login": "\u0425\u0442\u043E\u043D\u044C",
         "Password": "11qQ@",
         "LastEnteredTime": "2024-12-25T17:13:10.815678",
-        "IsLoggedIn": false,
+        "IsLoggedIn": true,
         "RememberMe": false,
         "playerInfo": null
       },
       {
-        "$id": "20",
+        "$id": "23",
         "Login": "\u0427\u0445\u0443\u043B\u044C",
         "Password": "132qQ@",
         "LastEnteredTime": "2024-12-16T17:01:41.686987",
         "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": {
-          "$id": "21",
+          "$id": "24",
           "Name": "\u0427\u0445\u0443\u043B\u044C",
           "UserLogin": "\u0427\u0445\u0443\u043B\u044C",
           "User": {
-            "$ref": "20"
+            "$ref": "23"
           },
           "PlayerType": 1,
           "IsAttack": true,
           "Score": {
-            "$id": "22",
-            "Id": 42,
+            "$id": "25",
+            "Id": 2,
             "PlayerInfoName": "\u0427\u0445\u0443\u043B\u044C",
             "PlayerInfo": {
-              "$ref": "21"
+              "$ref": "24"
             },
-            "NumberOfWins": 10,
+            "NumberOfWins": 12,
             "NumberOfLosses": 4,
-            "NumberOfDraws": 1,
-            "CountOfGames": 15
+            "NumberOfDraws": 3,
+            "CountOfGames": 19
           }
         }
       }
     ]
   },
   "Players": {
-    "$id": "23",
+    "$id": "26",
     "$values": [
       {
         "$ref": "4"
       },
       {
-        "$ref": "11"
+        "$ref": "9"
       },
       {
-        "$id": "24",
+        "$ref": "13"
+      },
+      {
+        "$id": "27",
         "Name": "\u0410\u043D\u043E\u043D\u0438\u043C\u0443\u0441",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
-        "IsAttack": true,
+        "IsAttack": false,
         "Score": {
-          "$id": "25",
-          "Id": 43,
+          "$id": "28",
+          "Id": 3,
           "PlayerInfoName": "\u0410\u043D\u043E\u043D\u0438\u043C\u0443\u0441",
           "PlayerInfo": {
-            "$ref": "24"
+            "$ref": "27"
           },
-          "NumberOfWins": 1,
-          "NumberOfLosses": 1,
-          "NumberOfDraws": 0,
-          "CountOfGames": 2
+          "NumberOfWins": 4,
+          "NumberOfLosses": 3,
+          "NumberOfDraws": 1,
+          "CountOfGames": 8
         }
       },
       {
-        "$ref": "15"
+        "$ref": "18"
       },
       {
-        "$id": "26",
+        "$id": "29",
         "Name": "\u0411\u043E\u0440\u0437\u044B\u0439",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
-        "IsAttack": true,
-        "Score": null
+        "IsAttack": false,
+        "Score": {
+          "$id": "30",
+          "Id": 24,
+          "PlayerInfoName": "\u0411\u043E\u0440\u0437\u044B\u0439",
+          "PlayerInfo": {
+            "$ref": "29"
+          },
+          "NumberOfWins": 0,
+          "NumberOfLosses": 1,
+          "NumberOfDraws": 0,
+          "CountOfGames": 1
+        }
       },
       {
-        "$ref": "17"
+        "$ref": "20"
       },
       {
-        "$id": "27",
+        "$id": "31",
         "Name": "\u0411\u043E\u0441\u044F",
         "UserLogin": null,
         "User": null,
@@ -250,25 +296,47 @@
         "Score": null
       },
       {
-        "$id": "28",
+        "$id": "32",
         "Name": "\u0412\u0430\u0441\u0438\u043B\u0438\u0439",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "33",
+          "Id": 6,
+          "PlayerInfoName": "\u0412\u0430\u0441\u0438\u043B\u0438\u0439",
+          "PlayerInfo": {
+            "$ref": "32"
+          },
+          "NumberOfWins": 2,
+          "NumberOfLosses": 1,
+          "NumberOfDraws": 0,
+          "CountOfGames": 3
+        }
       },
       {
-        "$id": "29",
+        "$id": "34",
         "Name": "\u0412\u0435\u0440\u043E\u0447\u043A\u0430777",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "35",
+          "Id": 23,
+          "PlayerInfoName": "\u0412\u0435\u0440\u043E\u0447\u043A\u0430777",
+          "PlayerInfo": {
+            "$ref": "34"
+          },
+          "NumberOfWins": 1,
+          "NumberOfLosses": 1,
+          "NumberOfDraws": 0,
+          "CountOfGames": 2
+        }
       },
       {
-        "$id": "30",
+        "$id": "36",
         "Name": "\u041A\u043E\u043D\u044C",
         "UserLogin": null,
         "User": null,
@@ -277,72 +345,116 @@
         "Score": null
       },
       {
-        "$id": "31",
+        "$id": "37",
         "Name": "\u041A\u0440\u0430\u0441\u0430V\u0447\u0438\u041A",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "38",
+          "Id": 19,
+          "PlayerInfoName": "\u041A\u0440\u0430\u0441\u0430V\u0447\u0438\u041A",
+          "PlayerInfo": {
+            "$ref": "37"
+          },
+          "NumberOfWins": 5,
+          "NumberOfLosses": 2,
+          "NumberOfDraws": 0,
+          "CountOfGames": 7
+        }
       },
       {
-        "$id": "32",
+        "$id": "39",
         "Name": "\u041A\u0443\u0440\u043E\u0447\u043A\u0438\u043D",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": true,
-        "Score": {
-          "$id": "33",
-          "Id": 44,
-          "PlayerInfoName": "\u041A\u0443\u0440\u043E\u0447\u043A\u0438\u043D",
-          "PlayerInfo": {
-            "$ref": "32"
-          },
-          "NumberOfWins": 2,
-          "NumberOfLosses": 7,
-          "NumberOfDraws": 1,
-          "CountOfGames": 10
-        }
+        "Score": null
       },
       {
-        "$id": "34",
+        "$id": "40",
         "Name": "\u041D\u0435\u0443\u043C\u0435\u0445\u0430",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "41",
+          "Id": 25,
+          "PlayerInfoName": "\u041D\u0435\u0443\u043C\u0435\u0445\u0430",
+          "PlayerInfo": {
+            "$ref": "40"
+          },
+          "NumberOfWins": 1,
+          "NumberOfLosses": 0,
+          "NumberOfDraws": 0,
+          "CountOfGames": 1
+        }
       },
       {
-        "$id": "35",
+        "$id": "42",
         "Name": "\u041D\u0438\u043D\u0434\u0437\u044F",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "43",
+          "Id": 7,
+          "PlayerInfoName": "\u041D\u0438\u043D\u0434\u0437\u044F",
+          "PlayerInfo": {
+            "$ref": "42"
+          },
+          "NumberOfWins": 0,
+          "NumberOfLosses": 3,
+          "NumberOfDraws": 1,
+          "CountOfGames": 4
+        }
       },
       {
-        "$id": "36",
+        "$id": "44",
         "Name": "\u0421\u0438\u0433\u043D\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "45",
+          "Id": 26,
+          "PlayerInfoName": "\u0421\u0438\u0433\u043D\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440",
+          "PlayerInfo": {
+            "$ref": "44"
+          },
+          "NumberOfWins": 1,
+          "NumberOfLosses": 0,
+          "NumberOfDraws": 1,
+          "CountOfGames": 2
+        }
       },
       {
-        "$id": "37",
+        "$id": "46",
         "Name": "\u0421\u043E\u0432\u0430",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": false,
-        "Score": null
+        "Score": {
+          "$id": "47",
+          "Id": 16,
+          "PlayerInfoName": "\u0421\u043E\u0432\u0430",
+          "PlayerInfo": {
+            "$ref": "46"
+          },
+          "NumberOfWins": 2,
+          "NumberOfLosses": 1,
+          "NumberOfDraws": 0,
+          "CountOfGames": 3
+        }
       },
       {
-        "$id": "38",
+        "$id": "48",
         "Name": "\u0423\u043C\u043D\u0438\u043A",
         "UserLogin": null,
         "User": null,
@@ -351,36 +463,77 @@
         "Score": null
       },
       {
-        "$ref": "21"
+        "$ref": "24"
       },
       {
-        "$id": "39",
+        "$id": "49",
         "Name": "\u0428\u043E\u0440\u043A",
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
         "IsAttack": true,
-        "Score": null
+        "Score": {
+          "$id": "50",
+          "Id": 22,
+          "PlayerInfoName": "\u0428\u043E\u0440\u043A",
+          "PlayerInfo": {
+            "$ref": "49"
+          },
+          "NumberOfWins": 1,
+          "NumberOfLosses": 0,
+          "NumberOfDraws": 0,
+          "CountOfGames": 1
+        }
       }
     ]
   },
   "Scores": {
-    "$id": "40",
+    "$id": "51",
     "$values": [
       {
         "$ref": "5"
       },
       {
-        "$ref": "22"
+        "$ref": "25"
       },
       {
-        "$ref": "25"
+        "$ref": "28"
       },
       {
         "$ref": "33"
       },
       {
-        "$ref": "18"
+        "$ref": "43"
+      },
+      {
+        "$ref": "21"
+      },
+      {
+        "$ref": "47"
+      },
+      {
+        "$ref": "38"
+      },
+      {
+        "$ref": "14"
+      },
+      {
+        "$ref": "50"
+      },
+      {
+        "$ref": "35"
+      },
+      {
+        "$ref": "30"
+      },
+      {
+        "$ref": "41"
+      },
+      {
+        "$ref": "45"
+      },
+      {
+        "$ref": "10"
       }
     ]
   }

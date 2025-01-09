@@ -1,0 +1,16 @@
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\BlazorCardGame
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\appsettings.Development.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\appsettings.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\export_data.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\export_data1.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\BlazorCardGame.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\BlazorCardGame.runtimeconfig.json
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\BlazorCardGame.pdb
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\Microsoft.EntityFrameworkCore.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\MySqlConnector.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\Radzen.Blazor.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\System.Linq.Dynamic.Core.dll
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Release\net8.0\linux-x64\publish\BlazorCardGame.deps.json
