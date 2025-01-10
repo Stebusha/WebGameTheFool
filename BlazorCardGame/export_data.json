@@ -7,8 +7,8 @@
         "$id": "3",
         "Login": "Admin",
         "Password": "Admin",
-        "LastEnteredTime": "2024-12-16T11:35:08.0482",
-        "IsLoggedIn": false,
+        "LastEnteredTime": "2025-01-10T11:57:40.334694",
+        "IsLoggedIn": true,
         "RememberMe": false,
         "playerInfo": {
           "$id": "4",
@@ -26,10 +26,10 @@
             "PlayerInfo": {
               "$ref": "4"
             },
-            "NumberOfWins": 74,
-            "NumberOfLosses": 60,
+            "NumberOfWins": 75,
+            "NumberOfLosses": 61,
             "NumberOfDraws": 44,
-            "CountOfGames": 178
+            "CountOfGames": 180
           }
         }
       },
@@ -56,7 +56,7 @@
         "Login": "Doob",
         "Password": "111qQ@",
         "LastEnteredTime": "2024-12-25T17:16:59.856309",
-        "IsLoggedIn": true,
+        "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": {
           "$id": "9",
@@ -74,10 +74,10 @@
             "PlayerInfo": {
               "$ref": "9"
             },
-            "NumberOfWins": 0,
-            "NumberOfLosses": 1,
+            "NumberOfWins": 3,
+            "NumberOfLosses": 8,
             "NumberOfDraws": 0,
-            "CountOfGames": 1
+            "CountOfGames": 11
           }
         }
       },
@@ -162,7 +162,7 @@
         "Login": "\u0411\u043E\u0440\u0449",
         "Password": "12qQ@",
         "LastEnteredTime": "2024-12-25T15:33:45.147354",
-        "IsLoggedIn": true,
+        "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": {
           "$id": "20",
@@ -192,7 +192,7 @@
         "Login": "\u0425\u0442\u043E\u043D\u044C",
         "Password": "11qQ@",
         "LastEnteredTime": "2024-12-25T17:13:10.815678",
-        "IsLoggedIn": true,
+        "IsLoggedIn": false,
         "RememberMe": false,
         "playerInfo": null
       },
@@ -277,10 +277,10 @@
           "PlayerInfo": {
             "$ref": "29"
           },
-          "NumberOfWins": 0,
-          "NumberOfLosses": 1,
+          "NumberOfWins": 7,
+          "NumberOfLosses": 4,
           "NumberOfDraws": 0,
-          "CountOfGames": 1
+          "CountOfGames": 11
         }
       },
       {
@@ -292,7 +292,7 @@
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
-        "IsAttack": true,
+        "IsAttack": false,
         "Score": null
       },
       {
@@ -301,7 +301,7 @@
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
-        "IsAttack": false,
+        "IsAttack": true,
         "Score": {
           "$id": "33",
           "Id": 6,
@@ -439,7 +439,7 @@
         "UserLogin": null,
         "User": null,
         "PlayerType": 0,
-        "IsAttack": false,
+        "IsAttack": true,
         "Score": {
           "$id": "47",
           "Id": 16,
@@ -447,10 +447,10 @@
           "PlayerInfo": {
             "$ref": "46"
           },
-          "NumberOfWins": 2,
-          "NumberOfLosses": 1,
+          "NumberOfWins": 3,
+          "NumberOfLosses": 2,
           "NumberOfDraws": 0,
-          "CountOfGames": 3
+          "CountOfGames": 5
         }
       },
       {

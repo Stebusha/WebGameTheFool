@@ -869,9 +869,32 @@ else
         }
     }
 
-    private void Logout()
+    private async void Logout()
     {
         FoolGameService.ResetGame();
+
+        if(users is not null)
+        {
+            foreach(var user in users)
+            {
+                if(user.IsLoggedIn)
+                {
+                    user.IsLoggedIn = false;
+
+                    try
+                    {
+                        await DataManager.UpdateUserAsync(user);
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine($"Error logout in line 885: {e.Message}");
+                    }
+
+                    break;
+                }
+            }
+        }
+
         NavigationManager.NavigateTo("/logout");
     }
 
