@@ -2,8 +2,6 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authentication
 
-@rendermode InteractiveServer
-
 @inject NavigationManager NavigationManager
 @inject FoolDataManager DataManager
 
@@ -43,6 +41,9 @@
 
 
 @code {
+    [CascadingParameter]
+    public required HttpContext HttpContext { get; set; } = default!;
+
     [SupplyParameterFromForm(FormName = "RegisterForm")]
     private RegisterModel registerModel { get; set; } = new();
     private ApplicationUser? newUser;
@@ -81,7 +82,7 @@
 
             }
 
-            @* LoggedInUserModel user = new LoggedInUserModel(1, newUser.Login);
+            LoggedInUserModel user = new LoggedInUserModel(1, newUser.Login);
 
             var claims = user.ToClaims();
             var identity = new ClaimsIdentity(claims, GameConstants.AUTH_SCHEME);
@@ -94,7 +95,7 @@
 
             Console.WriteLine($"Login: {newUser.Login}\nPasssword: {newUser.Password}");
 
-            await HttpContext.SignInAsync(GameConstants.AUTH_SCHEME, principal, authProperties); *@
+            await HttpContext.SignInAsync(GameConstants.AUTH_SCHEME, principal, authProperties);
             NavigationManager.NavigateTo("/thefool");
         }
     }
