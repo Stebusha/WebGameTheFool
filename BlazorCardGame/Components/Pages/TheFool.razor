@@ -9,7 +9,7 @@
 @inject NavigationManager NavigationManager
 @inject FoolDataManager DataManager
 
-@implements IDisposable
+@* @implements IDisposable *@
 
 <PageTitle>Дурак</PageTitle>
 
@@ -186,7 +186,7 @@ else
     private int selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private bool Reload { get; set; } = false;
-    private DeckStyle deckStyle;
+    @* private DeckStyle deckStyle; *@
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
@@ -265,18 +265,39 @@ else
             bool opponentExisted = false;
             bool playerExisted = false;
 
-            //checked existed players or opponent
-            if (players is not null && users is not null)
+            //checked last entered user
+
+            if (users is not null)
             {
+                DateTime? tempTime = DateTime.Now;
+                string tempLogin = string.Empty;
+
                 foreach (var user in users)
                 {
                     if (user.IsLoggedIn)
                     {
-                        FoolGameService.Player.Name = user.Login;
-                        break;
+                        if  (tempLogin == "")
+                        {
+                            tempTime = user.LastEnteredTime;
+                            tempLogin = user.Login;
+                        }
+                        else if (tempTime < user.LastEnteredTime)
+                        {
+                           tempTime = user.LastEnteredTime; 
+                           tempLogin = user.Login;
+                        }    
                     }
                 }
 
+                if (tempLogin != "")
+                {
+                    FoolGameService.Player.Name = tempLogin;
+                }
+            }
+            
+            //checked existed players or opponent
+            if (players is not null)
+            {
                 foreach (var player in players)
                 {
                     if (FoolGameService.Opponent.Name == player.Name)
@@ -902,7 +923,7 @@ else
         NavigationManager.NavigateTo("/logout");
     }
 
-    public void Dispose()
+    @*public void Dispose()
     {
         Reload = true;
         ShowSettings = false;
@@ -922,7 +943,7 @@ else
     } 
     
     //save game info
-    @* public async Task SaveGame()
+     public async Task SaveGame()
     {
         List<CardInfo> cards = new();
 
