@@ -461,6 +461,22 @@
       "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\QS.png"
     },
     {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Fantasy\\club.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\club.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Fantasy\\diam.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\diam.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Fantasy\\heart.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\heart.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Fantasy\\spade.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\spade.png"
+    },
+    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\10C.png",
       "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\10C.png"
     },

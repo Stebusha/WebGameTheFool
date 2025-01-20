@@ -436,3 +436,7 @@ C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Silver\QH.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Silver\QS.png
 C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Silver\spade.png
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Fantasy\club.png
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Fantasy\diam.png
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Fantasy\heart.png
+C:\Users\МиненковаНА\Projects\WebGameTheFool\BlazorCardGame\bin\Debug\net8.0\wwwroot\Images\Cards\Fantasy\spade.png

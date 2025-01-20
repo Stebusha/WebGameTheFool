@@ -13,3 +13,14 @@
     border-radius: 5%;
     border: none;
 }
+
+@media ( max-width: 600px ) {
+    .card[b-0s7ewnrvps] {
+        width: 40px;
+        margin: 0 3px;
+    }
+
+    .card:hover[b-0s7ewnrvps] {
+        border-radius: 2%;
+    }
+}

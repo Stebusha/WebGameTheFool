@@ -39,7 +39,7 @@ p {
 .center-table {
     position: relative;
     top: 27%;
-    left: 9%;
+    left: 5%;
     height: 200px;
     width: 68%;
 }
@@ -54,13 +54,13 @@ p {
     position: absolute;
     left: -5%;
     color: rgb(1, 168, 112);
-    font-size: 50px;
+    font-size: calc(40px + 0.45vw);
     text-shadow: 2px 2px 2px rgb(1, 82, 78);
 }
 
 .lose {
     color: darkred;
-    font-size: 50px;
+    font-size: calc(40px + 0.45vw);
     position: absolute;
     left: 10%;
     text-shadow: 2px 2px 2px rgb(48, 0, 10);
@@ -68,7 +68,7 @@ p {
 
 .draw {
     color: rgb(78, 16, 129);
-    font-size: 50px;
+    font-size: calc(40px + 0.45vw);
     position: absolute;
     left: 10%;
     text-shadow: 2px 2px 2px rgb(33, 0, 48);
@@ -88,7 +88,7 @@ p {
 .defending-card {
     width: 100px;
     height: auto;
-    margin: 0 15px;
+    margin: 0 7px;
 }
 
 .deck {
@@ -125,6 +125,7 @@ button {
     overflow: hidden;
     z-index: 1;
     cursor: pointer;
+    font-size: calc(7px + 0.45vw);
 }
 
 .start-button {
@@ -229,4 +230,37 @@ button {
 .back-element{
     display: flex;
     flex-direction: column;
+}
+
+@media ( max-width:600px ) {
+    .attacking-card, .defending-card {
+        width: 40px;
+        margin: 0 2px;
+    }
+
+    .deck {
+        top: 50%;
+    }
+
+    .discard-pile {
+        top: 63%;
+        right: 50px;
+    }
+
+    .center-table {
+        left: 2%;
+    }
+
+    .controls {
+        width: 200px;
+    }
+
+    .player-cards, .opponent-cards {
+        height: 125px;
+    }
+
+    .win-lose {
+        top: 5%;
+    }
+
 }

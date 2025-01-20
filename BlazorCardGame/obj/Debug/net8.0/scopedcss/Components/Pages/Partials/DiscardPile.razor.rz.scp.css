@@ -11,3 +11,13 @@
     right: 0;
     top: 0;
 }
+
+@media ( max-width: 600px ) {
+    .card-stack[b-c3ukdjjxj4] {
+        width: 80px;
+    }
+
+    .stacked-back[b-c3ukdjjxj4] {
+        width: 40px;
+    }
+}

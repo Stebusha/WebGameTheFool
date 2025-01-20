@@ -6,10 +6,10 @@
 
 .trump-suit {
     position: absolute;
-    right: 50px;
-    width: 75px;
+    right: 25px;
+    width: 125px;
     height: auto;
-    top: 50%;
+    top: 40%;
 }
 
 .deck-stack {
@@ -24,4 +24,24 @@
     height: auto;
     right: 0;
     top: 0;
+}
+
+@media ( max-width: 600px ) {
+    .trump-card {
+        width: 40px;
+    }
+
+    .trump-suit {
+        width: 50px;
+        right: 15px;
+        top: 50%;
+    }
+
+    .deck-stack {
+        width: 80px;
+    }
+
+    .stacked-back {
+        width: 40px;
+    }
 }

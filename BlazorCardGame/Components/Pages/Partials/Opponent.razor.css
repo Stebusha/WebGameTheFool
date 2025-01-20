@@ -6,3 +6,9 @@
     width: 100%;
     background-color: none;
 }
+
+@media ( max-width: 600px ) {
+    .opponent-hand {
+        flex-wrap: wrap;
+    }
+}

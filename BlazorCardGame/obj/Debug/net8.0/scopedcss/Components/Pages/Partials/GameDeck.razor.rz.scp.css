@@ -6,10 +6,10 @@
 
 .trump-suit[b-4uwr5lm0ll] {
     position: absolute;
-    right: 50px;
-    width: 75px;
+    right: 25px;
+    width: 125px;
     height: auto;
-    top: 50%;
+    top: 40%;
 }
 
 .deck-stack[b-4uwr5lm0ll] {
@@ -24,4 +24,24 @@
     height: auto;
     right: 0;
     top: 0;
+}
+
+@media ( max-width: 600px ) {
+    .trump-card[b-4uwr5lm0ll] {
+        width: 40px;
+    }
+
+    .trump-suit[b-4uwr5lm0ll] {
+        width: 50px;
+        right: 15px;
+        top: 50%;
+    }
+
+    .deck-stack[b-4uwr5lm0ll] {
+        width: 80px;
+    }
+
+    .stacked-back[b-4uwr5lm0ll] {
+        width: 40px;
+    }
 }
