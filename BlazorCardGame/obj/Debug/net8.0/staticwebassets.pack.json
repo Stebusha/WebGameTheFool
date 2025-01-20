@@ -5,26 +5,6 @@
       "PackagePath": "staticwebassets\\BlazorCardGame.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\11c1c33c09c393857214e976d89d0726.jpg",
-      "PackagePath": "staticwebassets\\Images\\11c1c33c09c393857214e976d89d0726.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\45994076ab427285ab7c754724f05314.jpg",
-      "PackagePath": "staticwebassets\\Images\\45994076ab427285ab7c754724f05314.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\65aad2d4cb01fadce475b357c2acfa3d.jpg",
-      "PackagePath": "staticwebassets\\Images\\65aad2d4cb01fadce475b357c2acfa3d.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\668b32d558d19809afec575b967f4b3e.jpg",
-      "PackagePath": "staticwebassets\\Images\\668b32d558d19809afec575b967f4b3e.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\696d5aab576fb08e11f6eb5122bc0504.png",
-      "PackagePath": "staticwebassets\\Images\\696d5aab576fb08e11f6eb5122bc0504.png"
-    },
-    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\AllCards52.png",
       "PackagePath": "staticwebassets\\Images\\AllCards52.png"
     },
@@ -33,220 +13,236 @@
       "PackagePath": "staticwebassets\\Images\\AllSuits.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\10C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\10C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\10C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\10C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\10D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\10D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\10D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\10D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\10H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\10H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\10H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\10H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\10S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\10S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\10S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\10S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\6C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\6C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\6C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\6C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\6D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\6D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\6D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\6D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\6H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\6H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\6H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\6H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\6S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\6S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\6S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\6S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\7C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\7C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\7C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\7C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\7D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\7D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\7D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\7D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\7H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\7H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\7H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\7H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\7S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\7S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\7S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\7S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\8C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\8C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\8C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\8C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\8D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\8D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\8D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\8D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\8H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\8H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\8H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\8H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\8S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\8S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\8S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\8S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\9C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\9C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\9C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\9C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\9D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\9D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\9D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\9D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\9H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\9H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\9H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\9H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\9S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\9S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\9S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\9S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\AC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\AC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\AC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\AC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\AD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\AD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\AD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\AD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\AH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\AH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\AH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\AH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\AS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\AS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\AS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\AS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\2C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\2C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\2C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\2C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\2D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\2D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\2D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\2D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\2H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\2H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\2H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\2H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\2S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\2S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\2S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\2S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\3C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\3C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\3C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\3C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\3D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\3D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\3D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\3D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\3H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\3H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\3H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\3H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\3S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\3S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\3S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\3S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\4C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\4C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\4C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\4C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\4D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\4D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\4D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\4D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\4H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\4H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\4H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\4H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\4S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\4S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\4S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\4S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\5C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\5C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\5C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\5C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\5D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\5D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\5D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\5D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\5H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\5H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\5H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\5H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\5S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\5S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\5S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\5S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\joker_lady.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\joker_lady.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\joker_lady.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\joker_lady.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\Extra\\joker_male.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\Extra\\joker_male.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\Extra\\joker_male.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\Extra\\joker_male.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\JC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\JC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\JC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\JC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\JD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\JD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\JD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\JD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\JH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\JH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\JH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\JH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\JS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\JS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\JS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\JS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\KC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\KC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\KC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\KC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\KD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\KD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\KD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\KD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\KH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\KH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\KH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\KH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\KS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\KS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\KS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\KS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\QC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\QC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\QC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\QC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\QD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\QD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\QD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\QD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\QH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\QH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\QH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\QH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Black\\QS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\Black\\QS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\QS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\QS.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\club.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\club.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\diam.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\diam.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\heart.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\heart.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Bronze\\spade.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Bronze\\spade.png"
     },
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Fantasy\\10C.png",
@@ -465,224 +461,468 @@
       "PackagePath": "staticwebassets\\Images\\Cards\\Fantasy\\QS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\10C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\10C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\10C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\10C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\10D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\10D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\10D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\10D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\10H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\10H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\10H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\10H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\10S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\10S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\10S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\10S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\6C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\6C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\6C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\6C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\6D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\6D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\6D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\6D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\6H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\6H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\6H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\6H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\6S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\6S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\6S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\6S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\7C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\7C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\7C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\7C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\7D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\7D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\7D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\7D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\7H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\7H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\7H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\7H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\7S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\7S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\7S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\7S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\8C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\8C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\8C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\8C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\8D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\8D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\8D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\8D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\8H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\8H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\8H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\8H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\8S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\8S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\8S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\8S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\9C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\9C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\9C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\9C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\9D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\9D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\9D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\9D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\9H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\9H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\9H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\9H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\9S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\9S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\9S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\9S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\AC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\AC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\AC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\AC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\AD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\AD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\AD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\AD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\AH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\AH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\AH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\AH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\AS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\AS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\AS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\AS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\2C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\2C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\2C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\2C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\2D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\2D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\2D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\2D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\2H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\2H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\2H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\2H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\2S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\2S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\2S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\2S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\3C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\3C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\3C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\3C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\3D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\3D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\3D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\3D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\3H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\3H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\3H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\3H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\3S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\3S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\3S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\3S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\4C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\4C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\4C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\4C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\4D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\4D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\4D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\4D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\4H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\4H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\4H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\4H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\4S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\4S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\4S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\4S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\5C.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\5C.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\5C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\5C.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\5D.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\5D.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\5D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\5D.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\5H.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\5H.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\5H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\5H.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\5S.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\5S.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\5S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\5S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\joker_lady.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\joker_lady.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\joker_lady.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\joker_lady.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\Extra\\joker_male.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\Extra\\joker_male.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\Extra\\joker_male.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\Extra\\joker_male.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\JC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\JC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\JC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\JC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\JD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\JD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\JD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\JD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\JH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\JH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\JH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\JH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\JS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\JS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\JS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\JS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\KC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\KC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\KC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\KC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\KD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\KD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\KD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\KD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\KH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\KH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\KH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\KH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\KS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\KS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\KS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\KS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\QC.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\QC.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\QC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\QC.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\QD.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\QD.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\QD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\QD.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\QH.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\QH.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\QH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\QH.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\White\\QS.png",
-      "PackagePath": "staticwebassets\\Images\\Cards\\White\\QS.png"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\QS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\QS.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Casino_and_Gambling_Colored-12-1024.webp",
-      "PackagePath": "staticwebassets\\Images\\Casino_and_Gambling_Colored-12-1024.webp"
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\club.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\club.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\diam.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\diam.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\heart.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\heart.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Gold\\spade.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Gold\\spade.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\10C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\10C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\10D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\10D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\10H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\10H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\10S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\10S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\6C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\6C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\6D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\6D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\6H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\6H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\6S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\6S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\7C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\7C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\7D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\7D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\7H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\7H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\7S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\7S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\8C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\8C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\8D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\8D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\8H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\8H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\8S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\8S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\9C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\9C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\9D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\9D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\9H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\9H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\9S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\9S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\AC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\AC.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\AD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\AD.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\AH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\AH.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\AS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\AS.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\2C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\2C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\2D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\2D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\2H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\2H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\2S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\2S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\3C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\3C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\3D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\3D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\3H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\3H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\3S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\3S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\4C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\4C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\4D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\4D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\4H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\4H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\4S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\4S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\5C.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\5C.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\5D.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\5D.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\5H.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\5H.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\5S.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\5S.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\joker_lady.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\joker_lady.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\Extra\\joker_male.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\Extra\\joker_male.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\JC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\JC.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\JD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\JD.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\JH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\JH.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\JS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\JS.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\KC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\KC.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\KD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\KD.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\KH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\KH.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\KS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\KS.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\QC.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\QC.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\QD.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\QD.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\QH.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\QH.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\QS.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\QS.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\club.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\club.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\diam.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\diam.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\heart.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\heart.png"
+    },
+    {
+      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\Cards\\Silver\\spade.png",
+      "PackagePath": "staticwebassets\\Images\\Cards\\Silver\\spade.png"
     },
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\ExtraCards\\Standart\\2C.png",
@@ -749,10 +989,6 @@
       "PackagePath": "staticwebassets\\Images\\ExtraCards\\Standart\\5S.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\SBS - 2D Poker Pack.rar",
-      "PackagePath": "staticwebassets\\Images\\SBS - 2D Poker Pack.rar"
-    },
-    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\back_black1.png",
       "PackagePath": "staticwebassets\\Images\\back_black1.png"
     },
@@ -785,44 +1021,8 @@
       "PackagePath": "staticwebassets\\Images\\back_red.png"
     },
     {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\bg-1.jpg",
-      "PackagePath": "staticwebassets\\Images\\bg-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\bg-2.jpg",
-      "PackagePath": "staticwebassets\\Images\\bg-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\bg-3.png",
-      "PackagePath": "staticwebassets\\Images\\bg-3.png"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\bg-extra.jpg",
-      "PackagePath": "staticwebassets\\Images\\bg-extra.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\card-back-1.jpg",
-      "PackagePath": "staticwebassets\\Images\\card-back-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\card-back-2.jpg",
-      "PackagePath": "staticwebassets\\Images\\card-back-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\card-back-3.png",
-      "PackagePath": "staticwebassets\\Images\\card-back-3.png"
-    },
-    {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\club.png",
       "PackagePath": "staticwebassets\\Images\\club.png"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\d3aabae9259eaa5cde04f8c32ba7f8d1.jpg",
-      "PackagePath": "staticwebassets\\Images\\d3aabae9259eaa5cde04f8c32ba7f8d1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\d4edb6e1776ae00011dc57789bcc8a01.jpg",
-      "PackagePath": "staticwebassets\\Images\\d4edb6e1776ae00011dc57789bcc8a01.jpg"
     },
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\diam.png",
@@ -831,22 +1031,6 @@
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\heart.png",
       "PackagePath": "staticwebassets\\Images\\heart.png"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\joker_male.jpg",
-      "PackagePath": "staticwebassets\\Images\\joker_male.jpg"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\playing_cards.zip",
-      "PackagePath": "staticwebassets\\Images\\playing_cards.zip"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\png-clipart-joker-playing-card-king-card-game-poker-joker-king-heroes.png",
-      "PackagePath": "staticwebassets\\Images\\png-clipart-joker-playing-card-king-card-game-poker-joker-king-heroes.png"
-    },
-    {
-      "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\png-transparent-joker-playing-card-suit-joker-heroes-gambling-silhouette.png",
-      "PackagePath": "staticwebassets\\Images\\png-transparent-joker-playing-card-suit-joker-heroes-gambling-silhouette.png"
     },
     {
       "Id": "C:\\Users\\МиненковаНА\\Projects\\WebGameTheFool\\BlazorCardGame\\wwwroot\\Images\\spade.png",

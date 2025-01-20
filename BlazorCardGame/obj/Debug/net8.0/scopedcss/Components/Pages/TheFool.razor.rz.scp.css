@@ -213,8 +213,11 @@ button[b-0o9jxtxef0] {
 }
 
 .selection-back[b-0o9jxtxef0] {
-    width: auto;
-    height: 150px;
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    max-width: 100px;
+    min-width: 40px;
 }
 
 .container-back[b-0o9jxtxef0]{

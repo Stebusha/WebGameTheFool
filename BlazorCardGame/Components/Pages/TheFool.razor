@@ -9,8 +9,6 @@
 @inject NavigationManager NavigationManager
 @inject FoolDataManager DataManager
 
-@* @implements IDisposable *@
-
 <PageTitle>Дурак</PageTitle>
 
 @if(FoolGameService.GameState == GameState.Settings)
@@ -186,7 +184,6 @@ else
     private int selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
     private bool ShowSettings = false;
     private bool Reload { get; set; } = false;
-    @* private DeckStyle deckStyle; *@
     private List<FoolGameScore>? scores;
     private List<ApplicationUser>? users;
     private List<PlayerInfo>? players;
@@ -211,8 +208,9 @@ else
     private string GetStyleName(string style) => style switch
     {
         "Fantasy" => "Фэнтези",
-        "White" => "Светлый",
-        "Black" => "Темный",
+        "Gold"    => "Золото",
+        "Silver"  => "Серебро",
+        "Bronze"   => "Бронза",
         _ => "Style Not Found"
     };
 
@@ -922,134 +920,4 @@ else
 
         NavigationManager.NavigateTo("/logout");
     }
-
-    @*public void Dispose()
-    {
-        Reload = true;
-        ShowSettings = false;
-
-        selectedBack = Deck.s_back;
-        
-        if(Deck.UseExtra)
-        {
-            selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_EXTENDED;
-        }
-        else
-        {
-            selectedCardsAmount = GameConstants.MAX_CARD_AMOUNT_STANDARD;
-        }
-
-        deckStyle = Deck.s_style;
-    } 
-    
-    //save game info
-     public async Task SaveGame()
-    {
-        List<CardInfo> cards = new();
-
-        //remember info about cards in player hands
-        foreach (var card in FoolGameService.Player.inHand)
-        {
-            var cardInfo = new CardInfo
-                {
-                    CardType = CardType.Player,
-                    ImageUrl = card.ImageUrl
-                };
-
-            cards.Add(cardInfo);
-        }
-
-        //remember info about cards in opponent hand
-        foreach (var card in FoolGameService.Opponent.inHand)
-        {
-            var cardInfo = new CardInfo
-                {
-                    CardType = CardType.Opponent,
-                    ImageUrl = card.ImageUrl
-                };
-
-            cards.Add(cardInfo);
-        }
-
-        //remember info about cards in deck
-        foreach (var card in FoolGameService.Deck.GetDeckCards())
-        {
-            var cardInfo = new CardInfo
-                {
-                    CardType = CardType.InDeck,
-                    ImageUrl = card.ImageUrl
-                };
-
-            if (card == FoolGameService.Deck.GetTrumpCard())
-            {
-                cardInfo.CardType = CardType.Trump;
-            }
-
-            cards.Add(cardInfo);
-        }
-
-        //remember info about cards in attack
-        foreach (var card in FoolGameService.AttackingCards)
-        {
-            var cardInfo = new CardInfo
-                {
-                    CardType = CardType.Attacking,
-                    ImageUrl = card.ImageUrl
-                };
-
-            cards.Add(cardInfo);
-        }
-
-        //remember info about cards in defend
-        foreach (var card in FoolGameService.DefendingCards)
-        {
-            var cardInfo = new CardInfo
-                {
-                    CardType = CardType.Defending,
-                    ImageUrl = card.ImageUrl
-                };
-
-            cards.Add(cardInfo);
-        }
-
-        //if game not existed create new info about it
-        if (game is null)
-        {
-            game = new FoolGame
-                {
-                    Cards = cards,
-                    CountOfGames = FoolGameService.CountOfGames,
-                    DiscardCardsCount = FoolGameService.DiscardCardCount,
-                    OpponentInfoName = FoolGameService.Opponent.Name,
-                    PlayerInfoName = FoolGameService.Player.Name
-                };
-
-            try
-            {
-                await DataManager.AddGameAsync(game);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error line 790\n" + e.Message);
-            }
-        }
-        //update info if game existed
-        else
-        {
-            game.Cards = cards;
-            game.PlayerInfoName = FoolGameService.Player.Name;
-            game.OpponentInfoName = FoolGameService.Opponent.Name;
-            game.CountOfGames = FoolGameService.CountOfGames;
-            game.DiscardCardsCount = FoolGameService.DiscardCardCount;
-
-            try
-            {
-                await DataManager.UpdateGameAsync(game);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error line 808\n" + e.Message);
-            }
-        }
-    }  *@
 }
